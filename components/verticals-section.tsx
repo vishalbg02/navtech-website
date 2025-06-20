@@ -400,10 +400,18 @@ export default function VerticalsSection() {
 
     return (
         <>
-            <section ref={containerRef} className="relative py-20">
-                {/* Background overlay - lighter since global background exists */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/25 to-white/15 backdrop-blur-sm"></div>
-
+            <section
+                ref={containerRef}
+                className="relative py-20"
+                style={{
+                    backgroundImage: "url('/images/nav-bg.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+                {/* Background overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"></div>
                 {/* Section Header */}
                 <div className="container mx-auto px-6 mb-16 relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
@@ -435,9 +443,9 @@ export default function VerticalsSection() {
                                 className="container mx-auto px-6"
                             >
                                 <div
-                                    className={`vertical-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden ${
+                                    className={`vertical-card bg-white rounded-3xl shadow-2xl overflow-hidden ${
                                         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                                    } flex flex-col lg:flex border border-white/20`}
+                                    } flex flex-col lg:flex`}
                                 >
                                     {/* Image Section */}
                                     <div className="lg:w-1/2 relative overflow-hidden">
