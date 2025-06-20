@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import { Award, Users, Building2 } from "lucide-react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export default function LogosSection() {
     const containerRef = useRef(null)
@@ -41,67 +41,67 @@ export default function LogosSection() {
         {
             title: "Professional Members",
             data: members,
-            bgGradient: "from-slate-50 via-blue-50 to-indigo-50",
-            primaryColor: "blue",
-            icon: Award,
         },
         {
             title: "Research Coalition",
             data: research,
-            bgGradient: "from-indigo-50 via-purple-50 to-violet-50",
-            primaryColor: "purple",
-            icon: Users,
         },
         {
             title: "Esteemed Clients",
             data: clients,
-            bgGradient: "from-violet-50 via-pink-50 to-rose-50",
-            primaryColor: "pink",
-            icon: Building2,
         },
     ]
 
     useEffect(() => {
+        if (typeof window === "undefined") return
+
+        gsap.registerPlugin(ScrollTrigger)
+
         const ctx = gsap.context(() => {
             sectionsRef.current.forEach((section, sectionIndex) => {
-                const logos = section.querySelectorAll('.logo-card')
+                const logosContainer = section.querySelector('.logos-container-grid')
+                const logos = section.querySelectorAll('.logo-item')
+                const logoWidth = logos[0]?.offsetWidth || 200
+                const totalWidth = logos.length * logoWidth
 
-                // Staggered entrance animation for each section
-                gsap.fromTo(
-                    logos,
-                    {
-                        opacity: 0,
-                        y: 100,
-                        scale: 0.8,
-                        rotation: 5,
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        rotation: 0,
-                        duration: 1.2,
-                        ease: "elastic.out(1, 0.5)",
-                        stagger: {
-                            each: 0.15,
-                            from: "center",
-                            grid: "auto",
-                            ease: "power2.out",
-                        },
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 80%",
-                            toggleActions: "play none none reset",
-                        },
+                // Duplicate logos for seamless looping
+                logosContainer.innerHTML += logosContainer.innerHTML
+
+                // Horizontal scrolling animation
+                gsap.to(logosContainer, {
+                    x: -totalWidth,
+                    duration: logos.length * 2.5,
+                    ease: "none",
+                    repeat: -1,
+                    modifiers: {
+                        x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth)
                     }
-                )
+                })
 
-                // Hover animation for logos
-                logos.forEach((logo) => {
+                // Fade-in/fade-out effect for logos at edges
+                logos.forEach((logo, index) => {
+                    gsap.to(logo, {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: logo,
+                            start: "left right",
+                            end: "right left",
+                            containerAnimation: gsap.getById(`scroll-${sectionIndex}`),
+                            scrub: true,
+                            onEnter: () => gsap.to(logo, { opacity: 1, duration: 0.5 }),
+                            onLeave: () => gsap.to(logo, { opacity: 0, duration: 0.5 }),
+                            onEnterBack: () => gsap.to(logo, { opacity: 1, duration: 0.5 }),
+                            onLeaveBack: () => gsap.to(logo, { opacity: 0, duration: 0.5 }),
+                        }
+                    })
+
+                    // Hover animation
                     logo.addEventListener("mouseenter", () => {
                         gsap.to(logo, {
-                            scale: 1.1,
-                            boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                            scale: 1.15,
+                            y: -10,
                             duration: 0.3,
                             ease: "power2.out",
                         })
@@ -109,24 +109,24 @@ export default function LogosSection() {
                     logo.addEventListener("mouseleave", () => {
                         gsap.to(logo, {
                             scale: 1,
-                            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                            y: 0,
                             duration: 0.3,
                             ease: "power2.out",
                         })
                     })
                 })
 
-                // Continuous floating animation for logos
-                gsap.to(logos, {
-                    y: -10,
-                    duration: 2,
-                    yoyo: true,
-                    repeat: -1,
-                    ease: "sine.inOut",
-                    stagger: {
-                        each: 0.2,
-                        from: "random",
-                    },
+                // Entrance animation for section header
+                gsap.from(section.querySelector('.section-header'), {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    }
                 })
             })
         }, containerRef)
@@ -137,22 +137,12 @@ export default function LogosSection() {
     return (
         <div
             ref={containerRef}
-            className="logos-container min-h-screen relative overflow-hidden"
-            style={{
-                backgroundImage: 'url(/images/nav-bg.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'fixed'
-            }}
+            className="logos-container py-16 relative overflow-hidden bg-gray-100"
         >
-            {/* Overlay for better visibility */}
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
-
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-200/10 rounded-full blur-3xl animate-float"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-purple-200/10 rounded-full blur-3xl animate-float-delayed"></div>
+            {/* Subtle Background Decorations */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/10 rounded-full blur-2xl animate-float"></div>
+                <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/10 rounded-full blur-2xl animate-float delay-500"></div>
             </div>
 
             <div className="relative z-10">
@@ -160,72 +150,67 @@ export default function LogosSection() {
                     <div
                         key={sectionIndex}
                         ref={(el) => (sectionsRef.current[sectionIndex] = el)}
-                        className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ${section.bgGradient}/70 backdrop-blur-sm relative overflow-hidden`}
+                        className="py-12 px-4 sm:px-6 lg:px-8"
                     >
-                        <div className="max-w-7xl mx-auto relative z-10">
+                        <div className="max-w-7xl mx-auto">
                             {/* Section Header */}
-                            <div className="text-center mb-12 sm:mb-16">
-                                <div className={`inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 ${
-                                    section.primaryColor === 'blue' ? 'bg-blue-100/80 text-blue-700 border border-blue-200/50' :
-                                        section.primaryColor === 'purple' ? 'bg-purple-100/80 text-purple-700 border border-purple-200/50' :
-                                            'bg-pink-100/80 text-pink-700 border border-pink-200/50'
-                                }`}>
-                                    <section.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                                    {section.title}
-                                </div>
+                            <div className="section-header text-center mb-8">
+                                <h2 className="text-3xl md:text-4xl font-bold text-black">{section.title}</h2>
                             </div>
 
-                            {/* Logos Grid */}
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
-                                {section.data.map((logo, index) => (
-                                    <div
-                                        key={index}
-                                        className="logo-card bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer overflow-hidden"
-                                    >
-                                        <img
-                                            src={logo}
-                                            alt={`Logo ${index + 1}`}
-                                            className="w-full h-24 sm:h-28 lg:h-32 object-cover rounded-xl"
-                                        />
-                                    </div>
-                                ))}
+                            {/* Logos Scroller */}
+                            <div className="overflow-hidden relative">
+                                {/* Gradient overlays for fade effect */}
+                                <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-r from-gray-100 to-transparent z-10 pointer-events-none"></div>
+                                <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-l from-gray-100 to-transparent z-10 pointer-events-none"></div>
+
+                                <div className="logos-container-grid flex flex-row gap-4 sm:gap-6 whitespace-nowrap">
+                                    {section.data.map((logo, index) => (
+                                        <div
+                                            key={index}
+                                            className="logo-item inline-block"
+                                            style={{ minWidth: '200px' }}
+                                        >
+                                            <img
+                                                src={logo}
+                                                alt={`Logo ${index + 1}`}
+                                                className="w-full h-24 sm:h-28 lg:h-32 object-contain"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Custom CSS for Additional Animations */}
+            {/* Custom CSS for Animations */}
             <style jsx>{`
                 @keyframes float {
                     0%, 100% {
                         transform: translateY(0);
                     }
                     50% {
-                        transform: translateY(-20px);
-                    }
-                }
-
-                @keyframes float-delayed {
-                    0%, 100% {
-                        transform: translateY(-20px);
-                    }
-                    50% {
-                        transform: translateY(0);
+                        transform: translateY(-15px);
                     }
                 }
 
                 .animate-float {
-                    animation: float 6s ease-in-out infinite;
+                    animation: float 5s ease-in-out infinite;
                 }
 
-                .animate-float-delayed {
-                    animation: float-delayed 6s ease-in-out infinite;
+                .delay-500 {
+                    animation-delay: 0.5s;
                 }
 
-                .logo-card {
+                .logo-item {
                     transition: all 0.3s ease;
                     transform-origin: center center;
+                }
+
+                .logos-container-grid {
+                    will-change: transform;
                 }
             `}</style>
         </div>

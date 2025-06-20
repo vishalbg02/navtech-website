@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { ChevronDown, ArrowRight, X } from "lucide-react"
+import { ArrowRight, X } from "lucide-react"
 
 export default function VerticalsSection() {
     const containerRef = useRef(null)
-    const sectionsRef = useRef<HTMLDivElement[]>([])
-    const [activeModal, setActiveModal] = useState<number | null>(null)
+    const sectionsRef = useRef([])
+    const [activeModal, setActiveModal] = useState(null)
 
     useEffect(() => {
         if (typeof window === "undefined") return
@@ -17,140 +17,101 @@ export default function VerticalsSection() {
         gsap.registerPlugin(ScrollTrigger)
 
         const ctx = gsap.context(() => {
-            ScrollTrigger.create({
-                trigger: ".partnerships-container",
-                start: "top top",
-                end: "bottom top",
-                onLeave: () => {
-                    initializeVerticalAnimations()
-                },
-                refreshPriority: 1,
-            })
+            sectionsRef.current.forEach((section, index) => {
+                const text = section.querySelector(".vertical-text")
+                const image = section.querySelector(".vertical-image")
+                const button = section.querySelector(".learn-more-btn")
 
-            function initializeVerticalAnimations() {
-                const sections = sectionsRef.current.filter(Boolean)
-
-                sections.forEach((section, index) => {
-                    const direction = index % 2 === 0 ? 1 : -1
-                    const card = section.querySelector(".vertical-card")
-                    const content = section.querySelector(".vertical-content")
-                    const image = section.querySelector(".vertical-image")
-                    const features = section.querySelectorAll(".feature-item")
-
-                    gsap.fromTo(
-                        card,
-                        { x: direction * 100, opacity: 0, scale: 0.8 },
-                        {
-                            x: 0,
-                            opacity: 1,
-                            scale: 1,
-                            duration: 1.2,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: section,
-                                start: "top 80%",
-                                end: "top 20%",
-                                toggleActions: "play none none reverse",
-                            },
-                        },
-                    )
-
-                    gsap.fromTo(
-                        content,
-                        { y: 80, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 1,
-                            delay: 0.3,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: section,
-                                start: "top 70%",
-                                end: "top 30%",
-                                toggleActions: "play none none reverse",
-                            },
-                        },
-                    )
-
-                    gsap.fromTo(
-                        image,
-                        { scale: 1.2, opacity: 0 },
-                        {
-                            scale: 1,
-                            opacity: 1,
-                            duration: 1.5,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: section,
-                                start: "top 80%",
-                                end: "top 20%",
-                                toggleActions: "play none none reverse",
-                            },
-                        },
-                    )
-
-                    gsap.fromTo(
-                        features,
-                        { y: 60, opacity: 0, scale: 0.8 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.8,
-                            delay: 0.6,
-                            stagger: 0.15,
-                            ease: "back.out(1.7)",
-                            scrollTrigger: {
-                                trigger: section,
-                                start: "top 70%",
-                                end: "top 30%",
-                                toggleActions: "play none none reverse",
-                            },
-                        },
-                    )
-
-                    gsap.to(image, {
-                        yPercent: -20,
-                        ease: "none",
+                // Text slide-in and fade
+                gsap.fromTo(
+                    text,
+                    { x: index % 2 === 0 ? -100 : 100, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: "power3.out",
                         scrollTrigger: {
                             trigger: section,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: 1,
+                            start: "top 85%",
+                            end: "top 30%",
+                            toggleActions: "play none none reverse",
                         },
-                    })
+                    }
+                )
+
+                // Image scale and fade
+                gsap.fromTo(
+                    image,
+                    { scale: 1.2, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 85%",
+                            end: "top 30%",
+                            toggleActions: "play none none reverse",
+                        },
+                    }
+                )
+
+                // Parallax effect
+                gsap.to(image, {
+                    yPercent: -15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
+                    },
                 })
 
-                gsap.to(".feature-item", {
-                    y: "+=5",
-                    duration: 3,
-                    ease: "sine.inOut",
-                    yoyo: true,
-                    repeat: -1,
-                    stagger: 0.2,
+                // Button hover animation
+                button.addEventListener("mouseenter", () => {
+                    gsap.to(button, {
+                        scale: 1.05,
+                        boxShadow: "0 6px 15px rgba(0,128,0,0.3)",
+                        duration: 0.3,
+                        ease: "power2.out",
+                    })
                 })
-            }
+                button.addEventListener("mouseleave", () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+                        duration: 0.3,
+                        ease: "power2.out",
+                    })
+                })
+            })
         }, containerRef)
 
         return () => ctx.revert()
     }, [])
 
-    const openModal = (index: number) => {
+    const openModal = (index) => {
         setActiveModal(index)
-        gsap.fromTo(".modal-overlay", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" })
+        gsap.fromTo(
+            ".modal-overlay",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.3, ease: "power2.out" }
+        )
         gsap.fromTo(
             ".modal-content",
-            { scale: 0.8, opacity: 0, y: 50 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+            { scale: 0.9, opacity: 0, y: 30 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.4)" }
         )
     }
 
     const closeModal = () => {
         gsap.to(".modal-content", {
-            scale: 0.8,
+            scale: 0.9,
             opacity: 0,
-            y: 50,
+            y: 30,
             duration: 0.3,
             ease: "power2.in",
             onComplete: () => setActiveModal(null),
@@ -166,42 +127,35 @@ export default function VerticalsSection() {
         {
             title: "Government",
             subtitle: "Empowering Governance with Next-Gen Optical Wireless Communications (OWC)",
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
-            gradient: "from-green-600 to-gray-800",
-            bgGradient: "from-gray-50 to-gray-100",
-            features: [
-                { title: "Secure Networks" },
-                { title: "Smart Cities" },
-                { title: "Disaster Resilient" },
-            ],
+            image: "https://images.unsplash.com/photo-148640058-6926-c627a92ad1ab?w=800&auto=format&fit=crop",
             content: {
                 sections: [
                     {
                         title: "Secure Communication Networks",
                         points: [
-                            "Home Affairs, and Intelligence Services: Enable tamper-proof, RF-free communication that is immune to jamming and interception.",
-                            "Police & Paramilitary Installations: Ensure secure intra-unit communications in urban and border deployments using LiFi and FSO.",
+                            "Home Affairs: Tamper-proof, RF-free communication immune to jamming.",
+                            "Police: Secure intra-unit communications using LiFi and FSO.",
                         ],
                     },
                     {
-                        title: "Smart Governance & Digital Infrastructure",
+                        title: "Smart Governance",
                         points: [
-                            "Smart Cities: Power streetlights, traffic systems, surveillance cameras, and environmental sensors with LiFi-enabled data links.",
-                            "E-Governance Centers: Deploy high-speed indoor LiFi zones for real-time citizen services and data processing.",
+                            "Smart Cities: LiFi-enabled data links for traffic and surveillance.",
+                            "E-Governance: High-speed indoor LiFi for citizen services.",
                         ],
                     },
                     {
-                        title: "Disaster-Resilient Communication",
+                        title: "Disaster-Resilient",
                         points: [
-                            "Emergency Response and DRDO Deployments: Set up rapid, wireless optical links in post-disaster zones where traditional networks fail.",
-                            "Rural and Remote Connectivity: FSO bridges can eliminate the need for fiber laying, connecting government outposts in hilly, forested, or coastal regions.",
+                            "Emergency Response: Rapid optical links in disaster zones.",
+                            "Rural Connectivity: FSO bridges for remote government outposts.",
                         ],
                     },
                     {
-                        title: "Educational & Health Institutions",
+                        title: "Education & Health",
                         points: [
-                            "Digital Classrooms in Government Schools: Use LiFi to provide fast, radiation-free internet in rural classrooms.",
-                            "Telemedicine & e-Hospitals: Secure, interference-free wireless data for medical diagnostics, patient records, and real-time specialist consultations.",
+                            "Digital Classrooms: LiFi for fast, radiation-free internet in rural schools.",
+                            "Telemedicine: Secure, interference-free wireless data for diagnostics.",
                         ],
                     },
                 ],
@@ -209,42 +163,33 @@ export default function VerticalsSection() {
         },
         {
             title: "Defence",
-            subtitle:
-                "Next-Gen Optical Wireless Communication for Indian Armed Forces - Mission-Ready. EW-Resilient. Indigenously Developed.",
-            image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=600&fit=crop",
-            gradient: "from-green-600 to-gray-800",
-            bgGradient: "from-gray-50 to-gray-100",
-            features: [
-                { title: "EW-Resilient" },
-                { title: "Mission-Ready" },
-                { title: "Multi-Force" },
-            ],
+            subtitle: "Mission-Ready Optical Wireless Communication for Indian Armed Forces.",
+            image: "https://images.unsplash.com/photo-1549321743-891475-5e087794-1af2-d32d-a5e2?w=800&auto=format",
             content: {
-                intro:
-                    "Nav Wireless Technologies Pvt. Ltd. is India's first and only company to indigenously develop and deliver Optical Wireless Communication (OWC) systems using LiFi (Light Fidelity) and FSO (Free Space Optics). These advanced technologies provide RF-free, high-speed, and secure communications, built specifically for deployment in high-threat, electronic warfare (EW) environments across all three wings of the Indian Armed Forces.",
+                intro: "India's first indigenous Optical Wireless Communication systems using LiFi and FSO for secure, RF-free communications in high-threat environments.",
                 sections: [
                     {
                         title: "Indian Army",
                         points: [
-                            "Forward Base Communication: Deploy FSO links in border zones and high-altitude posts to establish secure, high-speed networks without reliance on vulnerable RF systems.",
-                            "Mobile Command Centers: Use LiFi within bunkers, armored vehicles, and tactical shelters for short-range communications immune to RF jamming and detection.",
-                            "Field Deployable Optical Kits: Rapid deployment for temporary command posts or joint exercises in EW-prone areas where traditional radio-based systems fail.",
+                            "Forward Bases: Secure FSO links in border zones.",
+                            "Command Centers: LiFi for jam-free communications.",
+                            "Field Kits: Rapid deployment in EW-prone areas.",
                         ],
                     },
                     {
                         title: "Indian Navy",
                         points: [
-                            "Shipboard Communication: Use LiFi for secure intra-vessel data exchange with zero electromagnetic interference, protecting sensitive naval electronics and weapons systems.",
-                            "Submarine Connectivity: Enable internal optical communications in RF-shielded environments, improving stealth and safety in subsurface operations.",
-                            "Fleet Operations: FSO-based ship-to-ship or ship-to-shore communication ensures secure, jam-proof data transfer during coordinated naval maneuvers.",
+                            "Shipboard: LiFi for secure intra-vessel data exchange.",
+                            "Submarines: Optical communications for stealth operations.",
+                            "Fleet: FSO for secure ship-to-ship communication.",
                         ],
                     },
                     {
                         title: "Indian Air Force",
                         points: [
-                            "Airbase Communication Grid: Connect control towers, radar posts, and hangars with FSO links, eliminating vulnerabilities associated with wireless RF networks.",
-                            "EW-Protected Zones: Use LiFi inside hardened aircraft shelters and mission planning rooms, where RF silence is required.",
-                            "UAV and ISR Support: Deploy optical links for drone-to-ground and satellite communication in electronic warfare zones where RF signals are disrupted or targeted.",
+                            "Airbases: FSO links for control towers and hangars.",
+                            "EW Zones: LiFi in RF-silent areas.",
+                            "UAV Support: Optical links for drone communication.",
                         ],
                     },
                 ],
@@ -252,50 +197,31 @@ export default function VerticalsSection() {
         },
         {
             title: "OEM/ODM",
-            subtitle:
-                "Integrate the Future: LiFi Optical Transceivers for Your Products - Nav Wireless Technologies Pvt. Ltd. - Your Optical Wireless Innovation Partner",
-            image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
-            gradient: "from-green-600 to-gray-800",
-            bgGradient: "from-gray-50 to-gray-100",
-            features: [
-                { title: "Custom Integration" },
-                { title: "High-Speed" },
-                { title: "Secure" },
-            ],
+            subtitle: "LiFi Optical Transceivers for Your Products - Innovation Partner.",
+            image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&auto=format",
             content: {
-                intro:
-                    "At Nav Wireless Technologies Pvt. Ltd., we enable companies across industries to integrate LiFi-based Optical Wireless Communication (OWC) modules into their existing or new product lines. Our compact, customizable LiFi transceivers deliver ultra-secure, high-speed, interference-free connectivity-ideal for environments where traditional RF-based communication is limited or restricted.",
-                subtitle: "Tailored Integration for OEMs, Device Manufacturers & Solution Providers - We collaborate with:",
+                intro: "We enable companies to integrate LiFi-based OWC modules for secure, high-speed connectivity in RF-limited settings.",
+                subtitle: "Tailored for OEMs and Solution Providers:",
                 sections: [
                     {
-                        title: "Industrial Automation Companies",
-                        points: [
-                            "Enable real-time data exchange between machines in RF-restricted or EMI-sensitive environments such as power plants, refineries, and assembly lines.",
-                        ],
+                        title: "Industrial Automation",
+                        points: ["Real-time data exchange in EMI-sensitive environments."],
                     },
                     {
-                        title: "Smart Infrastructure & IoT Device Makers",
-                        points: [
-                            "Embed LiFi in smart lighting, smart buildings, and IoT gateways, enabling data-over-light functionality with enhanced security and speed.",
-                        ],
+                        title: "Smart Infrastructure",
+                        points: ["Embed LiFi in smart lighting and IoT gateways."],
                     },
                     {
-                        title: "Medical Equipment & Healthcare OEMs",
-                        points: [
-                            "Integrate radiation-free LiFi for data exchange in ICUs, operation theatres, and diagnostics equipment, where Wi-Fi or Bluetooth may interfere with critical systems.",
-                        ],
+                        title: "Healthcare OEMs",
+                        points: ["Radiation-free LiFi for ICUs and diagnostics."],
                     },
                     {
-                        title: "Automotive & Mobility Innovators",
-                        points: [
-                            "Enable vehicle-to-vehicle (V2V) or in-cabin optical communication for safer, interference-free data sharing in smart and autonomous vehicles.",
-                        ],
+                        title: "Automotive",
+                        points: ["V2V and in-cabin optical communication."],
                     },
                     {
-                        title: "Consumer Electronics & Smart Devices",
-                        points: [
-                            "Equip your products with high-speed, short-range data transmission capabilities for secure indoor applications-without relying on crowded RF bands.",
-                        ],
+                        title: "Consumer Electronics",
+                        points: ["High-speed, secure data transmission."],
                     },
                 ],
             },
@@ -303,67 +229,60 @@ export default function VerticalsSection() {
         {
             title: "Consumer",
             subtitle: "Our Solutions for End Customers",
-            image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
-            gradient: "from-green-600 to-gray-800",
-            bgGradient: "from-gray-50 to-gray-100",
-            features: [
-                { title: "End-to-End" },
-                { title: "Smart Homes" },
-                { title: "High Performance" },
-            ],
+            image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&auto=format&fit=crop",
             content: {
                 sections: [
                     {
-                        title: "Enterprises & Offices",
+                        title: "Enterprises",
                         points: [
-                            "High-speed LiFi networks for secure data zones",
-                            "FSO backhaul links between buildings without trenching fiber",
-                            "Ideal for finance, legal, data centers, and R&D spaces",
+                            "LiFi networks for secure data zones.",
+                            "FSO links for building connectivity.",
+                            "Ideal for finance and legal.",
                         ],
                     },
                     {
-                        title: "Smart Homes & Smart Buildings",
+                        title: "Smart Homes",
                         points: [
-                            "LiFi-enabled lighting for radiation-free internet",
-                            "Secure internal communication without Wi-Fi congestion",
-                            "Seamless integration with IoT devices and automation systems",
+                            "LiFi-enabled lighting for internet.",
+                            "Secure IoT communication.",
+                            "Integration with automation systems.",
                         ],
                     },
                     {
-                        title: "Healthcare & Hospitals",
+                        title: "Healthcare",
                         points: [
-                            "LiFi zones in ICUs, OTs, and patient rooms",
-                            "Zero-RF environments for sensitive medical equipment",
-                            "Reliable, high-speed communication without EMI interference",
+                            "LiFi zones in ICUs.",
+                            "Zero-RF for sensitive equipment.",
+                            "High-speed communication.",
                         ],
                     },
                     {
-                        title: "Education & Digital Classrooms",
+                        title: "Education",
                         points: [
-                            "Smart classrooms with high-speed, safe internet",
-                            "Enhanced e-learning experiences without harmful radio waves",
-                            "FSO links to connect school blocks or remote campuses",
+                            "Smart classrooms with safe internet.",
+                            "FSO for campus connectivity.",
+                            "Enhanced e-learning experiences.",
                         ],
                     },
                     {
-                        title: "Industrial & Factory Environments",
+                        title: "Industrial",
                         points: [
-                            "Machine-to-machine LiFi communication in EMI-prone zones",
-                            "FSO solutions for plant-wide wireless connectivity",
-                            "Ideal for automotive, oil & gas, power, and precision manufacturing",
+                            "LiFi for EMI-prone zones.",
+                            "FSO for plant-wide connectivity.",
+                            "Ideal for manufacturing.",
                         ],
                     },
                     {
-                        title: "Smart Cities & Urban Infrastructure",
+                        title: "Smart Cities",
                         points: [
-                            "Optical wireless links for traffic signals, CCTV, and IoT sensors",
-                            "LiFi streetlights for data transmission through lighting infrastructure",
-                            "FSO networks for last-mile and edge communication without cables",
+                            "Optical links for CCTV and sensors.",
+                            "LiFi streetlights for data.",
+                            "FSO for last-mile networks.",
                         ],
                     },
                     {
                         title: "Green Technology",
-                        points: ["License free", "EMI interference free"],
+                        points: ["License-free", "EMI-free"],
                     },
                 ],
             },
@@ -374,116 +293,97 @@ export default function VerticalsSection() {
         <>
             <section
                 ref={containerRef}
-                className="relative py-20 bg-gray-100"
+                className="relative py-24 bg-gray-100"
             >
-                <div className="container mx-auto px-6 mb-16 relative z-10">
-                    <div className="text-center max-w-4xl mx-auto">
-                        <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                <div className="container mx-auto px-6 mb-16">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-gray-800">
                                 Verticals
                             </span>
                         </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-8"></div>
+                        <div className="w-20 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-6"></div>
                     </div>
                 </div>
 
-                <div className="space-y-32 relative z-10">
+                <div className="space-y-32">
                     {verticals.map((vertical, index) => {
                         const isEven = index % 2 === 0
 
                         return (
                             <div
                                 key={index}
-                                ref={(el) => {
-                                    if (el) sectionsRef.current[index] = el
-                                }}
+                                ref={(el) => (sectionsRef.current[index] = el)}
                                 className="container mx-auto px-6"
                             >
-                                <div
-                                    className={`vertical-card bg-white rounded-3xl shadow-2xl overflow-hidden ${
-                                        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                                    } flex flex-col lg:flex`}
-                                >
-                                    <div className="lg:w-1/2 relative overflow-hidden">
-                                        <div className="vertical-image relative h-64 lg:h-full min-h-[400px]">
-                                            <Image
-                                                src={vertical.image || "/placeholder.svg"}
-                                                alt={vertical.title}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${vertical.gradient} opacity-80`}></div>
-                                        </div>
+                                <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}>
+                                    <div className="vertical-text w-full md:w-1/2 text-center md:text-left">
+                                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{vertical.title}</h3>
+                                        <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">{vertical.subtitle}</p>
+                                        <button
+                                            onClick={() => openModal(index)}
+                                            className="learn-more-btn inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 to-gray-800 text-white rounded-lg font-semibold text-base shadow-md transition-all duration-300"
+                                        >
+                                            <span>Learn More</span>
+                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                        </button>
                                     </div>
-
-                                    <div className="lg:w-1/2 p-8 lg:p-12">
-                                        <div className="vertical-content h-full flex flex-col justify-center">
-                                            <div className="mb-8">
-                                                <h3 className="text-3xl font-bold text-gray-900">{vertical.title}</h3>
-                                                <p className="text-gray-600 text-lg leading-relaxed">{vertical.subtitle}</p>
-                                            </div>
-
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                                                {vertical.features.map((feature, featureIndex) => (
-                                                    <div
-                                                        key={featureIndex}
-                                                        className="feature-item group bg-gray-50 rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all duration-300"
-                                                    >
-                                                        <h4 className="font-semibold text-gray-900 mb-1">{feature.title}</h4>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <button
-                                                onClick={() => openModal(index)}
-                                                className={`group flex items-center justify-center space-x-3 w-full py-4 bg-gradient-to-r ${vertical.gradient} text-white rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-black/25 transition-all duration-300 hover:scale-105`}
-                                            >
-                                                <span>Learn More</span>
-                                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                                            </button>
-                                        </div>
+                                    <div className="vertical-image w-full md:w-1/2 relative h-96 md:h-[28rem] rounded-xl overflow-hidden">
+                                        <Image
+                                            src={vertical.image}
+                                            alt={vertical.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-gray-800/30 to-transparent"></div>
                                     </div>
                                 </div>
                             </div>
                         )
                     })}
                 </div>
+
+                {/* Subtle Background Decorations */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/5 rounded-full blur-2xl animate-float"></div>
+                    <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/5 rounded-full blur-2xl animate-float delay-500"></div>
+                </div>
             </section>
 
             {activeModal !== null && (
-                <div className="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                    <div className="modal-content bg-white rounded-3xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
-                        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between rounded-t-3xl">
-                            <h2 className="text-2xl font-bold text-gray-900">{verticals[activeModal].title} Solutions</h2>
+                <div className="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div className="modal-content bg-white rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-xl">
+                        <div className="sticky top-0 bg-white border-b border-gray-200 p-5 flex items-center justify-between rounded-t-2xl">
+                            <h2 className="text-xl font-bold text-gray-900">{verticals[activeModal].title} Solutions</h2>
                             <button
                                 onClick={closeModal}
-                                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
+                                className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
                             >
-                                <X className="w-5 h-5 text-gray-600" />
+                                <X className="w-4 h-4 text-gray-600" />
                             </button>
                         </div>
 
-                        <div className="p-6">
+                        <div className="p-5">
                             {verticals[activeModal].content.intro && (
-                                <div className="mb-6 p-4 bg-gray-50 rounded-xl">
-                                    <p className="text-gray-700 leading-relaxed">{verticals[activeModal].content.intro}</p>
+                                <div className="mb-5 p-4 bg-gray-50 rounded-lg">
+                                    <p className="text-gray-700 text-sm leading-relaxed">{verticals[activeModal].content.intro}</p>
                                 </div>
                             )}
 
                             {verticals[activeModal].content.subtitle && (
-                                <div className="mb-6">
-                                    <h3 className="text-lg font-semibold text-gray-900">{verticals[activeModal].content.subtitle}</h3>
+                                <div className="mb-5">
+                                    <h3 className="text-base font-semibold text-gray-900">{verticals[activeModal].content.subtitle}</h3>
                                 </div>
                             )}
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {verticals[activeModal].content.sections.map((section, sectionIndex) => (
-                                    <div key={sectionIndex} className="bg-gray-50 rounded-2xl p-6">
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-4">{section.title}</h3>
-                                        <ul className="space-y-3">
+                                    <div key={sectionIndex} className="bg-gray-50 rounded-lg p-4">
+                                        <h3 className="text-base font-semibold text-gray-900 mb-2">{section.title}</h3>
+                                        <ul className="space-y-2">
                                             {section.points.map((point, pointIndex) => (
                                                 <li key={pointIndex} className="text-gray-600 text-sm leading-relaxed flex items-start">
-                                                    <ChevronDown className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0 rotate-[-90deg]" />
+                                                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 mr-2 flex-shrink-0"></span>
                                                     {point}
                                                 </li>
                                             ))}
@@ -495,6 +395,26 @@ export default function VerticalsSection() {
                     </div>
                 </div>
             )}
+
+            {/* Custom CSS for Animations and Styling */}
+            <style jsx>{`
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-15px); }
+                }
+                .animate-float {
+                    animation: float 5s ease-in-out infinite;
+                }
+                .delay-500 {
+                    animation-delay: 0.5s;
+                }
+                .vertical-image {
+                    transition: all 0.3s ease;
+                }
+                .learn-more-btn {
+                    transition: all 0.3s ease;
+                }
+            `}</style>
         </>
     )
 }
