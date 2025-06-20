@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { ChevronDown, Shield, Building, Cog, Users, ArrowRight, Zap, Globe, Lock, X } from "lucide-react"
+import { ChevronDown, ArrowRight, X } from "lucide-react"
 
 export default function VerticalsSection() {
     const containerRef = useRef(null)
@@ -17,13 +17,11 @@ export default function VerticalsSection() {
         gsap.registerPlugin(ScrollTrigger)
 
         const ctx = gsap.context(() => {
-            // Wait for partnerships section to complete before initializing
             ScrollTrigger.create({
                 trigger: ".partnerships-container",
                 start: "top top",
                 end: "bottom top",
                 onLeave: () => {
-                    // Initialize verticals animations only after partnerships is done
                     initializeVerticalAnimations()
                 },
                 refreshPriority: 1,
@@ -33,26 +31,19 @@ export default function VerticalsSection() {
                 const sections = sectionsRef.current.filter(Boolean)
 
                 sections.forEach((section, index) => {
-                    const direction = index % 2 === 0 ? 1 : -1 // Alternate slide directions
+                    const direction = index % 2 === 0 ? 1 : -1
                     const card = section.querySelector(".vertical-card")
                     const content = section.querySelector(".vertical-content")
                     const image = section.querySelector(".vertical-image")
                     const features = section.querySelectorAll(".feature-item")
 
-                    // Main card entrance animation
                     gsap.fromTo(
                         card,
-                        {
-                            x: direction * 100,
-                            opacity: 0,
-                            scale: 0.8,
-                            rotationY: direction * 15,
-                        },
+                        { x: direction * 100, opacity: 0, scale: 0.8 },
                         {
                             x: 0,
                             opacity: 1,
                             scale: 1,
-                            rotationY: 0,
                             duration: 1.2,
                             ease: "power3.out",
                             scrollTrigger: {
@@ -64,13 +55,9 @@ export default function VerticalsSection() {
                         },
                     )
 
-                    // Content animation
                     gsap.fromTo(
                         content,
-                        {
-                            y: 80,
-                            opacity: 0,
-                        },
+                        { y: 80, opacity: 0 },
                         {
                             y: 0,
                             opacity: 1,
@@ -86,13 +73,9 @@ export default function VerticalsSection() {
                         },
                     )
 
-                    // Image animation with parallax effect
                     gsap.fromTo(
                         image,
-                        {
-                            scale: 1.2,
-                            opacity: 0,
-                        },
+                        { scale: 1.2, opacity: 0 },
                         {
                             scale: 1,
                             opacity: 1,
@@ -107,14 +90,9 @@ export default function VerticalsSection() {
                         },
                     )
 
-                    // Features stagger animation
                     gsap.fromTo(
                         features,
-                        {
-                            y: 60,
-                            opacity: 0,
-                            scale: 0.8,
-                        },
+                        { y: 60, opacity: 0, scale: 0.8 },
                         {
                             y: 0,
                             opacity: 1,
@@ -132,7 +110,6 @@ export default function VerticalsSection() {
                         },
                     )
 
-                    // Parallax effect for images
                     gsap.to(image, {
                         yPercent: -20,
                         ease: "none",
@@ -145,7 +122,6 @@ export default function VerticalsSection() {
                     })
                 })
 
-                // Continuous subtle animations
                 gsap.to(".feature-item", {
                     y: "+=5",
                     duration: 3,
@@ -190,14 +166,13 @@ export default function VerticalsSection() {
         {
             title: "Government",
             subtitle: "Empowering Governance with Next-Gen Optical Wireless Communications (OWC)",
-            icon: Building,
             image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
-            gradient: "from-blue-600 to-blue-800",
-            bgGradient: "from-blue-50 to-indigo-100",
+            gradient: "from-green-600 to-gray-800",
+            bgGradient: "from-gray-50 to-gray-100",
             features: [
-                { icon: Lock, title: "Secure Networks", desc: "RF-free tamper-proof communication systems" },
-                { icon: Globe, title: "Smart Cities", desc: "LiFi-enabled urban infrastructure solutions" },
-                { icon: Zap, title: "Disaster Resilient", desc: "Rapid deployment in crisis zones" },
+                { title: "Secure Networks" },
+                { title: "Smart Cities" },
+                { title: "Disaster Resilient" },
             ],
             content: {
                 sections: [
@@ -236,14 +211,13 @@ export default function VerticalsSection() {
             title: "Defence",
             subtitle:
                 "Next-Gen Optical Wireless Communication for Indian Armed Forces - Mission-Ready. EW-Resilient. Indigenously Developed.",
-            icon: Shield,
             image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=600&fit=crop",
-            gradient: "from-green-600 to-green-800",
-            bgGradient: "from-green-50 to-emerald-100",
+            gradient: "from-green-600 to-gray-800",
+            bgGradient: "from-gray-50 to-gray-100",
             features: [
-                { icon: Shield, title: "EW-Resilient", desc: "Electronic warfare immune communication systems" },
-                { icon: Zap, title: "Mission-Ready", desc: "Rapid deployment for critical operations" },
-                { icon: Globe, title: "Multi-Force", desc: "Solutions for Army, Navy, and Air Force" },
+                { title: "EW-Resilient" },
+                { title: "Mission-Ready" },
+                { title: "Multi-Force" },
             ],
             content: {
                 intro:
@@ -280,14 +254,13 @@ export default function VerticalsSection() {
             title: "OEM/ODM",
             subtitle:
                 "Integrate the Future: LiFi Optical Transceivers for Your Products - Nav Wireless Technologies Pvt. Ltd. - Your Optical Wireless Innovation Partner",
-            icon: Cog,
             image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
-            gradient: "from-purple-600 to-purple-800",
-            bgGradient: "from-purple-50 to-violet-100",
+            gradient: "from-green-600 to-gray-800",
+            bgGradient: "from-gray-50 to-gray-100",
             features: [
-                { icon: Cog, title: "Custom Integration", desc: "Tailored LiFi modules for seamless integration" },
-                { icon: Zap, title: "High-Speed", desc: "Ultra-fast interference-free connectivity solutions" },
-                { icon: Lock, title: "Secure", desc: "Enhanced security without RF vulnerabilities" },
+                { title: "Custom Integration" },
+                { title: "High-Speed" },
+                { title: "Secure" },
             ],
             content: {
                 intro:
@@ -330,14 +303,13 @@ export default function VerticalsSection() {
         {
             title: "Consumer",
             subtitle: "Our Solutions for End Customers",
-            icon: Users,
             image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
-            gradient: "from-orange-600 to-orange-800",
-            bgGradient: "from-orange-50 to-red-100",
+            gradient: "from-green-600 to-gray-800",
+            bgGradient: "from-gray-50 to-gray-100",
             features: [
-                { icon: Users, title: "End-to-End", desc: "Complete consumer-ready solutions" },
-                { icon: Globe, title: "Smart Homes", desc: "LiFi-enabled home automation systems" },
-                { icon: Zap, title: "High Performance", desc: "Superior speed and reliability for daily use" },
+                { title: "End-to-End" },
+                { title: "Smart Homes" },
+                { title: "High Performance" },
             ],
             content: {
                 sections: [
@@ -402,36 +374,21 @@ export default function VerticalsSection() {
         <>
             <section
                 ref={containerRef}
-                className="relative py-20"
-                style={{
-                    backgroundImage: "url('/images/nav-bg.png')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}
+                className="relative py-20 bg-gray-100"
             >
-                {/* Background overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"></div>
-                {/* Section Header */}
                 <div className="container mx-auto px-6 mb-16 relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-orange-600">
-                Verticals
-              </span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-gray-800">
+                                Verticals
+                            </span>
                         </h2>
-                        <p className="text-xl text-gray-600 leading-relaxed">
-                            Discover our specialized solutions across key industry verticals, each tailored to meet unique challenges
-                            and drive innovation forward.
-                        </p>
-                        <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-orange-600 rounded-full mx-auto mt-8"></div>
+                        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-8"></div>
                     </div>
                 </div>
 
-                {/* Verticals */}
                 <div className="space-y-32 relative z-10">
                     {verticals.map((vertical, index) => {
-                        const IconComponent = vertical.icon
                         const isEven = index % 2 === 0
 
                         return (
@@ -447,7 +404,6 @@ export default function VerticalsSection() {
                                         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                                     } flex flex-col lg:flex`}
                                 >
-                                    {/* Image Section */}
                                     <div className="lg:w-1/2 relative overflow-hidden">
                                         <div className="vertical-image relative h-64 lg:h-full min-h-[400px]">
                                             <Image
@@ -457,63 +413,32 @@ export default function VerticalsSection() {
                                                 className="object-cover"
                                             />
                                             <div className={`absolute inset-0 bg-gradient-to-br ${vertical.gradient} opacity-80`}></div>
-
-                                            {/* Floating Icon */}
-                                            <div className="absolute top-8 right-8 w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/30 flex items-center justify-center">
-                                                <IconComponent className="w-8 h-8 text-white" />
-                                            </div>
-
-                                            {/* Overlay Content */}
-                                            <div className="absolute bottom-8 left-8 right-8">
-                                                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                                                    <h3 className="text-2xl font-bold text-white mb-2">{vertical.title}</h3>
-                                                    <p className="text-white/90 text-sm">{vertical.subtitle}</p>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
-                                    {/* Content Section */}
                                     <div className="lg:w-1/2 p-8 lg:p-12">
                                         <div className="vertical-content h-full flex flex-col justify-center">
-                                            {/* Header */}
                                             <div className="mb-8">
-                                                <div className="flex items-center mb-4">
-                                                    <div
-                                                        className={`w-12 h-12 bg-gradient-to-r ${vertical.gradient} rounded-xl flex items-center justify-center mr-4`}
-                                                    >
-                                                        <IconComponent className="w-6 h-6 text-white" />
-                                                    </div>
-                                                    <h3 className="text-3xl font-bold text-gray-900">{vertical.title}</h3>
-                                                </div>
+                                                <h3 className="text-3xl font-bold text-gray-900">{vertical.title}</h3>
                                                 <p className="text-gray-600 text-lg leading-relaxed">{vertical.subtitle}</p>
                                             </div>
 
-                                            {/* Features */}
                                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                                                {vertical.features.map((feature, featureIndex) => {
-                                                    const FeatureIcon = feature.icon
-                                                    return (
-                                                        <div
-                                                            key={featureIndex}
-                                                            className="feature-item group bg-gray-50 rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all duration-300"
-                                                        >
-                                                            <FeatureIcon
-                                                                className={`w-8 h-8 bg-gradient-to-r ${vertical.gradient} bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300`}
-                                                            />
-                                                            <h4 className="font-semibold text-gray-900 mb-1">{feature.title}</h4>
-                                                            <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
-                                                        </div>
-                                                    )
-                                                })}
+                                                {vertical.features.map((feature, featureIndex) => (
+                                                    <div
+                                                        key={featureIndex}
+                                                        className="feature-item group bg-gray-50 rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all duration-300"
+                                                    >
+                                                        <h4 className="font-semibold text-gray-900 mb-1">{feature.title}</h4>
+                                                    </div>
+                                                ))}
                                             </div>
 
-                                            {/* CTA Button */}
                                             <button
                                                 onClick={() => openModal(index)}
                                                 className={`group flex items-center justify-center space-x-3 w-full py-4 bg-gradient-to-r ${vertical.gradient} text-white rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-black/25 transition-all duration-300 hover:scale-105`}
                                             >
-                                                <span>Explore Solutions</span>
+                                                <span>Learn More</span>
                                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                                             </button>
                                         </div>
@@ -525,7 +450,6 @@ export default function VerticalsSection() {
                 </div>
             </section>
 
-            {/* Modal */}
             {activeModal !== null && (
                 <div className="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div className="modal-content bg-white rounded-3xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
@@ -541,7 +465,7 @@ export default function VerticalsSection() {
 
                         <div className="p-6">
                             {verticals[activeModal].content.intro && (
-                                <div className="mb-6 p-4 bg-blue-50 rounded-xl">
+                                <div className="mb-6 p-4 bg-gray-50 rounded-xl">
                                     <p className="text-gray-700 leading-relaxed">{verticals[activeModal].content.intro}</p>
                                 </div>
                             )}
@@ -559,7 +483,7 @@ export default function VerticalsSection() {
                                         <ul className="space-y-3">
                                             {section.points.map((point, pointIndex) => (
                                                 <li key={pointIndex} className="text-gray-600 text-sm leading-relaxed flex items-start">
-                                                    <ChevronDown className="w-4 h-4 text-blue-500 mt-0.5 mr-2 flex-shrink-0 rotate-[-90deg]" />
+                                                    <ChevronDown className="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0 rotate-[-90deg]" />
                                                     {point}
                                                 </li>
                                             ))}
