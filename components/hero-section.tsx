@@ -27,22 +27,22 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-110"
-      >
-        <source src="/placeholder-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
+        <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+        >
+          <source src="/placeholder-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* Very light overlay to ensure video visibility */}
-      <div className="absolute inset-0 bg-black/5" />
-    </section>
+        {/* Light overlay to blend with global background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />
+      </section>
   )
 }

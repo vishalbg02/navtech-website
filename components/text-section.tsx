@@ -88,25 +88,16 @@ export default function TextSection() {
   }, [])
 
   return (
-      <section
-          ref={sectionRef}
-          className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-          style={{
-            backgroundImage: "url('/images/nav-bg.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-      >
-        {/* Background overlay for better text readability */}
+      <section ref={sectionRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Light overlay for better text readability */}
         <div
             ref={backgroundRef}
-            className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"
+            className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/30 to-white/20 backdrop-blur-sm"
         ></div>
 
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,69,19,0.1)_0%,transparent_50%)] bg-[length:100px_100px]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1)_0%,transparent_50%)] bg-[length:100px_100px]"></div>
         </div>
 
         <div ref={textRef} className="relative z-10 text-center px-6 max-w-7xl mx-auto">
@@ -138,13 +129,13 @@ export default function TextSection() {
           {/* Key features */}
           <div className="text-element mb-12">
             <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
                 <span className="text-green-600 font-semibold text-lg">RF-Free Communication</span>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
                 <span className="text-green-600 font-semibold text-lg">High-Speed Data Transfer</span>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/50">
                 <span className="text-green-600 font-semibold text-lg">Secure & Reliable</span>
               </div>
             </div>
@@ -152,7 +143,7 @@ export default function TextSection() {
 
           {/* Call to action */}
           <div className="text-element">
-            <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 shadow-xl shadow-gray-300/30 border border-gray-200/50 hover:bg-white transition-all duration-300 group cursor-pointer">
+            <div className="inline-flex items-center space-x-3 bg-white/95 backdrop-blur-sm rounded-full px-8 py-4 shadow-xl shadow-gray-300/30 border border-gray-200/50 hover:bg-white transition-all duration-300 group cursor-pointer">
               <span className="text-gray-700 text-lg font-medium">Scroll to explore our innovations</span>
               <ChevronDown className="w-5 h-5 text-green-600 animate-bounce group-hover:animate-none transition-all duration-300" />
             </div>
@@ -160,9 +151,9 @@ export default function TextSection() {
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute top-20 left-20 w-32 h-32 bg-green-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-10 w-24 h-24 bg-green-500/5 rounded-full blur-2xl"></div>
+        <div className="absolute top-20 left-20 w-32 h-32 bg-green-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-green-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-10 w-24 h-24 bg-green-500/3 rounded-full blur-2xl"></div>
       </section>
   )
 }

@@ -127,10 +127,10 @@ export default function Navbar() {
           }`}
       >
         <div className="container mx-auto px-8">
-          <div className="flex h-18 items-center justify-between">
+          <div className="flex h-24 items-center justify-between">
             {/* Enhanced Logo */}
             <Link href="/" className="flex items-center group relative">
-              <div className="relative w-36 h-9 transition-all duration-300 group-hover:scale-[1.02]">
+              <div className="relative w-40 h-10 transition-all duration-300 group-hover:scale-[1.02]">
                 <Image
                     src="/images/navtech-logo.png"
                     alt="Nav Wireless Technologies"
@@ -149,10 +149,10 @@ export default function Navbar() {
                   <Link
                       key={index}
                       href={item.href}
-                      className="nav-item relative px-4 py-2.5 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
+                      className="nav-item relative px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
                   >
                     <span className="relative z-10">{item.name}</span>
-                    <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
+                    <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
                   </Link>
               ))}
 
@@ -160,7 +160,7 @@ export default function Navbar() {
               <div className="nav-item ml-4">
                 <Button
                     asChild
-                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-green-600/20 hover:shadow-green-600/30 border-0"
+                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-green-600/20 hover:shadow-green-600/30 border-0"
                 >
                   <Link href="/contact" className="flex items-center space-x-2">
                     <span>Contact Us</span>

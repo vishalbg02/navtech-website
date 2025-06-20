@@ -121,22 +121,13 @@ export default function AboutSection() {
     }, [])
 
     return (
-        <section
-            ref={sectionRef}
-            className="relative h-screen w-full overflow-hidden"
-            style={{
-                backgroundImage: "url('/images/nav-bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-            }}
-        >
-            {/* Background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/20"></div>
+        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
+            {/* Light overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/15 to-white/10 backdrop-blur-sm"></div>
 
-            <div className="absolute inset-0 opacity-30">
-                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/15 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-green-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-green-400/8 rounded-full blur-3xl animate-pulse delay-1000"></div>
             </div>
 
             <div ref={imageRef} className="absolute overflow-hidden shadow-2xl z-10">

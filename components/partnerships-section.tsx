@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Award, Users, Building2, ArrowRight, Globe, Zap } from "lucide-react"
+import { Award, Users, Building2, ArrowRight, Zap } from "lucide-react"
 
 export default function PartnershipsSection() {
     const containerRef = useRef(null)
@@ -14,7 +14,7 @@ export default function PartnershipsSection() {
         // Mock GSAP functionality with advanced CSS animations and Intersection Observer
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: "0px 0px -50px 0px",
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -23,14 +23,14 @@ export default function PartnershipsSection() {
                     const element = entry.target
 
                     // Different animation types based on element class
-                    if (element.classList.contains('hero-element')) {
-                        element.style.animation = 'heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-                    } else if (element.classList.contains('stat-card')) {
+                    if (element.classList.contains("hero-element")) {
+                        element.style.animation = "heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                    } else if (element.classList.contains("stat-card")) {
                         const delay = element.dataset.delay || 0
                         element.style.animation = `statCardAnimation 1s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms forwards`
-                    } else if (element.classList.contains('section-header')) {
-                        element.style.animation = 'sectionHeaderAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-                    } else if (element.classList.contains('partner-card')) {
+                    } else if (element.classList.contains("section-header")) {
+                        element.style.animation = "sectionHeaderAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                    } else if (element.classList.contains("partner-card")) {
                         const delay = element.dataset.delay || 0
                         element.style.animation = `cardSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms forwards`
                     }
@@ -43,12 +43,12 @@ export default function PartnershipsSection() {
 
         // Observe all animated elements
         const animatedElements = containerRef.current?.querySelectorAll(
-            '.hero-element, .stat-card, .section-header, .partner-card'
+            ".hero-element, .stat-card, .section-header, .partner-card",
         )
-        animatedElements?.forEach(el => observer.observe(el))
+        animatedElements?.forEach((el) => observer.observe(el))
 
         // Continuous floating animations
-        const floatingElements = containerRef.current?.querySelectorAll('.floating-element')
+        const floatingElements = containerRef.current?.querySelectorAll(".floating-element")
         floatingElements?.forEach((el, index) => {
             el.style.animation = `floating ${3 + index * 0.5}s ease-in-out infinite`
             el.style.animationDelay = `${index * 0.2}s`
@@ -57,19 +57,19 @@ export default function PartnershipsSection() {
         // Parallax effect on scroll
         const handleScroll = () => {
             const scrolled = window.pageYOffset
-            const parallaxElements = containerRef.current?.querySelectorAll('.parallax-element')
+            const parallaxElements = containerRef.current?.querySelectorAll(".parallax-element")
 
             parallaxElements?.forEach((el, index) => {
-                const speed = 0.5 + (index * 0.1)
+                const speed = 0.5 + index * 0.1
                 el.style.transform = `translateY(${scrolled * speed}px)`
             })
         }
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
             observer.disconnect()
-            window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener("scroll", handleScroll)
         }
     }, [])
 
@@ -79,35 +79,35 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop",
             description: "Leading photonics research and innovation with cutting-edge solutions",
             category: "Standards",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "IEEE Nano",
             logo: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop",
             description: "Nanotechnology advancement and international standards development",
             category: "Technology",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "IEEE Standards",
             logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop",
             description: "Global technology standards development and certification",
             category: "Standards",
-            tier: "Enterprise"
+            tier: "Enterprise",
         },
         {
             name: "Bharat 6G",
             logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
             description: "Next-generation wireless technology and infrastructure",
             category: "Innovation",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "ITU-T",
             logo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
             description: "International telecommunication standards and protocols",
             category: "Global",
-            tier: "Premium"
+            tier: "Premium",
         },
     ]
 
@@ -117,56 +117,56 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
             description: "Telecom technology development and research excellence",
             category: "R&D",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "IIT Delhi",
             logo: "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop",
             description: "Premier engineering research institute and innovation hub",
             category: "Academic",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "IIT Guwahati",
             logo: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
             description: "Advanced technology research and development center",
             category: "Academic",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "AOL",
             logo: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=200&fit=crop",
             description: "Applied optics laboratory and photonics research",
             category: "Research",
-            tier: "Enterprise"
+            tier: "Enterprise",
         },
         {
             name: "IIT Madras",
             logo: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop",
             description: "Innovation and research excellence in technology",
             category: "Academic",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "C-DAC",
             logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop",
             description: "Advanced computing development and high-performance solutions",
             category: "Technology",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "CPPICS",
             logo: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=200&fit=crop",
             description: "Photonics and communication systems research",
             category: "Research",
-            tier: "Enterprise"
+            tier: "Enterprise",
         },
         {
             name: "ISRO",
             logo: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
             description: "Space research organization and satellite technology",
             category: "Space",
-            tier: "Premium"
+            tier: "Premium",
         },
     ]
 
@@ -176,56 +176,57 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
             description: "Defense communication systems and secure networks",
             category: "Defense",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "GFGNL",
             logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop",
             description: "Gas pipeline network solutions and infrastructure",
             category: "Infrastructure",
-            tier: "Enterprise"
+            tier: "Enterprise",
         },
         {
             name: "Indian Navy",
             logo: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
             description: "Naval communication technology and maritime systems",
             category: "Defense",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "ITI Limited",
             logo: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop",
             description: "Telecommunications equipment and network solutions",
             category: "Telecom",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "BSNL",
             logo: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop",
             description: "National telecom services and digital infrastructure",
             category: "Telecom",
-            tier: "Enterprise"
+            tier: "Enterprise",
         },
         {
             name: "Indian Railway",
             logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
             description: "Railway communication systems and transport technology",
             category: "Transport",
-            tier: "Premium"
+            tier: "Premium",
         },
         {
             name: "Indian Air Force",
             logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
             description: "Aerospace communication solutions and aviation technology",
             category: "Defense",
-            tier: "Premium"
+            tier: "Premium",
         },
     ]
 
     const sections = [
         {
             title: "Professional Members",
-            subtitle: "Industry-leading organizations driving innovation and setting global standards in technology advancement",
+            subtitle:
+                "Industry-leading organizations driving innovation and setting global standards in technology advancement",
             data: members,
             bgGradient: "from-slate-50 via-blue-50 to-indigo-50",
             primaryColor: "blue",
@@ -234,7 +235,8 @@ export default function PartnershipsSection() {
         },
         {
             title: "Research Coalition",
-            subtitle: "Academic partnerships fostering breakthrough discoveries and technological advancement across multiple domains",
+            subtitle:
+                "Academic partnerships fostering breakthrough discoveries and technological advancement across multiple domains",
             data: research,
             bgGradient: "from-indigo-50 via-purple-50 to-violet-50",
             primaryColor: "purple",
@@ -243,7 +245,8 @@ export default function PartnershipsSection() {
         },
         {
             title: "Esteemed Clients",
-            subtitle: "Trusted partners in mission-critical applications across defense, telecommunications, and infrastructure sectors",
+            subtitle:
+                "Trusted partners in mission-critical applications across defense, telecommunications, and infrastructure sectors",
             data: clients,
             bgGradient: "from-violet-50 via-pink-50 to-rose-50",
             primaryColor: "pink",
@@ -254,26 +257,19 @@ export default function PartnershipsSection() {
 
     const getTierColor = (tier) => {
         switch (tier) {
-            case 'Premium': return 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
-            case 'Enterprise': return 'bg-gradient-to-r from-gray-600 to-gray-700 text-white'
-            default: return 'bg-gray-200 text-gray-700'
+            case "Premium":
+                return "bg-gradient-to-r from-blue-500 to-indigo-500 text-white"
+            case "Enterprise":
+                return "bg-gradient-to-r from-gray-600 to-gray-700 text-white"
+            default:
+                return "bg-gray-200 text-gray-700"
         }
     }
 
     return (
-        <div
-            ref={containerRef}
-            className="partnerships-container min-h-screen overflow-hidden relative"
-            style={{
-                backgroundImage: 'url(/images/nav-bg.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'fixed'
-            }}
-        >
-            {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div ref={containerRef} className="partnerships-container min-h-screen overflow-hidden relative">
+            {/* Enhanced overlay for better text readability */}
+            <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -285,29 +281,44 @@ export default function PartnershipsSection() {
             <div className="relative z-10">
                 {/* Sections */}
                 {sections.map((section, sectionIndex) => (
-                    <div key={sectionIndex} className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ${section.bgGradient}/70 backdrop-blur-sm relative overflow-hidden`}>
+                    <div
+                        key={sectionIndex}
+                        className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ${section.bgGradient}/30 backdrop-blur-sm relative overflow-hidden`}
+                    >
                         {/* Section Background Animation */}
                         <div className="absolute inset-0 opacity-20">
-                            <div className={`floating-element absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
-                                section.primaryColor === 'blue' ? 'bg-blue-300/20' :
-                                    section.primaryColor === 'purple' ? 'bg-purple-300/20' :
-                                        'bg-pink-300/20'
-                            } rounded-full blur-2xl`}></div>
-                            <div className={`floating-element absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-40 sm:h-40 lg:w-56 lg:h-56 ${
-                                section.primaryColor === 'blue' ? 'bg-blue-400/15' :
-                                    section.primaryColor === 'purple' ? 'bg-purple-400/15' :
-                                        'bg-pink-400/15'
-                            } rounded-full blur-2xl`}></div>
+                            <div
+                                className={`floating-element absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
+                                    section.primaryColor === "blue"
+                                        ? "bg-blue-300/20"
+                                        : section.primaryColor === "purple"
+                                            ? "bg-purple-300/20"
+                                            : "bg-pink-300/20"
+                                } rounded-full blur-2xl`}
+                            ></div>
+                            <div
+                                className={`floating-element absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-40 sm:h-40 lg:w-56 lg:h-56 ${
+                                    section.primaryColor === "blue"
+                                        ? "bg-blue-400/15"
+                                        : section.primaryColor === "purple"
+                                            ? "bg-purple-400/15"
+                                            : "bg-pink-400/15"
+                                } rounded-full blur-2xl`}
+                            ></div>
                         </div>
 
                         <div className="max-w-7xl mx-auto relative z-10">
                             {/* Section Header */}
                             <div className="text-center mb-12 sm:mb-16 section-header opacity-0 transform translate-y-8">
-                                <div className={`inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 ${
-                                    section.primaryColor === 'blue' ? 'bg-blue-100/80 text-blue-700 border border-blue-200/50' :
-                                        section.primaryColor === 'purple' ? 'bg-purple-100/80 text-purple-700 border border-purple-200/50' :
-                                            'bg-pink-100/80 text-pink-700 border border-pink-200/50'
-                                }`}>
+                                <div
+                                    className={`inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 ${
+                                        section.primaryColor === "blue"
+                                            ? "bg-blue-100/80 text-blue-700 border border-blue-200/50"
+                                            : section.primaryColor === "purple"
+                                                ? "bg-purple-100/80 text-purple-700 border border-purple-200/50"
+                                                : "bg-pink-100/80 text-pink-700 border border-pink-200/50"
+                                    }`}
+                                >
                                     <section.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                                     {section.title}
                                 </div>
@@ -330,7 +341,9 @@ export default function PartnershipsSection() {
                                         data-delay={index * 100}
                                     >
                                         {/* Tier Badge */}
-                                        <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4 ${getTierColor(item.tier)}`}>
+                                        <div
+                                            className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4 ${getTierColor(item.tier)}`}
+                                        >
                                             <Zap className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
                                             {item.tier}
                                         </div>
@@ -338,7 +351,7 @@ export default function PartnershipsSection() {
                                         {/* Logo */}
                                         <div className="relative w-full h-24 sm:h-28 lg:h-32 mb-4 sm:mb-6 overflow-hidden rounded-xl sm:rounded-2xl bg-gray-50">
                                             <img
-                                                src={item.logo}
+                                                src={item.logo || "/placeholder.svg"}
                                                 alt={item.name}
                                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                             />
@@ -358,11 +371,15 @@ export default function PartnershipsSection() {
                                                 {item.description}
                                             </p>
 
-                                            <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
-                                                section.primaryColor === 'blue' ? 'bg-blue-50/80 text-blue-700' :
-                                                    section.primaryColor === 'purple' ? 'bg-purple-50/80 text-purple-700' :
-                                                        'bg-pink-50/80 text-pink-700'
-                                            }`}>
+                                            <div
+                                                className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
+                                                    section.primaryColor === "blue"
+                                                        ? "bg-blue-50/80 text-blue-700"
+                                                        : section.primaryColor === "purple"
+                                                            ? "bg-purple-50/80 text-purple-700"
+                                                            : "bg-pink-50/80 text-pink-700"
+                                                }`}
+                                            >
                                                 {item.category}
                                             </div>
                                         </div>
@@ -431,7 +448,8 @@ export default function PartnershipsSection() {
                 }
 
                 @keyframes floating {
-                    0%, 100% {
+                    0%,
+                    100% {
                         transform: translateY(0px) rotate(0deg);
                     }
                     25% {
