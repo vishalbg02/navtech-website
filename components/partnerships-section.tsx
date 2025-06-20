@@ -100,7 +100,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
             description: "Next-generation wireless technology and infrastructure",
             category: "Innovation",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "ITU-T",
@@ -117,7 +117,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
             description: "Telecom technology development and research excellence",
             category: "R&D",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "IIT Delhi",
@@ -152,7 +152,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop",
             description: "Advanced computing development and high-performance solutions",
             category: "Technology",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "CPPICS",
@@ -166,7 +166,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
             description: "Space research organization and satellite technology",
             category: "Space",
-            tier: "Strategic"
+            tier: "Premium"
         },
     ]
 
@@ -176,7 +176,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
             description: "Defense communication systems and secure networks",
             category: "Defense",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "GFGNL",
@@ -190,7 +190,7 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
             description: "Naval communication technology and maritime systems",
             category: "Defense",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "ITI Limited",
@@ -211,14 +211,14 @@ export default function PartnershipsSection() {
             logo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
             description: "Railway communication systems and transport technology",
             category: "Transport",
-            tier: "Strategic"
+            tier: "Premium"
         },
         {
             name: "Indian Air Force",
             logo: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
             description: "Aerospace communication solutions and aviation technology",
             category: "Defense",
-            tier: "Strategic"
+            tier: "Premium"
         },
     ]
 
@@ -230,7 +230,7 @@ export default function PartnershipsSection() {
             bgGradient: "from-slate-50 via-blue-50 to-indigo-50",
             primaryColor: "blue",
             icon: Award,
-            stats: { count: members.length, label: "Professional Partners", growth: "+23%" },
+            stats: { count: 5, label: "Professional Partners", growth: "+23%" },
         },
         {
             title: "Research Coalition",
@@ -239,7 +239,7 @@ export default function PartnershipsSection() {
             bgGradient: "from-indigo-50 via-purple-50 to-violet-50",
             primaryColor: "purple",
             icon: Users,
-            stats: { count: research.length, label: "Research Partners", growth: "+18%" },
+            stats: { count: 8, label: "Research Partners", growth: "+18%" },
         },
         {
             title: "Esteemed Clients",
@@ -248,13 +248,12 @@ export default function PartnershipsSection() {
             bgGradient: "from-violet-50 via-pink-50 to-rose-50",
             primaryColor: "pink",
             icon: Building2,
-            stats: { count: clients.length, label: "Enterprise Clients", growth: "+31%" },
+            stats: { count: 7, label: "Enterprise Clients", growth: "+31%" },
         },
     ]
 
     const getTierColor = (tier) => {
         switch (tier) {
-            case 'Strategic': return 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white'
             case 'Premium': return 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
             case 'Enterprise': return 'bg-gradient-to-r from-gray-600 to-gray-700 text-white'
             default: return 'bg-gray-200 text-gray-700'
@@ -262,155 +261,128 @@ export default function PartnershipsSection() {
     }
 
     return (
-        <div ref={containerRef} className="partnerships-container bg-gradient-to-br from-gray-50 to-white min-h-screen overflow-hidden">
+        <div
+            ref={containerRef}
+            className="partnerships-container min-h-screen overflow-hidden relative"
+            style={{
+                backgroundImage: 'url(/images/nav-bg.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed'
+            }}
+        >
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="parallax-element absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-200/20 rounded-full blur-3xl floating-element"></div>
-                <div className="parallax-element absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-purple-200/20 rounded-full blur-3xl floating-element"></div>
-                <div className="parallax-element absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[600px] sm:h-[600px] bg-gradient-to-r from-pink-200/10 to-indigo-200/10 rounded-full blur-3xl floating-element"></div>
+                <div className="parallax-element absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-200/10 rounded-full blur-3xl floating-element"></div>
+                <div className="parallax-element absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-purple-200/10 rounded-full blur-3xl floating-element"></div>
+                <div className="parallax-element absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[600px] sm:h-[600px] bg-gradient-to-r from-pink-200/5 to-indigo-200/5 rounded-full blur-3xl floating-element"></div>
             </div>
 
-            {/* Hero Section */}
-            <div className="relative pt-12 sm:pt-20 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto text-center">
-                    <div className="hero-element opacity-0 transform translate-y-8 inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
-                        <Globe className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                        Global Partnership Network
-                    </div>
+            <div className="relative z-10">
+                {/* Sections */}
+                {sections.map((section, sectionIndex) => (
+                    <div key={sectionIndex} className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ${section.bgGradient}/70 backdrop-blur-sm relative overflow-hidden`}>
+                        {/* Section Background Animation */}
+                        <div className="absolute inset-0 opacity-20">
+                            <div className={`floating-element absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
+                                section.primaryColor === 'blue' ? 'bg-blue-300/20' :
+                                    section.primaryColor === 'purple' ? 'bg-purple-300/20' :
+                                        'bg-pink-300/20'
+                            } rounded-full blur-2xl`}></div>
+                            <div className={`floating-element absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-40 sm:h-40 lg:w-56 lg:h-56 ${
+                                section.primaryColor === 'blue' ? 'bg-blue-400/15' :
+                                    section.primaryColor === 'purple' ? 'bg-purple-400/15' :
+                                        'bg-pink-400/15'
+                            } rounded-full blur-2xl`}></div>
+                        </div>
 
-                    <h1 className="hero-element opacity-0 transform translate-y-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight">
-                        Strategic
-                        <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Partnerships</span>
-                    </h1>
-
-                    <p className="hero-element opacity-0 transform translate-y-8 text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4">
-                        Building tomorrow's technology through collaborative excellence with industry leaders,
-                        research institutions, and enterprise clients worldwide.
-                    </p>
-
-                    {/* Key Stats - Responsive Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto mb-12 sm:mb-16">
-                        {sections.map((section, index) => (
-                            <div
-                                key={index}
-                                className="stat-card opacity-0 transform translate-y-8 bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 group"
-                                data-delay={index * 200}
-                            >
-                                <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-r ${
-                                    section.primaryColor === 'blue' ? 'from-blue-500 to-blue-600' :
-                                        section.primaryColor === 'purple' ? 'from-purple-500 to-purple-600' :
-                                            'from-pink-500 to-pink-600'
-                                } flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                                    <section.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
+                        <div className="max-w-7xl mx-auto relative z-10">
+                            {/* Section Header */}
+                            <div className="text-center mb-12 sm:mb-16 section-header opacity-0 transform translate-y-8">
+                                <div className={`inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 ${
+                                    section.primaryColor === 'blue' ? 'bg-blue-100/80 text-blue-700 border border-blue-200/50' :
+                                        section.primaryColor === 'purple' ? 'bg-purple-100/80 text-purple-700 border border-purple-200/50' :
+                                            'bg-pink-100/80 text-pink-700 border border-pink-200/50'
+                                }`}>
+                                    <section.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                                    {section.title}
                                 </div>
-                                <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">{section.stats.count}+</div>
-                                <div className="text-gray-600 text-xs sm:text-sm font-medium mb-1 sm:mb-2">{section.stats.label}</div>
-                                <div className="text-green-600 text-xs sm:text-sm font-semibold">{section.stats.growth} YoY Growth</div>
+
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                                    {section.title}
+                                </h2>
+
+                                <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
+                                    {section.subtitle}
+                                </p>
                             </div>
-                        ))}
+
+                            {/* Cards Grid - Fully Responsive */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                                {section.data.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="partner-card opacity-0 transform translate-y-8 group bg-white/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-gray-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+                                        data-delay={index * 100}
+                                    >
+                                        {/* Tier Badge */}
+                                        <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4 ${getTierColor(item.tier)}`}>
+                                            <Zap className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
+                                            {item.tier}
+                                        </div>
+
+                                        {/* Logo */}
+                                        <div className="relative w-full h-24 sm:h-28 lg:h-32 mb-4 sm:mb-6 overflow-hidden rounded-xl sm:rounded-2xl bg-gray-50">
+                                            <img
+                                                src={item.logo}
+                                                alt={item.name}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="space-y-3 sm:space-y-4">
+                                            <div className="flex items-start justify-between gap-2">
+                                                <h3 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 flex-1">
+                                                    {item.name}
+                                                </h3>
+                                                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1" />
+                                            </div>
+
+                                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
+                                                {item.description}
+                                            </p>
+
+                                            <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
+                                                section.primaryColor === 'blue' ? 'bg-blue-50/80 text-blue-700' :
+                                                    section.primaryColor === 'purple' ? 'bg-purple-50/80 text-purple-700' :
+                                                        'bg-pink-50/80 text-pink-700'
+                                            }`}>
+                                                {item.category}
+                                            </div>
+                                        </div>
+
+                                        {/* Hover Effect Overlay */}
+                                        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-t from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Section Footer */}
+                            <div className="text-center mt-8 sm:mt-12">
+                                <div className="text-gray-600 text-xs sm:text-sm">
+                                    {section.data.length} active partnerships and growing
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
-
-            {/* Sections */}
-            {sections.map((section, sectionIndex) => (
-                <div key={sectionIndex} className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br ${section.bgGradient} relative overflow-hidden`}>
-                    {/* Section Background Animation */}
-                    <div className="absolute inset-0 opacity-30">
-                        <div className={`floating-element absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
-                            section.primaryColor === 'blue' ? 'bg-blue-300/30' :
-                                section.primaryColor === 'purple' ? 'bg-purple-300/30' :
-                                    'bg-pink-300/30'
-                        } rounded-full blur-2xl`}></div>
-                        <div className={`floating-element absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-40 sm:h-40 lg:w-56 lg:h-56 ${
-                            section.primaryColor === 'blue' ? 'bg-blue-400/20' :
-                                section.primaryColor === 'purple' ? 'bg-purple-400/20' :
-                                    'bg-pink-400/20'
-                        } rounded-full blur-2xl`}></div>
-                    </div>
-
-                    <div className="max-w-7xl mx-auto relative z-10">
-                        {/* Section Header */}
-                        <div className="text-center mb-12 sm:mb-16 section-header opacity-0 transform translate-y-8">
-                            <div className={`inline-flex items-center px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 ${
-                                section.primaryColor === 'blue' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
-                                    section.primaryColor === 'purple' ? 'bg-purple-100 text-purple-700 border border-purple-200' :
-                                        'bg-pink-100 text-pink-700 border border-pink-200'
-                            }`}>
-                                <section.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                                {section.title}
-                            </div>
-
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                                {section.title}
-                            </h2>
-
-                            <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
-                                {section.subtitle}
-                            </p>
-                        </div>
-
-                        {/* Cards Grid - Fully Responsive */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                            {section.data.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="partner-card opacity-0 transform translate-y-8 group bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
-                                    data-delay={index * 100}
-                                >
-                                    {/* Tier Badge */}
-                                    <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4 ${getTierColor(item.tier)}`}>
-                                        <Zap className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
-                                        {item.tier}
-                                    </div>
-
-                                    {/* Logo */}
-                                    <div className="relative w-full h-24 sm:h-28 lg:h-32 mb-4 sm:mb-6 overflow-hidden rounded-xl sm:rounded-2xl bg-gray-50">
-                                        <img
-                                            src={item.logo}
-                                            alt={item.name}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="space-y-3 sm:space-y-4">
-                                        <div className="flex items-start justify-between gap-2">
-                                            <h3 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 flex-1">
-                                                {item.name}
-                                            </h3>
-                                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1" />
-                                        </div>
-
-                                        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
-                                            {item.description}
-                                        </p>
-
-                                        <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
-                                            section.primaryColor === 'blue' ? 'bg-blue-50 text-blue-700' :
-                                                section.primaryColor === 'purple' ? 'bg-purple-50 text-purple-700' :
-                                                    'bg-pink-50 text-pink-700'
-                                        }`}>
-                                            {item.category}
-                                        </div>
-                                    </div>
-
-                                    {/* Hover Effect Overlay */}
-                                    <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-t from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Section Footer */}
-                        <div className="text-center mt-8 sm:mt-12">
-                            <div className="text-gray-600 text-xs sm:text-sm">
-                                {section.data.length} active partnerships and growing
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ))}
 
             {/* Custom CSS Animations */}
             <style jsx>{`
