@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { ArrowRight, X } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function VerticalsSection() {
     const containerRef = useRef(null)
     const sectionsRef = useRef([])
-    const [activeModal, setActiveModal] = useState(null)
+    const router = useRouter()
 
     useEffect(() => {
         if (typeof window === "undefined") return
@@ -93,34 +94,10 @@ export default function VerticalsSection() {
         return () => ctx.revert()
     }, [])
 
-    const openModal = (index) => {
-        setActiveModal(index)
-        gsap.fromTo(
-            ".modal-overlay",
-            { opacity: 0 },
-            { opacity: 1, duration: 0.3, ease: "power2.out" }
-        )
-        gsap.fromTo(
-            ".modal-content",
-            { scale: 0.9, opacity: 0, y: 30 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.4)" }
-        )
-    }
-
-    const closeModal = () => {
-        gsap.to(".modal-content", {
-            scale: 0.9,
-            opacity: 0,
-            y: 30,
-            duration: 0.3,
-            ease: "power2.in",
-            onComplete: () => setActiveModal(null),
-        })
-        gsap.to(".modal-overlay", {
-            opacity: 0,
-            duration: 0.3,
-            ease: "power2.in",
-        })
+    const handleLearnMore = (title) => {
+        // Convert title to a URL-friendly slug (e.g., "Government" -> "government")
+        const slug = title.toLowerCase().replace(/ /g, "-")
+        router.push(`/verticals/${slug}`)
     }
 
     const verticals = [
@@ -290,111 +267,63 @@ export default function VerticalsSection() {
     ]
 
     return (
-        <>
-            <section
-                ref={containerRef}
-                className="relative py-24 bg-gray-100"
-            >
-                <div className="container mx-auto px-6 mb-16">
-                    <div className="text-center max-w-3xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-gray-800">
-                                Verticals
-                            </span>
-                        </h2>
-                        <div className="w-20 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-6"></div>
-                    </div>
+        <section
+            ref={containerRef}
+            className="relative py-24 bg-gray-100"
+        >
+            <div className="container mx-auto px-6 mb-16">
+                <div className="text-center max-w-3xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-gray-800">
+                            Verticals
+                        </span>
+                    </h2>
+                    <div className="w-20 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-6"></div>
                 </div>
+            </div>
 
-                <div className="space-y-32">
-                    {verticals.map((vertical, index) => {
-                        const isEven = index % 2 === 0
+            <div className="space-y-32">
+                {verticals.map((vertical, index) => {
+                    const isEven = index % 2 === 0
 
-                        return (
-                            <div
-                                key={index}
-                                ref={(el) => (sectionsRef.current[index] = el)}
-                                className="container mx-auto px-6"
-                            >
-                                <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}>
-                                    <div className="vertical-text w-full md:w-1/2 text-center md:text-left">
-                                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{vertical.title}</h3>
-                                        <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">{vertical.subtitle}</p>
-                                        <button
-                                            onClick={() => openModal(index)}
-                                            className="learn-more-btn inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 to-gray-800 text-white rounded-lg font-semibold text-base shadow-md transition-all duration-300"
-                                        >
-                                            <span>Learn More</span>
-                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                                        </button>
-                                    </div>
-                                    <div className="vertical-image w-full md:w-1/2 relative h-96 md:h-[28rem] rounded-xl overflow-hidden">
-                                        <Image
-                                            src={vertical.image}
-                                            alt={vertical.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-gray-800/30 to-transparent"></div>
-                                    </div>
+                    return (
+                        <div
+                            key={index}
+                            ref={(el) => (sectionsRef.current[index] = el)}
+                            className="container mx-auto px-6"
+                        >
+                            <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}>
+                                <div className="vertical-text w-full md:w-1/2 text-center md:text-left">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{vertical.title}</h3>
+                                    <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">{vertical.subtitle}</p>
+                                    <button
+                                        onClick={() => handleLearnMore(vertical.title)}
+                                        className="learn-more-btn inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 to-gray-800 text-white rounded-lg font-semibold text-base shadow-md transition-all duration-300"
+                                    >
+                                        <span>Learn More</span>
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                    </button>
+                                </div>
+                                <div className="vertical-image w-full md:w-1/2 relative h-96 md:h-[28rem] rounded-xl overflow-hidden">
+                                    <Image
+                                        src={vertical.image}
+                                        alt={vertical.title}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-800/30 to-transparent"></div>
                                 </div>
                             </div>
-                        )
-                    })}
-                </div>
-
-                {/* Subtle Background Decorations */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/5 rounded-full blur-2xl animate-float"></div>
-                    <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/5 rounded-full blur-2xl animate-float delay-500"></div>
-                </div>
-            </section>
-
-            {activeModal !== null && (
-                <div className="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                    <div className="modal-content bg-white rounded-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-xl">
-                        <div className="sticky top-0 bg-white border-b border-gray-200 p-5 flex items-center justify-between rounded-t-2xl">
-                            <h2 className="text-xl font-bold text-gray-900">{verticals[activeModal].title} Solutions</h2>
-                            <button
-                                onClick={closeModal}
-                                className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
-                            >
-                                <X className="w-4 h-4 text-gray-600" />
-                            </button>
                         </div>
+                    )
+                })}
+            </div>
 
-                        <div className="p-5">
-                            {verticals[activeModal].content.intro && (
-                                <div className="mb-5 p-4 bg-gray-50 rounded-lg">
-                                    <p className="text-gray-700 text-sm leading-relaxed">{verticals[activeModal].content.intro}</p>
-                                </div>
-                            )}
-
-                            {verticals[activeModal].content.subtitle && (
-                                <div className="mb-5">
-                                    <h3 className="text-base font-semibold text-gray-900">{verticals[activeModal].content.subtitle}</h3>
-                                </div>
-                            )}
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {verticals[activeModal].content.sections.map((section, sectionIndex) => (
-                                    <div key={sectionIndex} className="bg-gray-50 rounded-lg p-4">
-                                        <h3 className="text-base font-semibold text-gray-900 mb-2">{section.title}</h3>
-                                        <ul className="space-y-2">
-                                            {section.points.map((point, pointIndex) => (
-                                                <li key={pointIndex} className="text-gray-600 text-sm leading-relaxed flex items-start">
-                                                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                                                    {point}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {/* Subtle Background Decorations */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/5 rounded-full blur-2xl animate-float"></div>
+                <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/5 rounded-full blur-2xl animate-float delay-500"></div>
+            </div>
 
             {/* Custom CSS for Animations and Styling */}
             <style jsx>{`
@@ -415,6 +344,6 @@ export default function VerticalsSection() {
                     transition: all 0.3s ease;
                 }
             `}</style>
-        </>
+        </section>
     )
 }

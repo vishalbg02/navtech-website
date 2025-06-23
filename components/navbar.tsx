@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { gsap } from "gsap"
-import { Menu, X, ChevronRight } from "lucide-react"
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
@@ -13,6 +13,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const [activeDropdown, setActiveDropdown] = useState(null)
+  const [dropdownTimeout, setDropdownTimeout] = useState(null)
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -110,12 +112,51 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Research", href: "/research" },
-    { name: "Products", href: "/products" },
+    {
+      name: "Products",
+      href: "/products",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "NavOcular", href: "/products/navocular" },
+        { name: "OpticSpectra", href: "/products/opticspectra" },
+      ]
+    },
     { name: "Applications", href: "/applications" },
-    { name: "Verticals", href: "/verticals" },
+    {
+      name: "Verticals",
+      href: "/verticals",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Government", href: "/verticals/government" },
+        { name: "Defence", href: "/verticals/defence" },
+        { name: "OEM/ODM", href: "/verticals/oem-odm" },
+        { name: "Consumer", href: "/verticals/consumer" },
+      ]
+    },
     { name: "Insights", href: "/insights" },
     { name: "Career", href: "/career" },
   ]
+
+  const handleDropdownToggle = (itemName) => {
+    setActiveDropdown(activeDropdown === itemName ? null : itemName)
+  }
+
+  const handleDropdownClose = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout)
+    }
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 500) // 500ms delay
+    setDropdownTimeout(timeout)
+  }
+
+  const handleDropdownKeepOpen = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout)
+      setDropdownTimeout(null)
+    }
+  }
 
   return (
       <header
@@ -146,14 +187,60 @@ export default function Navbar() {
             {/* Enhanced Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
               {navItems.map((item, index) => (
-                  <Link
-                      key={index}
-                      href={item.href}
-                      className="nav-item relative px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
-                  </Link>
+                  <div key={index} className="nav-item relative">
+                    {item.hasDropdown ? (
+                        <div
+                            className="relative"
+                            onMouseEnter={() => {
+                              handleDropdownKeepOpen()
+                              setActiveDropdown(item.name)
+                            }}
+                            onMouseLeave={handleDropdownClose}
+                        >
+                          <Link
+                              href={item.href}
+                              className="flex items-center space-x-1 px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
+                          >
+                            <span className="relative z-10">{item.name}</span>
+                            <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                            <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
+                          </Link>
+
+                          {/* Dropdown Menu */}
+                          {activeDropdown === item.name && (
+                              <div
+                                  className="absolute top-full left-0 mt-2 w-48 bg-white/98 backdrop-blur-2xl shadow-xl shadow-black/10 border border-gray-100 rounded-xl py-2 z-50"
+                                  onMouseEnter={handleDropdownKeepOpen}
+                                  onMouseLeave={handleDropdownClose}
+                              >
+                                {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                                    <Link
+                                        key={dropdownIndex}
+                                        href={dropdownItem.href}
+                                        className="block px-4 py-3 text-sm text-gray-700 hover:text-green-600 hover:bg-green-50/80 transition-all duration-300 first:rounded-t-xl last:rounded-b-xl"
+                                        onClick={() => {
+                                          setActiveDropdown(null)
+                                          if (dropdownTimeout) {
+                                            clearTimeout(dropdownTimeout)
+                                          }
+                                        }}
+                                    >
+                                      {dropdownItem.name}
+                                    </Link>
+                                ))}
+                              </div>
+                          )}
+                        </div>
+                    ) : (
+                        <Link
+                            href={item.href}
+                            className="relative px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
+                        >
+                          <span className="relative z-10">{item.name}</span>
+                          <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
+                        </Link>
+                    )}
+                  </div>
               ))}
 
               {/* Enhanced CTA Button */}
@@ -206,15 +293,44 @@ export default function Navbar() {
                 {/* Enhanced Mobile Navigation */}
                 <nav className="flex flex-col space-y-2">
                   {navItems.map((item, index) => (
-                      <Link
-                          key={index}
-                          href={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center justify-between px-4 py-4 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 rounded-xl font-medium group"
-                      >
-                        <span>{item.name}</span>
-                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-                      </Link>
+                      <div key={index}>
+                        {item.hasDropdown ? (
+                            <div>
+                              <button
+                                  onClick={() => handleDropdownToggle(item.name)}
+                                  className="flex items-center justify-between w-full px-4 py-4 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 rounded-xl font-medium group"
+                              >
+                                <span>{item.name}</span>
+                                <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                              </button>
+
+                              {/* Mobile Dropdown Items */}
+                              {activeDropdown === item.name && (
+                                  <div className="ml-4 mt-2 space-y-1">
+                                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                                        <Link
+                                            key={dropdownIndex}
+                                            href={dropdownItem.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="block px-4 py-3 text-sm text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all duration-300 rounded-lg"
+                                        >
+                                          {dropdownItem.name}
+                                        </Link>
+                                    ))}
+                                  </div>
+                              )}
+                            </div>
+                        ) : (
+                            <Link
+                                href={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center justify-between px-4 py-4 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 rounded-xl font-medium group"
+                            >
+                              <span>{item.name}</span>
+                              <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+                            </Link>
+                        )}
+                      </div>
                   ))}
 
                   {/* Enhanced Mobile CTA */}
