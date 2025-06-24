@@ -98,7 +98,7 @@ export default function TextSection() {
           {/* Main heading */}
           <div className="text-element mb-6">
             <h1
-                className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight tracking-tight"
+                className="text-6xl md:text-7xl lg:text-8xl font-medium text-gray-900 mb-6 leading-tight tracking-tight"
                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
             >
               NAVTECH
@@ -108,7 +108,7 @@ export default function TextSection() {
           {/* Subtitle */}
           <div className="text-element mb-8">
             <h2
-                className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 leading-relaxed"
+                className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-600 mb-8 leading-relaxed"
                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
             >
               Innovating with LiFi Wireless Technology
@@ -118,7 +118,7 @@ export default function TextSection() {
           {/* Description */}
           <div className="text-element mb-12">
             <p
-                className="text-base md:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12"
+                className="text-base md:text-lg lg:text-xl font-light text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12"
                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
             >
               Transforming the future of connectivity with cutting-edge optical wireless solutions that revolutionize how

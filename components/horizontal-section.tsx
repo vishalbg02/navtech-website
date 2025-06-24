@@ -68,7 +68,7 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            },
+                            }
                         )
                     }
 
@@ -90,7 +90,7 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            },
+                            }
                         )
                     }
 
@@ -112,7 +112,7 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            },
+                            }
                         )
                     }
 
@@ -136,7 +136,7 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            },
+                            }
                         )
                     }
                 })
@@ -152,14 +152,14 @@ export default function HorizontalSection() {
             subtitle: "Adaptive FSO Connectivity for Unstoppable Networks",
             description:
                 "Nav Wireless Technologies delivers adaptive Free Space Optics (FSO) solutions that dynamically adjust bandwidth based on environmental conditions like fog, rain, or interference. Ideal for mission-critical applications, these intelligent links ensure high availability and performance for smart cities, defense, disaster recovery, and enterprise backhaul.",
-            image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
+            image: "/images/opticspectra.png",
         },
         {
             title: "NavOcular",
             subtitle: "Infrared Intelligence for Interference-Free Connectivity",
             description:
                 "Nav Ocular uses invisible infrared (IR) light via Visible Light Communication (VLC) to provide secure, high-speed wireless communication without relying on RF spectrum. Its mesh network enables seamless data routing, self-healing, and scalability. Ideal for smart buildings, factories, hospitals, and EMI-sensitive areas, Nav Ocular ensures low-latency, interference-free, and secure connectivity for next-gen wireless infrastructure.",
-            image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+            image: "/images/navocular.png",
         },
     ]
 
@@ -207,7 +207,7 @@ export default function HorizontalSection() {
                                         {/* Title */}
                                         <div className="section-title">
                                             <h2
-                                                className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4"
+                                                className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight mb-4"
                                                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
                                             >
                                                 {section.title}
@@ -255,8 +255,6 @@ export default function HorizontalSection() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Section indicator */}
                     </div>
                 )
             })}
