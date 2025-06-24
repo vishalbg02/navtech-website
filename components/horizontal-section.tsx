@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { ArrowRight, Zap, Shield, Globe, Lightbulb } from "lucide-react"
 
 export default function HorizontalSection() {
     const containerRef = useRef(null)
@@ -149,44 +148,18 @@ export default function HorizontalSection() {
 
     const sections = [
         {
-            title: "Revolutionary LiFi",
-            subtitle: "Light-Based Communication",
+            title: "OpticSpectra",
+            subtitle: "Adaptive FSO Connectivity for Unstoppable Networks",
             description:
-                "Our LiFi technology uses visible light communication to transmit data at unprecedented speeds. Enhanced security, reduced interference, and lightning-fast connectivity.",
+                "Nav Wireless Technologies delivers adaptive Free Space Optics (FSO) solutions that dynamically adjust bandwidth based on environmental conditions like fog, rain, or interference. Ideal for mission-critical applications, these intelligent links ensure high availability and performance for smart cities, defense, disaster recovery, and enterprise backhaul.",
             image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
-            icon: Lightbulb,
-            features: ["High-Speed Data Transfer", "Enhanced Security", "Zero RF Interference"],
-            gradient: "from-green-500/20 to-blue-500/20",
         },
         {
-            title: "Wireless Innovation",
-            subtitle: "Next-Gen Connectivity",
+            title: "NavOcular",
+            subtitle: "Infrared Intelligence for Interference-Free Connectivity",
             description:
-                "Advanced wireless solutions that push boundaries. Our technology enables seamless communication where traditional wireless fails.",
+                "Nav Ocular uses invisible infrared (IR) light via Visible Light Communication (VLC) to provide secure, high-speed wireless communication without relying on RF spectrum. Its mesh network enables seamless data routing, self-healing, and scalability. Ideal for smart buildings, factories, hospitals, and EMI-sensitive areas, Nav Ocular ensures low-latency, interference-free, and secure connectivity for next-gen wireless infrastructure.",
             image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-            icon: Zap,
-            features: ["Seamless Integration", "Advanced Protocols", "Future-Ready Design"],
-            gradient: "from-blue-500/20 to-purple-500/20",
-        },
-        {
-            title: "Global Applications",
-            subtitle: "Transforming Industries",
-            description:
-                "From smart cities to aerospace, healthcare to manufacturing - revolutionizing critical system communications with secure connectivity.",
-            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
-            icon: Globe,
-            features: ["Smart Cities", "Healthcare Systems", "Industrial IoT"],
-            gradient: "from-purple-500/20 to-pink-500/20",
-        },
-        {
-            title: "Future Ready",
-            subtitle: "Join the Revolution",
-            description:
-                "Partner with NavTech for wireless innovation leadership. Together, we're building tomorrow's connected world infrastructure.",
-            image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
-            icon: Shield,
-            features: ["Strategic Partnership", "Innovation Leadership", "Global Impact"],
-            gradient: "from-pink-500/20 to-green-500/20",
         },
     ]
 
@@ -202,8 +175,6 @@ export default function HorizontalSection() {
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/20 to-white/10 backdrop-blur-sm"></div>
 
             {sections.map((section, index) => {
-                const IconComponent = section.icon
-
                 return (
                     <div
                         key={index}
@@ -213,74 +184,79 @@ export default function HorizontalSection() {
                         className="horizontal-section w-screen h-screen flex items-center flex-shrink-0 relative"
                     >
                         {/* Section background gradient */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20`}></div>
+                        <div
+                            className={`absolute inset-0 bg-gradient-to-br ${index === 0 ? "from-blue-500/20 to-cyan-500/20" : "from-purple-500/20 to-pink-500/20"} opacity-20`}
+                        ></div>
 
-                        <div className="container mx-auto px-8 flex flex-col lg:flex-row items-center gap-12 relative z-10">
-                            {/* Content Side */}
-                            <div className="w-full lg:w-1/2 space-y-8">
-                                {/* Icon */}
-                                <div className="section-title">
-                                    <div className="w-16 h-16 bg-white/95 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg shadow-gray-300/30 mb-6">
-                                        <IconComponent className="w-8 h-8 text-green-600" />
-                                    </div>
-                                </div>
-
-                                {/* Title */}
-                                <div className="section-title">
-                                    <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight mb-4">
-                                        {section.title}
-                                    </h2>
-                                    <h3 className="text-2xl lg:text-3xl text-green-600 font-semibold">{section.subtitle}</h3>
-                                </div>
-
-                                {/* Content */}
-                                <div className="section-content space-y-6">
-                                    <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">{section.description}</p>
-
-                                    {/* Features */}
-                                    <div className="grid grid-cols-1 gap-3">
-                                        {section.features.map((feature, featureIndex) => (
-                                            <div
-                                                key={featureIndex}
-                                                className="feature-item flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-md shadow-gray-200/50 border border-gray-200/50"
-                                            >
-                                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                                <span className="text-gray-700 font-medium">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* CTA Button */}
-                                    <div className="pt-4">
-                                        <button className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-green-600/25 hover:shadow-green-600/40 flex items-center space-x-3">
-                                            <span>{index === sections.length - 1 ? "Get Started" : "Learn More"}</span>
-                                            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                                        </button>
-                                    </div>
-                                </div>
+                        <div className="container mx-auto px-8 flex flex-col items-center gap-8 relative z-10">
+                            {/* Centered "OUR INNOVATIONS" Header */}
+                            <div className="text-center">
+                                <h1
+                                    className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 uppercase tracking-wide mb-16"
+                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                >
+                                    OUR INNOVATIONS
+                                </h1>
                             </div>
 
-                            {/* Image Side */}
-                            <div className="w-full lg:w-1/2 section-content">
-                                <div className="section-image relative w-full aspect-video overflow-hidden rounded-3xl shadow-2xl shadow-gray-400/20 bg-white/10 backdrop-blur-sm border border-white/20">
-                                    <Image src={section.image || "/placeholder.svg"} alt={section.title} fill className="object-cover" />
-                                    {/* Image overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                            {/* Content without card container */}
+                            <div className="w-full max-w-6xl">
+                                <div className="flex flex-col lg:flex-row items-center gap-16">
+                                    {/* Content Side */}
+                                    <div className="w-full lg:w-1/2 space-y-6">
+                                        {/* Title */}
+                                        <div className="section-title">
+                                            <h2
+                                                className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4"
+                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                            >
+                                                {section.title}
+                                            </h2>
+                                            <h3
+                                                className="text-xl lg:text-2xl text-gray-700 font-normal leading-relaxed mb-6"
+                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                            >
+                                                {section.subtitle}
+                                            </h3>
+                                        </div>
+
+                                        {/* Content */}
+                                        <div className="section-content space-y-6">
+                                            <p
+                                                className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg"
+                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                            >
+                                                {section.description}
+                                            </p>
+
+                                            {/* CTA Button */}
+                                            <div className="pt-4">
+                                                <button
+                                                    className="group border-2 border-green-600 hover:bg-green-600 text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out"
+                                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                >
+                                                    <span>Learn More</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Image Side */}
+                                    <div className="w-full lg:w-1/2 section-content">
+                                        <div className="section-image relative w-full aspect-square max-w-md mx-auto">
+                                            <Image
+                                                src={section.image || "/placeholder.svg"}
+                                                alt={section.title}
+                                                fill
+                                                className="object-contain"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Section indicator */}
-                        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                            {sections.map((_, dotIndex) => (
-                                <div
-                                    key={dotIndex}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                        dotIndex === index ? "bg-green-600 scale-125" : "bg-white/50"
-                                    }`}
-                                ></div>
-                            ))}
-                        </div>
                     </div>
                 )
             })}
