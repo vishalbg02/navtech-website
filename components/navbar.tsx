@@ -244,17 +244,19 @@ export default function Navbar() {
               ))}
 
               {/* Enhanced CTA Button */}
+              {/* Styled Contact Us Button */}
               <div className="nav-item ml-4">
-                <Button
-                    asChild
-                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-green-600/20 hover:shadow-green-600/30 border-0"
-                >
-                  <Link href="/contact" className="flex items-center space-x-2">
+                <Link href="/contact">
+                  <button
+                      className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105 flex items-center space-x-2"
+                      style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                  >
                     <span>Contact Us</span>
                     <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                  </Link>
-                </Button>
+                  </button>
+                </Link>
               </div>
+
             </nav>
 
             {/* Enhanced Mobile Menu Button */}

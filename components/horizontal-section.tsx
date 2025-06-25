@@ -146,7 +146,7 @@ const Scene3D = memo(
                             <Model url={typeof modelUrl === "string" ? modelUrl : modelUrl[0]} />
                         )}
                         <OrbitControls
-                            enableZoom={true}
+                            enableZoom={false} // Disable zooming to fix the 3D asset
                             enablePan={false}
                             enableRotate={true}
                             autoRotate={true}
@@ -248,7 +248,7 @@ export default function HorizontalSection() {
                         pin: true,
                         pinSpacing: true,
                         scrub: 0.6,
-                        snapbygg: {
+                        snap: {
                             snapTo: 1 / (sections.length - 1),
                             duration: { min: 0.1, max: 0.2 },
                             delay: 0.03,
@@ -412,14 +412,14 @@ export default function HorizontalSection() {
                                     <div className="w-full lg:w-1/2 space-y-6">
                                         <div className="section-title">
                                             <h2
-                                                className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight mb-4"
+                                                className="text-[2.0rem] lg:text-[2.5rem] xl:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4"
                                                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
                                             >
                                                 {section.title}
                                             </h2>
                                             <h3
-                                                className="text-xl lg:text-2xl text-gray-700 font-normal leading-relaxed mb-6"
-                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                className="text-xl lg:text-2xl text-gray-700 font-light leading-relaxed mb-6"
+                                                style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                                             >
                                                 {section.subtitle}
                                             </h3>
@@ -427,11 +427,12 @@ export default function HorizontalSection() {
 
                                         <div className="section-content space-y-6">
                                             <p
-                                                className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg"
-                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                className="text-[1.0rem] lg:text-[1.0rem] text-gray-700 font-light leading-relaxed max-w-lg"
+                                                style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                                             >
                                                 {section.description}
                                             </p>
+
 
                                             {section.isDual && (
                                                 <div className="flex items-center space-x-4">
@@ -467,8 +468,8 @@ export default function HorizontalSection() {
 
                                             <div className="pt-4">
                                                 <button
-                                                    className="group border-2 border-green-600 hover:bg-green-600 text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
-                                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                    className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
+                                                    style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                                                 >
                                                     <span>Learn More</span>
                                                 </button>
@@ -495,7 +496,3 @@ export default function HorizontalSection() {
         </div>
     )
 }
-
-
-
-

@@ -97,64 +97,67 @@ export default function TextSection() {
         <div ref={textRef} className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           {/* Main heading */}
           <div className="text-element mb-6">
-            <h1
-                className="text-6xl md:text-7xl lg:text-8xl font-medium text-gray-900 mb-6 leading-tight tracking-tight"
-                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-            >
-              NAVTECH
-            </h1>
+              <h1
+                  className="text-[7.8rem] font-medium text-gray-900 mb-6 leading-tight tracking-tight"
+                  style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+              >
+                  NAVTECH
+              </h1>
+
           </div>
 
           {/* Subtitle */}
           <div className="text-element mb-8">
             <h2
-                className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-600 mb-8 leading-relaxed"
+                className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 mb-8 leading-relaxed"
                 style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
             >
               Innovating with LiFi Wireless Technology
             </h2>
           </div>
 
-          {/* Description */}
+
           <div className="text-element mb-12">
-            <p
-                className="text-base md:text-lg lg:text-xl font-light text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12"
-                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-            >
-              Transforming the future of connectivity with cutting-edge optical wireless solutions that revolutionize how
-              the world communicates
-            </p>
+              <p
+                  className="text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] font-light text-gray-900 max-w-3xl mx-auto leading-relaxed mb-12"
+                  style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+              >
+                  Transforming the future of connectivity with cutting-edge optical wireless solutions that revolutionize how
+                  the world communicates
+              </p>
           </div>
+
 
           {/* Key features */}
           <div className="text-element mb-12">
             <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-              <div className="border-2 border-green-600 hover:bg-green-600 hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span
-                  className="font-medium text-sm md:text-base"
-                  style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-              >
-                RF-Free Communication
-              </span>
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+      <span
+          className="font-medium text-sm md:text-base"
+          style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+      >
+        RF-Free Communication
+      </span>
               </div>
-              <div className="border-2 border-green-600 hover:bg-green-600 hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span
-                  className="font-medium text-sm md:text-base"
-                  style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-              >
-                High-Speed Data Transfer
-              </span>
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+      <span
+          className="font-medium text-sm md:text-base"
+          style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+      >
+        High-Speed Data Transfer
+      </span>
               </div>
-              <div className="border-2 border-green-600 hover:bg-green-600 hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span
-                  className="font-medium text-sm md:text-base"
-                  style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-              >
-                Secure & Reliable
-              </span>
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+      <span
+          className="font-medium text-sm md:text-base"
+          style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+      >
+        Secure & Reliable
+      </span>
               </div>
             </div>
           </div>
+
         </div>
       </section>
   )
