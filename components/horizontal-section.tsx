@@ -7,6 +7,7 @@ import Image from "next/image"
 
 export default function HorizontalSection() {
     const containerRef = useRef(null)
+    const headerRef = useRef(null)
     const sectionsRef = useRef<HTMLDivElement[]>([])
 
     useEffect(() => {
@@ -20,6 +21,50 @@ export default function HorizontalSection() {
             if (sections.length > 0) {
                 const scrollDistance = window.innerWidth * (sections.length - 1)
 
+                // Header visibility animation - appears when entering, fades out before about section
+                gsap.set(headerRef.current, { opacity: 0, y: -20 }) // Initial hidden state
+
+                // Fade in animation when section starts (same as before)
+                gsap.to(headerRef.current, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top top",
+                        end: () => `+=${scrollDistance}`, // Match horizontal scroll end
+                        toggleActions: "play none none reverse",
+                        id: "header-visibility",
+                        onEnter: () => console.log("Header fade-in triggered"),
+                        onLeave: () => console.log("Header fade-out triggered"),
+                        onLeaveBack: () => console.log("Header fade-out triggered (back)"),
+                    },
+                    durationReverse: 0.3, // Faster fade-out
+                })
+
+                // Additional fade-out animation in the last 20% of horizontal scroll
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top top",
+                        end: () => `+=${scrollDistance}`,
+                        scrub: 1,
+                        id: "header-fade-out-end",
+                        onUpdate: (self) => {
+                            // Fade out header in the last 20% of the scroll
+                            if (self.progress > 0.8) {
+                                const fadeProgress = (self.progress - 0.8) / 0.2
+                                gsap.set(headerRef.current, {
+                                    opacity: 1 - fadeProgress,
+                                    y: -20 * fadeProgress,
+                                })
+                            }
+                        },
+                    },
+                })
+
+                // Horizontal scroll animation
                 const horizontalTween = gsap.to(sections, {
                     xPercent: -100 * (sections.length - 1),
                     ease: "none",
@@ -50,7 +95,6 @@ export default function HorizontalSection() {
                     const image = section.querySelector(".section-image")
                     const features = section.querySelectorAll(".feature-item")
 
-                    // Enhanced title animation
                     if (title) {
                         gsap.fromTo(
                             title,
@@ -68,11 +112,10 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            }
+                            },
                         )
                     }
 
-                    // Enhanced content animation
                     if (content) {
                         gsap.fromTo(
                             content,
@@ -90,11 +133,10 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            }
+                            },
                         )
                     }
 
-                    // Image animation
                     if (image) {
                         gsap.fromTo(
                             image,
@@ -112,11 +154,10 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            }
+                            },
                         )
                     }
 
-                    // Features stagger animation
                     if (features.length > 0) {
                         gsap.fromTo(
                             features,
@@ -136,7 +177,7 @@ export default function HorizontalSection() {
                                     end: "center center",
                                     toggleActions: "play none none reverse",
                                 },
-                            }
+                            },
                         )
                     }
                 })
@@ -164,100 +205,109 @@ export default function HorizontalSection() {
     ]
 
     return (
-        <div
-            ref={containerRef}
-            className="horizontal-container relative w-full h-screen flex"
-            style={{
-                width: `${100 * sections.length}vw`,
-            }}
-        >
-            {/* Light overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/20 to-white/10 backdrop-blur-sm"></div>
+        <div className="relative">
+            {/* Fixed "OUR INNOVATIONS" header, fully transparent background, visible during horizontal scroll */}
+            <div ref={headerRef} className="fixed top-0 left-0 right-0 text-center py-8 z-20">
+                <h1
+                    className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 uppercase tracking-wide"
+                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                >
+                    OUR INNOVATIONS
+                </h1>
+            </div>
 
-            {sections.map((section, index) => {
-                return (
-                    <div
-                        key={index}
-                        ref={(el) => {
-                            if (el) sectionsRef.current[index] = el
-                        }}
-                        className="horizontal-section w-screen h-screen flex items-center flex-shrink-0 relative"
-                    >
-                        {/* Section background gradient */}
+            {/* Horizontal Scrolling Container */}
+            <div
+                ref={containerRef}
+                className="horizontal-container relative w-full h-screen flex"
+                style={{
+                    width: `${100 * sections.length}vw`,
+                }}
+            >
+                {/* Light overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/20 to-white/10 backdrop-blur-sm"></div>
+
+                {sections.map((section, index) => {
+                    return (
                         <div
-                            className={`absolute inset-0 bg-gradient-to-br ${index === 0 ? "from-blue-500/20 to-cyan-500/20" : "from-purple-500/20 to-pink-500/20"} opacity-20`}
-                        ></div>
+                            key={index}
+                            ref={(el) => {
+                                if (el) sectionsRef.current[index] = el
+                            }}
+                            className="horizontal-section w-screen h-screen flex items-center flex-shrink-0 relative"
+                        >
+                            {/* Section background gradient */}
+                            <div
+                                className={`absolute inset-0 bg-gradient-to-br ${index === 0 ? "from-blue-500/20 to-cyan-500/20" : "from-purple-500/20 to-pink-500/20"} opacity-20`}
+                            ></div>
 
-                        <div className="container mx-auto px-8 flex flex-col items-center gap-8 relative z-10">
-                            {/* Centered "OUR INNOVATIONS" Header */}
-                            <div className="text-center">
-                                <h1
-                                    className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 uppercase tracking-wide mb-16"
-                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-                                >
-                                    OUR INNOVATIONS
-                                </h1>
-                            </div>
-
-                            {/* Content without card container */}
-                            <div className="w-full max-w-6xl">
-                                <div className="flex flex-col lg:flex-row items-center gap-16">
-                                    {/* Content Side */}
-                                    <div className="w-full lg:w-1/2 space-y-6">
-                                        {/* Title */}
-                                        <div className="section-title">
-                                            <h2
-                                                className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight mb-4"
-                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-                                            >
-                                                {section.title}
-                                            </h2>
-                                            <h3
-                                                className="text-xl lg:text-2xl text-gray-700 font-normal leading-relaxed mb-6"
-                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-                                            >
-                                                {section.subtitle}
-                                            </h3>
-                                        </div>
-
-                                        {/* Content */}
-                                        <div className="section-content space-y-6">
-                                            <p
-                                                className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg"
-                                                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-                                            >
-                                                {section.description}
-                                            </p>
-
-                                            {/* CTA Button */}
-                                            <div className="pt-4">
-                                                <button
-                                                    className="group border-2 border-green-600 hover:bg-green-600 text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out"
+                            <div className="container mx-auto px-8 flex flex-col items-center gap-8 relative z-10 pt-8">
+                                {/* Content without card container */}
+                                <div className="w-full max-w-6xl">
+                                    <div className="flex flex-col lg:flex-row items-center gap-16">
+                                        {/* Content Side */}
+                                        <div className="w-full lg:w-1/2 space-y-6">
+                                            {/* Title */}
+                                            <div className="section-title">
+                                                <h2
+                                                    className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight mb-4"
                                                     style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
                                                 >
-                                                    <span>Learn More</span>
-                                                </button>
+                                                    {section.title}
+                                                </h2>
+                                                <h3
+                                                    className="text-xl lg:text-2xl text-gray-700 font-normal leading-relaxed mb-6"
+                                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                >
+                                                    {section.subtitle}
+                                                </h3>
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="section-content space-y-6">
+                                                <p
+                                                    className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg"
+                                                    style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                >
+                                                    {section.description}
+                                                </p>
+
+                                                {/* CTA Button */}
+                                                <div className="pt-4">
+                                                    <button
+                                                        className="group border-2 border-green-600 hover:bg-green-600 text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out"
+                                                        style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                                                    >
+                                                        <span>Learn More</span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Image Side */}
-                                    <div className="w-full lg:w-1/2 section-content">
-                                        <div className="section-image relative w-full aspect-square max-w-md mx-auto">
-                                            <Image
-                                                src={section.image || "/placeholder.svg"}
-                                                alt={section.title}
-                                                fill
-                                                className="object-contain"
-                                            />
+                                        {/* Image Side */}
+                                        <div className="w-full lg:w-1/2 section-content">
+                                            <div className="section-image relative w-full aspect-square max-w-md mx-auto">
+                                                <Image
+                                                    src={section.image || "/placeholder.svg"}
+                                                    alt={section.title}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
+
+
+
+
+
+
