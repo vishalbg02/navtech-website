@@ -166,7 +166,7 @@ export default function AboutSection() {
                 >
                     <ambientLight intensity={0.7} />
                     <directionalLight position={[10, 10, 5]} intensity={1.3} castShadow={false} />
-                    <Model scale={[2.5, 2.5, 2.5]} />
+                    <Model scale={[2.3, 2.3, 2.3]} />
                     <OrbitControls enablePan={false} enableZoom={false} dampingFactor={0.1} />
                 </Canvas>
             </div>
