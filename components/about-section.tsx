@@ -38,6 +38,8 @@ export default function AboutSection() {
     const paragraph2Ref = useRef(null);
     const buttonRef = useRef(null);
     const stopRotationRef = useRef(null);
+    const orbitControlsRef = useRef(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -111,6 +113,33 @@ export default function AboutSection() {
                     scrub: 1,
                     pin: true,
                     anticipatePin: 1,
+                    onStart: () => {
+                        setIsAnimating(true);
+                        // Completely disable OrbitControls during GSAP animation
+                        if (orbitControlsRef.current) {
+                            orbitControlsRef.current.enabled = false;
+                            orbitControlsRef.current.enableRotate = false;
+                            orbitControlsRef.current.enablePan = false;
+                            orbitControlsRef.current.enableZoom = false;
+                        }
+                    },
+                    onUpdate: () => {
+                        // Ensure controls stay disabled during scrub animation
+                        if (orbitControlsRef.current) {
+                            orbitControlsRef.current.enabled = false;
+                        }
+                    },
+                    onComplete: () => {
+                        setIsAnimating(false);
+                        // Re-enable OrbitControls after animation with a slight delay
+                        setTimeout(() => {
+                            if (orbitControlsRef.current) {
+                                orbitControlsRef.current.enabled = true;
+                                orbitControlsRef.current.enableRotate = true;
+                                orbitControlsRef.current.reset();
+                            }
+                        }, 100);
+                    },
                 },
             });
 
@@ -188,6 +217,15 @@ export default function AboutSection() {
                     if (stopRotationRef.current) {
                         stopRotationRef.current();
                     }
+                    setIsAnimating(false);
+                    // Ensure OrbitControls are enabled after all animations with delay
+                    setTimeout(() => {
+                        if (orbitControlsRef.current) {
+                            orbitControlsRef.current.enabled = true;
+                            orbitControlsRef.current.enableRotate = true;
+                            orbitControlsRef.current.reset();
+                        }
+                    }, 100);
                 },
             }, 3.2);
 
@@ -212,13 +250,30 @@ export default function AboutSection() {
             <div ref={modelRef} className="absolute z-10">
                 <Canvas
                     camera={{ position: [0, 0, 9], fov: 50 }}
-                    gl={{ antialias: true, powerPreference: "high-performance" }}
+                    gl={{
+                        antialias: true,
+                        powerPreference: "high-performance",
+                        preserveDrawingBuffer: false
+                    }}
                 >
                     <ambientLight intensity={0.8} />
                     <directionalLight position={[10, 10, 5]} intensity={1.5} castShadow={false} />
                     <pointLight position={[-10, -10, -5]} intensity={0.5} />
                     <Model scale={[2.3, 2.3, 2.3]} onAnimationComplete={(fn) => (stopRotationRef.current = fn)} />
-                    <OrbitControls enablePan={false} enableZoom={false} dampingFactor={0.1} />
+                    <OrbitControls
+                        ref={orbitControlsRef}
+                        enablePan={false}
+                        enableZoom={false}
+                        enableRotate={!isAnimating}
+                        dampingFactor={0.05}
+                        enableDamping={true}
+                        rotateSpeed={0.5}
+                        enabled={false} // Start disabled, will be enabled after animation
+                        makeDefault
+                        target={[0, 0, 0]}
+                        minPolarAngle={Math.PI / 4}
+                        maxPolarAngle={3 * Math.PI / 4}
+                    />
                 </Canvas>
             </div>
 
