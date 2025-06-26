@@ -248,7 +248,7 @@ export default function Navbar() {
               <div className="nav-item ml-4">
                 <Link href="/contact">
                   <button
-                      className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105 flex items-center space-x-2"
+                      className="group bg-[#95c149] hover:bg-[#95c149] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center space-x-2 shadow-md"
                       style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                   >
                     <span>Contact Us</span>

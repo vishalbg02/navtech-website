@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -9,9 +9,17 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 function Model({ ...props }) {
     const { scene } = useGLTF("/glb/NavTech_Logo.glb");
     const modelRef = useRef();
+    const [shouldRotate, setShouldRotate] = useState(true);
+
+    // Expose setShouldRotate to parent via props
+    useEffect(() => {
+        if (props.onAnimationComplete) {
+            props.onAnimationComplete(() => setShouldRotate(false));
+        }
+    }, [props.onAnimationComplete]);
 
     useFrame(() => {
-        if (modelRef.current) {
+        if (modelRef.current && shouldRotate) {
             modelRef.current.rotation.y += 0.01;
         }
     });
@@ -25,9 +33,12 @@ export default function AboutSection() {
     const leftTextContainerRef = useRef(null);
     const rightTextContainerRef = useRef(null);
     const titleRef = useRef(null);
+    const titleUnderlineRef = useRef(null);
     const paragraph1Ref = useRef(null);
+    const companyNameRef = useRef(null);
     const paragraph2Ref = useRef(null);
     const buttonRef = useRef(null);
+    const stopRotationRef = useRef(null);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -35,116 +46,184 @@ export default function AboutSection() {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
-            // Initial states
+            // Initial states for 3D model - start from distance
             gsap.set(modelRef.current, {
-                width: "95vw",
-                height: "115vh",
+                width: "200vw",
+                height: "200vh",
                 left: "50%",
                 top: "50%",
                 xPercent: -50,
                 yPercent: -50,
-                opacity: 1,
-                scale: 1,
+                opacity: 0,
+                scale: 0.3,
+                rotationX: 45,
+                rotationY: 180,
+                z: -1000,
             });
 
+            // Initial states for text containers
             gsap.set(leftTextContainerRef.current, {
-                x: "-100%",
+                x: "-120%",
                 opacity: 0,
-                rotationY: 45,
-                transformPerspective: 1000,
+                rotationY: 60,
+                transformPerspective: 1200,
+                scale: 0.8,
             });
 
             gsap.set(rightTextContainerRef.current, {
-                x: "100%",
+                x: "120%",
                 opacity: 0,
-                rotationY: -45,
-                transformPerspective: 1000,
+                rotationY: -60,
+                transformPerspective: 1200,
+                scale: 0.8,
             });
 
-            gsap.set(
-                [titleRef.current, paragraph1Ref.current, paragraph2Ref.current, buttonRef.current],
-                {
-                    y: 50,
-                    opacity: 0,
-                }
-            );
+            // Initial states for text elements
+            gsap.set(titleRef.current, {
+                y: 80,
+                opacity: 0,
+                scale: 0.8,
+                rotationX: 20,
+            });
 
-            // Animation timeline
-            const textTL = gsap.timeline({
+            gsap.set(titleUnderlineRef.current, {
+                scaleX: 0,
+                transformOrigin: "left center",
+            });
+
+            gsap.set(companyNameRef.current, {
+                y: 60,
+                opacity: 0,
+                scale: 0.9,
+            });
+
+            gsap.set([paragraph1Ref.current, paragraph2Ref.current], {
+                y: 50,
+                opacity: 0,
+            });
+
+            gsap.set(buttonRef.current, {
+                y: 60,
+                opacity: 0,
+                scale: 0.8,
+                rotationX: 15,
+            });
+
+            // Main animation timeline
+            const mainTL = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=100%",
+                    end: "+=150%",
                     scrub: 1,
                     pin: true,
                     anticipatePin: 1,
                 },
             });
 
-            // Text containers slide in
-            textTL.to(
-                leftTextContainerRef.current,
-                {
-                    x: "0%",
-                    opacity: 1,
-                    rotationY: 0,
-                    duration: 0.6,
-                    ease: "power4.out",
-                },
-                0
-            ).to(
-                rightTextContainerRef.current,
-                {
-                    x: "0%",
-                    opacity: 1,
-                    rotationY: 0,
-                    duration: 0.6,
-                    ease: "power4.out",
-                },
-                0
-            );
+            // Phase 1: 3D Model dramatic entrance (0-30%)
+            mainTL.to(modelRef.current, {
+                opacity: 1,
+                scale: 1,
+                rotationX: 0,
+                rotationY: 0,
+                z: 0,
+                width: "95vw",
+                height: "115vh",
+                duration: 1.2,
+                ease: "power4.out",
+            }, 0);
 
-            // Text content fades and slides up
-            textTL.to(
-                titleRef.current,
-                { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
-                "-=0.4"
-            )
-                .to(
-                    paragraph1Ref.current,
-                    { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
-                    "-=0.3"
-                )
-                .to(
-                    paragraph2Ref.current,
-                    { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
-                    "-=0.3"
-                )
-                .to(
-                    buttonRef.current,
-                    { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" },
-                    "-=0.3"
-                );
+            // Phase 2: Left text container entrance (20-40%)
+            mainTL.to(leftTextContainerRef.current, {
+                x: "0%",
+                opacity: 1,
+                rotationY: 0,
+                scale: 1,
+                duration: 0.8,
+                ease: "power3.out",
+            }, 0.6);
 
-            // Subtle hover effect for text containers
-            gsap.to([leftTextContainerRef.current, rightTextContainerRef.current], {
-                scale: 1.02,
-                duration: 0.3,
-                ease: "power1.out",
-                paused: true,
-                onStart: function () {
-                    this.targets().forEach((el) => el.classList.add("shadow-lg"));
+            // Phase 3: Left side text content - reading flow (30-60%)
+            mainTL.to(titleRef.current, {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                rotationX: 0,
+                duration: 0.5,
+                ease: "power2.out",
+            }, 1.0)
+                .to(titleUnderlineRef.current, {
+                    scaleX: 1,
+                    duration: 0.4,
+                    ease: "power2.out",
+                }, 1.2)
+                .to(companyNameRef.current, {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "power2.out",
+                }, 1.4)
+                .to(paragraph1Ref.current, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.7,
+                    ease: "power2.out",
+                }, 1.8);
+
+            // Phase 4: Right text container entrance (50-70%)
+            mainTL.to(rightTextContainerRef.current, {
+                x: "0%",
+                opacity: 1,
+                rotationY: 0,
+                scale: 1,
+                duration: 0.8,
+                ease: "power3.out",
+            }, 2.2);
+
+            // Phase 5: Right side content (60-90%)
+            mainTL.to(paragraph2Ref.current, {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                ease: "power2.out",
+            }, 2.6);
+
+            // Phase 6: Button entrance (80-100%)
+            mainTL.to(buttonRef.current, {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                rotationX: 0,
+                duration: 0.6,
+                ease: "back.out(1.7)",
+                onComplete: () => {
+                    if (stopRotationRef.current) {
+                        stopRotationRef.current();
+                    }
                 },
-                onReverseComplete: function () {
-                    this.targets().forEach((el) => el.classList.remove("shadow-lg"));
-                },
-            }).eventCallback("onStart", function () {
-                const targets = this.targets();
-                targets.forEach((target) => {
-                    target.addEventListener("mouseenter", () => this.play());
-                    target.addEventListener("mouseleave", () => this.reverse());
+            }, 3.2);
+
+            // Enhanced hover effects for containers
+            const leftContainer = leftTextContainerRef.current;
+            const rightContainer = rightTextContainerRef.current;
+
+            [leftContainer, rightContainer].forEach(container => {
+                const hoverTL = gsap.timeline({ paused: true });
+
+                hoverTL.to(container, {
+                    scale: 1.02,
+                    y: -5,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                    duration: 0.3,
+                    ease: "power2.out",
                 });
+
+                container.addEventListener("mouseenter", () => hoverTL.play());
+                container.addEventListener("mouseleave", () => hoverTL.reverse());
             });
+
         }, sectionRef);
 
         return () => ctx.revert();
@@ -152,57 +231,70 @@ export default function AboutSection() {
 
     return (
         <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/20 to-white/15 backdrop-blur-md"></div>
+            {/* Background with enhanced gradients */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-50/20 via-white/25 to-slate-100/20 backdrop-blur-lg"></div>
 
-            <div className="absolute inset-0 opacity-30 pointer-events-none">
-                <div className="absolute top-1/5 right-1/4 w-112 h-112 bg-green-200/10 rounded-full blur-4xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 left-1/5 w-96 h-96 bg-green-200/10 rounded-full blur-4xl animate-pulse delay-700"></div>
+            {/* Animated background elements sized to match text containers */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/15 to-blue-200/15 blur-3xl animate-pulse"></div>
+                <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/10 to-emerald-200/10 blur-3xl animate-pulse delay-700"></div>
+                <div className="absolute left-1/2 top-1/2 w-1/3 h-full bg-gradient-to-r from-blue-200/5 to-green-200/5 blur-2xl animate-pulse delay-1000 transform -translate-x-1/2 -translate-y-1/2"></div>
             </div>
 
+            {/* 3D Model */}
             <div ref={modelRef} className="absolute z-10">
                 <Canvas
                     camera={{ position: [0, 0, 9], fov: 50 }}
                     gl={{ antialias: true, powerPreference: "high-performance" }}
                 >
-                    <ambientLight intensity={0.7} />
-                    <directionalLight position={[10, 10, 5]} intensity={1.3} castShadow={false} />
-                    <Model scale={[2.3, 2.3, 2.3]} />
+                    <ambientLight intensity={0.8} />
+                    <directionalLight position={[10, 10, 5]} intensity={1.5} castShadow={false} />
+                    <pointLight position={[-10, -10, -5]} intensity={0.5} />
+                    <Model scale={[2.3, 2.3, 2.3]} onAnimationComplete={(fn) => (stopRotationRef.current = fn)} />
                     <OrbitControls enablePan={false} enableZoom={false} dampingFactor={0.1} />
                 </Canvas>
             </div>
 
+            {/* Left Text Container */}
             <div
                 ref={leftTextContainerRef}
-                className="absolute left-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 bg-gradient-to-r from-white/97 via-white/92 to-transparent backdrop-blur-lg z-20 transition-shadow duration-300"
+                className="absolute left-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 backdrop-blur-xl z-20 border-r border-white/30"
             >
-                <div ref={titleRef} className="mb-8">
-                    <h2 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-black leading-tight tracking-tight">
+                <div className="mb-8">
+                    <h2 ref={titleRef} className="text-5xl lg:text-6xl xl:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 leading-tight tracking-tight">
                         ABOUT US
                     </h2>
-                    <div className="w-32 h-1.5 bg-green-600 rounded-full mt-2"></div>
+                    <div ref={titleUnderlineRef} className="w-32 h-2 bg-gradient-to-r from-green-600 to-emerald-500 rounded-full mt-3 shadow-sm"></div>
                 </div>
-                <p ref={paragraph1Ref} className="text-lg lg:text-xl text-black leading-relaxed font-medium">
-                    <span className="font-bold text-xl lg:text-2xl">
+
+                <div className="space-y-6">
+                    <div ref={companyNameRef} className="text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-emerald-600">
                         Nav Wireless Technologies Pvt Ltd (NavTech)
-                    </span>{" "}
-                    is a global leader in wireless and information communication systems, with cutting-edge R&D facilities, a robust manufacturing base, and dedicated sales and service teams.
-                </p>
-                <div ref={buttonRef} className="pt-6">
-                    <button className="group relative bg-gradient-to-r from-green-600 to-gray-800 hover:from-green-700 hover:to-gray-900 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-400 hover:scale-110 hover:shadow-2xl hover:shadow-green-500/30 overflow-hidden">
-                        <span className="relative z-10 flex items-center">
+                    </div>
+
+                    <p ref={paragraph1Ref} className="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
+                        is a global leader in wireless and information communication systems, with cutting-edge R&D facilities, a robust manufacturing base, and dedicated sales and service teams.
+                    </p>
+                </div>
+
+                <div ref={buttonRef} className="pt-8">
+                    <button
+                        className="group bg-[#95c149] hover:bg-[#95c149] text-white px-12 py-5 rounded-2xl text-lg font-bold border border-green-500/20 transition-all duration-300 ease-in-out transform hover:scale-105"
+                    >
+                        <span className="flex items-center">
                             Discover Our Journey
-                            <span className="inline-block ml-3 transition-transform group-hover:translate-x-2">→</span>
+                            <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
                     </button>
                 </div>
             </div>
 
+            {/* Right Text Container */}
             <div
                 ref={rightTextContainerRef}
-                className="absolute right-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 bg-gradient-to-l from-white/97 via-white/92 to-transparent backdrop-blur-lg z-20 transition-shadow duration-300"
+                className="absolute right-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 backdrop-blur-xl z-20 border-l border-white/30"
             >
-                <p ref={paragraph2Ref} className="text-base lg:text-lg text-black leading-relaxed font-medium">
+                <p ref={paragraph2Ref} className="text-base lg:text-lg text-gray-800 leading-relaxed font-medium">
                     The company delivers a comprehensive suite of innovative solutions, including{" "}
                     <span className="font-bold">Optical Wireless Communication Systems</span>,{" "}
                     <span className="font-bold">Wireless Electricity Transmission Systems</span>,{" "}
@@ -213,3 +305,5 @@ export default function AboutSection() {
         </section>
     );
 }
+
+
