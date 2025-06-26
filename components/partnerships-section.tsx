@@ -39,15 +39,15 @@ export default function LogosSection() {
 
     const sections = [
         {
-            title: "Professional Members",
+            title: "MEMBERS",
             data: members,
         },
         {
-            title: "Research Coalition",
+            title: "RESEARCH COALITION",
             data: research,
         },
         {
-            title: "Esteemed Clients",
+            title: "ESTEEMED CLIENTS",
             data: clients,
         },
     ]
@@ -96,24 +96,6 @@ export default function LogosSection() {
                             onLeaveBack: () => gsap.to(logo, { opacity: 0, duration: 0.5 }),
                         }
                     })
-
-                    // Hover animation
-                    logo.addEventListener("mouseenter", () => {
-                        gsap.to(logo, {
-                            scale: 1.15,
-                            y: -10,
-                            duration: 0.3,
-                            ease: "power2.out",
-                        })
-                    })
-                    logo.addEventListener("mouseleave", () => {
-                        gsap.to(logo, {
-                            scale: 1,
-                            y: 0,
-                            duration: 0.3,
-                            ease: "power2.out",
-                        })
-                    })
                 })
 
                 // Entrance animation for section header
@@ -137,12 +119,16 @@ export default function LogosSection() {
     return (
         <div
             ref={containerRef}
-            className="logos-container py-16 relative overflow-hidden bg-gray-100"
+            className="logos-container py-16 relative overflow-hidden"
         >
-            {/* Subtle Background Decorations */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/10 rounded-full blur-2xl animate-float"></div>
-                <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/10 rounded-full blur-2xl animate-float delay-500"></div>
+            {/* Background with enhanced gradients */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-50/20 via-white/25 to-slate-100/20 backdrop-blur-lg"></div>
+
+            {/* Animated background elements */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/15 to-blue-200/15 blur-3xl animate-pulse"></div>
+                <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/10 to-emerald-200/10 blur-3xl animate-pulse delay-700"></div>
+                <div className="absolute left-1/2 top-1/2 w-1/3 h-full bg-gradient-to-r from-blue-200/5 to-green-200/5 blur-2xl animate-pulse delay-1000 transform -translate-x-1/2 -translate-y-1/2"></div>
             </div>
 
             <div className="relative z-10">
@@ -155,7 +141,12 @@ export default function LogosSection() {
                         <div className="max-w-7xl mx-auto">
                             {/* Section Header */}
                             <div className="section-header text-center mb-8">
-                                <h2 className="text-3xl md:text-4xl font-bold text-black">{section.title}</h2>
+                                <h2
+                                    className="text-3xl md:text-4xl font-bold text-black"
+                                    style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                                >
+                                    {section.title}
+                                </h2>
                             </div>
 
                             {/* Logos Scroller */}

@@ -35,7 +35,6 @@ export default function AboutSection() {
     const titleRef = useRef(null);
     const titleUnderlineRef = useRef(null);
     const paragraph1Ref = useRef(null);
-    const companyNameRef = useRef(null);
     const paragraph2Ref = useRef(null);
     const buttonRef = useRef(null);
     const stopRotationRef = useRef(null);
@@ -71,7 +70,7 @@ export default function AboutSection() {
             });
 
             gsap.set(rightTextContainerRef.current, {
-                x: "120%",
+                y: "120%",
                 opacity: 0,
                 rotationY: -60,
                 transformPerspective: 1200,
@@ -89,12 +88,6 @@ export default function AboutSection() {
             gsap.set(titleUnderlineRef.current, {
                 scaleX: 0,
                 transformOrigin: "left center",
-            });
-
-            gsap.set(companyNameRef.current, {
-                y: 60,
-                opacity: 0,
-                scale: 0.9,
             });
 
             gsap.set([paragraph1Ref.current, paragraph2Ref.current], {
@@ -158,13 +151,6 @@ export default function AboutSection() {
                     duration: 0.4,
                     ease: "power2.out",
                 }, 1.2)
-                .to(companyNameRef.current, {
-                    y: 0,
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.6,
-                    ease: "power2.out",
-                }, 1.4)
                 .to(paragraph1Ref.current, {
                     y: 0,
                     opacity: 1,
@@ -174,7 +160,7 @@ export default function AboutSection() {
 
             // Phase 4: Right text container entrance (50-70%)
             mainTL.to(rightTextContainerRef.current, {
-                x: "0%",
+                y: "0%",
                 opacity: 1,
                 rotationY: 0,
                 scale: 1,
@@ -204,25 +190,6 @@ export default function AboutSection() {
                     }
                 },
             }, 3.2);
-
-            // Enhanced hover effects for containers
-            const leftContainer = leftTextContainerRef.current;
-            const rightContainer = rightTextContainerRef.current;
-
-            [leftContainer, rightContainer].forEach(container => {
-                const hoverTL = gsap.timeline({ paused: true });
-
-                hoverTL.to(container, {
-                    scale: 1.02,
-                    y: -5,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                    duration: 0.3,
-                    ease: "power2.out",
-                });
-
-                container.addEventListener("mouseenter", () => hoverTL.play());
-                container.addEventListener("mouseleave", () => hoverTL.reverse());
-            });
 
         }, sectionRef);
 
@@ -255,55 +222,59 @@ export default function AboutSection() {
                 </Canvas>
             </div>
 
-            {/* Left Text Container */}
+            {/* Left Text */}
             <div
                 ref={leftTextContainerRef}
-                className="absolute left-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 backdrop-blur-xl z-20 border-r border-white/30"
+                className="absolute left-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 z-20"
             >
                 <div className="mb-8">
-                    <h2 ref={titleRef} className="text-5xl lg:text-6xl xl:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 leading-tight tracking-tight">
-                        ABOUT US
+                    <h2
+                        ref={titleRef}
+                        className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight tracking-tight"
+                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                    >
+                        ABOUT NAV
                     </h2>
-                    <div ref={titleUnderlineRef} className="w-32 h-2 bg-gradient-to-r from-green-600 to-emerald-500 rounded-full mt-3 shadow-sm"></div>
                 </div>
 
                 <div className="space-y-6">
-                    <div ref={companyNameRef} className="text-xl lg:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-emerald-600">
-                        Nav Wireless Technologies Pvt Ltd (NavTech)
-                    </div>
-
-                    <p ref={paragraph1Ref} className="text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                        is a global leader in wireless and information communication systems, with cutting-edge R&D facilities, a robust manufacturing base, and dedicated sales and service teams.
+                    <p
+                        ref={paragraph1Ref}
+                        className="text-base lg:text-lg text-gray-700 leading-relaxed font-light"
+                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                    >
+                        NavWireless Technologies Pvt Ltd (NavTech) is a global leading solutions and services provider of wireless and information communications systems with its own R&D facilities, manufacturing base, and sales and service teams.
                     </p>
                 </div>
 
-                <div ref={buttonRef} className="pt-8">
+            </div>
+
+
+            {/* Right Text and Button */}
+            <div
+                ref={rightTextContainerRef}
+                className="absolute right-0 bottom-0 w-1/3 h-auto flex flex-col justify-start px-8 lg:px-16 z-20 pb-8"
+            >
+                <p
+                    ref={paragraph2Ref}
+                    className="text-base lg:text-lg text-gray-700 leading-relaxed font-light"
+                    style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                >
+                    The company offers a comprehensive suite of products and services including Optical Wireless Communication Systems, Wireless Electricity Transmission Systems, Electronic Tattoos for Healthcare Monitoring, Wireless Enhancement Products, and subsystems and customers.
+                </p>
+                <div ref={buttonRef} className="pt-4">
                     <button
-                        className="group bg-[#95c149] hover:bg-[#95c149] text-white px-12 py-5 rounded-2xl text-lg font-bold border border-green-500/20 transition-all duration-300 ease-in-out transform hover:scale-105"
+                        className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
+                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                     >
-                        <span className="flex items-center">
-                            Discover Our Journey
-                            <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                        </span>
+      <span className="flex items-center">
+        Discover Our Journey
+        <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-1">→</span>
+      </span>
                     </button>
                 </div>
             </div>
 
-            {/* Right Text Container */}
-            <div
-                ref={rightTextContainerRef}
-                className="absolute right-0 top-0 w-1/3 h-full flex flex-col justify-center px-8 lg:px-16 backdrop-blur-xl z-20 border-l border-white/30"
-            >
-                <p ref={paragraph2Ref} className="text-base lg:text-lg text-gray-800 leading-relaxed font-medium">
-                    The company delivers a comprehensive suite of innovative solutions, including{" "}
-                    <span className="font-bold">Optical Wireless Communication Systems</span>,{" "}
-                    <span className="font-bold">Wireless Electricity Transmission Systems</span>,{" "}
-                    <span className="font-bold">Electronic Tattoos for Healthcare Monitoring</span>,{" "}
-                    <span className="font-bold">Wireless Enhancement Products</span>, and advanced subsystems for global customers.
-                </p>
-            </div>
         </section>
     );
 }
-
-

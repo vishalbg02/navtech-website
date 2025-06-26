@@ -95,29 +95,31 @@ export default function TextSection() {
         </div>
 
         <div ref={textRef} className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          {/* Main heading */}
-          <div className="text-element mb-6">
-              <h1
-                  className="text-[7.8rem] font-medium text-gray-900 mb-6 leading-tight tracking-tight"
-                  style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-              >
-                  NAVTECH
-              </h1>
+            <div ref={textRef} className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+                {/* Main heading */}
+                <div className="text-element">
+                    <h1
+                        className="text-[7.5rem] font-medium text-gray-900 leading-tight tracking-tight"
+                        style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                    >
+                        NAVTECH
+                    </h1>
+                </div>
 
-          </div>
+                {/* Subtitle */}
+                <div className="text-element mb-11">
+                    <h2
+                        className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 leading-relaxed"
+                        style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+                    >
+                        Innovating with LiFi Wireless Technology
+                    </h2>
+                </div>
+            </div>
 
-          {/* Subtitle */}
-          <div className="text-element mb-8">
-            <h2
-                className="text-xl md:text-2xl lg:text-3xl font-light text-gray-900 mb-8 leading-relaxed"
-                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-            >
-              Innovating with LiFi Wireless Technology
-            </h2>
-          </div>
 
 
-          <div className="text-element mb-12">
+            <div className="text-element mb-12">
               <p
                   className="text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] font-light text-gray-900 max-w-3xl mx-auto leading-relaxed mb-12"
                   style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
