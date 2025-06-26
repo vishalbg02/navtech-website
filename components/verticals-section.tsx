@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export default function VerticalsSection() {
@@ -22,6 +21,8 @@ export default function VerticalsSection() {
                 const text = section.querySelector(".vertical-text")
                 const image = section.querySelector(".vertical-image")
                 const button = section.querySelector(".learn-more-btn")
+
+                if (!button) return // Skip if button is not found
 
                 // Text slide-in and fade
                 gsap.fromTo(
@@ -72,22 +73,32 @@ export default function VerticalsSection() {
                 })
 
                 // Button hover animation
-                button.addEventListener("mouseenter", () => {
+                const onMouseEnter = () => {
                     gsap.to(button, {
                         scale: 1.05,
                         boxShadow: "0 6px 15px rgba(0,128,0,0.3)",
                         duration: 0.3,
                         ease: "power2.out",
                     })
-                })
-                button.addEventListener("mouseleave", () => {
+                }
+
+                const onMouseLeave = () => {
                     gsap.to(button, {
                         scale: 1,
                         boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
                         duration: 0.3,
                         ease: "power2.out",
                     })
-                })
+                }
+
+                button.addEventListener("mouseenter", onMouseEnter)
+                button.addEventListener("mouseleave", onMouseLeave)
+
+                // Cleanup event listeners
+                return () => {
+                    button.removeEventListener("mouseenter", onMouseEnter)
+                    button.removeEventListener("mouseleave", onMouseLeave)
+                }
             })
         }, containerRef)
 
@@ -95,7 +106,6 @@ export default function VerticalsSection() {
     }, [])
 
     const handleLearnMore = (title) => {
-        // Convert title to a URL-friendly slug (e.g., "Government" -> "government")
         const slug = title.toLowerCase().replace(/ /g, "-")
         router.push(`/verticals/${slug}`)
     }
@@ -308,7 +318,7 @@ export default function VerticalsSection() {
                                     <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">{vertical.subtitle}</p>
                                     <button
                                         onClick={() => handleLearnMore(vertical.title)}
-                                        className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
+                                        className="learn-more-btn group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
                                     >
                                         <span>Learn More</span>
                                     </button>
