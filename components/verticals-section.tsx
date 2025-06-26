@@ -308,10 +308,9 @@ export default function VerticalsSection() {
                                     <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto md:mx-0">{vertical.subtitle}</p>
                                     <button
                                         onClick={() => handleLearnMore(vertical.title)}
-                                        className="learn-more-btn inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 to-gray-800 text-white rounded-lg font-semibold text-base shadow-md transition-all duration-300"
+                                        className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
                                     >
                                         <span>Learn More</span>
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                                     </button>
                                 </div>
                                 <div className="vertical-image w-full md:w-1/2 relative h-96 md:h-[28rem] rounded-xl overflow-hidden">
