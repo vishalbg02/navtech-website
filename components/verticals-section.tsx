@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
@@ -269,20 +269,30 @@ export default function VerticalsSection() {
     return (
         <section
             ref={containerRef}
-            className="relative py-24 bg-gray-100"
+            className="relative py-24 min-h-screen flex flex-col"
         >
-            <div className="container mx-auto px-6 mb-16">
+            {/* Background with enhanced gradients */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-50/20 via-white/25 to-slate-100/20 backdrop-blur-lg"></div>
+
+            {/* Animated background elements */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute left-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/15 to-blue-200/15 blur-3xl animate-pulse"></div>
+                <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-r from-green-200/10 to-emerald-200/10 blur-3xl animate-pulse delay-700"></div>
+                <div className="absolute left-1/2 top-1/2 w-1/3 h-full bg-gradient-to-r from-blue-200/5 to-green-200/5 blur-2xl animate-pulse delay-1000 transform -translate-x-1/2 -translate-y-1/2"></div>
+            </div>
+
+            <div className="relative z-10 container mx-auto px-6 mb-16">
                 <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-gray-800">
+                        <span className="text-black">
                             Verticals
                         </span>
                     </h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-green-600 to-gray-800 rounded-full mx-auto mt-6"></div>
+                    <div className="w-20 h-1 bg-gradient-to-r from-gray-800 to-gray-800 rounded-full mx-auto mt-6"></div>
                 </div>
             </div>
 
-            <div className="space-y-32">
+            <div className="relative z-10 space-y-32">
                 {verticals.map((vertical, index) => {
                     const isEven = index % 2 === 0
 
@@ -317,12 +327,6 @@ export default function VerticalsSection() {
                         </div>
                     )
                 })}
-            </div>
-
-            {/* Subtle Background Decorations */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/5 left-1/5 w-48 h-48 bg-green-200/5 rounded-full blur-2xl animate-float"></div>
-                <div className="absolute bottom-1/5 right-1/5 w-64 h-64 bg-gray-200/5 rounded-full blur-2xl animate-float delay-500"></div>
             </div>
 
             {/* Custom CSS for Animations and Styling */}
