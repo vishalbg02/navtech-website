@@ -5,30 +5,52 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Canvas } from "@react-three/fiber"
 import { useGLTF, OrbitControls, Environment, Html, ContactShadows, Center, Bounds } from "@react-three/drei"
+import * as THREE from "three"
 
-// Aggressive preloading with priority
-useGLTF.preload("/glb/opticspectra.glb", { priority: 1 })
-useGLTF.preload("/glb/navocular.glb", { priority: 2 })
-useGLTF.preload("/glb/navocular1.glb", { priority: 2 })
+// Model paths for preloading
+const MODEL_PATHS = {
+  opticspectra: "/glb/opticspectra.glb",
+  navocular: "/glb/navocular.glb",
+  navocular1: "/glb/navocular1.glb"
+}
+
+// Preload models inside a component to avoid URL errors
+const PreloadModels = () => {
+    useEffect(() => {
+        // Preload models with priority
+        useGLTF.preload(MODEL_PATHS.opticspectra)
+        useGLTF.preload(MODEL_PATHS.navocular)
+        useGLTF.preload(MODEL_PATHS.navocular1)
+    }, [])
+    
+    return null
+}
 
 // Memoized 3D Model Component with maximum optimization
 const Model = memo(({ url, ...props }: { url: string } & any) => {
-    const { scene } = useGLTF(url, true, true) // Enable draco compression and skip non-visible meshes
+    const gltf = useGLTF(url, true, true) // Enable draco compression and skip non-visible meshes
+    // Ensure we're working with a GLTF object that has a scene property
+    const scene = (Array.isArray(gltf) ? gltf[0] : gltf).scene
 
     // Memoize the cloned scene with aggressive optimization
     const clonedScene = useMemo(() => {
         const clone = scene.clone()
-        clone.traverse((child: any) => {
-            if (child.isMesh) {
-                child.castShadow = true
-                child.receiveShadow = true
-                if (child.material) {
-                    child.material.needsUpdate = false
+        clone.traverse((child: THREE.Object3D) => {
+            if ((child as THREE.Mesh).isMesh) {
+                const mesh = child as THREE.Mesh
+                mesh.castShadow = true
+                mesh.receiveShadow = true
+                if (mesh.material) {
+                    const material = mesh.material as THREE.Material
+                    material.needsUpdate = false
                     // Reduce texture memory
-                    if (child.material.map) {
-                        child.material.map.minFilter = 1003 // LinearFilter
-                        child.material.map.magFilter = 1003 // LinearFilter
-                        child.material.map.anisotropy = 1 // Minimum anisotropy
+                    if ((material as THREE.MeshStandardMaterial).map) {
+                        const map = (material as THREE.MeshStandardMaterial).map
+                        if (map) {
+                            map.minFilter = THREE.LinearFilter
+                            map.magFilter = THREE.LinearFilter
+                            map.anisotropy = 1 // Minimum anisotropy
+                        }
                     }
                 }
             }
@@ -38,8 +60,8 @@ const Model = memo(({ url, ...props }: { url: string } & any) => {
 
     return (
         <Center>
-            <Bounds fit clip observe margin={1.2}> {/* Increased margin for larger models */}
-                <primitive object={clonedScene} {...props} scale={[2.5, 2.5, 2.5]} />
+            <Bounds fit clip observe margin={1.5}> {/* Increased margin for larger models */}
+                <primitive object={clonedScene} {...props} scale={[3.5, 3.5, 3.5]} />
             </Bounds>
         </Center>
     )
@@ -68,7 +90,7 @@ const DualModel = memo(
             <Center>
                 <Bounds fit clip observe margin={1.2}>
                     <group>
-                        {urls.map((url, index) => (
+                        {urls.map((url: string, index: number) => (
                             <group key={url} visible={index === currentModelIndex} {...props}>
                                 <Model url={url} />
                             </group>
@@ -193,6 +215,14 @@ export default function HorizontalSection() {
     const headerRef = useRef(null)
     const sectionsRef = useRef<HTMLDivElement[]>([])
     const [currentNavOcularModel, setCurrentNavOcularModel] = useState(0)
+    
+    // Preload models to avoid URL errors
+    useEffect(() => {
+        // Preload models with priority
+        useGLTF.preload(MODEL_PATHS.opticspectra)
+        useGLTF.preload(MODEL_PATHS.navocular)
+        useGLTF.preload(MODEL_PATHS.navocular1)
+    }, [])
 
     // Optimize GSAP animations with useCallback
     const animateSections = useCallback(() => {
@@ -243,6 +273,11 @@ export default function HorizontalSection() {
                 const horizontalTween = gsap.to(sections, {
                     xPercent: -100 * (sections.length - 1),
                     ease: "none",
+                    onComplete: () => {
+                        // Add horizontalScrollComplete property to window object
+                        (window as any).horizontalScrollComplete = true
+                        ScrollTrigger.refresh()
+                    },
                     scrollTrigger: {
                         trigger: containerRef.current,
                         pin: true,
@@ -257,11 +292,7 @@ export default function HorizontalSection() {
                         end: () => `+=${scrollDistance}`,
                         refreshPriority: 10,
                         id: "horizontal-scroll",
-                        fastRefresh: true, // Optimize ScrollTrigger refresh
-                        onComplete: () => {
-                            window.horizontalScrollComplete = true
-                            ScrollTrigger.refresh()
-                        },
+                        // Remove fastRefresh property as it's not recognized
                     },
                 })
 
@@ -286,7 +317,7 @@ export default function HorizontalSection() {
                                     start: "left center",
                                     end: "center center",
                                     toggleActions: "play none none reverse",
-                                    fastRefresh: true,
+                                    // Remove fastRefresh property as it's not recognized
                                 },
                             },
                         )
@@ -308,7 +339,7 @@ export default function HorizontalSection() {
                                     start: "left center",
                                     end: "center center",
                                     toggleActions: "play none none reverse",
-                                    fastRefresh: true,
+                                    // Remove fastRefresh property as it's not recognized
                                 },
                             },
                         )
@@ -330,7 +361,7 @@ export default function HorizontalSection() {
                                     start: "left center",
                                     end: "center center",
                                     toggleActions: "play none none reverse",
-                                    fastRefresh: true,
+                                    // Remove fastRefresh property as it's not recognized
                                 },
                             },
                         )
@@ -353,7 +384,7 @@ export default function HorizontalSection() {
                 subtitle: "Adaptive FSO Connectivity for Unstoppable Networks",
                 description:
                     "Nav Wireless Technologies delivers adaptive Free Space Optics (FSO) solutions that dynamically adjust bandwidth based on environmental conditions like fog, rain, or interference. Ideal for mission-critical applications, these intelligent links ensure high availability and performance for smart cities, defense, disaster recovery, and enterprise backhaul.",
-                model: "/glb/opticspectra.glb",
+                model: MODEL_PATHS.opticspectra,
                 isDual: false,
             },
             {
@@ -361,7 +392,7 @@ export default function HorizontalSection() {
                 subtitle: "Infrared Intelligence for Interference-Free Connectivity",
                 description:
                     "Nav Ocular uses invisible infrared (IR) light via Visible Light Communication (VLC) to provide secure, high-speed wireless communication without relying on RF spectrum. Its mesh network enables seamless data routing, self-healing, and scalability. Ideal for smart buildings, factories, hospitals, and EMI-sensitive areas, Nav Ocular ensures low-latency, interference-free, and secure connectivity for next-gen wireless infrastructure.",
-                model: ["/glb/navocular.glb", "/glb/navocular1.glb"],
+                model: [MODEL_PATHS.navocular, MODEL_PATHS.navocular1],
                 isDual: true,
             },
         ],
