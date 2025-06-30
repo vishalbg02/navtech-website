@@ -2,114 +2,25 @@
 
 import type React from "react"
 
-import { useEffect, useRef, useState } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import {
-    ArrowRight,
-    Users,
-    Heart,
-    Coffee,
-    Award,
-    Upload,
-    Facebook,
-    Twitter,
-    Linkedin,
-    Instagram,
-    Youtube,
-    Send,
-} from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { useRef, useState } from "react"
+import { ChevronDown, Upload, Send, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { Card, CardContent } from "@/components/ui/card"
 import Navbar from "@/components/navbar"
 
 export default function CareersPage() {
-    const containerRef = useRef(null)
-    const heroRef = useRef(null)
-    const sectionsRef = useRef<HTMLDivElement[]>([])
     const fileInputRef = useRef<HTMLInputElement>(null)
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
     const [formData, setFormData] = useState({
         fullName: "",
         designation: "",
         email: "",
+        phone: "",
         message: "",
     })
-
-    useEffect(() => {
-        if (typeof window === "undefined") return
-
-        gsap.registerPlugin(ScrollTrigger)
-
-        const ctx = gsap.context(() => {
-            // Hero animations
-            const heroTl = gsap.timeline({ delay: 0.5 })
-
-            heroTl
-                .fromTo(".hero-title", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" })
-                .fromTo(".hero-subtitle", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.8")
-                .fromTo(
-                    ".hero-description",
-                    { y: 30, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-                    "-=0.6",
-                )
-
-            // Section animations
-            sectionsRef.current.forEach((section, index) => {
-                if (!section) return
-
-                gsap.fromTo(
-                    section.querySelectorAll(".animate-in"),
-                    { y: 60, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse",
-                        },
-                    },
-                )
-            })
-
-            // Floating animations
-            gsap.to(".floating-element", {
-                y: "+=15",
-                duration: 4,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1,
-                stagger: 0.3,
-            })
-
-            // Social icons animation
-            gsap.fromTo(
-                ".social-icon",
-                { scale: 0, rotation: -180 },
-                {
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    ease: "back.out(1.7)",
-                    scrollTrigger: {
-                        trigger: ".social-section",
-                        start: "top 80%",
-                    },
-                },
-            )
-        }, containerRef)
-
-        return () => ctx.revert()
-    }, [])
 
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
@@ -140,45 +51,19 @@ export default function CareersPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        // Handle form submission here
         console.log("Form submitted:", { ...formData, resume: selectedFile })
     }
-
-    const benefits = [
-        {
-            icon: <Heart className="w-8 h-8" />,
-            title: "Work-Life Balance",
-            description: "We believe in maintaining a healthy balance between professional and personal life.",
-        },
-        {
-            icon: <Coffee className="w-8 h-8" />,
-            title: "Flexible Environment",
-            description: "Enjoy a relaxed work environment that promotes creativity and innovation.",
-        },
-        {
-            icon: <Award className="w-8 h-8" />,
-            title: "Growth Opportunities",
-            description: "Continuous learning and career advancement opportunities for all team members.",
-        },
-        {
-            icon: <Users className="w-8 h-8" />,
-            title: "Amazing Team",
-            description: "Work alongside passionate professionals who share your vision for innovation.",
-        },
-    ]
 
     const socialLinks = [
         { icon: <Facebook className="w-6 h-6" />, name: "Facebook", href: "#" },
         { icon: <Twitter className="w-6 h-6" />, name: "Twitter", href: "#" },
         { icon: <Linkedin className="w-6 h-6" />, name: "LinkedIn", href: "#" },
         { icon: <Instagram className="w-6 h-6" />, name: "Instagram", href: "#" },
-        { icon: <Youtube className="w-6 h-6" />, name: "YouTube", href: "#" },
     ]
 
     return (
         <div
-            ref={containerRef}
-            className="min-h-screen relative"
+            className="relative min-h-screen"
             style={{
                 backgroundImage: "url('/images/nav-bg.png')",
                 backgroundSize: "cover",
@@ -187,235 +72,209 @@ export default function CareersPage() {
                 backgroundAttachment: "fixed",
             }}
         >
-            <Navbar />
-
             {/* Background Effects */}
             <div className="fixed inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-gray-900/10 to-black/20"></div>
-                <div className="floating-element absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/15 rounded-full blur-3xl"></div>
-                <div className="floating-element absolute bottom-1/3 left-1/4 w-80 h-80 bg-gray-500/15 rounded-full blur-3xl"></div>
-                <div className="floating-element absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-700/10 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-purple-900/5 to-black/15"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-900/3 to-transparent"></div>
+
+                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/8 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-400/8 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/3 rounded-full blur-3xl"></div>
             </div>
 
-            <main className="relative z-10">
-                {/* Hero Section */}
-                <section ref={heroRef} className="pt-32 pb-20">
-                    <div className="container mx-auto px-8">
-                        <div className="text-center mb-16">
-                            <h1 className="hero-title text-6xl lg:text-8xl font-bold text-green-400 mb-6">Join Our Team</h1>
-                            <h2 className="hero-subtitle text-3xl lg:text-4xl font-semibold text-green-100 mb-8">
-                                Shape the Future of Optical Wireless Communication
+            <div className="relative z-10">
+                <Navbar />
+
+                {/* Hero Section - Full Page */}
+                <section className="relative h-screen flex items-center justify-center">
+                    {/* Background Image */}
+                    <div className="absolute inset-0 z-0">
+                        <Image src="/images/careers_bg.png" alt="Careers Background" fill className="object-cover" priority />
+                        <div className="absolute inset-0 bg-white/20"></div>
+                    </div>
+
+                    <div className="container mx-auto px-8 relative z-10">
+                        <div className="max-w-4xl">
+                            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-black">CAREERS</h1>
+                        </div>
+                    </div>
+
+                    {/* Scroll indicator */}
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                        <ChevronDown className="w-8 h-8 text-black animate-bounce mx-auto" />
+                    </div>
+                </section>
+
+                {/* Main Content Section */}
+                <section className="py-16 px-8">
+                    <div className="container mx-auto max-w-6xl">
+                        {/* Top Section - Social Media and Life at Navtech */}
+                        <div className="grid md:grid-cols-2 gap-12 mb-16">
+                            {/* Social Media Section */}
+                            <Card
+                                className="border-white/30 shadow-lg h-fit"
+                                style={{
+                                    backgroundImage: "url('/images/nav-bg.png')",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
+                                }}
+                            >
+                                <div className="absolute inset-0 bg-white/60 rounded-lg"></div>
+                                <CardContent className="p-8 relative z-10">
+                                    <h3 className="text-2xl font-bold text-black mb-4">Let's stay connected!</h3>
+                                    <p className="text-black mb-6">Follow our social media channels and have a conversation with us.</p>
+                                    <div className="flex space-x-4">
+                                        {socialLinks.map((social, index) => (
+                                            <a
+                                                key={index}
+                                                href={social.href}
+                                                className="bg-green-500 hover:bg-green-600 p-3 rounded-full transition-colors duration-300"
+                                            >
+                                                <div className="text-white">{social.icon}</div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {/* Life at Navtech Section */}
+                            <Card
+                                className="border-white/30 shadow-lg h-fit"
+                                style={{
+                                    backgroundImage: "url('/images/nav-bg.png')",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
+                                }}
+                            >
+                                <div className="absolute inset-0 bg-white/60 rounded-lg"></div>
+                                <CardContent className="p-8 relative z-10">
+                                    <h3 className="text-2xl font-bold text-black mb-2">LIFE AT</h3>
+                                    <h3 className="text-2xl font-bold text-green-600 mb-4">NAVTECH</h3>
+                                    <p className="text-black">
+                                        Here at Navtech, we aim to deliver efficiency in the given frame with an easy mind. Here we have
+                                        routines that allow us to achieve work-life balance apart from peace of mind. Here we strive to
+                                        achieve a balanced life.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </div>
+
+                        {/* Application Form Section */}
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-4">
+                                Ready to be a part of our amazing team?
                             </h2>
-                            <p className="hero-description text-xl text-green-200 max-w-4xl mx-auto leading-relaxed">
-                                Be part of a revolutionary team that's transforming how the world connects. At Nav Wireless
-                                Technologies, we're not just building products – we're creating the future of communication technology.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Life at Navtech Section */}
-                <section
-                    ref={(el) => {
-                        if (el) sectionsRef.current[0] = el
-                    }}
-                    className="py-20 bg-black/20 backdrop-blur-sm"
-                >
-                    <div className="container mx-auto px-8">
-                        <div className="max-w-4xl mx-auto text-center mb-16">
-                            <h2 className="animate-in text-4xl lg:text-5xl font-bold text-green-300 mb-8">Life at Navtech</h2>
-                            <p className="animate-in text-xl text-green-100 leading-relaxed mb-8">
-                                Here at Navtech, we aim to deliver efficiency in the given time frame with an easy mind. Here we have
-                                routines that allow us to achieve work-life balance apart from peace of mind. Here we strive to achieve
-                                a balanced life.
-                            </p>
+                            <p className="text-xl text-black">Drop your resume here!</p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                            {benefits.map((benefit, index) => (
-                                <Card
-                                    key={index}
-                                    className="animate-in bg-black/70 backdrop-blur-xl border-green-500/30 hover:border-green-400 transition-all duration-300 hover:bg-black/90"
-                                >
-                                    <CardContent className="p-8 text-center">
-                                        <div className="text-green-400 mb-4">{benefit.icon}</div>
-                                        <h3 className="text-lg font-bold text-green-200 mb-4">{benefit.title}</h3>
-                                        <p className="text-green-100 text-sm">{benefit.description}</p>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Application Form Section */}
-                <section
-                    ref={(el) => {
-                        if (el) sectionsRef.current[1] = el
-                    }}
-                    className="py-20"
-                >
-                    <div className="container mx-auto px-8">
-                        <div className="max-w-4xl mx-auto">
-                            <div className="text-center mb-12">
-                                <h2 className="animate-in text-4xl lg:text-5xl font-bold text-green-300 mb-6">
-                                    Ready to be a part of our amazing team?
-                                </h2>
-                                <p className="animate-in text-xl text-green-100">Drop your resume here!</p>
-                            </div>
-
-                            <Card className="animate-in bg-black/70 backdrop-blur-xl border-green-500/30">
-                                <CardContent className="p-8">
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div className="grid md:grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <Label htmlFor="fullName" className="text-green-200">
-                                                    Your Full Name
-                                                </Label>
-                                                <Input
-                                                    id="fullName"
-                                                    name="fullName"
-                                                    value={formData.fullName}
-                                                    onChange={handleInputChange}
-                                                    className="bg-black/50 border-green-500/50 text-green-100 placeholder:text-green-300/50 focus:border-green-400"
-                                                    placeholder="Enter your full name"
-                                                    required
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="designation" className="text-green-200">
-                                                    Your Designation
-                                                </Label>
-                                                <Input
-                                                    id="designation"
-                                                    name="designation"
-                                                    value={formData.designation}
-                                                    onChange={handleInputChange}
-                                                    className="bg-black/50 border-green-500/50 text-green-100 placeholder:text-green-300/50 focus:border-green-400"
-                                                    placeholder="Enter your desired position"
-                                                    required
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <Label htmlFor="email" className="text-green-200">
-                                                Email Address
-                                            </Label>
+                        {/* Application Form Card */}
+                        <Card
+                            className="border-white/30 shadow-lg"
+                            style={{
+                                backgroundImage: "url('/images/nav-bg.png')",
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                backgroundRepeat: "no-repeat",
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-white/60 rounded-lg"></div>
+                            <CardContent className="p-8 relative z-10">
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div>
                                             <Input
-                                                id="email"
+                                                name="fullName"
+                                                value={formData.fullName}
+                                                onChange={handleInputChange}
+                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                placeholder="Your Full Name"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <Input
                                                 name="email"
                                                 type="email"
                                                 value={formData.email}
                                                 onChange={handleInputChange}
-                                                className="bg-black/50 border-green-500/50 text-green-100 placeholder:text-green-300/50 focus:border-green-400"
-                                                placeholder="Enter your email address"
+                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                placeholder="Email Address"
                                                 required
                                             />
                                         </div>
-
-                                        <div className="space-y-2">
-                                            <Label htmlFor="message" className="text-green-200">
-                                                Your Message
-                                            </Label>
-                                            <Textarea
-                                                id="message"
-                                                name="message"
-                                                value={formData.message}
-                                                onChange={handleInputChange}
-                                                className="bg-black/50 border-green-500/50 text-green-100 placeholder:text-green-300/50 focus:border-green-400 min-h-[120px]"
-                                                placeholder="Tell us about yourself and why you want to join our team"
-                                                required
-                                            />
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <Label className="text-green-200">Drop your resume here</Label>
-                                            <div
-                                                onDrop={handleDrop}
-                                                onDragOver={handleDragOver}
-                                                className="border-2 border-dashed border-green-500/50 rounded-lg p-8 text-center hover:border-green-400 transition-colors duration-300 cursor-pointer"
-                                                onClick={() => fileInputRef.current?.click()}
-                                            >
-                                                <Upload className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                                                <p className="text-green-100 mb-2">
-                                                    {selectedFile ? selectedFile.name : "Click to upload or drag and drop your resume"}
-                                                </p>
-                                                <p className="text-green-200 text-sm">PDF, DOC, DOCX (Max 5MB)</p>
-                                                <input
-                                                    ref={fileInputRef}
-                                                    type="file"
-                                                    accept=".pdf,.doc,.docx"
-                                                    onChange={handleFileSelect}
-                                                    className="hidden"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <Button type="submit" size="lg" className="w-full bg-green-600 hover:bg-green-700 text-black">
-                                            Send Message <Send className="w-5 h-5 ml-2" />
-                                        </Button>
-                                    </form>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Social Media Section */}
-                <section
-                    ref={(el) => {
-                        if (el) sectionsRef.current[2] = el
-                    }}
-                    className="py-20 bg-black/20 backdrop-blur-sm social-section"
-                >
-                    <div className="container mx-auto px-8">
-                        <div className="text-center mb-12">
-                            <h2 className="animate-in text-4xl lg:text-5xl font-bold text-green-300 mb-6">Let's stay connected!</h2>
-                            <p className="animate-in text-xl text-green-100 mb-8">
-                                Follow our social media channels and have a conversation with us.
-                            </p>
-                        </div>
-
-                        <div className="flex justify-center space-x-6">
-                            {socialLinks.map((social, index) => (
-                                <a
-                                    key={index}
-                                    href={social.href}
-                                    className="social-icon bg-black/70 backdrop-blur-xl border border-green-500/30 hover:border-green-400 p-4 rounded-full transition-all duration-300 hover:bg-black/90 group"
-                                >
-                                    <div className="text-green-400 group-hover:text-green-300 transition-colors duration-300">
-                                        {social.icon}
                                     </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </section>
 
-                {/* CTA Section */}
-                <section className="py-20">
-                    <div className="container mx-auto px-8 text-center">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-green-300 mb-8">Ready to Innovate with Us?</h2>
-                        <p className="text-xl text-green-100 mb-12 max-w-3xl mx-auto">
-                            Join a team that's passionate about pushing the boundaries of optical wireless communication technology.
-                            Your next career adventure starts here.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-black px-8 py-4">
-                                Apply Now <ArrowRight className="w-5 h-5 ml-2" />
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="bg-black text-green-200 border-green-500/50 hover:bg-gray-800 px-8 py-4"
-                            >
-                                Contact HR Team
-                            </Button>
-                        </div>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                            <Input
+                                                name="designation"
+                                                value={formData.designation}
+                                                onChange={handleInputChange}
+                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                placeholder="Your Designation"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <Input
+                                                name="phone"
+                                                type="tel"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
+                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                placeholder="Phone"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <Textarea
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleInputChange}
+                                            className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 min-h-[120px]"
+                                            placeholder="Your Message"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <div
+                                            onDrop={handleDrop}
+                                            onDragOver={handleDragOver}
+                                            className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-500 transition-colors duration-300 cursor-pointer bg-white/90"
+                                            onClick={() => fileInputRef.current?.click()}
+                                        >
+                                            <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                                            <p className="text-gray-600 mb-1">{selectedFile ? selectedFile.name : "No File Chosen"}</p>
+                                            <p className="text-gray-500 text-sm">Drop your resume here</p>
+                                            <input
+                                                ref={fileInputRef}
+                                                type="file"
+                                                accept=".pdf,.doc,.docx"
+                                                onChange={handleFileSelect}
+                                                className="hidden"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <Button
+                                            type="submit"
+                                            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium"
+                                        >
+                                            Send Message <Send className="w-4 h-4 ml-2" />
+                                        </Button>
+                                    </div>
+                                </form>
+                            </CardContent>
+                        </Card>
                     </div>
                 </section>
-            </main>
+            </div>
         </div>
     )
 }
