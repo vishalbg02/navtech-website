@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
-import Navbar from "@/components/navbar"
 
 export default function ResearchPage() {
     const containerRef = useRef(null)
@@ -11,14 +10,14 @@ export default function ResearchPage() {
 
     const researchAreas = [
         {
-            id: "owc",
+            id: "OWC - Optical Wireless Communications",
             title: "OWC - Optical Wireless Communications",
             subtitle: "LiFi | FSO with Integrated AI & Machine Learning",
             description:
                 "Nav Wireless Technologies is advancing LiFi and Free Space Optics (FSO) by integrating Artificial Intelligence (AI) and Machine Learning (ML) to create smarter, adaptive optical communication systems. These AI-driven solutions dynamically optimize network performance, predict link disruptions, and enhance security through real-time data analysis.",
             secondaryDescription:
                 "Ideal for defence, autonomous systems, smart infrastructure, and high-reliability environments, this next-gen approach ensures resilient, self-optimizing, and secure optical wireless connectivity—even in complex or rapidly changing conditions.",
-            image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
+            image: "/images/res2.jpg",
         },
         {
             id: "qkd",
@@ -28,17 +27,17 @@ export default function ResearchPage() {
                 "QKD-Enabled Optical Wireless Systems combine the speed and flexibility of LiFi and FSO with the unbreakable security of Quantum Key Distribution (QKD). This revolutionary approach ensures that any attempt to intercept or eavesdrop on communications is immediately detected.",
             secondaryDescription:
                 "Perfect for critical infrastructure, defence networks, financial systems, and strategic communications where absolute security is paramount. These systems provide quantum-level protection for the most sensitive data transmissions.",
-            image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+            image: "/images/res3.jpg",
         },
         {
-            id: "owp",
+            id: "OWP - Optical Wireless Power",
             title: "OWP - Optical Wireless Power",
             subtitle: "Wireless Electricity Transmission",
             description:
                 "Optical Wireless Power enables the wireless delivery of energy using focused beams of light, such as lasers or LEDs, to power electronic devices at a distance. This technology eliminates the need for physical cables and enables power transmission in challenging environments.",
             secondaryDescription:
                 "Applications include powering IoT sensors, extending drone flight times, charging medical implants safely, and providing electricity to remote locations where traditional power infrastructure is impractical or impossible.",
-            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+            image: "/images/res4.jpg",
         },
         {
             id: "pof",
@@ -48,27 +47,27 @@ export default function ResearchPage() {
                 "Advanced research and development of Power over Fiber (PoF) systems—enabling the simultaneous transmission of optical power and data over optical fiber. This technology provides electrical isolation and immunity to electromagnetic interference.",
             secondaryDescription:
                 "Ideal for hazardous environments, industrial applications, and situations requiring complete electrical isolation. PoF systems are explosion-proof and provide reliable power and data transmission in the most demanding conditions.",
-            image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
+            image: "/images/res5.jpg",
         },
         {
-            id: "space",
+            id: "Space Communication",
             title: "Space Communication",
             subtitle: "Laser Communication for Space",
             description:
                 "Advanced laser communication systems for space applications enable high-bandwidth, secure data transmission between satellites, ground stations, and space platforms. These systems provide significantly higher data rates than traditional radio frequency communications.",
             secondaryDescription:
                 "Supporting satellite communications, deep space missions, ground-to-space links, and secure space communications. Our laser communication systems enable the next generation of space exploration and satellite networks.",
-            image: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800&h=600&fit=crop",
+            image: "/images/res6.jpg",
         },
         {
-            id: "ppic",
+            id: "Semiconductor",
             title: "Semiconductor Programmable Photonic Integrated Circuit",
             subtitle: "Next-Gen Chip-Level Optics",
             description:
                 "Programmable Photonic Integrated Circuits (PPICs) leverage semiconductor materials to enable ultra-fast, low-power data transmission at the chip level. These circuits represent the future of high-speed computing and communications.",
             secondaryDescription:
                 "Applications span data centers, IoT devices, 6G networks, and edge computing platforms. PPICs offer unprecedented speed and efficiency for next-generation digital infrastructure and distributed computing systems.",
-            image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop",
+            image: "/images/res7.jpg",
         },
         {
             id: "pat",
@@ -78,7 +77,7 @@ export default function ResearchPage() {
                 "Advanced Pointing, Acquisition, and Tracking (PAT) systems ensure stable and accurate alignment in Free Space Optical (FSO) and laser communication links. These systems provide real-time feedback and intelligent control for optimal performance.",
             secondaryDescription:
                 "Featuring microsecond response times, precision beam steering, AI-powered tracking, and motion compensation capabilities. PAT systems enable reliable optical communications even in challenging environmental conditions.",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop",
+            image: "/images/res8.jpg",
         },
     ]
 
@@ -86,46 +85,16 @@ export default function ResearchPage() {
         <div
             className="relative min-h-screen"
             style={{
-                backgroundImage: "url('/images/nav-bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
+                backgroundColor: "white",
             }}
         >
-            {/* Enhanced Background Effects - same as Home page */}
-            <div className="fixed inset-0 z-0">
-                {/* Animated gradient overlays */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-purple-900/5 to-black/15"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-900/3 to-transparent"></div>
-
-                {/* Dynamic floating elements */}
-                <div className="floating-element absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/8 rounded-full blur-3xl"></div>
-                <div className="floating-element absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-400/8 rounded-full blur-3xl"></div>
-                <div className="floating-element absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/3 rounded-full blur-3xl"></div>
-
-                {/* Subtle particle system */}
-                {Array.from({ length: 15 }).map((_, i) => (
-                    <div
-                        key={i}
-                        className="particle absolute w-1 h-1 bg-white/10 rounded-full"
-                        style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                        }}
-                    />
-                ))}
-            </div>
-
             <div className="relative z-10">
-                <Navbar />
-
                 {/* Hero Section - Full Page */}
                 <section ref={heroRef} className="relative h-screen flex items-center justify-center">
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0">
                         <Image
-                            src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1920&h=1080&fit=crop"
+                            src="/images/research1.jpg"
                             alt="Hands typing on laptop"
                             fill
                             className="object-cover"
@@ -153,14 +122,27 @@ export default function ResearchPage() {
                 {/* Optical Wireless Technologies Section */}
                 <section className="py-16 px-8">
                     <div className="container mx-auto text-center">
-                        <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-8">
+                        <h2
+                            className="font-bold text-black mb-8"
+                            style={{
+                                fontFamily: '"Helvetica Neue", sans-serif',
+                                fontSize: "36px",
+                            }}
+                        >
                             OPTICAL WIRELESS TECHNOLOGIES
                         </h2>
-                        <p className="text-lg lg:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                        <p
+                            className="text-gray-700 max-w-4xl mx-auto leading-relaxed"
+                            style={{
+                                fontFamily: '"Helvetica Neue", sans-serif',
+                                fontSize: "18px",
+                            }}
+                        >
                             Optical Wireless Technology (OWT) is an advanced method of wireless communication and power delivery that enables ultra-fast, interference-free, and license-free data connectivity while also supporting simultaneous wireless energy transmission.
                         </p>
                     </div>
                 </section>
+
 
                 {/* Research Areas - Uniform Background */}
                 <section className="py-20">
@@ -172,20 +154,34 @@ export default function ResearchPage() {
                                         {/* Content Side */}
                                         <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
                                             {/* Small title */}
-                                            <p className="text-sm text-gray-600 mb-4 font-medium">{area.id.toUpperCase()}</p>
+                                            <p
+                                                className="text-gray-600 mb-4 font-medium"
+                                                style={{ fontSize: "17px" }}
+                                            >
+                                                {area.id.toUpperCase()}
+                                            </p>
 
                                             {/* Main title */}
-                                            <h3 className="text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight">
+                                            <h3
+                                                className="text-black mb-6 leading-tight font-bold"
+                                                style={{ fontSize: "36px" }}
+                                            >
                                                 {area.subtitle}
                                             </h3>
 
                                             {/* Description */}
-                                            <p className="text-gray-700 text-base leading-relaxed mb-6">
+                                            <p
+                                                className="text-gray-700 leading-relaxed mb-6"
+                                                style={{ fontSize: "18px" }}
+                                            >
                                                 {area.description}
                                             </p>
 
                                             {/* Secondary description */}
-                                            <p className="text-gray-600 text-base leading-relaxed">
+                                            <p
+                                                className="text-gray-600 leading-relaxed"
+                                                style={{ fontSize: "18px" }}
+                                            >
                                                 {area.secondaryDescription}
                                             </p>
                                         </div>
@@ -202,6 +198,7 @@ export default function ResearchPage() {
                                         </div>
                                     </div>
                                 </div>
+
                             ))}
                         </div>
                     </div>
