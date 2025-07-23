@@ -1,6 +1,8 @@
 "use client"
 
 import Navbar from "@/components/navbar"
+import Footer from "@/components/footer";
+import type React from "react";
 
 export default function RootLayout({ children }) {
     return (
@@ -9,6 +11,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main>{children}</main>
         </body>
+        <Footer />
         </html>
     )
 }
