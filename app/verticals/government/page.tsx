@@ -6,6 +6,7 @@ import Image from "next/image";
 import TiltedCard from "@/components/utils/TiltedCardProps";
 import Magnet from "@/components/utils/MagnetProps";
 import BlurText from "@/components/utils/BlurTextProps";
+import SplitText from "@/components/utils/SplitTextProps";
 
 export default function GovernmentPage() {
   // Refs for scroll-triggered animations
@@ -163,13 +164,19 @@ export default function GovernmentPage() {
                 direction="bottom"
                 className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
               />
-              <BlurText
+              <SplitText
                 text="Empowering Governance with Next-Gen Optical Wireless
                 Communications (OWC)"
-                delay={150}
-                animateBy="words"
-                direction="bottom"
                 className="text-xl lg:text-2xl font-light text-white"
+                delay={100}
+                duration={0.9}
+                ease="power3.out"
+                splitType="lines"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
               />
             </motion.div>
           </div>
@@ -481,7 +488,7 @@ export default function GovernmentPage() {
                   src="/images/gov8.jpg"
                   alt="Educational Institution"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </motion.div>
 
@@ -495,7 +502,7 @@ export default function GovernmentPage() {
                   src="/images/gov7.jpg"
                   alt="Educational Health"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </motion.div>
             </motion.div>
@@ -538,10 +545,8 @@ export default function GovernmentPage() {
             </motion.h2>
             <motion.a
               href="#contact"
-              className="inline-block bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors"
+              className="px-8 py-4 font-medium text-lg inline-block bg-white text-black rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
               variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               Contact Us
             </motion.a>
