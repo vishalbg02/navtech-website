@@ -326,7 +326,7 @@ export default function GovernmentPage() {
 
               {/* Center Column: Image in middle */}
               <motion.div
-                className="relative h-[400px] lg:h-[451px] rounded-lg overflow-hidden flex items-center justify-center"
+                className="relative h-[400px] lg:h-[451px] overflow-hidden flex items-center justify-center"
                 variants={fadeInUp}
                 initial="hidden"
                 animate={smartGovernanceInView ? "visible" : "hidden"}
@@ -335,10 +335,10 @@ export default function GovernmentPage() {
                   imageSrc="/images/gov3.jpg"
                   altText="Smart Governance"
                   captionText="Smart Governance"
-                  containerHeight="100%"
-                  containerWidth="100%"
-                  imageHeight="90%"
-                  imageWidth="90%"
+                  containerHeight="110%"
+                  containerWidth="110%"
+                  imageHeight="100%"
+                  imageWidth="100%"
                   rotateAmplitude={14}
                   scaleOnHover={1.1}
                   showMobileWarning={false}
@@ -398,25 +398,19 @@ export default function GovernmentPage() {
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <div className="grid lg:grid-cols-3 gap-8 items-center">
               {/* Left Image */}
-              <Magnet
-                padding={150}
-                magnetStrength={6}
-                wrapperClassName="inline-block"
+              <motion.div
+                className="relative h-[400px] lg:h-[461px] rounded-lg overflow-hidden"
+                variants={fadeInLeft}
+                initial="hidden"
+                animate={disasterResilientInView ? "visible" : "hidden"}
               >
-                <motion.div
-                  className="relative h-[400px] lg:h-[461px] rounded-lg overflow-hidden"
-                  variants={fadeInLeft}
-                  initial="hidden"
-                  animate={disasterResilientInView ? "visible" : "hidden"}
-                >
-                  <Image
-                    src="/images/gov5.jpg?height=461&width=344&text=Disaster+Zone"
-                    alt="Disaster Zone"
-                    fill
-                    className="object-cover"
-                  />
-                </motion.div>
-              </Magnet>
+                <Image
+                  src="/images/gov5.jpg?height=461&width=344&text=Disaster+Zone"
+                  alt="Disaster Zone"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
 
               {/* Center Text */}
               <motion.div
@@ -444,25 +438,19 @@ export default function GovernmentPage() {
               </motion.div>
 
               {/* Right Image */}
-              <Magnet
-                padding={150}
-                magnetStrength={6}
-                wrapperClassName="inline-block"
+              <motion.div
+                className="relative h-[400px] lg:h-[461px] rounded-lg overflow-hidden"
+                variants={fadeInRight}
+                initial="hidden"
+                animate={disasterResilientInView ? "visible" : "hidden"}
               >
-                <motion.div
-                  className="relative h-[400px] lg:h-[461px] rounded-lg overflow-hidden"
-                  variants={fadeInRight}
-                  initial="hidden"
-                  animate={disasterResilientInView ? "visible" : "hidden"}
-                >
-                  <Image
-                    src="/images/gov6.jpg?height=461&width=345&text=Rural+Landscape"
-                    alt="Rural Landscape"
-                    fill
-                    className="object-cover"
-                  />
-                </motion.div>
-              </Magnet>
+                <Image
+                  src="/images/gov6.jpg?height=461&width=345&text=Rural+Landscape"
+                  alt="Rural Landscape"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
             </div>
           </div>
         </section>
