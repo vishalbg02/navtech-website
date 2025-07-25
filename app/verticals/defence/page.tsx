@@ -579,7 +579,7 @@ export default function DefencePage() {
               environments.
             </motion.p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-5">
               <FlipCard
                 frontImage="/images/def_army1.jpg"
                 title="ARMY"
@@ -596,28 +596,6 @@ export default function DefencePage() {
                 backContent="Tailored LiFi and FSO solutions enabling the Indian Armed Forces to operate confidently in the most challenging electronic warfare environments."
               />
             </div>
-          </div>
-          <div className="pt-16">
-            <motion.footer
-              className="w-full bg-[#95C149] text-white text-center px-8 pb-12"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <div className="max-w-4xl mx-auto pt-6">
-                <p className="text-3xl font-bold leading-snug mb-8">
-                  Experience ultra-fast, secure, and wireless LiFi{" "}
-                  <br className="hidden md:block" /> built for the future.
-                </p>
-                <motion.a
-                  href="#contact"
-                  className="px-8 py-4 font-medium text-lg inline-block bg-white text-black rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-                  variants={scaleIn}
-                >
-                  Contact Us
-                </motion.a>
-              </div>
-            </motion.footer>
           </div>
         </motion.section>
       </main>
