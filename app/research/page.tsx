@@ -3,10 +3,50 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import BlurText from "@/components/utils/BlurTextProps"
 
 export default function ResearchPage() {
     const containerRef = useRef(null)
     const heroRef = useRef(null)
+    const introRef = useRef(null)
+    const researchAreasRef = useRef(null)
+    // InView hooks
+    const heroInView = useInView(heroRef, { once: true, margin: "-50px" })
+    const introInView = useInView(introRef, { once: true, margin: "-100px" })
+
+    // Animation variants
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 60 },
+        visible: {
+            opacity: 1,
+            y: 0,
+        },
+    }
+    const fadeInLeft = {
+        hidden: { opacity: 0, x: -80 },
+        visible: {
+            opacity: 1,
+            x: 0,
+        },
+    }
+    const fadeInRight = {
+        hidden: { opacity: 0, x: 80 },
+        visible: {
+            opacity: 1,
+            x: 0,
+        },
+    }
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.1,
+            },
+        },
+    }
 
     const researchAreas = [
         {
@@ -83,15 +123,13 @@ export default function ResearchPage() {
 
     return (
         <div
-            className="relative min-h-screen"
+            className="relative min-h-screen overflow-x-hidden"
             style={{
                 backgroundColor: "white",
             }}
         >
             <div className="relative z-10">
-                {/* Hero Section - Full Page */}
                 <section ref={heroRef} className="relative h-screen flex items-center justify-center">
-                    {/* Background Image */}
                     <div className="absolute inset-0 z-0">
                         <Image
                             src="/images/research1.jpg"
@@ -100,106 +138,133 @@ export default function ResearchPage() {
                             className="object-cover"
                             priority
                         />
-                        {/* Lightened overlay to make gradient more visible */}
                         <div className="absolute inset-0 bg-black/30"></div>
                     </div>
 
                     <div className="container mx-auto px-8 relative z-10">
-                        <div className="max-w-4xl">
-                            {/* Main title - positioned top left like in the image */}
-                            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white">
-                                RESEARCH
-                            </h1>
-                        </div>
+                        <motion.div
+                            className="max-w-4xl"
+                            variants={staggerContainer}
+                            initial="hidden"
+                            animate={heroInView ? "visible" : "hidden"}
+                        >
+                            <BlurText
+                                text="RESEARCH"
+                                delay={150}
+                                animateBy="words"
+                                direction="bottom"
+                                className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
+                            />
+                        </motion.div>
                     </div>
 
-                    {/* Scroll indicator */}
                     <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
                         <ChevronDown className="w-8 h-8 text-white animate-bounce mx-auto" />
                     </div>
                 </section>
 
-                {/* Optical Wireless Technologies Section */}
-                <section className="py-16 px-8">
+                <section ref={introRef} className="py-16 px-8">
                     <div className="container mx-auto text-center">
-                        <h2
-                            className="font-bold text-black mb-8"
-                            style={{
-                                fontFamily: '"Helvetica Neue", sans-serif',
-                                fontSize: "36px",
-                            }}
+                        <motion.div
+                            variants={staggerContainer}
+                            initial="hidden"
+                            animate={introInView ? "visible" : "hidden"}
                         >
-                            OPTICAL WIRELESS TECHNOLOGIES
-                        </h2>
-                        <p
-                            className="text-gray-700 max-w-4xl mx-auto leading-relaxed"
-                            style={{
-                                fontFamily: '"Helvetica Neue", sans-serif',
-                                fontSize: "18px",
-                            }}
-                        >
-                            Optical Wireless Technology (OWT) is an advanced method of wireless communication and power delivery that enables ultra-fast, interference-free, and license-free data connectivity while also supporting simultaneous wireless energy transmission.
-                        </p>
+                            <motion.h2
+                                className="font-bold text-black mb-8"
+                                style={{
+                                    fontFamily: '"Helvetica Neue", sans-serif',
+                                    fontSize: "36px",
+                                }}
+                                variants={fadeInUp}
+                            >
+                                OPTICAL WIRELESS TECHNOLOGIES
+                            </motion.h2>
+                            <motion.p
+                                className="text-gray-700 max-w-4xl mx-auto leading-relaxed"
+                                style={{
+                                    fontFamily: '"Helvetica Neue", sans-serif',
+                                    fontSize: "18px",
+                                }}
+                                variants={fadeInUp}
+                            >
+                                Optical Wireless Technology (OWT) is an advanced method of wireless communication and power delivery that enables ultra-fast, interference-free, and license-free data connectivity while also supporting simultaneous wireless energy transmission.
+                            </motion.p>
+                        </motion.div>
                     </div>
                 </section>
 
-
-                {/* Research Areas - Uniform Background */}
-                <section className="py-20">
+                <section ref={researchAreasRef} className="py-20">
                     <div className="container mx-auto px-8">
                         <div className="space-y-16">
-                            {researchAreas.map((area, index) => (
-                                <div key={area.id}>
-                                    <div className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} min-h-[500px]`}>
-                                        {/* Content Side */}
-                                        <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
-                                            {/* Small title */}
-                                            <p
-                                                className="text-gray-600 mb-4 font-medium"
-                                                style={{ fontSize: "17px" }}
+                            {researchAreas.map((area, index) => {
+                                const cardRef = useRef(null);
+                                const cardInView = useInView(cardRef, { once: true, margin: "-100px" });
+                                return (
+                                    <motion.div
+                                        key={area.id}
+                                        ref={cardRef}
+                                        variants={fadeInUp}
+                                        initial="hidden"
+                                        animate={cardInView ? "visible" : "hidden"}
+                                        transition={{ duration: 0.8, ease: "easeOut" }}
+                                    >
+                                        <div className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} min-h-[500px]`}>
+                                            <motion.div
+                                                className="flex-1 p-8 lg:p-12 flex flex-col justify-center"
+                                                variants={index % 2 === 0 ? fadeInLeft : fadeInRight}
+                                                initial="hidden"
+                                                animate={cardInView ? "visible" : "hidden"}
+                                                transition={{ duration: 1, ease: "easeOut" }}
                                             >
-                                                {area.id.toUpperCase()}
-                                            </p>
+                                                <p
+                                                    className="text-gray-600 mb-4 font-medium"
+                                                    style={{ fontSize: "17px" }}
+                                                >
+                                                    {area.id.toUpperCase()}
+                                                </p>
 
-                                            {/* Main title */}
-                                            <h3
-                                                className="text-black mb-6 leading-tight font-bold"
-                                                style={{ fontSize: "36px" }}
-                                            >
-                                                {area.subtitle}
-                                            </h3>
+                                                <h3
+                                                    className="text-black mb-6 leading-tight font-bold"
+                                                    style={{ fontSize: "36px" }}
+                                                >
+                                                    {area.subtitle}
+                                                </h3>
 
-                                            {/* Description */}
-                                            <p
-                                                className="text-gray-700 leading-relaxed mb-6"
-                                                style={{ fontSize: "18px" }}
-                                            >
-                                                {area.description}
-                                            </p>
+                                                <p
+                                                    className="text-gray-700 leading-relaxed mb-6"
+                                                    style={{ fontSize: "18px" }}
+                                                >
+                                                    {area.description}
+                                                </p>
 
-                                            {/* Secondary description */}
-                                            <p
-                                                className="text-gray-600 leading-relaxed"
-                                                style={{ fontSize: "18px" }}
+                                                <p
+                                                    className="text-gray-600 leading-relaxed"
+                                                    style={{ fontSize: "18px" }}
+                                                >
+                                                    {area.secondaryDescription}
+                                                </p>
+                                            </motion.div>
+
+                                            <motion.div
+                                                className="flex-1 relative min-h-[400px] lg:min-h-[500px] group"
+                                                variants={index % 2 === 0 ? fadeInRight : fadeInLeft}
+                                                initial="hidden"
+                                                animate={cardInView ? "visible" : "hidden"}
+                                                transition={{ duration: 1, ease: "easeOut" }}
                                             >
-                                                {area.secondaryDescription}
-                                            </p>
+                                                <Image
+                                                    src={area.image}
+                                                    alt={area.title}
+                                                    fill
+                                                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                                />
+                                            </motion.div>
                                         </div>
-
-                                        {/* Image Side */}
-                                        <div className="flex-1 relative min-h-[400px] lg:min-h-[500px]">
-                                            <Image
-                                                src={area.image}
-                                                alt={area.title}
-                                                fill
-                                                className="object-cover"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                            ))}
+                                    </motion.div>
+                                );
+                            })}
                         </div>
                     </div>
                 </section>

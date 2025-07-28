@@ -4,9 +4,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import TiltedCard from "@/components/utils/TiltedCardProps";
-import Magnet from "@/components/utils/MagnetProps";
 import BlurText from "@/components/utils/BlurTextProps";
 import SplitText from "@/components/utils/SplitTextProps";
+import GLBModelViewer from "@/components/utils/GLBModelViewer";
+import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 
 export default function GovernmentPage() {
   // Refs for scroll-triggered animations
@@ -50,7 +51,6 @@ export default function GovernmentPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -59,7 +59,6 @@ export default function GovernmentPage() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1, ease: "easeOut" },
     },
   };
 
@@ -68,7 +67,6 @@ export default function GovernmentPage() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1, ease: "easeOut" },
     },
   };
 
@@ -77,7 +75,6 @@ export default function GovernmentPage() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 1, ease: "easeOut" },
     },
   };
 
@@ -111,10 +108,6 @@ export default function GovernmentPage() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: {
-        duration: 2,
-        ease: [0.6, 0.01, 0.05, 0.9],
-      },
     },
   };
 
@@ -128,10 +121,6 @@ export default function GovernmentPage() {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: {
-        duration: 2,
-        ease: [0.6, 0.01, 0.05, 0.9],
-      },
     },
   };
 
@@ -151,34 +140,39 @@ export default function GovernmentPage() {
         >
           <div className="absolute inset-0 bg-black bg-opacity-75" />
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-[120px] w-full">
-            <motion.div
-              className="max-w-2xl"
-              variants={staggerContainer}
-              initial="hidden"
-              animate={heroInView ? "visible" : "hidden"}
-            >
-              <BlurText
-                text="Government"
-                delay={150}
-                animateBy="words"
-                direction="bottom"
-                className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
-              />
-              <SplitText
-                text="Empowering Governance with Next-Gen Optical Wireless
-                Communications (OWC)"
-                className="text-xl lg:text-2xl font-light text-white"
-                delay={100}
-                duration={0.9}
-                ease="power3.out"
-                splitType="lines"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="-100px"
-                textAlign="left"
-              />
-            </motion.div>
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 w-full">
+              <motion.div
+                className="max-w-2xl w-full"
+                variants={staggerContainer}
+                initial="hidden"
+                animate={heroInView ? "visible" : "hidden"}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <BlurText
+                  text="Government"
+                  delay={150}
+                  animateBy="words"
+                  direction="bottom"
+                  className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
+                />
+                <SplitText
+                  text="Empowering Governance with Next-Gen Optical Wireless Communications (OWC)"
+                  className="text-xl lg:text-2xl font-light text-white"
+                  delay={100}
+                  duration={0.9}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
+              </motion.div>
+              <div className="w-full lg:w-[550px] h-[800px] translate-y-44 flex-shrink-0">
+                <GLBModelViewer modelPath="/glb/government.glb" />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -198,6 +192,7 @@ export default function GovernmentPage() {
                   fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
                 }}
                 variants={fadeInUp}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 Enabling India's Critical Sectors with Optical{" "}
                 <span style={{ color: "#95C149" }}>Wireless</span> Innovation
@@ -209,6 +204,7 @@ export default function GovernmentPage() {
                   fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
                 }}
                 variants={fadeInUp}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 From defense to disaster zones, smart cities to schools—LiFi and
                 FSO technologies deliver secure, high-speed, and resilient
@@ -226,6 +222,7 @@ export default function GovernmentPage() {
                 variants={fadeInLeft}
                 initial="hidden"
                 animate={secureNetworksInView ? "visible" : "hidden"}
+                transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="mb-6 pl-2">
                   <h3
@@ -312,6 +309,7 @@ export default function GovernmentPage() {
                 variants={fadeInLeft}
                 initial="hidden"
                 animate={smartGovernanceInView ? "visible" : "hidden"}
+                transition={{ duration: 1, ease: "easeOut" }}
               >
                 <h3
                   className="text-3xl lg:text-4xl font-bold"
@@ -330,6 +328,7 @@ export default function GovernmentPage() {
                 variants={fadeInUp}
                 initial="hidden"
                 animate={smartGovernanceInView ? "visible" : "hidden"}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <TiltedCard
                   imageSrc="/images/gov3.jpg"
@@ -378,20 +377,16 @@ export default function GovernmentPage() {
         </section>
 
         {/* Reference Image Section */}
-        <motion.section
-          ref={referenceRef}
-          className="h-[400px] lg:h-[542px] relative"
-          variants={scaleIn}
-          initial="hidden"
-          animate={referenceInView ? "visible" : "hidden"}
-        >
-          <Image
-            src="/images/gov4.png?height=542&width=1440&text=Government+Reference+Image"
-            alt="Government Reference"
-            fill
-            className="object-cover"
-          />
-        </motion.section>
+        <ReferenceCarousel
+          images={[
+            "/images/gov4.png",
+            "/images/gov4.png",
+            "/images/gov4.png",
+            "/images/gov4.png",
+          ]}
+          referenceRef={referenceRef}
+          referenceInView={referenceInView}
+        />
 
         {/* Disaster-Resilient Communication */}
         <section ref={disasterResilientRef} className="py-20">
@@ -470,6 +465,9 @@ export default function GovernmentPage() {
               <motion.div
                 className="group relative h-[240px] rounded-lg overflow-hidden"
                 variants={imageVariantLeft}
+                initial="hidden"
+                animate={educationHealthInView ? "visible" : "hidden"}
+                transition={{ duration: 2, ease: [0.6, 0.01, 0.05, 0.9] }}
               >
                 <div className="absolute inset-0 z-10 bg-gradient-to-tr from-black/30 to-transparent group-hover:from-black/50 transition duration-500" />
                 <Image
@@ -484,6 +482,9 @@ export default function GovernmentPage() {
               <motion.div
                 className="group relative h-[240px] rounded-lg overflow-hidden"
                 variants={imageVariantRight}
+                initial="hidden"
+                animate={educationHealthInView ? "visible" : "hidden"}
+                transition={{ duration: 2, ease: [0.6, 0.01, 0.05, 0.9] }}
               >
                 <div className="absolute inset-0 z-10 bg-gradient-to-tr from-black/30 to-transparent group-hover:from-black/50 transition duration-500" />
                 <Image
