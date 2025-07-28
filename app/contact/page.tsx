@@ -1,15 +1,15 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import { ChevronDown, Mail, MapPin, Phone } from "lucide-react"
+import { ChevronDown, Mail, MapPin, Phone, Facebook, Instagram, Youtube } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -37,184 +37,173 @@ export default function ContactPage() {
         <div
             className="relative min-h-screen"
             style={{
-                backgroundImage: "url('/images/nav-bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
+                backgroundColor: "white",
             }}
         >
-            {/* Background Effects */}
-            <div className="fixed inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-purple-900/5 to-black/15"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-900/3 to-transparent"></div>
-
-                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/8 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-400/8 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/3 rounded-full blur-3xl"></div>
-            </div>
-
             <div className="relative z-10">
                 <Navbar />
-
                 {/* Hero Section - Full Page */}
                 <section className="relative h-screen flex items-center justify-center">
+
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0">
-                        <Image src="/images/contact_bg.png" alt="Contact Background" fill className="object-cover" priority />
-                        <div className="absolute inset-0 bg-white/20"></div>
+                        <Image
+                            src="/images/con1.jpg"
+                            alt="Hands typing on laptop"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        {/* Lightened overlay to make gradient more visible */}
+                        <div className="absolute inset-0 bg-black/30"></div>
                     </div>
 
                     <div className="container mx-auto px-8 relative z-10">
                         <div className="max-w-4xl">
-                            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-black">CONTACT US</h1>
+                            {/* Main title - positioned top left like in the image */}
+                            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white">
+                                CONTACT US
+                            </h1>
                         </div>
                     </div>
 
                     {/* Scroll indicator */}
                     <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <ChevronDown className="w-8 h-8 text-black animate-bounce mx-auto" />
+                        <ChevronDown className="w-8 h-8 text-white animate-bounce mx-auto" />
                     </div>
                 </section>
 
                 {/* Contact Form Section */}
                 <section className="py-16 px-8">
                     <div className="container mx-auto max-w-4xl">
-                        {/* Send a Message Section */}
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-8">SEND A MESSAGE</h2>
-                        </div>
-
                         {/* Contact Form Card */}
-                        <Card className="bg-white/80 backdrop-blur-sm border-white/30 shadow-lg mb-16">
-                            <CardContent className="p-8">
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <Input
-                                                name="fullName"
-                                                value={formData.fullName}
-                                                onChange={handleInputChange}
-                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
-                                                placeholder="Your Full Name"
-                                                required
-                                            />
+                        <Card className="rounded-lg shadow-lg overflow-hidden w-full">
+                            <div className="flex flex-col md:flex-row">
+                                {/* Contact Information Sidebar */}
+                                <div className="bg-[#95C149] text-white p-8 md:w-1/3">
+                                    <h2 className="text-xl font-semibold mb-8">Contact Information</h2>
+
+                                    <div className="space-y-6">
+                                        <div className="flex items-start space-x-3">
+                                            <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
+                                            <span className="text-sm">+91 70484 21010</span>
                                         </div>
-                                        <div>
-                                            <Input
-                                                name="email"
-                                                type="email"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
-                                                placeholder="Email Address"
-                                                required
-                                            />
+
+                                        <div className="flex items-start space-x-3">
+                                            <Mail className="w-5 h-5 mt-1 flex-shrink-0" />
+                                            <span className="text-sm">info@navtechno.in</span>
+                                        </div>
+
+                                        <div className="flex items-start space-x-3">
+                                            <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                                            <span className="text-sm">
+                        C6 The First Residue ITC Narmada,
+                        <br />
+                        Near Keshav Baug, Ahmedabad,
+                        <br />
+                        Gujarat 380015
+                      </span>
                                         </div>
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <Input
-                                                name="designation"
-                                                value={formData.designation}
-                                                onChange={handleInputChange}
-                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
-                                                placeholder="Your Designation"
-                                                required
-                                            />
+                                    {/* Social Media Icons */}
+                                    <div className="flex space-x-4 mt-12">
+                                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                            <Facebook className="w-4 h-4" />
                                         </div>
-                                        <div>
-                                            <Input
-                                                name="phone"
-                                                type="tel"
-                                                value={formData.phone}
-                                                onChange={handleInputChange}
-                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
-                                                placeholder="Phone"
-                                                required
-                                            />
+                                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                            <Instagram className="w-4 h-4" />
+                                        </div>
+                                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                            <Youtube className="w-4 h-4" />
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div>
-                                        <Textarea
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleInputChange}
-                                            className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 min-h-[150px]"
-                                            placeholder="Your Message"
-                                            required
-                                        />
-                                    </div>
+                                {/* Contact Form */}
+                                <div className="p-8 md:w-2/3">
+                                    <h2 className="text-2xl font-bold text-gray-800 mb-8">Send Us A Message</h2>
 
-                                    <div className="text-center">
-                                        <Button
-                                            type="submit"
-                                            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium"
-                                        >
-                                            Send Message
-                                        </Button>
-                                    </div>
-                                </form>
-                            </CardContent>
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <Input
+                                                    name="fullName"
+                                                    value={formData.fullName}
+                                                    onChange={handleInputChange}
+                                                    className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                    placeholder="Enter your full name"
+                                                    required
+                                                />
+                                                <label className="text-xs text-gray-600 mt-1 block">Name</label>
+                                            </div>
+                                            <div>
+                                                <Input
+                                                    name="email"
+                                                    type="email"
+                                                    value={formData.email}
+                                                    onChange={handleInputChange}
+                                                    className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                    placeholder="Enter your email address"
+                                                    required
+                                                />
+                                                <label className="text-xs text-gray-600 mt-1 block">Email</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <Input
+                                                    name="phone"
+                                                    type="tel"
+                                                    value={formData.phone}
+                                                    onChange={handleInputChange}
+                                                    className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                    placeholder="Enter your phone number"
+                                                    required
+                                                />
+                                                <label className="text-xs text-gray-600 mt-1 block">Phone</label>
+                                            </div>
+                                            <div>
+                                                <Input
+                                                    name="designation"
+                                                    value={formData.designation}
+                                                    onChange={handleInputChange}
+                                                    className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 h-12"
+                                                    placeholder="Enter your job title"
+                                                    required
+                                                />
+                                                <label className="text-xs text-gray-600 mt-1 block">Designation</label>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <Textarea
+                                                name="message"
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                className="bg-white/90 border-gray-300 text-black placeholder:text-gray-500 focus:border-green-500 min-h-[150px]"
+                                                placeholder="Enter your message"
+                                                required
+                                            />
+                                            <label className="text-xs text-gray-600 mt-1 block">Message</label>
+                                        </div>
+
+                                        <div className="pt-4">
+                                            <Button
+                                                type="submit"
+                                                className="bg-white border border-green-500 hover:bg-green-200 text-gray-800 px-8 py-2 rounded-full font-medium"
+                                            >
+                                                Send Message
+                                            </Button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </Card>
-
-                        {/* For Further Inquiry Section */}
-                        <div className="text-center mb-12">
-                            <h2 className="text-4xl lg:text-5xl font-bold text-black mb-12">FOR FURTHER INQUIRY</h2>
-                        </div>
-
-                        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                            {/* Mail Us On Card */}
-                            <Card className="bg-white/80 backdrop-blur-sm border-white/30 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                <CardContent className="p-8 text-center">
-                                    <div className="bg-green-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <Mail className="w-8 h-8 text-green-600" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-black mb-4">Mail Us On</h3>
-                                    <a
-                                        href="mailto:info@navtechno.in"
-                                        className="text-black hover:text-green-600 font-medium transition-colors duration-300"
-                                    >
-                                        info@navtechno.in
-                                    </a>
-                                </CardContent>
-                            </Card>
-
-                            {/* India Office Card */}
-                            <Card className="bg-white/80 backdrop-blur-sm border-white/30 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                <CardContent className="p-8 text-center">
-                                    <div className="bg-green-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <MapPin className="w-8 h-8 text-green-600" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-black mb-4">India Office</h3>
-                                    <div className="text-black">
-                                        <p>C5 The First Besides ITC</p>
-                                        <p>Narmada, near Keshav Baug,</p>
-                                        <p>Ahmedabad, Gujarat 380015</p>
-                                    </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Call Us Card */}
-                            <Card className="bg-white/80 backdrop-blur-sm border-white/30 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                                <CardContent className="p-8 text-center">
-                                    <div className="bg-green-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <Phone className="w-8 h-8 text-green-600" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-black mb-4">Call Us</h3>
-                                    <a
-                                        href="tel:+917948421010"
-                                        className="text-black hover:text-green-600 font-medium transition-colors duration-300"
-                                    >
-                                        +91 79484 21010
-                                    </a>
-                                </CardContent>
-                            </Card>
-                        </div>
                     </div>
                 </section>
+                <Footer />
             </div>
         </div>
     )
