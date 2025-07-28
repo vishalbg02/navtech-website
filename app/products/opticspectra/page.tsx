@@ -112,34 +112,31 @@ export default function OpticSpectraPage() {
                     </p>
                 </section>
 
-
                 {/* Neo Section */}
-                <section className="flex flex-col items-center gap-20 w-full">
-                    <div className="flex flex-col items-center gap-10 w-full">
-                        {/* Neo Header */}
-                        {/* Heading Section */}
-                        <div className="flex flex-col justify-center items-center w-full h-[180px]">
-                            <h2
-                                className="text-[68px] font-bold leading-[83px] text-center uppercase text-transparent w-full"
-                                style={{ WebkitTextStroke: "1px #AFAFAF" }}
-                            >
-                                DEPARTMENT OF TELECOMMUNICATIONS
-                            </h2>
-
-                            <h3 className="text-[52px] font-bold leading-[63px] text-center text-black">
-                                Versions - Neo
-                            </h3>
-
-                            <h2
-                                className="text-[68px] font-bold leading-[83px] text-center uppercase text-transparent w-[1199px]"
-                                style={{ WebkitTextStroke: "1px #AFAFAF" }}
-                            >
-                                TEC CERTIFIED
-                            </h2>
-                        </div>
-
-                        {/* Product Diagram with Arrow Dots */}
+                <section className="flex flex-col items-center gap-12 w-full">
+                    <div className="flex flex-col items-center w-full">
+                        {/* Neo Product Diagram with Overlaid Text */}
                         <div className="relative w-[1200px] h-[1200px]">
+                            {/* Overlaid Header Text */}
+                            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10">
+                                <h2
+                                    className="text-[68px] font-bold leading-[70px] text-center uppercase text-transparent w-full mb-2"
+                                    style={{ WebkitTextStroke: "1px #AFAFAF" }}
+                                >
+                                    DEPARTMENT OF TELECOMMUNICATIONS
+                                </h2>
+
+                                <h3 className="text-[52px] font-bold leading-[55px] text-center text-black mb-2">
+                                    Versions - Neo
+                                </h3>
+
+                                <h2
+                                    className="text-[68px] font-bold leading-[70px] text-center uppercase text-transparent w-[1199px] mb-4"
+                                    style={{ WebkitTextStroke: "1px #AFAFAF" }}
+                                >
+                                    TEC CERTIFIED
+                                </h2>
+                            </div>
                             {/* Center Image */}
                             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[436px] h-[688px]">
                                 <Image
@@ -150,55 +147,96 @@ export default function OpticSpectraPage() {
                                 />
                             </div>
 
-                            {/* Left Arrows with Dots */}
-                            {[
-                                { top: 329, width: 100 },
-                                { top: 479, width: 200 },
-                                { top: 638, width: 180 },
-                                { top: 815, width: 250 }
-                            ].map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className={`absolute left-[120px] top-[${item.top}px] flex items-center gap-5`}
-                                >
-                                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                                        <div className="text-[20px] font-bold leading-6 text-center text-black">Upto {item.top < 638 ? '1Gbps' : '10Gbps'}</div>
-                                        <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Bandwidth</div>
-                                    </div>
-                                    <div
-                                        className="relative h-0 border-t border-dashed border-[#95C149]"
-                                        style={{ width: `${item.width}px` }}
-                                    >
-                                        <div className="absolute -right-[4px] -top-[4px] w-2 h-2 rounded-full bg-[#95C149]" />
-                                    </div>
+                            {/* Left Side - Bandwidth Specs */}
+                            <div className="absolute left-[120px] top-[329px] flex items-center gap-5">
+                                <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                                    <div className="text-[20px] font-bold leading-6 text-center text-black">Upto 1Gbps</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Bandwidth</div>
                                 </div>
-                            ))}
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                            </div>
 
-                            {/* Right Arrows with Dots */}
-                            {[
-                                { top: 268, width: 260, label: "10km" },
-                                { top: 407, width: 280, label: "5km" },
-                                { top: 565, width: 223, label: "5km" },
-                                { top: 723, width: 180, label: "3km" }
-                            ].map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className={`absolute right-[120px] top-[${item.top}px] flex items-center gap-5`}
-                                >
-                                    <div
-                                        className="relative h-0 border-t border-dashed border-[#95C149]"
-                                        style={{ width: `${item.width}px` }}
-                                    >
-                                        <div className="absolute -right-[4px] -top-[4px] w-2 h-2 rounded-full bg-[#95C149]" />
-                                    </div>
-                                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                                        <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">{item.label}</div>
-                                        <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Distance</div>
-                                    </div>
+                            <div className="absolute left-[120px] top-[479px] flex items-center gap-5">
+                                <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                                    <div className="text-[20px] font-bold leading-6 text-center text-black">Upto 1Gbps</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Bandwidth</div>
                                 </div>
-                            ))}
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[200px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                            </div>
+
+                            <div className="absolute left-[120px] top-[638px] flex items-center gap-5">
+                                <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                                    <div className="text-[20px] font-bold leading-6 text-center text-black">Upto 10Gbps</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Bandwidth</div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[180px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                            </div>
+
+                            <div className="absolute left-[120px] top-[815px] flex items-center gap-5">
+                                <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                                    <div className="text-[20px] font-bold leading-6 text-center text-black">Upto 10Gbps</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Bandwidth</div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[250px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                            </div>
+
+                            {/* Right Side - Distance Specs */}
+                            <div className="absolute right-[120px] top-[268px] flex items-center gap-5">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[260px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                                <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">10km</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Distance</div>
+                                </div>
+                            </div>
+
+                            <div className="absolute right-[120px] top-[407px] flex items-center gap-5">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[280px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                                <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">5km</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Distance</div>
+                                </div>
+                            </div>
+
+                            <div className="absolute right-[120px] top-[565px] flex items-center gap-5">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[223px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                                <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">5km</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Distance</div>
+                                </div>
+                            </div>
+
+                            <div className="absolute right-[120px] top-[723px] flex items-center gap-5">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-[180px] h-0 border-t border-dashed border-[#95C149]"></div>
+                                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                                </div>
+                                <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">3km</div>
+                                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">Distance</div>
+                                </div>
+                            </div>
                         </div>
-
 
                         {/* Neo Use Cases */}
                         <div className="flex flex-col justify-center items-center gap-[34px] w-[1199px]">
@@ -244,28 +282,27 @@ export default function OpticSpectraPage() {
                 </section>
 
                 {/* Supreme Section */}
-                <section className="flex flex-col items-center gap-20 w-full">
-                    <div className="flex flex-col items-center gap-10 w-full">
-                        {/* Supreme Header */}
-                        <div className="flex flex-col justify-center items-center w-full h-[217px]">
-                            <h2
-                                className="text-[68px] font-bold leading-[83px] text-center uppercase text-transparent w-full"
-                                style={{ WebkitTextStroke: "1px #AFAFAF" }}
-                            >
-                                MIL GRADE
-                            </h2>
-
-                            <h3 className="text-[52px] font-bold leading-[63px] text-center text-black">Versions - Supreme</h3>
-                            <h2
-                                className="text-[68px] font-bold leading-[83px] text-center uppercase text-transparent w-[1199px]"
-                                style={{ WebkitTextStroke: "1px #AFAFAF" }}
-                            >
-                                JSS 55555 CERTIFIED
-                            </h2>
-                        </div>
-
-                        {/* Supreme Product Diagram */}
+                <section className="flex flex-col items-center gap-12 w-full">
+                    <div className="flex flex-col items-center w-full">
+                        {/* Supreme Product Diagram with Overlaid Text */}
                         <div className="relative w-[1200px] h-[910px]">
+                            {/* Overlaid Header Text */}
+                            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10">
+                                <h2
+                                    className="text-[68px] font-bold leading-[70px] text-center uppercase text-transparent w-full mb-2"
+                                    style={{ WebkitTextStroke: "1px #AFAFAF" }}
+                                >
+                                    MIL GRADE
+                                </h2>
+
+                                <h3 className="text-[52px] font-bold leading-[55px] text-center text-black mb-2">Versions - Supreme</h3>
+                                <h2
+                                    className="text-[68px] font-bold leading-[70px] text-center uppercase text-transparent w-[1199px] mb-4"
+                                    style={{ WebkitTextStroke: "1px #AFAFAF" }}
+                                >
+                                    JSS 55555 CERTIFIED
+                                </h2>
+                            </div>
                             {/* Center Device Image */}
                             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[764px] h-[611px]">
                                 <Image
@@ -276,7 +313,6 @@ export default function OpticSpectraPage() {
                                 />
                             </div>
 
-                            {/* Left Side - Bandwidth Specs */}
                             {/* Left Side - Bandwidth Specs */}
                             <div className="absolute left-[180px] top-[299px] flex items-center gap-5">
                                 <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
@@ -390,21 +426,6 @@ export default function OpticSpectraPage() {
                     className="object-cover"
                 />
             </div>
-
-            {/* CTA Section - No spacing */}
-            <section className="flex flex-col items-start py-[42px] px-[222px] gap-[10px] w-full bg-[#95C149]">
-                <div className="flex flex-col items-center gap-[22px] w-[996px] mx-auto">
-                    <h2 className="text-[42px] font-bold leading-[51px] text-center capitalize text-white">
-                        Experience ultra-fast, secure, and wireless LiFi built for the future.
-                    </h2>
-                    <a
-                        href="#contact"
-                        className="flex justify-center items-center py-[13px] px-[29px] gap-[10px] w-[159px] h-[50px] bg-white rounded-[28px] text-[19.6123px] font-normal leading-[23px] text-center capitalize text-black"
-                    >
-                        Contact Us
-                    </a>
-                </div>
-            </section>
         </div>
     )
 }
