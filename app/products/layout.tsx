@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer";
+import CTASection from "@/components/CTASection";
 import type React from "react";
 
 export default function RootLayout({ children }) {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main>{children}</main>
         </body>
+        <CTASection />
         <Footer />
         </html>
     )
