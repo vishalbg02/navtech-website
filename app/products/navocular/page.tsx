@@ -2,261 +2,179 @@
 
 import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
-import { ChevronDown } from "lucide-react"
-import Navbar from "@/components/navbar"
 
-export default function NavOcularPage() {
-    const lightScrollRef = useRef<HTMLDivElement>(null)
-    const dongleScrollRef = useRef<HTMLDivElement>(null)
-    const [lightCurrentIndex, setLightCurrentIndex] = useState(0)
-    const [dongleCurrentIndex, setDongleCurrentIndex] = useState(0)
+export default function OpticSpectraPage() {
+    const [neoCurrentIndex, setNeoCurrentIndex] = useState(0)
 
-    const lightUseCases = [
+    const navocularUseCases = [
         {
             title: "Smart Buildings",
             description:
                 "Empowers seamless user experience by using existing lighting for high-speed indoor connectivity, reducing dependence on traditional networks and enhancing energy-efficient communication.",
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
+            image: "/images/op2.jpg",
         },
         {
-            title: "EMI-Sensitive Areas",
+            title: "6G-Ready Optical Layer Integration",
             description:
-                "Enables wireless data flow in restricted environments like atomic energy zones, MRI rooms, and semiconductor fabs where RF-based systems are unsuitable.",
-            image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop",
+                "Acts as a foundational layer for 6G architecture by enabling distributed, low-latency optical cells indoors leveraging visible and IR light for localized, energy-efficient, and ultra-secure mesh-based connectivity.",
+            image: "/images/op3.jpg",
         },
         {
-            title: "Industrial Floors",
-            description:
-                "Boosts machine coordination and sensor feedback through robust optical links, adapting easily to dynamic layouts without physical reconfiguration or frequency interference.",
-            image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Healthcare Facilities",
-            description:
-                "Maintains operational precision by supporting diagnostics and real-time monitoring without disrupting sensitive instruments or risking patient data.",
-            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Confidential Workspaces",
-            description:
-                "Delivers tightly secured, directional links ideal for defense labs, strategic command centers, and financial institutions where data integrity is paramount.",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Education Environments",
-            description:
-                "Facilitates reliable, localized communication for digital classrooms and exam centers where RF restrictions or signal control is essential.",
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Cultural & Exhibition Spaces",
-            description:
-                "Ensures visitor services and interactive systems function discreetly, preserving aesthetics and safeguarding historically sensitive installations.",
-            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Data-Intensive Infrastructure",
-            description:
-                "Augments server room monitoring and control with optical communication layers that avoid RF interference and maintain thermal efficiency.",
-            image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Urban Connectivity",
-            description:
-                "Serves as a scalable alternative to fiber in cities—linking rooftops and buildings without civil work, spectrum constraints, or interference issues.",
-            image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop",
-        },
-    ]
-
-    const dongleUseCases = [
-        {
-            title: "5G Indoor Offloading",
+            title: "5G Indoor Offloading & Edge Zones",
             description:
                 "Supports ultra-fast, short-range wireless links within high-density indoor zones (airports, malls, offices), offloading traffic from congested 5G small cells and enhancing network capacity with zero-spectrum use.",
-            image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=300&fit=crop",
-        },
-        {
-            title: "6G-Ready Optical Integration",
-            description:
-                "Acts as a foundational layer for 6G architecture by enabling distributed, low-latency optical cells indoors—leveraging visible and IR light for localized, energy-efficient, and ultra-secure mesh-based connectivity.",
-            image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Mobile Device Integration",
-            description:
-                "Enables seamless integration with smartphones, tablets, and laptops through USB and wireless interfaces, providing instant high-speed connectivity without traditional network setup.",
-            image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
-        },
-        {
-            title: "Portable Workstations",
-            description:
-                "Delivers instant connectivity for temporary workstations, field operations, and mobile offices where traditional network infrastructure is unavailable or impractical.",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop",
+            image: "/images/op4.jpg",
         },
     ]
 
     // Auto scroll functionality
     useEffect(() => {
-        const lightInterval = setInterval(() => {
-            if (lightScrollRef.current) {
-                const maxIndex = Math.ceil(lightUseCases.length / 3) - 1
-                const nextIndex = lightCurrentIndex >= maxIndex ? 0 : lightCurrentIndex + 1
-                setLightCurrentIndex(nextIndex)
-                lightScrollRef.current.scrollTo({
-                    left: nextIndex * 400 * 3,
-                    behavior: "smooth",
-                })
-            }
+        const neoInterval = setInterval(() => {
+            setNeoCurrentIndex((prev) => (prev >= 2 ? 0 : prev + 1))
         }, 5000)
 
-        const dongleInterval = setInterval(() => {
-            if (dongleScrollRef.current) {
-                const maxIndex = Math.ceil(dongleUseCases.length / 3) - 1
-                const nextIndex = dongleCurrentIndex >= maxIndex ? 0 : dongleCurrentIndex + 1
-                setDongleCurrentIndex(nextIndex)
-                dongleScrollRef.current.scrollTo({
-                    left: nextIndex * 400 * 3,
-                    behavior: "smooth",
-                })
-            }
+        const supremeInterval = setInterval(() => {
+            setSupremeCurrentIndex((prev) => (prev >= 2 ? 0 : prev + 1))
         }, 5000)
 
         return () => {
-            clearInterval(lightInterval)
-            clearInterval(dongleInterval)
+            clearInterval(neoInterval)
+            clearInterval(supremeInterval)
         }
-    }, [lightCurrentIndex, dongleCurrentIndex, lightUseCases.length, dongleUseCases.length])
+    }, [])
 
     return (
         <div
-            className="relative min-h-screen"
-            style={{
-                backgroundImage: "url('/images/nav-bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
-            }}
+            className="relative min-h-screen bg-white"
+            style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
         >
-            {/* Background Effects */}
-            <div className="fixed inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-purple-900/5 to-black/15"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-900/3 to-transparent"></div>
-
-                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-green-500/8 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-400/8 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/3 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="relative z-10">
-                <Navbar />
-
-                {/* Hero Section - Full Page */}
-                <section className="relative h-screen flex items-center justify-center">
-                    {/* Background Image */}
-                    <div className="absolute inset-0 z-0">
-                        <Image src="/images/navocular_bg.png" alt="NavOcular Background" fill className="object-cover" priority />
-                        <div className="absolute inset-0 bg-white/20"></div>
+            {/* Video Section */}
+            <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center">
+                <div className="text-center">
+                    <h1 className="text-[64px] font-bold leading-[77px] text-black mb-6">Video of The product</h1>
+                    <div className="relative w-[78px] h-[78px] mx-auto">
+                        <div className="absolute inset-0 bg-white/40 rounded-full"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
                     </div>
+                </div>
+            </section>
 
-                    <div className="container mx-auto px-8 relative z-10">
-                        <div className="max-w-4xl">
-                            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-black">NAVOCULAR</h1>
-                        </div>
-                    </div>
-
-                    {/* Scroll indicator */}
-                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <ChevronDown className="w-8 h-8 text-black animate-bounce mx-auto" />
-                    </div>
-                </section>
-
+            {/* Main Content Container */}
+            <div className="flex flex-col items-center gap-[120px] py-[120px]">
                 {/* About NavOcular Section */}
-                <section className="py-16 px-8">
-                    <div className="container mx-auto text-center">
-                        <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-8">ABOUT NAVOCULAR</h2>
-                        <p className="text-lg lg:text-xl text-black max-w-4xl mx-auto leading-relaxed mb-8">
-                            Nav Ocular leverages Visible Light Communication (VLC) with invisible infrared light to deliver secure,
-                            high-speed wireless communication without relying on traditional RF spectrum. Designed with mesh network
-                            topology, Nav Ocular allows multiple nodes to seamlessly connect, route data intelligently, and self-heal
-                            in case of link disruption.
-                        </p>
-                        <p className="text-lg lg:text-xl text-black max-w-4xl mx-auto leading-relaxed">
-                            This innovative solution is perfect for EMI-sensitive environments, smart buildings, and applications
-                            requiring secure, interference-free communication using visible light technology.
-                        </p>
-                    </div>
-                </section>
-
-                {/* Full Width Image Section */}
-                <section className="w-full h-[300px] relative overflow-hidden">
-                    <Image src="/images/navocular1.jpg" alt="NavOcular Technology" fill className="object-cover" sizes="100vw" />
-                </section>
-
-                {/* Light Panel Section */}
-                <section className="py-20">
-                    <div className="container mx-auto px-8">
-                        <div className="text-center mb-8 leading-tight">
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-400 uppercase">VLC Transmitter</h2>
-                            <h3 className="text-4xl lg:text-5xl font-bold text-black my-2">Light Panel</h3>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-400 uppercase">Ceiling Mounted</h2>
-                        </div>
-
-                        <div className="max-w-6xl mx-auto my-12 px-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                                {/* Left Side - Bandwidth Buttons */}
-                                <div className="space-y-4 flex flex-col items-center">
-                                    {["75Mbps", "80Mbps"].map((speed, index) => (
-                                        <div
-                                            key={index}
-                                            className="px-6 py-2 rounded-full shadow-md border border-white/30 bg-white/10 backdrop-blur-lg font-semibold text-sm text-center w-40"
-                                        >
-                      <span style={{ color: "#95C149" }}>
-                        Upto <span className="font-bold">{speed}</span>
-                      </span>
-                                            <br />
-                                            <span className="text-xs text-gray-100">Bandwidth</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Center - Device Image */}
-                                <div className="flex justify-center">
-                                    <div className="relative w-[200px] h-[300px]">
-                                        <Image src="/images/light.png" alt="NavOcular Light Panel" fill className="object-contain" />
-                                    </div>
-                                </div>
-
-                                {/* Right Side - Range & Angle Buttons */}
-                                <div className="space-y-4 flex flex-col items-center">
-                                    {["4m", "60°"].map((spec, index) => (
-                                        <div
-                                            key={index}
-                                            className="px-6 py-2 rounded-full shadow-md border border-white/30 bg-white/10 backdrop-blur-lg font-semibold text-sm text-center w-40"
-                                        >
-                      <span style={{ color: "#95C149" }} className="font-bold">
-                        {spec}
-                      </span>
-                                            <br />
-                                            <span className="text-xs text-gray-100">{index === 0 ? "Range" : "Angle"}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                <section className="flex flex-col items-center gap-6 w-[1125px]">
+                    <div className="flex flex-col items-center gap-[14px] w-full">
+                        <div className="flex flex-col items-center">
+                            <h2 className="text-[22px] font-bold leading-[23px] text-center uppercase text-black">
+                                ABOUT
+                            </h2>
+                            <div className="relative mt-[5px] flex items-center justify-center w-[400px] h-[46px] bg-[#95C149]">
+        <span className="text-[46px] font-bold text-white uppercase z-10 leading-[56px]">
+          NavOcular
+        </span>
                             </div>
                         </div>
+                    </div>
+                    <p className="text-[18px] font-light leading-[22px] text-center text-[#565656]">
+                        Nav Ocular leverages Visible Light Communication (VLC) using invisible infrared (IR) light to enable secure, high-speed wireless communication without relying on traditional RF spectrum. Designed with a mesh network topology, Nav Ocular allows multiple IR nodes to seamlessly connect, route data intelligently, and self-heal in case of link disruption, ensuring reliable and scalable connectivity across complex environments.<br/><br/> Ideal for smart buildings, industrial floors, medical facilities, and EMI-sensitive zones, Nav Ocular delivers low-latency, interference-free communication with enhanced security, making it a future-ready solution for modern wireless infrastructure.
+                    </p>
+                </section>
 
-                        {/* Light Panel Use Cases - Simple Horizontal Scroll */}
-                        <div>
-                            <h3 className="text-3xl font-bold text-black mb-8 text-center">USE CASES</h3>
+                {/* Reference Image */}
+                <div className="w-full h-[436px] relative">
+                    <Image
+                        src="/images/op5.png?height=436&width=1440&text=Reference+Image+for+Govt"
+                        alt="Reference Image"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
 
-                            <div
-                                ref={lightScrollRef}
-                                className="flex space-x-8 overflow-x-auto scrollbar-hide pb-4"
-                                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                            >
-                                {lightUseCases.map((useCase, index) => (
-                                    <div key={index} className="flex-shrink-0 w-80 text-center">
-                                        <div className="relative h-48 mb-4 overflow-hidden">
+                <section className="py-[120px] relative bg-white">
+                    <div className="max-w-[1440px] mx-auto relative h-[700px]">
+                        {/* NavOcular Light Device - Top Center */}
+                        <div className="absolute w-[400px] h-[200px] left-1/2 transform -translate-x-1/2 top-[20px]">
+                            <img
+                                src="/images/nav1.png"
+                                alt="NavOcular Light Device"
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+
+                        {/* NavOcular Dongle - Bottom Left */}
+                        <div className="absolute w-[300px] h-[200px] left-[-600px] top-[620px]">
+                            <img
+                                src="/images/nav2.png"
+                                alt="NavOcular Dongle"
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+
+                        <div className="absolute w-[200px] h-0 left-[220px] top-[130px] border-t border-dashed border-[#95C149]"></div>
+
+                        {/* Vertical dashed line */}
+                        <div className="absolute w-0 h-[200px] left-[420px] top-[130px] border-l border-dashed border-[#95C149]"></div>
+
+                        {/* Dot at the bottom of the line */}
+                        <div className="absolute w-[8px] h-[8px] rounded-full bg-[#95C149] left-[416px] top-[330px]"></div>
+
+                        <div className="absolute w-[200px] h-0 left-[-450px] top-[130px] border-t border-dashed border-[#95C149]"></div>
+
+                        {/* Vertical dashed line (left side) */}
+                        <div className="absolute w-0 h-[200px] left-[-450px] top-[130px] border-l border-dashed border-[#95C149]"></div>
+
+                        {/* Dot at the bottom of the line */}
+                        <div className="absolute w-[8px] h-[8px] rounded-full bg-[#95C149] left-[-454px] top-[330px]"></div>
+
+
+
+                        {/* Horizontal dashed line from dongle to right side */}
+                        <div className="absolute w-[520px] h-0 left-[-230px] top-[700px] border-t border-dashed border-[#95C149]"></div>
+
+                        {/* Small dot at end of line */}
+                        <div className="absolute w-[8px] h-[8px] rounded-full bg-[#95C149] top-[696px] left-[290px]"></div>
+
+
+                        {/* Bandwidth Specification - Left */}
+                        <div className="absolute left-[330px] top-[350px] flex flex-col items-center gap-1 w-[170px]">
+                            <div className="text-[38px] font-bold leading-[46px] text-center text-black">4 Meter</div>
+                            <div className="text-[21px] font-light leading-[26px] text-center text-black">Distance</div>
+                        </div>
+
+                        {/* Distance Specification - Top Right */}
+                        <div className="absolute right-[390px] top-[350px] flex flex-col items-center gap-1 w-[115px]">
+                            <div className="text-[38px] font-bold leading-[46px] text-center text-black">75-80Mbps</div>
+                            <div className="text-[21px] font-light leading-[26px] text-center text-black">Bandwidth</div>
+                        </div>
+
+                        {/* Transmission Angle Specification - Bottom Right */}
+                        <div className="absolute right-[-550px] top-[650px] flex flex-col items-center gap-1 w-[177px]">
+                            <div className="text-[38px] font-bold leading-[46px] text-center text-black">60 Degree</div>
+                            <div className="text-[21px] font-light leading-[26px] text-center text-black">Transmission Angle</div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+
+
+
+
+
+                {/* Navocular */}
+                <section className="flex flex-col items-center gap-20 w-full">
+                    <div className="flex flex-col items-center -gap-0 w-full">
+
+                        {/* NavOcular Use Cases */}
+                        <div className="flex flex-col justify-center items-center gap-[34px] w-[1199px]">
+                            <h3 className="text-[36px] font-bold leading-[44px] uppercase text-black">USE CASES</h3>
+                            <div className="flex items-center gap-[61px] w-full">
+                                {navocularUseCases.map((useCase, index) => (
+                                    <div key={index} className="flex flex-col gap-[17px] w-[359px]">
+                                        <div className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden">
                                             <Image
                                                 src={useCase.image || "/placeholder.svg"}
                                                 alt={useCase.title}
@@ -264,109 +182,18 @@ export default function NavOcularPage() {
                                                 className="object-cover"
                                             />
                                         </div>
-                                        <h4 className="text-xl font-bold text-black mb-3">{useCase.title}</h4>
-                                        <p className="text-black text-sm leading-relaxed">{useCase.description}</p>
+                                        <div className="flex flex-col gap-[10px]">
+                                            <h4 className="text-[24px] font-bold leading-[29px] text-black">{useCase.title}</h4>
+                                            <p className="text-[18px] font-light leading-[22px] text-[#565656]">{useCase.description}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
-
-                            {/* Green Pagination Dots */}
-                            <div className="flex justify-center mt-8 space-x-2">
+                            <div className="flex gap-[15px]">
                                 {[0, 1, 2].map((index) => (
                                     <div
                                         key={index}
-                                        className={`w-3 h-3 rounded-full ${index === lightCurrentIndex ? "bg-green-500" : "bg-green-200"}`}
-                                    ></div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Dongle Section */}
-                <section className="py-20">
-                    <div className="container mx-auto px-8">
-                        <div className="text-center mb-8 leading-tight">
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-400 uppercase">VLC Receiver</h2>
-                            <h3 className="text-4xl lg:text-5xl font-bold text-black my-2">Dongle</h3>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-400 uppercase">Portable Device</h2>
-                        </div>
-
-                        {/* Dongle Product Details */}
-                        <div className="max-w-6xl mx-auto my-12 px-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                                {/* Left Side - Reception Buttons */}
-                                <div className="space-y-4 flex flex-col items-center">
-                                    {["75Mbps", "80Mbps"].map((speed, index) => (
-                                        <div
-                                            key={index}
-                                            className="px-6 py-2 rounded-full shadow-md border border-white/30 bg-white/10 backdrop-blur-lg font-semibold text-sm text-center w-40"
-                                        >
-                      <span style={{ color: "#95C149" }}>
-                        Upto <span className="font-bold">{speed}</span>
-                      </span>
-                                            <br />
-                                            <span className="text-xs text-gray-100">Reception</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Center - Device Image */}
-                                <div className="flex justify-center">
-                                    <div className="relative w-[200px] h-[300px]">
-                                        <Image src="/images/dongle.png" alt="NavOcular Dongle" fill className="object-contain" />
-                                    </div>
-                                </div>
-
-                                {/* Right Side - Interface & Compatibility Buttons */}
-                                <div className="space-y-4 flex flex-col items-center">
-                                    {["USB", "Wireless"].map((connectionType, index) => (
-                                        <div
-                                            key={index}
-                                            className="px-6 py-2 rounded-full shadow-md border border-white/30 bg-white/10 backdrop-blur-lg font-semibold text-sm text-center w-40"
-                                        >
-                      <span style={{ color: "#95C149" }} className="font-bold">
-                        {connectionType}
-                      </span>
-                                            <br />
-                                            <span className="text-xs text-gray-100">{index === 0 ? "Interface" : "Compatibility"}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Dongle Use Cases - Simple Horizontal Scroll */}
-                        <div>
-                            <h3 className="text-3xl font-bold text-black mb-8 text-center">USE CASES</h3>
-
-                            <div
-                                ref={dongleScrollRef}
-                                className="flex space-x-8 overflow-x-auto scrollbar-hide pb-4"
-                                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                            >
-                                {dongleUseCases.map((useCase, index) => (
-                                    <div key={index} className="flex-shrink-0 w-80 text-center">
-                                        <div className="relative h-48 mb-4 overflow-hidden">
-                                            <Image
-                                                src={useCase.image || "/placeholder.svg"}
-                                                alt={useCase.title}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                        <h4 className="text-xl font-bold text-black mb-3">{useCase.title}</h4>
-                                        <p className="text-black text-sm leading-relaxed">{useCase.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Green Pagination Dots */}
-                            <div className="flex justify-center mt-8 space-x-2">
-                                {[0, 1].map((index) => (
-                                    <div
-                                        key={index}
-                                        className={`w-3 h-3 rounded-full ${index === dongleCurrentIndex ? "bg-green-500" : "bg-green-200"}`}
+                                        className={`w-2 h-2 rounded-full ${index === neoCurrentIndex ? "bg-[#95C149]" : "bg-[#D9D9D9]"}`}
                                     ></div>
                                 ))}
                             </div>
@@ -374,16 +201,6 @@ export default function NavOcularPage() {
                     </div>
                 </section>
             </div>
-
-            <style jsx global>{`
-                .scrollbar-hide {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                }
-                .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
-                }
-            `}</style>
         </div>
     )
 }
