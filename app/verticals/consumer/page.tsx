@@ -374,7 +374,7 @@ export default function ConsumerPage() {
           ref={healthcareRef}
           className="relative pt-20"
           style={{
-            minHeight: "600px", // Increased height
+            minHeight: "800px", // Increased height
             backgroundImage:
               "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
             backgroundSize: "cover",
