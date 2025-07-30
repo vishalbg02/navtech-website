@@ -202,7 +202,17 @@ export default function ApplicationsPage() {
                             </div>
                         </div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div className="w-[207px] h-0 border-t-[1.5px] border-dashed border-[#95C149]"></div>
+                            <div className="relative flex items-center w-[300px]">
+                                {/* Left Arrow (←) */}
+                                <div className="w-0 h-0 border-y-[5px] border-r-[8px] border-y-transparent border-r-[#95C149]"></div>
+
+                                {/* Dashed Line */}
+                                <div className="flex-1 h-0 border-t-[1.5px] border-dashed border-[#95C149]"></div>
+
+                                {/* Right Arrow (→) */}
+                                <div className="w-0 h-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-[#95C149]"></div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
