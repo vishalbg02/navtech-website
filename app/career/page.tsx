@@ -154,8 +154,23 @@ export default function CareersPage() {
                         <CardContent className="p-[50px]">
                             <div className="text-center mb-[57px]">
                                 <h2 className="text-[36px] font-bold leading-[44px] text-black capitalize mb-4">
-                                    Ready to be a part of our amazing team? <br/>Drop your resume here!
+                                    Ready to be a part of our amazing team? <br />
+                                    Drop your <span className="inline-block">
+    resume
+<svg width="150" height="12" viewBox="0 0 579 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M18 13
+           Q 200 5, 350 12
+           T 561 20
+           L 561 30
+           Q 350 25, 18 25
+           Z"
+        fill="#A4C55F"/>
+</svg>
+
+  </span>{" "}
+                                    here!
                                 </h2>
+
                             </div>
 
                             <form onSubmit={handleSubmit} className="max-w-[1099px] mx-auto space-y-[42px]">
