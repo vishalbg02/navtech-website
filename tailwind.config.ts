@@ -19,7 +19,7 @@ const config = {
       },
     },
     fontFamily: {
-      helvetica: ["Helvetica Neue", "system-ui", "sans-serif"],
+      sans: ["Manrope", "system-ui", "sans-serif"], // use Manrope as default sans
     },
     extend: {
       colors: {

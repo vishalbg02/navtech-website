@@ -9,32 +9,27 @@ export default function LogosSection() {
     const sectionsRef = useRef([])
 
     const members = [
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+        "/images/m1.png",
+        "/images/m2.png",
+        "/images/m3.png",
+        "/images/m4.png",
+        "/images/m5.png",
     ]
 
     const research = [
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1562774053-701939374585?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
+        "/images/rc1.png",
+        "/images/rc2.png",
+        "/images/rc3.png",
+        "/images/rc4.png",
+        "/images/rc5.png",
     ]
 
     const clients = [
-        "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
+        "/images/cl1.png",
+        "/images/cl2.png",
+        "/images/cl3.png",
+        "/images/cl4.png",
+        "/images/cl5.png",
     ]
 
     const sections = [
