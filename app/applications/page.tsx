@@ -285,7 +285,7 @@ export default function ApplicationsPage() {
         />
         <div className="absolute inset-0 bg-black/50"></div>
         <motion.div
-          className="absolute left-[120px] top-[41px] w-[750px]"
+          className="absolute left-[120px] top-[41px] w-[780px]"
           variants={fadeInLeft(0.3)}
           initial="hidden"
           whileInView="visible"
@@ -366,7 +366,17 @@ export default function ApplicationsPage() {
               className="absolute top-[230px] left-[590px] transform -translate-x-1/2 -translate-y-1/2"
               variants={fadeInRight(0.5)}
             >
-              <div className="w-[207px] h-0 border-t-[1.5px] border-dashed border-[#95C149]"></div>
+              <div className="relative flex items-center w-[200px]">
+                {/* Left Arrow (←) */}
+                <div className="w-0 h-0 border-y-[5px] border-r-[8px] border-y-transparent border-r-[#95C149]"></div>
+
+                {/* Dashed Line */}
+                <div className="flex-1 h-0 border-t-[1.5px] border-dashed border-[#95C149]"></div>
+
+                {/* Right Arrow (→) */}
+                <div className="w-0 h-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-[#95C149]"></div>
+              </div>
+
             </motion.div>
           </motion.div>
         </div>
