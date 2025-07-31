@@ -371,103 +371,121 @@ export default function ConsumerPage() {
 
         {/* Healthcare Excellence Section */}
         <section
-          ref={healthcareRef}
-          className="relative pt-20"
-          style={{
-            minHeight: "800px", // Increased height
-            backgroundImage:
-              "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+            ref={healthcareRef}
+            className="relative pt-20"
+            style={{
+              minHeight: "800px", // Increased height
+              backgroundImage:
+                  "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
         >
           <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%)",
-            }}
+              className="absolute inset-0"
+              style={{
+                background:
+                    "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%)",
+              }}
           />
 
-          <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-[120px]">
+          <div className="relative z-10 max-w-[1440px] mx-auto">
             <motion.div
-              className="grid lg:grid-cols-4 gap-20 items-start"
-              variants={staggerContainer}
-              initial="hidden"
-              animate={healthcareInView ? "visible" : "hidden"}
+                className="grid lg:grid-cols-5 gap-8 items-start" // Increased gap from 6 to 8
+                variants={staggerContainer}
+                initial="hidden"
+                animate={healthcareInView ? "visible" : "hidden"}
             >
-              <motion.div variants={fadeInLeft}>
+              <motion.div variants={fadeInLeft} className="lg:col-span-2 pl-4 lg:pl-8">
                 <h3
-                  className="font-bold mb-4"
-                  style={{
-                    fontSize: "42px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                    className="font-bold mb-4 whitespace-nowrap"
+                    style={{
+                      fontSize: "42px",
+                      fontFamily: "Helvetica Neue, sans-serif",
+                      color: "#000",
+                    }}
                 >
                   Healthcare Excellence
                 </h3>
                 <p
-                  className="text-gray-600"
-                  style={{
-                    fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                  }}
+                    className="text-gray-600"
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Helvetica Neue, sans-serif",
+                    }}
                 >
                   Safe, interference-free communication for sensitive medical
                   environments
                 </p>
               </motion.div>
 
-              <motion.div className="relative" variants={fadeInUp}>
-                <div className="absolute left-0 top-0 w-3 h-48 bg-gradient-to-b from-[#95C149] to-transparent"></div>
-                <div className="pl-6">
-                  <div className="w-3 h-3 bg-[#95C149] rounded-full absolute left-0 top-0"></div>
+              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInUp}> {/* Increased ml from 4 to 6, increased pr */}
+                <div className="mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-relaxed"
+                      style={{
+                        fontSize: "18px",
+                        fontFamily: "Helvetica Neue, sans-serif",
+                        color: "#000",
+                      }}
                   >
                     Dedicated LiFi zones for ICUs, operating theaters, and
                     patient rooms
                   </p>
                 </div>
+                <div className="flex justify-center mt-6">
+                  <Image
+                      src="/images/cons_line1.png"
+                      alt="Vertical Line"
+                      width={12}
+                      height={192}
+                  />
+                </div>
               </motion.div>
 
-              <motion.div className="relative" variants={fadeInUp}>
-                <div className="absolute left-0 top-0 w-3 h-20 bg-gradient-to-b from-[#95C149] to-transparent"></div>
-                <div className="pl-6">
-                  <div className="w-3 h-3 bg-[#95C149] rounded-full absolute left-0 top-0"></div>
+              <motion.div className="ml-6" variants={fadeInUp}> {/* Increased ml from 4 to 6 */}
+                <div className="mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-relaxed"
+                      style={{
+                        fontSize: "18px",
+                        fontFamily: "Helvetica Neue, sans-serif",
+                        color: "#000",
+                      }}
                   >
                     Reliable high-speed communication without EMI interference
                   </p>
                 </div>
+                <div className="flex justify-center mt-6">
+                  <Image
+                      src="/images/cons_line2.png"
+                      alt="Vertical Line"
+                      width={12}
+                      height={192}
+                  />
+                </div>
               </motion.div>
 
-              <motion.div className="relative" variants={fadeInRight}>
-                <div className="absolute left-0 top-0 w-3 h-48 bg-gradient-to-b from-[#95C149] to-transparent"></div>
-                <div className="pl-6">
-                  <div className="w-3 h-3 bg-[#95C149] rounded-full absolute left-0 top-0"></div>
+              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInRight}> {/* Increased ml from 4 to 6, increased pr */}
+                <div className="mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-relaxed"
+                      style={{
+                        fontSize: "18px",
+                        fontFamily: "Helvetica Neue, sans-serif",
+                        color: "#000",
+                      }}
                   >
                     Zero-RF environments protecting sensitive medical equipment
                   </p>
+                </div>
+                <div className="flex justify-center mt-6">
+                  <Image
+                      src="/images/cons_line3.png"
+                      alt="Vertical Line"
+                      width={12}
+                      height={192}
+                  />
                 </div>
               </motion.div>
             </motion.div>
@@ -690,112 +708,122 @@ export default function ConsumerPage() {
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                className="relative"
-                variants={scaleIn}
-                initial="hidden"
-                animate={smartCitiesInView ? "visible" : "hidden"}
+                  className="relative"
+                  variants={scaleIn}
+                  initial="hidden"
+                  animate={smartCitiesInView ? "visible" : "hidden"}
               >
-                <div className="relative w-[400px] h-[400px] mx-auto">
+                <div className="relative w-[600px] h-[600px] mx-auto">
                   <div className="absolute inset-0 rounded-full overflow-hidden">
                     <TiltedCard
-                      imageSrc="/images/cons10.jpg"
-                      altText="Smart City"
-                      captionText="Smart City"
-                      containerHeight="100%"
-                      containerWidth="100%"
-                      imageHeight="100%"
-                      imageWidth="100%"
-                      rotateAmplitude={14}
-                      scaleOnHover={1.3}
-                      showMobileWarning={false}
-                      showTooltip={false}
-                      displayOverlayContent={true}
+                        imageSrc="/images/cons10.jpg"
+                        altText="Smart City"
+                        captionText="Smart City"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        rotateAmplitude={14}
+                        scaleOnHover={1.3}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={true}
                     />
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate={smartCitiesInView ? "visible" : "hidden"}
+                  className="-mt-56 -ml-16"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate={smartCitiesInView ? "visible" : "hidden"}
               >
-                <motion.div className="mb-8" variants={fadeInUp}>
+                <motion.div className="mb-6" variants={fadeInUp}>
                   <h3
-                    className="font-bold mb-2"
-                    style={{
-                      fontSize: "36px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                      className="font-bold mb-2"
+                      style={{
+                        fontSize: "36px",
+                        fontFamily: "Helvetica Neue, sans-serif",
+                        color: "#000",
+                      }}
                   >
                     Smart Cities
                   </h3>
                   <p
-                    className="text-gray-600"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                    }}
+                      className="text-gray-600"
+                      style={{
+                        fontSize: "18px",
+                        fontFamily: "Helvetica Neue, sans-serif",
+                      }}
                   >
                     Revolutionary urban infrastructure with optical wireless
                     communication networks
                   </p>
                 </motion.div>
 
-                <div className="space-y-6">
-                  <motion.div
-                    className="flex items-start"
-                    variants={fadeInRight}
-                  >
-                    <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
-                        color: "#000",
-                      }}
-                    >
-                      Optical links for traffic systems, surveillance, and IoT
-                      sensors
-                    </p>
-                  </motion.div>
+                {/* Connected bullet points with vertical line */}
+                <div className="relative">
+                  {/* Vertical connecting line */}
+                  <div className="absolute left-1 top-2 w-0.5 h-full bg-[#95C149]"></div>
 
-                  <motion.div
-                    className="flex items-start"
-                    variants={fadeInRight}
-                  >
-                    <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
-                        color: "#000",
-                      }}
+                  <div className="space-y-6">
+                    <motion.div
+                        className="flex items-start relative"
+                        variants={fadeInRight}
                     >
-                      LiFi streetlights providing data through lighting
-                      infrastructure
-                    </p>
-                  </motion.div>
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <p
+                          className="leading-relaxed"
+                          style={{
+                            fontSize: "18px",
+                            fontFamily: "Helvetica Neue, sans-serif",
+                            color: "#000",
+                          }}
+                      >
+                        Optical links for traffic systems, surveillance, and IoT
+                        sensors
+                      </p>
+                    </motion.div>
 
-                  <motion.div
-                    className="flex items-start"
-                    variants={fadeInRight}
-                  >
-                    <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
-                        color: "#000",
-                      }}
+                    <motion.div
+                        className="flex items-start relative"
+                        variants={fadeInRight}
                     >
-                      Cable-free FSO networks for last-mile connectivity
-                    </p>
-                  </motion.div>
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <p
+                          className="leading-relaxed"
+                          style={{
+                            fontSize: "18px",
+                            fontFamily: "Helvetica Neue, sans-serif",
+                            color: "#000",
+                          }}
+                      >
+                        LiFi streetlights providing data through lighting
+                        infrastructure
+                      </p>
+                    </motion.div>
+
+                    <motion.div
+                        className="flex items-start relative"
+                        variants={fadeInRight}
+                    >
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <p
+                          className="leading-relaxed"
+                          style={{
+                            fontSize: "18px",
+                            fontFamily: "Helvetica Neue, sans-serif",
+                            color: "#000",
+                          }}
+                      >
+                        Cable-free FSO networks for last-mile connectivity
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Extended bottom line */}
+                  <div className="absolute left-1 bottom-0 w-0.5 h-8 bg-[#95C149] transform translate-y-full"></div>
                 </div>
               </motion.div>
             </div>
