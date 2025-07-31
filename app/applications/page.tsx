@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import CTASection from "@/components/CTASection";
 import BlurText from "@/components/utils/BlurTextProps";
 import { motion } from "framer-motion";
+import TiltedCard from "@/components/utils/TiltedCardProps";
 
 const fadeInLeft = (delay: number) => ({
   hidden: { opacity: 0, x: -80 },
@@ -248,11 +249,19 @@ export default function ApplicationsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Image
-                src="/images/app6.png"
-                alt="AR/VR Technology"
-                fill
-                className="object-contain"
+              <TiltedCard
+                imageSrc="/images/app6.png"
+                altText="AR/VR Technology"
+                captionText="AR/VR Technology"
+                containerHeight="100%"
+                containerWidth="100%"
+                imageHeight="100%"
+                imageWidth="100%"
+                rotateAmplitude={14}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={true}
               />
             </motion.div>
             <motion.div
@@ -376,7 +385,6 @@ export default function ApplicationsPage() {
                 {/* Right Arrow (→) */}
                 <div className="w-0 h-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-[#95C149]"></div>
               </div>
-
             </motion.div>
           </motion.div>
         </div>
