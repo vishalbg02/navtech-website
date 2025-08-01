@@ -1,192 +1,16 @@
 "use client"
 
-import { useEffect, useRef, Suspense, memo, useMemo, useState, useCallback } from "react"
+import { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Canvas } from "@react-three/fiber"
-import { useGLTF, OrbitControls, Environment, Html, ContactShadows, Center, Bounds } from "@react-three/drei"
+import GLBModelViewer from "@/components/utils/GLBModelViewer"
 
-// Aggressive preloading with priority
-useGLTF.preload("/glb/opticspectra.glb", { priority: 1 })
-useGLTF.preload("/glb/navocular.glb", { priority: 2 })
-useGLTF.preload("/glb/navocular1.glb", { priority: 2 })
 
-// Memoized 3D Model Component with maximum optimization
-const Model = memo(({ url, ...props }: { url: string } & any) => {
-    const { scene } = useGLTF(url, true, true) // Enable draco compression and skip non-visible meshes
-
-    // Memoize the cloned scene with aggressive optimization
-    const clonedScene = useMemo(() => {
-        const clone = scene.clone()
-        clone.traverse((child: any) => {
-            if (child.isMesh) {
-                child.castShadow = true
-                child.receiveShadow = true
-                if (child.material) {
-                    child.material.needsUpdate = false
-                    // Reduce texture memory
-                    if (child.material.map) {
-                        child.material.map.minFilter = 1003 // LinearFilter
-                        child.material.map.magFilter = 1003 // LinearFilter
-                        child.material.map.anisotropy = 1 // Minimum anisotropy
-                    }
-                }
-            }
-        })
-        return clone
-    }, [scene])
-
-    return (
-        <Center>
-            <Bounds fit clip observe margin={1.2}> {/* Increased margin for larger models */}
-                <primitive object={clonedScene} {...props} scale={[2.5, 2.5, 2.5]} />
-            </Bounds>
-        </Center>
-    )
-})
-
-Model.displayName = "Model"
-
-// Dual Model Component with optimized switching
-const DualModel = memo(
-    ({ urls, switchInterval = 5000, onModelChange, ...props }: { urls: string[]; switchInterval?: number; onModelChange?: (index: number) => void } & any) => {
-        const [currentModelIndex, setCurrentModelIndex] = useState(0)
-
-        useEffect(() => {
-            const interval = setInterval(() => {
-                setCurrentModelIndex((prev) => {
-                    const nextIndex = (prev + 1) % urls.length
-                    onModelChange?.(nextIndex)
-                    return nextIndex
-                })
-            }, switchInterval)
-
-            return () => clearInterval(interval)
-        }, [urls.length, switchInterval, onModelChange])
-
-        return (
-            <Center>
-                <Bounds fit clip observe margin={1.2}>
-                    <group>
-                        {urls.map((url, index) => (
-                            <group key={url} visible={index === currentModelIndex} {...props}>
-                                <Model url={url} />
-                            </group>
-                        ))}
-                    </group>
-                </Bounds>
-            </Center>
-        )
-    },
-)
-
-DualModel.displayName = "DualModel"
-
-// Ultra-optimized 3D Scene Component
-const Scene3D = memo(
-    ({ modelUrl, index, isDual = false, onModelChange }: { modelUrl: string | string[]; index: number; isDual?: boolean; onModelChange?: (index: number) => void }) => {
-        // Memoize camera settings
-        const cameraSettings = useMemo(
-            () => ({
-                position: [0, 0, 5] as [number, number, number],
-                fov: 35, // Reduced FOV for performance
-            }),
-            [],
-        )
-
-        // Memoize GL settings for maximum performance
-        const glSettings = useMemo(
-            () => ({
-                antialias: false,
-                alpha: true,
-                powerPreference: "high-performance" as const,
-                stencil: false,
-                depth: true,
-                logarithmicDepthBuffer: false,
-                precision: "lowp" as const, // Lower precision for better mobile performance
-            }),
-            [],
-        )
-
-        return (
-            <div className="relative w-full h-full">
-                <Canvas
-                    camera={cameraSettings}
-                    style={{ width: "100%", height: "100%" }}
-                    shadows={false}
-                    gl={glSettings}
-                    frameloop="demand"
-                    dpr={[0.5, 1]} // Tighter DPR range for performance
-                    performance={{ min: 0.7 }} // More aggressive performance scaling
-                >
-                    <Suspense
-                        fallback={
-                            <Html center>
-                                <div className="flex flex-col items-center space-y-2">
-                                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-                                    <div className="text-gray-600 text-xs font-medium">Loading...</div>
-                                </div>
-                            </Html>
-                        }
-                    >
-                        <ambientLight intensity={0.5} /> {/* Reduced intensity */}
-                        <directionalLight position={[3, 3, 3]} intensity={0.7} />
-                        <Environment preset="dawn" background={false} resolution={256} /> {/* Lower resolution */}
-                        <ContactShadows
-                            position={[0, -1.2, 0]}
-                            opacity={0.15} // Reduced opacity
-                            scale={8}
-                            blur={1}
-                            far={2}
-                            resolution={64} // Even lower resolution
-                        />
-                        {isDual && Array.isArray(modelUrl) ? (
-                            <DualModel urls={modelUrl} switchInterval={5000} onModelChange={onModelChange} />
-                        ) : (
-                            <Model url={typeof modelUrl === "string" ? modelUrl : modelUrl[0]} />
-                        )}
-                        <OrbitControls
-                            enableZoom={false} // Disable zooming to fix the 3D asset
-                            enablePan={false}
-                            enableRotate={true}
-                            autoRotate={true}
-                            autoRotateSpeed={1.2} // Normal rotation speed
-                            enableDamping={true}
-                            dampingFactor={0.03} // Reduced for smoother motion
-                            minDistance={3}
-                            maxDistance={7}
-                            rotateSpeed={0.4} // Slightly reduced
-                            zoomSpeed={0.4}
-                            target={[0, 0, 0]}
-                            makeDefault
-                            regress
-                        />
-                    </Suspense>
-                </Canvas>
-                {/* 360° Icon */}
-                <div className="absolute bottom-4 right-4 text-gray-500 text-sm flex items-center space-x-2">
-                    <svg
-                        className="w-6 h-6 animate-spin" // Normal spin
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 12a8 8 0 0116 0 8 8 0 01-16 0zm8-8v2m0 12v2m8-8h-2m-12 0H4"
-                        />
-                    </svg>
-                    <span>360° View</span>
-                </div>
-            </div>
-        )
-    },
-)
-
-Scene3D.displayName = "Scene3D"
+if (typeof GLBModelViewer.preload === 'function') {
+    GLBModelViewer.preload("/glb/opticspectra.glb")
+    GLBModelViewer.preload("/glb/navocular.glb")
+    GLBModelViewer.preload("/glb/navocular1.glb")
+}
 
 export default function HorizontalSection() {
     const containerRef = useRef(null)
@@ -194,7 +18,6 @@ export default function HorizontalSection() {
     const sectionsRef = useRef<HTMLDivElement[]>([])
     const [currentNavOcularModel, setCurrentNavOcularModel] = useState(0)
 
-    // Optimize GSAP animations with useCallback
     const animateSections = useCallback(() => {
         if (typeof window === "undefined") return
 
@@ -372,6 +195,15 @@ export default function HorizontalSection() {
         setCurrentNavOcularModel(index)
     }, [])
 
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentNavOcularModel((prev) => (prev + 1) % 2)
+        }, 5000)
+
+        return () => clearInterval(interval)
+    }, [])
+
     return (
         <div className="relative">
             <div ref={headerRef} className="fixed top-0 left-0 right-0 text-center py-8 z-20">
@@ -433,7 +265,6 @@ export default function HorizontalSection() {
                                                 {section.description}
                                             </p>
 
-
                                             {section.isDual && (
                                                 <div className="flex items-center space-x-4">
                                                     <div className="flex space-x-1">
@@ -478,13 +309,43 @@ export default function HorizontalSection() {
                                     </div>
 
                                     <div className="w-full lg:w-1/2 section-content">
-                                        <div className="section-3d relative w-full h-[480px] lg:h-[600px] max-w-xl mx-auto">
-                                            <Scene3D
-                                                modelUrl={section.model}
-                                                index={index}
-                                                isDual={section.isDual}
-                                                onModelChange={section.isDual ? setCurrentNavOcularModel : undefined}
+                                        <div className={`section-3d relative w-full max-w-2xl mx-auto ${
+                                            section.title === 'OpticSpectra' 
+                                                ? 'h-[600px] lg:h-[700px] top-[100px]'  // OpticSpectra - increased size
+                                                : section.isDual && currentNavOcularModel === 0
+                                                    ? 'h-[600px] lg:h-[700px]'  
+                                                    : section.isDual && currentNavOcularModel === 1
+                                                        ? 'h-[600px] lg:h-[700px]' 
+                                                        : 'h-[600px] lg:h-[700px]'
+                                        }`}>
+                                            <GLBModelViewer
+                                                modelPath={
+                                                    section.isDual && Array.isArray(section.model)
+                                                        ? section.model[currentNavOcularModel]
+                                                        : typeof section.model === "string"
+                                                            ? section.model
+                                                            : section.model[0]
+                                                }
+                                                className="w-full h-full"
                                             />
+
+                                            <div className="absolute bottom-4 right-4 text-gray-500 text-sm flex items-center space-x-2">
+                                                <svg
+                                                    className="w-6 h-6 animate-spin"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M4 12a8 8 0 0116 0 8 8 0 01-16 0zm8-8v2m0 12v2m8-8h-2m-12 0H4"
+                                                    />
+                                                </svg>
+                                                <span>360° View</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
