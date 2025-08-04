@@ -20,6 +20,7 @@ const config = {
     },
     fontFamily: {
       sans: ["Manrope", "system-ui", "sans-serif"], // use Manrope as default sans
+      anton: ["Anton", "sans-serif"],
     },
     extend: {
       colors: {

@@ -273,7 +273,7 @@ export default function OpticSpectraPage() {
   return (
     <div
       className="relative min-h-screen bg-white overflow-x-hidden"
-      style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+      style={{ fontFamily: "Manrope, sans-serif" }}
     >
       {/* Video Section */}
       <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center">
@@ -283,7 +283,7 @@ export default function OpticSpectraPage() {
             delay={150}
             animateBy="words"
             direction="bottom"
-            className="text-[64px] font-bold leading-[77px] text-black mb-6"
+            className="text-[64px] font-anton leading-[77px] text-black mb-6"
           />
           <div className="relative w-[78px] h-[78px] mx-auto">
             <div className="absolute inset-0 bg-white/40 rounded-full"></div>
@@ -307,24 +307,24 @@ export default function OpticSpectraPage() {
               className="flex flex-col items-center"
               variants={fadeInUp}
             >
-              <h2 className="text-[22px] font-bold leading-[23px] text-center uppercase text-black">
+              <h2 className="text-[27px] font-anton leading-[23px] text-center uppercase text-black">
                 ABOUT
               </h2>
               <div className="relative mt-[5px] flex items-center justify-center w-[400px] h-[46px] bg-[#95C149]">
-                <span className="text-[46px] font-bold text-white uppercase z-10 leading-[56px]">
+                <span className="text-[46px] font-anton text-white uppercase z-10 leading-[56px]">
                   OPTICSPECTRA
                 </span>
               </div>
             </motion.div>
             <motion.p
-              className="text-[20px] font-light leading-6 text-center text-black"
+              className="text-[20px] font-sans leading-6 text-center text-black"
               variants={fadeInUp}
             >
               Intelligent Optical Links for Dynamic Network Demands
             </motion.p>
           </motion.div>
           <motion.p
-            className="text-[18px] font-light leading-[22px] text-center text-[#565656]"
+            className="text-[18px] font-sans leading-[22px] text-center text-[#565656]"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -360,7 +360,7 @@ export default function OpticSpectraPage() {
               >
                 <motion.h2
                   ref={departmentTextRef}
-                  className="text-[68px] font-bold leading-[70px] text-center uppercase w-full mb-2"
+                  className="text-[68px] font-anton leading-[70px] text-center uppercase w-full mb-2"
                   style={{
                     WebkitTextStroke: "1px #AFAFAF",
                     backgroundImage:
@@ -377,7 +377,7 @@ export default function OpticSpectraPage() {
                 </motion.h2>
 
                 <motion.h3
-                  className="text-[52px] font-bold leading-[55px] text-center text-black mb-2"
+                  className="text-[52px] font-anton leading-[55px] text-center text-black mb-2"
                   variants={fadeInUp}
                 >
                   Versions - Neo
@@ -385,7 +385,7 @@ export default function OpticSpectraPage() {
 
                 <motion.h2
                   ref={tecCertifiedRef}
-                  className="text-[68px] font-bold leading-[70px] text-center uppercase w-[1199px] mb-4"
+                  className="text-[68px] font-anton leading-[70px] text-center uppercase w-[1199px] mb-4"
                   style={{
                     WebkitTextStroke: "1px #AFAFAF",
                     backgroundImage:
@@ -432,10 +432,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[120px] top-[150px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 1Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -450,10 +450,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[120px] top-[294px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 1Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -468,10 +468,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[120px] top-[453px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 10Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -486,10 +486,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[120px] top-[630px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 10Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -518,10 +518,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       10km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -536,10 +536,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       5km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -554,10 +554,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       5km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -572,10 +572,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       3km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -592,7 +592,7 @@ export default function OpticSpectraPage() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <motion.h3
-                className="text-[36px] font-bold leading-[44px] uppercase text-black"
+                className="text-[36px] font-anton leading-[44px] uppercase text-black"
                 variants={fadeInUp}
               >
                 USE CASES
@@ -617,10 +617,10 @@ export default function OpticSpectraPage() {
                       />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-bold leading-[29px] text-black">
+                      <h4 className="text-[24px] font-anton leading-[29px] text-black">
                         {useCase.title}
                       </h4>
-                      <p className="text-[18px] font-light leading-[22px] text-[#565656]">
+                      <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
                         {useCase.description}
                       </p>
                     </div>
@@ -678,7 +678,7 @@ export default function OpticSpectraPage() {
               >
                 <motion.h2
                   ref={milGradeRef}
-                  className="text-[68px] font-bold leading-[70px] text-center uppercase w-full mb-2"
+                  className="text-[68px] font-anton leading-[70px] text-center uppercase w-full mb-2"
                   style={{
                     WebkitTextStroke: "1px #AFAFAF",
                     backgroundImage:
@@ -693,14 +693,14 @@ export default function OpticSpectraPage() {
                 </motion.h2>
 
                 <motion.h3
-                  className="text-[52px] font-bold leading-[55px] text-center text-black mb-2"
+                  className="text-[52px] font-anton leading-[55px] text-center text-black mb-2"
                   variants={fadeInUp}
                 >
                   Versions - Supreme
                 </motion.h3>
                 <motion.h2
                   ref={jssCertifiedRef}
-                  className="text-[68px] font-bold leading-[70px] text-center uppercase w-[1199px] mb-4"
+                  className="text-[68px] font-anton leading-[70px] text-center uppercase w-[1199px] mb-4"
                   style={{
                     WebkitTextStroke: "1px #AFAFAF",
                     backgroundImage:
@@ -747,10 +747,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[180px] top-0 flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 1Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -765,10 +765,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[120px] top-[150px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 1Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -783,10 +783,10 @@ export default function OpticSpectraPage() {
                   className="absolute left-[232px] top-[309px] flex items-center gap-5"
                 >
                   <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-bold leading-6 text-center text-black">
+                    <div className="text-[20px] font-anton leading-6 text-center text-black">
                       Upto 40Gbps
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Bandwidth
                     </div>
                   </div>
@@ -815,10 +815,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       10km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -833,10 +833,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       20km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -851,10 +851,10 @@ export default function OpticSpectraPage() {
                     <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
                   </div>
                   <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-bold leading-[46px] text-center text-black">
+                    <div className="text-[37.8294px] font-anton leading-[46px] text-center text-black">
                       1km
                     </div>
-                    <div className="text-[21.279px] font-light leading-[26px] text-center text-black">
+                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
                       Distance
                     </div>
                   </div>
@@ -871,7 +871,7 @@ export default function OpticSpectraPage() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <motion.h3
-                className="text-[36px] font-bold leading-[44px] uppercase text-black"
+                className="text-[36px] font-anton leading-[44px] uppercase text-black"
                 variants={fadeInUp}
               >
                 USE CASES
@@ -896,10 +896,10 @@ export default function OpticSpectraPage() {
                       />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-bold leading-[29px] text-black">
+                      <h4 className="text-[24px] font-anton leading-[29px] text-black">
                         {useCase.title}
                       </h4>
-                      <p className="text-[18px] font-light leading-[22px] text-[#565656]">
+                      <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
                         {useCase.description}
                       </p>
                     </div>

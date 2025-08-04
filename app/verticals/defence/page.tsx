@@ -174,12 +174,12 @@ export default function DefencePage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-7xl md:text-8xl font-bold uppercase leading-tight text-white"
+                className="text-7xl md:text-8xl font-anton uppercase leading-tight text-white"
               />
               <SplitText
                 text="Next-Gen Optical Wireless Communication for Indian Armed
                   Forces"
-                className="text-2xl font-light mt-4 text-white"
+                className="text-2xl font-sans mt-4 text-white"
                 delay={180}
                 duration={0.8}
                 ease="power3.out"
@@ -203,25 +203,22 @@ export default function DefencePage() {
           animate={introInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold leading-snug"
-            style={{
-              fontFamily: '"Helvetica Neue Condensed Bold", sans-serif',
-            }}
+            className="text-4xl md:text-5xl font-anton leading-snug"
             variants={scaleIn}
             initial="hidden"
             animate={introInView ? "visible" : "hidden"}
             transition={{ delay: 0.2 }}
           >
             <span style={{ color: "#95C149" }}>Mission-Ready.</span>{" "}
-            EW-Resilient.
+            EW-Resilient. Indigenously
             <br />
-            Indigenously Developed.
+            Developed.
           </motion.h2>
 
           <motion.p
             className="max-w-4xl mt-8 text-lg font-light leading-relaxed"
             style={{
-              fontFamily: '"Helvetica Neue Light", sans-serif',
+              fontFamily: '"Manrope", sans-serif',
             }}
             variants={fadeInUp}
             initial="hidden"
@@ -243,7 +240,7 @@ export default function DefencePage() {
           <div className="container mx-auto px-6">
             <motion.h2
               ref={useCasesRef}
-              className="font-bold text-center pb-9"
+              className="font-anton text-center pb-9"
               style={{ fontSize: "46px" }}
               variants={scaleIn}
               initial="hidden"
@@ -296,7 +293,7 @@ export default function DefencePage() {
                   animate={armyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-bold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -305,9 +302,9 @@ export default function DefencePage() {
                     Army
                   </motion.h4>
 
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-black">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Forward Base Communication:
                       </span>
                       <br />
@@ -316,7 +313,7 @@ export default function DefencePage() {
                       on vulnerable RF systems.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Mobile Command Centers:
                       </span>
                       <br />
@@ -325,7 +322,7 @@ export default function DefencePage() {
                       jamming and detection.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Stealth Operations:
                       </span>
                       <br />
@@ -382,7 +379,7 @@ export default function DefencePage() {
                   animate={navyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-bold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -390,9 +387,9 @@ export default function DefencePage() {
                   >
                     Navy
                   </motion.h4>
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-black">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Shipboard Communication:
                       </span>
                       <br />
@@ -401,7 +398,7 @@ export default function DefencePage() {
                       electronics and weapons systems.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Submarine Connectivity:
                       </span>
                       <br />
@@ -410,7 +407,7 @@ export default function DefencePage() {
                       operations.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Fleet Operations:
                       </span>
                       <br />
@@ -467,7 +464,7 @@ export default function DefencePage() {
                   animate={airForceInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-bold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -476,9 +473,9 @@ export default function DefencePage() {
                     Air Force
                   </motion.h4>
 
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-black">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         Airbase Communication Grid:
                       </span>
                       <br />
@@ -487,7 +484,7 @@ export default function DefencePage() {
                       wireless RF networks.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         EW-Protected Zones:
                       </span>
                       <br />
@@ -495,7 +492,7 @@ export default function DefencePage() {
                       planning rooms, where RF silence is required.
                     </motion.li>
                     <motion.li variants={staggerItem}>
-                      <span className="font-bold text-black">
+                      <span className="font-sans font-bold text-black">
                         UAV and ISR Support:
                       </span>
                       <br />
@@ -538,7 +535,7 @@ export default function DefencePage() {
         >
           <div className="container mx-auto px-6">
             <motion.h2
-              className="text-4xl font-bold uppercase text-black text-center"
+              className="text-4xl font-anton text-black text-center"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 fullImageInView
@@ -558,7 +555,7 @@ export default function DefencePage() {
             </motion.h2>
 
             <motion.p
-              className="max-w-5xl mx-auto mt-4 text-lg font-light text-black text-center pb-12"
+              className="max-w-5xl mx-auto mt-4 text-lg font-sans text-gray-600 text-center pb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={
                 fullImageInView

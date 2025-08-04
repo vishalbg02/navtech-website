@@ -144,7 +144,7 @@ export default function InsightsPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
+                className="text-5xl lg:text-6xl xl:text-7xl font-anton leading-tight text-white"
               />
             </div>
           </div>
@@ -206,13 +206,13 @@ export default function InsightsPage() {
             {/* Media Content */}
             {activeTab === "media" && (
               <div className="animate-in">
-                <h2 className="text-5xl font-bold text-black text-center mb-16">
+                <h2 className="text-5xl font-anton text-black text-center mb-16">
                   MEDIA
                 </h2>
                 <div className="space-y-20">
                   {mediaArticles.map((article, index) => (
                     <div key={index} className="max-w-4xl mx-auto">
-                      <h3 className="text-3xl font-bold text-black mb-3">
+                      <h3 className="text-3xl font-anton text-black mb-3">
                         {article.title}
                       </h3>
                       <p className="text-gray-600 mb-8 text-lg">
@@ -239,7 +239,7 @@ export default function InsightsPage() {
             {/* Blogs Content */}
             {activeTab === "blogs" && (
               <div className="animate-in">
-                <h2 className="text-5xl font-bold text-black text-center mb-16">
+                <h2 className="text-5xl font-anton text-black text-center mb-16">
                   BLOGS
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -254,7 +254,7 @@ export default function InsightsPage() {
                         />
                       </div>
                       <div className="pt-6">
-                        <h3 className="text-lg font-bold text-black mb-3 line-clamp-2 leading-tight">
+                        <h3 className="text-lg font-anton text-black mb-3 line-clamp-2 leading-tight">
                           {post.title}
                         </h3>
                         <div className="flex items-center text-sm text-gray-500 mb-3">
