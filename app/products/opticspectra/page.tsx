@@ -119,7 +119,7 @@ export default function OpticSpectraPage() {
       title: "Urban Connectivity",
       description:
         "Serves as a scalable alternative to fiber in cities—linking rooftops and buildings without civil work, spectrum constraints, or interference issues.",
-      image: "/images/op4.jpg",
+      image: "/images/Urban Connectivity.jpg",
     },
   ];
 

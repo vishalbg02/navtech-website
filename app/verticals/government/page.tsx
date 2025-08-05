@@ -432,7 +432,7 @@ export default function GovernmentPage() {
                 animate={disasterResilientInView ? "visible" : "hidden"}
               >
                 <Image
-                  src="/images/gov6.jpg?height=461&width=345&text=Rural+Landscape"
+                  src="/images/rural.jpg"
                   alt="Rural Landscape"
                   fill
                   className="object-cover"

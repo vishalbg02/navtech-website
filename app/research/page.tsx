@@ -67,7 +67,7 @@ export default function ResearchPage() {
         "QKD-Enabled Optical Wireless Systems combine the speed and flexibility of LiFi and FSO with the unbreakable security of Quantum Key Distribution (QKD). This revolutionary approach ensures that any attempt to intercept or eavesdrop on communications is immediately detected.",
       secondaryDescription:
         "Perfect for critical infrastructure, defence networks, financial systems, and strategic communications where absolute security is paramount. These systems provide quantum-level protection for the most sensitive data transmissions.",
-      image: "/images/res3.jpg",
+      image: "/images/QKD.png",
     },
     {
       id: "OWP - Optical Wireless Power",
@@ -87,7 +87,7 @@ export default function ResearchPage() {
         "Advanced research and development of Power over Fiber (PoF) systems—enabling the simultaneous transmission of optical power and data over optical fiber. This technology provides electrical isolation and immunity to electromagnetic interference.",
       secondaryDescription:
         "Ideal for hazardous environments, industrial applications, and situations requiring complete electrical isolation. PoF systems are explosion-proof and provide reliable power and data transmission in the most demanding conditions.",
-      image: "/images/res5.jpg",
+      image: "/images/Power over fiber.png",
     },
     {
       id: "Space Communication",
@@ -117,7 +117,7 @@ export default function ResearchPage() {
         "Advanced Pointing, Acquisition, and Tracking (PAT) systems ensure stable and accurate alignment in Free Space Optical (FSO) and laser communication links. These systems provide real-time feedback and intelligent control for optimal performance.",
       secondaryDescription:
         "Featuring microsecond response times, precision beam steering, AI-powered tracking, and motion compensation capabilities. PAT systems enable reliable optical communications even in challenging environmental conditions.",
-      image: "/images/res8.jpg",
+      image: "/images/PAT.png",
     },
   ];
 

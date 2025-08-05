@@ -71,7 +71,7 @@ export default function TelecomPage() {
         className="h-screen relative flex items-center pt-0"
         style={{
           backgroundImage:
-            "url('/images/tele1.jpg?height=1080&width=1920&text=Industrial+Equipment')",
+            "url('/images/Telecom.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

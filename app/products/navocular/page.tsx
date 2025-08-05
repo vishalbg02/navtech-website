@@ -87,19 +87,19 @@ export default function OpticSpectraPage() {
       title: "Smart Buildings",
       description:
         "Empowers seamless user experience by using existing lighting for high-speed indoor connectivity, reducing dependence on traditional networks and enhancing energy-efficient communication.",
-      image: "/images/op2.jpg",
+      image: "/images/Smart Buildings.png",
     },
     {
       title: "6G-Ready Optical Layer Integration",
       description:
         "Acts as a foundational layer for 6G architecture by enabling distributed, low-latency optical cells indoors leveraging visible and IR light for localized, energy-efficient, and ultra-secure mesh-based connectivity.",
-      image: "/images/op3.jpg",
+      image: "/images/6G.png",
     },
     {
       title: "5G Indoor Offloading & Edge Zones",
       description:
         "Supports ultra-fast, short-range wireless links within high-density indoor zones (airports, malls, offices), offloading traffic from congested 5G small cells and enhancing network capacity with zero-spectrum use.",
-      image: "/images/op4.jpg",
+      image: "/images/5G.png",
     },
   ];
 
@@ -199,10 +199,10 @@ export default function OpticSpectraPage() {
         >
           <ReferenceCarousel
             images={[
-              "/images/op5.png",
-              "/images/op5.png",
-              "/images/op5.png",
-              "/images/op5.png",
+              "/images/NavOcular Defence Light.png",
+              "/images/NavOcular Defence.png",
+              "/images/NavOcular Defence Light.png",
+              "/images/NavOcular Defence.png",
             ]}
             referenceRef={referenceRef}
             referenceInView={referenceInView}

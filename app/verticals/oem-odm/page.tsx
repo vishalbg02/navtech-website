@@ -184,7 +184,7 @@ export default function OEMODMPage() {
           animate={introInView ? "visible" : "hidden"}
         >
           <Image
-            src="/images/oem2.jpg?height=432&width=1440&text=Industrial+Facility"
+            src="/images/OpticSpectra Tower.png"
             alt="Industrial Facility"
             fill
             className="object-cover"

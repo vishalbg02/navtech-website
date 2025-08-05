@@ -156,13 +156,13 @@ export default function DefencePage() {
         <section
           className="h-[837px] w-full relative"
           style={{
-            background: "url('/images/def1.jpg?height=837&width=1440')",
+            background: "url('/images/def1.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
           {/* Solid dark overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-75 z-0" />
+          <div className="absolute inset-0 bg-black bg-opacity-70 z-0" />
 
           {/* Content: text remains on the left */}
           <div className="absolute inset-0 flex items-center z-10">

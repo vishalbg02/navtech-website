@@ -105,12 +105,12 @@ export default function ConsumerPage() {
           className="h-screen relative flex items-center pt-0"
           style={{
             backgroundImage:
-              "url('/images/cons.jpg?height=1080&width=1920&text=Business+Meeting')",
+              "url('/images/cons.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-75" />
+          <div className="absolute inset-0 bg-black bg-opacity-70" />
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-[120px] w-full">
             <motion.div
               className="max-w-2xl"
