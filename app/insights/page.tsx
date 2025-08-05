@@ -140,7 +140,7 @@ export default function InsightsPage() {
             <div className="max-w-4xl">
               {/* Main title - positioned top left like in the image */}
               <BlurText
-                text="Insights"
+                text="INSIGHTS"
                 delay={150}
                 animateBy="words"
                 direction="bottom"
