@@ -97,7 +97,7 @@ export default function ConsumerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black font-['Helvetica_Neue',sans-serif] overflow-x-hidden">
+    <div className="min-h-screen bg-white text-black font-['Manrope',sans-serif] overflow-x-hidden">
       <main>
         {/* Hero Section */}
         <section
@@ -123,12 +123,12 @@ export default function ConsumerPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
+                className="text-6xl lg:text-8xl font-anton uppercase leading-tight text-white mb-4"
               />
               <SplitText
                 text="Integrate the Future: LiFi Optical Transceivers for Your
                 Products"
-                className="text-xl lg:text-2xl font-light text-white"
+                className="text-xl lg:text-2xl font-sans text-white"
                 delay={100}
                 duration={0.9}
                 ease="power3.out"
@@ -153,11 +153,7 @@ export default function ConsumerPage() {
               animate={introInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-bold mb-6"
-                style={{
-                  fontSize: "36px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-                }}
+                className="font-anton text-5xl mb-6"
                 variants={fadeInUp}
               >
                 Our Solutions for End Customers
@@ -166,7 +162,7 @@ export default function ConsumerPage() {
                 className="text-gray-600 leading-relaxed"
                 style={{
                   fontSize: "18px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                  fontFamily: "Manrope, sans-serif",
                 }}
                 variants={fadeInUp}
               >
@@ -188,12 +184,7 @@ export default function ConsumerPage() {
             >
               <motion.div className="mb-12" variants={fadeInUp}>
                 <h3
-                  className="font-bold mb-2"
-                  style={{
-                    fontSize: "36px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-2"
                 >
                   Enterprise & Corporate
                 </h3>
@@ -201,7 +192,7 @@ export default function ConsumerPage() {
                   className="text-gray-600"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                   }}
                 >
                   Ultra-secure, high-speed connectivity for mission-critical
@@ -224,7 +215,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -246,7 +237,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -268,7 +259,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -290,12 +281,7 @@ export default function ConsumerPage() {
             >
               <motion.div className="mb-12" variants={fadeInUp}>
                 <h3
-                  className="font-bold mb-2"
-                  style={{
-                    fontSize: "36px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-2"
                 >
                   Smart Living Spaces
                 </h3>
@@ -303,7 +289,7 @@ export default function ConsumerPage() {
                   className="text-gray-600"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                   }}
                 >
                   Intelligent lighting systems that deliver internet without
@@ -329,7 +315,7 @@ export default function ConsumerPage() {
                     <p
                       style={{
                         fontSize: "16px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                       }}
                     >
                       LiFi-enabled lighting for radiation-free internet access
@@ -343,7 +329,7 @@ export default function ConsumerPage() {
                     <p
                       style={{
                         fontSize: "16px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                       }}
                     >
                       Secure internal communication eliminating Wi-Fi congestion
@@ -357,7 +343,7 @@ export default function ConsumerPage() {
                     <p
                       style={{
                         fontSize: "16px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                       }}
                     >
                       Seamless IoT integration and home automation systems
@@ -398,12 +384,7 @@ export default function ConsumerPage() {
             >
               <motion.div variants={fadeInLeft} className="lg:col-span-2 pl-4 lg:pl-8">
                 <h3
-                    className="font-bold mb-4 whitespace-nowrap"
-                    style={{
-                      fontSize: "42px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                    className="font-anton text-5xl mb-4 whitespace-nowrap"
                 >
                   Healthcare Excellence
                 </h3>
@@ -411,7 +392,7 @@ export default function ConsumerPage() {
                     className="text-gray-600"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                     }}
                 >
                   Safe, interference-free communication for sensitive medical
@@ -419,13 +400,13 @@ export default function ConsumerPage() {
                 </p>
               </motion.div>
 
-              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInUp}> {/* Increased ml from 4 to 6, increased pr */}
+              <motion.div className="ml-6 pr-3 lg:pr-5" variants={fadeInUp}> {/* Increased ml from 4 to 6, increased pr */}
                 <div className="mb-4">
                   <p
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                   >
@@ -449,7 +430,7 @@ export default function ConsumerPage() {
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                   >
@@ -472,7 +453,7 @@ export default function ConsumerPage() {
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                   >
@@ -525,12 +506,7 @@ export default function ConsumerPage() {
               >
                 <motion.div className="mb-8" variants={fadeInUp}>
                   <h3
-                    className="font-bold mb-2"
-                    style={{
-                      fontSize: "36px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                    className="font-anton text-5xl mb-2"
                   >
                     Educational Innovation
                   </h3>
@@ -538,7 +514,7 @@ export default function ConsumerPage() {
                     className="text-gray-600"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                     }}
                   >
                     Next-generation digital classrooms with safe,
@@ -548,14 +524,14 @@ export default function ConsumerPage() {
 
                 <div className="space-y-4">
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md border-b-4 border-[#95C149]"
+                    className="bg-white pl-4 rounded-lg shadow-md border-b-4 mr-14 border-[#95C149]"
                     variants={fadeInRight}
                   >
                     <p
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                     >
@@ -564,14 +540,14 @@ export default function ConsumerPage() {
                   </motion.div>
 
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md border-b-4 border-[#95C149] ml-6"
+                    className="bg-white pl-8 rounded-lg shadow-md border-b-4 border-[#95C149] mr-1 ml-14"
                     variants={fadeInRight}
                   >
                     <p
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                     >
@@ -580,14 +556,14 @@ export default function ConsumerPage() {
                   </motion.div>
 
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md border-b-4 border-[#95C149] ml-12"
+                    className="bg-white pl-4 rounded-lg shadow-md border-b-4 border-[#95C149] ml-24 -mr-16"
                     variants={fadeInRight}
                   >
                     <p
                       className="leading-relaxed"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                         color: "#000",
                       }}
                     >
@@ -610,12 +586,7 @@ export default function ConsumerPage() {
             >
               <motion.div className="mb-12" variants={fadeInUp}>
                 <h3
-                  className="font-bold mb-2"
-                  style={{
-                    fontSize: "36px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-2"
                 >
                   Industrial <span style={{ color: "#95C149" }}>Power</span>
                 </h3>
@@ -623,7 +594,7 @@ export default function ConsumerPage() {
                   className="text-gray-600"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                   }}
                 >
                   Robust wireless solutions for electromagnetic
@@ -646,7 +617,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -668,7 +639,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -690,7 +661,7 @@ export default function ConsumerPage() {
                     className="leading-relaxed"
                     style={{
                       fontSize: "18px",
-                      fontFamily: "Helvetica Neue, sans-serif",
+                      fontFamily: "Manrope, sans-serif",
                       color: "#000",
                     }}
                   >
@@ -741,20 +712,15 @@ export default function ConsumerPage() {
               >
                 <motion.div className="mb-6" variants={fadeInUp}>
                   <h3
-                      className="font-bold mb-2"
-                      style={{
-                        fontSize: "36px",
-                        fontFamily: "Helvetica Neue, sans-serif",
-                        color: "#000",
-                      }}
+                      className="font-anton text-5xl mb-2 ml-12"
                   >
                     Smart Cities
                   </h3>
                   <p
-                      className="text-gray-600"
+                      className="text-gray-600 ml-12"
                       style={{
                         fontSize: "18px",
-                        fontFamily: "Helvetica Neue, sans-serif",
+                        fontFamily: "Manrope, sans-serif",
                       }}
                   >
                     Revolutionary urban infrastructure with optical wireless
@@ -765,19 +731,19 @@ export default function ConsumerPage() {
                 {/* Connected bullet points with vertical line */}
                 <div className="relative">
                   {/* Vertical connecting line */}
-                  <div className="absolute left-1 top-2 w-0.5 h-full bg-[#95C149]"></div>
+                  <div className="absolute left-1 top-2 w-0.5 h-full bg-[#95C149] ml-12"></div>
 
                   <div className="space-y-6">
                     <motion.div
                         className="flex items-start relative"
                         variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
                           className="leading-relaxed"
                           style={{
                             fontSize: "18px",
-                            fontFamily: "Helvetica Neue, sans-serif",
+                            fontFamily: "Manrope, sans-serif",
                             color: "#000",
                           }}
                       >
@@ -790,12 +756,12 @@ export default function ConsumerPage() {
                         className="flex items-start relative"
                         variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
                           className="leading-relaxed"
                           style={{
                             fontSize: "18px",
-                            fontFamily: "Helvetica Neue, sans-serif",
+                            fontFamily: "Manrope, sans-serif",
                             color: "#000",
                           }}
                       >
@@ -808,12 +774,12 @@ export default function ConsumerPage() {
                         className="flex items-start relative"
                         variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10"></div>
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
                           className="leading-relaxed"
                           style={{
                             fontSize: "18px",
-                            fontFamily: "Helvetica Neue, sans-serif",
+                            fontFamily: "Manrope, sans-serif",
                             color: "#000",
                           }}
                       >
@@ -823,7 +789,7 @@ export default function ConsumerPage() {
                   </div>
 
                   {/* Extended bottom line */}
-                  <div className="absolute left-1 bottom-0 w-0.5 h-8 bg-[#95C149] transform translate-y-full"></div>
+                  <div className="absolute left-1 bottom-0 w-0.5 h-8 bg-[#95C149] transform translate-y-full ml-12"></div>
                 </div>
               </motion.div>
             </div>

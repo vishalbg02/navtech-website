@@ -1,8 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { useInView } from "framer-motion"
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -28,11 +27,11 @@ export default function CTASection() {
         >
             <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] text-center">
                 <motion.h2
-                    className="text-3xl lg:text-5xl font-bold text-white mb-8 leading-tight"
+                    className="text-3xl lg:text-5xl w-[1150px] mx-auto font-anton text-white mb-8 leading-relaxed"
                     variants={fadeInUp}
                 >
-                    Experience ultra-fast, secure, and wireless LiFi built for the
-                    future.
+                    Experience Ultra-Fast, Secure, And Wireless LiFi Built For The
+                    Future.
                 </motion.h2>
                 <motion.a
                     href="#contact"

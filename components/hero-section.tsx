@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -9,6 +10,8 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (typeof window === "undefined") return
+
+    gsap.registerPlugin(ScrollTrigger)
 
     const ctx = gsap.context(() => {
       // Fade out video on scroll

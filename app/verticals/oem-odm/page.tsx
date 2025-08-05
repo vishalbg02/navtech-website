@@ -120,12 +120,12 @@ export default function OEMODMPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
+                className="text-6xl lg:text-8xl font-anton uppercase leading-tight text-white mb-4"
               />
               <SplitText
                 text="Integrate the Future: LiFi Optical Transceivers for Your
                 Products"
-                className="text-xl lg:text-2xl font-light text-white"
+                className="text-xl lg:text-2xl font-sans text-white"
                 delay={180}
                 duration={0.8}
                 ease="power3.out"
@@ -150,11 +150,7 @@ export default function OEMODMPage() {
               animate={introInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-bold mb-6"
-                style={{
-                  fontSize: "36px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-                }}
+                className="font-anton text-5xl mb-6"
                 variants={fadeInUp}
               >
                 Accelerate Your Product with Embedded
@@ -164,7 +160,7 @@ export default function OEMODMPage() {
                 className="text-gray-600 leading-relaxed"
                 style={{
                   fontSize: "18px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                  fontFamily: "Manrope, sans-serif",
                 }}
                 variants={fadeInUp}
               >
@@ -205,11 +201,7 @@ export default function OEMODMPage() {
               animate={collaborateInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-bold mb-6"
-                style={{
-                  fontSize: "56px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-                }}
+                className="font-anton text-5xl mb-6"
                 variants={fadeInUp}
               >
                 We Collaborate With
@@ -218,7 +210,7 @@ export default function OEMODMPage() {
                 className="text-gray-600 leading-relaxed"
                 style={{
                   fontSize: "18px",
-                  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                  fontFamily: "Manrope, sans-serif",
                 }}
                 variants={fadeInUp}
               >
@@ -239,12 +231,7 @@ export default function OEMODMPage() {
                 animate={industrialInView ? "visible" : "hidden"}
               >
                 <h3
-                  className="font-bold mb-6"
-                  style={{
-                    fontSize: "42px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-6"
                 >
                   Industrial{" "}
                   <span style={{ color: "#95C149" }}>Automation</span> Companies
@@ -253,7 +240,7 @@ export default function OEMODMPage() {
                   className="leading-relaxed"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                     color: "#565656",
                   }}
                 >
@@ -323,12 +310,7 @@ export default function OEMODMPage() {
                 animate={smartInfraInView ? "visible" : "hidden"}
               >
                 <h3
-                  className="font-bold mb-6"
-                  style={{
-                    fontSize: "42px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-6"
                 >
                   Smart Infrastructure & IoT Device Makers
                 </h3>
@@ -343,7 +325,7 @@ export default function OEMODMPage() {
                   className="leading-relaxed"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                     color: "#565656",
                   }}
                 >
@@ -396,12 +378,7 @@ export default function OEMODMPage() {
               >
                 <div className="mb-6">
                   <h3
-                    className="font-bold relative z-10"
-                    style={{
-                      fontSize: "42px",
-                      fontFamily: "Helvetica Neue, sans-serif",
-                      color: "#000",
-                    }}
+                    className="font-anton text-5xl relative z-10"
                   >
                     Medical Equipment &{" "}
                     <span
@@ -422,7 +399,7 @@ export default function OEMODMPage() {
                   className="leading-relaxed"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                     color: "#565656",
                   }}
                 >
@@ -457,11 +434,7 @@ export default function OEMODMPage() {
               animate={automotiveInView ? "visible" : "hidden"}
             >
               <motion.h3
-                className="font-bold text-white mb-4 inline-block"
-                style={{
-                  fontSize: "42px",
-                  fontFamily: "Helvetica Neue, sans-serif",
-                }}
+                className="font-anton text-5xl text-white mb-4 inline-block"
                 variants={fadeInUp}
               >
                 Automotive &{" "}
@@ -476,7 +449,7 @@ export default function OEMODMPage() {
                     style={{
                       content: "''",
                       position: "absolute",
-                      bottom: 0,
+                      bottom: -2,
                       left: 0,
                       width: "100%",
                       height: "4px",
@@ -492,7 +465,7 @@ export default function OEMODMPage() {
                 className="font-light text-white max-w-[691px] mx-auto leading-relaxed"
                 style={{
                   fontSize: "18px",
-                  fontFamily: "Helvetica Neue, sans-serif",
+                  fontFamily: "Manrope, sans-serif",
                 }}
                 variants={fadeInUp}
               >
@@ -514,12 +487,7 @@ export default function OEMODMPage() {
                 animate={consumerInView ? "visible" : "hidden"}
               >
                 <h3
-                  className="font-bold mb-6"
-                  style={{
-                    fontSize: "42px",
-                    fontFamily: "Helvetica Neue, sans-serif",
-                    color: "#000",
-                  }}
+                  className="font-anton text-5xl mb-6"
                 >
                   Consumer <span style={{ color: "#95C149" }}>Electronics</span>{" "}
                   & Smart Devices
@@ -528,7 +496,7 @@ export default function OEMODMPage() {
                   className="leading-relaxed"
                   style={{
                     fontSize: "18px",
-                    fontFamily: "Helvetica Neue, sans-serif",
+                    fontFamily: "Manrope, sans-serif",
                     color: "#565656",
                   }}
                 >

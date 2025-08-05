@@ -126,7 +126,7 @@ export default function CareersPage() {
               delay={150}
               animateBy="words"
               direction="bottom"
-              className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
+              className="text-5xl lg:text-6xl xl:text-7xl font-anton leading-tight text-white"
             />
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function CareersPage() {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-[28px] font-bold leading-[34px] text-black">
+                  <h3 className="text-[28px] font-anton leading-[34px] text-black">
                     Let's stay connected! Follow our social media channels and
                     have a conversation with us.
                   </h3>
@@ -178,7 +178,7 @@ export default function CareersPage() {
                 >
                   <div className="flex gap-5 mb-5">
                     <div className="flex-1">
-                      <h2 className="text-[56px] font-bold leading-[68px] text-white">
+                      <h2 className="text-[56px] font-anton leading-[68px] text-white">
                         Life At
                         <br />
                         Navtech
@@ -218,7 +218,7 @@ export default function CareersPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <h2 className="text-[36px] font-bold leading-[44px] text-black capitalize mb-4">
+                <h2 className="text-[36px] font-anton leading-[44px] text-black capitalize mb-4">
                   Ready to be a part of our amazing team? <br />
                   Drop your resume here!
                 </h2>
@@ -245,7 +245,7 @@ export default function CareersPage() {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-light leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
+                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                       placeholder="Enter your full name"
                       required
                     />
@@ -259,7 +259,7 @@ export default function CareersPage() {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-light leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
+                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                       placeholder="Enter your email address"
                       required
                     />
@@ -280,7 +280,7 @@ export default function CareersPage() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-light leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
+                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                       placeholder="Enter your phone number"
                       required
                     />
@@ -293,7 +293,7 @@ export default function CareersPage() {
                       name="designation"
                       value={formData.designation}
                       onChange={handleInputChange}
-                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-light leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
+                      className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                       placeholder="Enter your job title"
                       required
                     />
@@ -309,7 +309,7 @@ export default function CareersPage() {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-light leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
+                    className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                     placeholder="Enter your message"
                     required
                   />
@@ -333,7 +333,7 @@ export default function CareersPage() {
                       >
                         Choose File
                       </button>
-                      <span className="text-[16px] font-light leading-5 text-[#8D8D8D]">
+                      <span className="text-[16px] font-sans leading-5 text-[#8D8D8D]">
                         {selectedFile ? selectedFile.name : "No File Chosen"}
                       </span>
                     </div>
@@ -354,7 +354,7 @@ export default function CareersPage() {
                 >
                   <Button
                     type="submit"
-                    className="w-[93px] h-[47px] border-[1.5px] border-[#95C149] bg-transparent text-black hover:bg-[#95C149] hover:text-white rounded-[30px] text-[14px] font-light"
+                    className="w-[93px] h-[47px] border-[1.5px] border-[#95C149] bg-transparent text-black hover:bg-[#95C149] hover:text-white rounded-[30px] text-[14px] font-sans"
                   >
                     Submit
                   </Button>

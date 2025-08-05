@@ -153,7 +153,7 @@ export default function ResearchPage() {
                                 delay={150}
                                 animateBy="words"
                                 direction="bottom"
-                                className="text-6xl lg:text-8xl font-bold uppercase leading-tight text-white mb-4"
+                                className="text-6xl lg:text-8xl font-anton uppercase leading-tight text-white mb-4"
                             />
                         </motion.div>
                     </div>
@@ -171,11 +171,7 @@ export default function ResearchPage() {
                             animate={introInView ? "visible" : "hidden"}
                         >
                             <motion.h2
-                                className="font-bold text-black mb-8"
-                                style={{
-                                    fontFamily: '"Helvetica Neue", sans-serif',
-                                    fontSize: "36px",
-                                }}
+                                className="font-anton text-5xl text-black mb-8"
                                 variants={fadeInUp}
                             >
                                 OPTICAL WIRELESS TECHNOLOGIES
@@ -183,7 +179,7 @@ export default function ResearchPage() {
                             <motion.p
                                 className="text-gray-700 max-w-4xl mx-auto leading-relaxed"
                                 style={{
-                                    fontFamily: '"Helvetica Neue", sans-serif',
+                                    fontFamily: '"Manrope", sans-serif',
                                     fontSize: "18px",
                                 }}
                                 variants={fadeInUp}
@@ -225,7 +221,7 @@ export default function ResearchPage() {
                                                 </p>
 
                                                 <h3
-                                                    className="text-black mb-6 leading-tight font-bold"
+                                                    className="text-black mb-6 leading-tight font-anton"
                                                     style={{ fontSize: "36px" }}
                                                 >
                                                     {area.subtitle}
