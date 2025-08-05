@@ -120,7 +120,7 @@ export default function OEMODMPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-6xl lg:text-8xl font-anton uppercase leading-tight text-white mb-4"
+                className="text-6xl lg:text-8xl font-oswald font-semibold uppercase leading-tight text-white mb-4"
               />
               <SplitText
                 text="Integrate the Future: LiFi Optical Transceivers for Your
@@ -150,7 +150,7 @@ export default function OEMODMPage() {
               animate={introInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-anton text-5xl mb-6"
+                className="font-oswald font-semibold text-5xl mb-6"
                 variants={fadeInUp}
               >
                 Accelerate Your Product with Embedded
@@ -201,7 +201,7 @@ export default function OEMODMPage() {
               animate={collaborateInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-anton text-5xl mb-6"
+                className="font-oswald font-semibold text-5xl mb-6"
                 variants={fadeInUp}
               >
                 We Collaborate With
@@ -230,9 +230,7 @@ export default function OEMODMPage() {
                 initial="hidden"
                 animate={industrialInView ? "visible" : "hidden"}
               >
-                <h3
-                  className="font-anton text-5xl mb-6"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-6">
                   Industrial{" "}
                   <span style={{ color: "#95C149" }}>Automation</span> Companies
                 </h3>
@@ -309,9 +307,7 @@ export default function OEMODMPage() {
                 initial="hidden"
                 animate={smartInfraInView ? "visible" : "hidden"}
               >
-                <h3
-                  className="font-anton text-5xl mb-6"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-6">
                   Smart Infrastructure & IoT Device Makers
                 </h3>
               </motion.div>
@@ -377,9 +373,7 @@ export default function OEMODMPage() {
                 animate={medicalInView ? "visible" : "hidden"}
               >
                 <div className="mb-6">
-                  <h3
-                    className="font-anton text-5xl relative z-10"
-                  >
+                  <h3 className="font-oswald font-semibold text-5xl relative z-10">
                     Medical Equipment &{" "}
                     <span
                       style={{
@@ -434,7 +428,7 @@ export default function OEMODMPage() {
               animate={automotiveInView ? "visible" : "hidden"}
             >
               <motion.h3
-                className="font-anton text-5xl text-white mb-4 inline-block"
+                className="font-oswald font-semibold text-5xl text-white mb-4 inline-block"
                 variants={fadeInUp}
               >
                 Automotive &{" "}
@@ -486,9 +480,7 @@ export default function OEMODMPage() {
                 initial="hidden"
                 animate={consumerInView ? "visible" : "hidden"}
               >
-                <h3
-                  className="font-anton text-5xl mb-6"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-6">
                   Consumer <span style={{ color: "#95C149" }}>Electronics</span>{" "}
                   & Smart Devices
                 </h3>

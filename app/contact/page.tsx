@@ -121,7 +121,7 @@ export default function ContactPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-5xl lg:text-6xl xl:text-7xl font-anton leading-tight text-white"
+                className="text-5xl lg:text-6xl xl:text-7xl font-oswald font-semibold leading-tight text-white"
               />
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-2xl font-anton text-gray-800 mb-8">
+                    <h2 className="text-2xl font-oswald font-semibold text-gray-800 mb-8">
                       Send Us A Message
                     </h2>
                     <motion.form

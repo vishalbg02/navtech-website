@@ -152,7 +152,7 @@ export default function GovernmentPage() {
                   delay={150}
                   animateBy="words"
                   direction="bottom"
-                  className="font-anton text-6xl lg:text-8xl uppercase leading-tight text-white mb-4"
+                  className="font-oswald font-semibold text-6xl lg:text-8xl uppercase leading-tight text-white mb-4"
                 />
                 <SplitText
                   text="Empowering Governance with Next-Gen Optical Wireless Communications (OWC)"
@@ -182,7 +182,7 @@ export default function GovernmentPage() {
               animate={introInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-anton text-3xl leading-normal mb-6 w-[550px] mx-auto"
+                className="font-oswald font-semibold text-3xl leading-normal mb-6 w-[550px] mx-auto"
                 variants={fadeInUp}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
@@ -217,7 +217,7 @@ export default function GovernmentPage() {
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="mb-6 pl-2">
-                  <h3 className="font-anton text-3xl relative z-10">
+                  <h3 className="font-oswald font-semibold text-3xl relative z-10">
                     <span
                       style={{
                         backgroundColor: "#95C149",
@@ -240,7 +240,9 @@ export default function GovernmentPage() {
                     color: "#000",
                   }}
                 >
-                  <strong className="text-black">Home Affairs, and Intelligence Services:</strong>
+                  <strong className="text-black">
+                    Home Affairs, and Intelligence Services:
+                  </strong>
                   <br />
                   Enable tamper-proof, RF-free communication that is immune to
                   jamming and interception.
@@ -253,7 +255,9 @@ export default function GovernmentPage() {
                     color: "#000",
                   }}
                 >
-                  <strong className="text-black">Police & Paramilitary Installations:</strong>
+                  <strong className="text-black">
+                    Police & Paramilitary Installations:
+                  </strong>
                   <br />
                   Ensure secure intra-unit communications in urban and border
                   deployments using LiFi and FSO.
@@ -296,9 +300,7 @@ export default function GovernmentPage() {
                 animate={smartGovernanceInView ? "visible" : "hidden"}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
-                <h3
-                  className="text-3xl lg:text-4xl font-anton text-right"
-                >
+                <h3 className="text-3xl lg:text-4xl font-oswald font-semibold text-right">
                   Smart Governance & Digital Infrastructure
                 </h3>
               </motion.div>
@@ -347,7 +349,9 @@ export default function GovernmentPage() {
                   className="text-base leading-tight text-gray-700"
                   style={{ fontFamily: "Manrope, sans-serif" }}
                 >
-                  <strong className="text-black text-lg">E-Governance Centres:</strong>
+                  <strong className="text-black text-lg">
+                    E-Governance Centres:
+                  </strong>
                   <br />
                   Deploy high-speed indoor LiFi zones for real-time citizen
                   services and data processing.
@@ -395,17 +399,21 @@ export default function GovernmentPage() {
                 initial="hidden"
                 animate={disasterResilientInView ? "visible" : "hidden"}
               >
-                <h3 className="text-4xl font-anton mb-6">
+                <h3 className="text-4xl font-oswald font-semibold mb-6">
                   Disaster-Resilient Communication
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-700 mb-4">
-                  <strong className="text-black text-base">Emergency Response and DRDO Deployments:</strong>
+                  <strong className="text-black text-base">
+                    Emergency Response and DRDO Deployments:
+                  </strong>
                   <br />
                   Set up rapid, wireless optical links in post-disaster zones
                   where traditional networks fail.
                 </p>
                 <p className="text-sm leading-relaxed text-gray-700">
-                  <strong className="text-black text-base">Rural and Remote Connectivity:</strong>
+                  <strong className="text-black text-base">
+                    Rural and Remote Connectivity:
+                  </strong>
                   <br />
                   FSO bridges can eliminate the need for fiber laying,
                   connecting government outposts in hilly, forested, or coastal
@@ -485,7 +493,7 @@ export default function GovernmentPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-3xl font-anton mb-4">
+              <h2 className="text-3xl font-oswald font-semibold mb-4">
                 Education & Health Institutions
               </h2>
               <p className="text-gray-600">

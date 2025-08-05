@@ -174,7 +174,7 @@ export default function DefencePage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-7xl md:text-8xl font-anton uppercase leading-tight text-white"
+                className="text-7xl md:text-8xl font-oswald font-semibold uppercase leading-tight text-white"
               />
               <SplitText
                 text="Next-Gen Optical Wireless Communication for Indian Armed
@@ -203,7 +203,7 @@ export default function DefencePage() {
           animate={introInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-anton leading-snug"
+            className="text-4xl md:text-5xl font-oswald font-semibold leading-snug"
             variants={scaleIn}
             initial="hidden"
             animate={introInView ? "visible" : "hidden"}
@@ -240,7 +240,7 @@ export default function DefencePage() {
           <div className="container mx-auto px-6">
             <motion.h2
               ref={useCasesRef}
-              className="font-anton text-center pb-9"
+              className="font-oswald font-semibold text-center pb-9"
               style={{ fontSize: "46px" }}
               variants={scaleIn}
               initial="hidden"
@@ -293,7 +293,7 @@ export default function DefencePage() {
                   animate={armyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -379,7 +379,7 @@ export default function DefencePage() {
                   animate={navyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -464,7 +464,7 @@ export default function DefencePage() {
                   animate={airForceInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-anton mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -535,7 +535,7 @@ export default function DefencePage() {
         >
           <div className="container mx-auto px-6">
             <motion.h2
-              className="text-4xl font-anton text-black text-center"
+              className="text-4xl font-oswald font-semibold text-black text-center"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 fullImageInView

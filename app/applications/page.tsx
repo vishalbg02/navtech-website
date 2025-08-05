@@ -86,7 +86,7 @@ export default function ApplicationsPage() {
               delay={150}
               animateBy="words"
               direction="bottom"
-              className="text-4xl lg:text-5xl xl:text-6xl font-anton leading-tight text-white"
+              className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-white"
             />
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function ApplicationsPage() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-anton leading-[44px] text-black mb-6">
+          <h2 className="text-5xl font-oswald font-semibold leading-[44px] text-black mb-6">
             Our Solutions for End Customers
           </h2>
           <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
@@ -126,7 +126,7 @@ export default function ApplicationsPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h3 className="text-4xl font-anton leading-[44px] text-black">
+            <h3 className="text-4xl font-oswald font-semibold leading-[44px] text-black">
               Private,{" "}
               <span className="bg-[#95C149] text-white px-2">Secure</span>{" "}
               Mobile Payments
@@ -185,7 +185,7 @@ export default function ApplicationsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="text-[42px] font-anton leading-[51px] text-black mb-2">
+              <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-black mb-2">
                 Mobile to Mobile File Sharing
               </h3>
               <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
@@ -224,7 +224,7 @@ export default function ApplicationsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="text-[42px] font-anton leading-[51px] text-white mb-2">
+              <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-white mb-2">
                 LiFi-Enabled In-Vehicle Connectivity
               </h3>
               <p className="text-[18px] font-sans leading-[22px] text-white">
@@ -270,7 +270,7 @@ export default function ApplicationsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="text-[42px] font-anton leading-[51px] text-black mb-2">
+              <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-black mb-2">
                 High-Bandwidth AR/VR Streaming
               </h3>
               <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
@@ -299,7 +299,7 @@ export default function ApplicationsPage() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <h3 className="text-[42px] font-anton leading-[51px] text-white mb-2">
+          <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-white mb-2">
             Quantum-Safe Communication Layer
           </h3>
         </motion.div>
@@ -328,7 +328,7 @@ export default function ApplicationsPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h3 className="text-[42px] font-anton leading-[51px] text-black mb-2">
+            <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-black mb-2">
               LiFi-Enabled V2V and V2X Communication
             </h3>
             <p className="text-[18px] font-sans leading-[22px] text-[#565656] max-w-[702px] mx-auto">
@@ -406,7 +406,7 @@ export default function ApplicationsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3 className="text-[42px] font-anton leading-[51px] text-white mb-2">
+              <h3 className="text-[42px] font-oswald font-semibold leading-[51px] text-white mb-2">
                 LiFi as Replacement for Wire Harnessing
               </h3>
               <p className="text-[18px] font-sans leading-[22px] text-white">

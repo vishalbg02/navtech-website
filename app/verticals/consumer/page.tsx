@@ -123,7 +123,7 @@ export default function ConsumerPage() {
                 delay={150}
                 animateBy="words"
                 direction="bottom"
-                className="text-6xl lg:text-8xl font-anton uppercase leading-tight text-white mb-4"
+                className="text-6xl lg:text-8xl font-oswald font-semibold uppercase leading-tight text-white mb-4"
               />
               <SplitText
                 text="Integrate the Future: LiFi Optical Transceivers for Your
@@ -153,7 +153,7 @@ export default function ConsumerPage() {
               animate={introInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="font-anton text-5xl mb-6"
+                className="font-oswald font-semibold text-5xl mb-6"
                 variants={fadeInUp}
               >
                 Our Solutions for End Customers
@@ -183,9 +183,7 @@ export default function ConsumerPage() {
               animate={enterpriseInView ? "visible" : "hidden"}
             >
               <motion.div className="mb-12" variants={fadeInUp}>
-                <h3
-                  className="font-anton text-5xl mb-2"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-2">
                   Enterprise & Corporate
                 </h3>
                 <p
@@ -280,9 +278,7 @@ export default function ConsumerPage() {
               animate={smartLivingInView ? "visible" : "hidden"}
             >
               <motion.div className="mb-12" variants={fadeInUp}>
-                <h3
-                  className="font-anton text-5xl mb-2"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-2">
                   Smart Living Spaces
                 </h3>
                 <p
@@ -357,58 +353,61 @@ export default function ConsumerPage() {
 
         {/* Healthcare Excellence Section */}
         <section
-            ref={healthcareRef}
-            className="relative pt-20"
-            style={{
-              minHeight: "800px", // Increased height
-              backgroundImage:
-                  "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+          ref={healthcareRef}
+          className="relative pt-20"
+          style={{
+            minHeight: "800px", // Increased height
+            backgroundImage:
+              "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
           <div
-              className="absolute inset-0"
-              style={{
-                background:
-                    "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%)",
-              }}
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%)",
+            }}
           />
 
           <div className="relative z-10 max-w-[1440px] mx-auto">
             <motion.div
-                className="grid lg:grid-cols-5 gap-8 items-start" // Increased gap from 6 to 8
-                variants={staggerContainer}
-                initial="hidden"
-                animate={healthcareInView ? "visible" : "hidden"}
+              className="grid lg:grid-cols-5 gap-8 items-start" // Increased gap from 6 to 8
+              variants={staggerContainer}
+              initial="hidden"
+              animate={healthcareInView ? "visible" : "hidden"}
             >
-              <motion.div variants={fadeInLeft} className="lg:col-span-2 pl-4 lg:pl-8">
-                <h3
-                    className="font-anton text-5xl mb-4 whitespace-nowrap"
-                >
+              <motion.div
+                variants={fadeInLeft}
+                className="lg:col-span-2 pl-4 lg:pl-8"
+              >
+                <h3 className="font-oswald font-semibold text-5xl mb-4 whitespace-nowrap">
                   Healthcare Excellence
                 </h3>
                 <p
-                    className="text-gray-600"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                    }}
+                  className="text-gray-600"
+                  style={{
+                    fontSize: "18px",
+                    fontFamily: "Manrope, sans-serif",
+                  }}
                 >
                   Safe, interference-free communication for sensitive medical
                   environments
                 </p>
               </motion.div>
 
-              <motion.div className="ml-6 pr-3 lg:pr-5" variants={fadeInUp}> {/* Increased ml from 4 to 6, increased pr */}
+              <motion.div className="ml-6 pr-3 lg:pr-5" variants={fadeInUp}>
+                {" "}
+                {/* Increased ml from 4 to 6, increased pr */}
                 <div className="mb-4">
                   <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
+                    className="leading-relaxed"
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Manrope, sans-serif",
+                      color: "#000",
+                    }}
                   >
                     Dedicated LiFi zones for ICUs, operating theaters, and
                     patient rooms
@@ -416,56 +415,60 @@ export default function ConsumerPage() {
                 </div>
                 <div className="flex justify-center mt-6">
                   <Image
-                      src="/images/cons_line1.png"
-                      alt="Vertical Line"
-                      width={12}
-                      height={192}
+                    src="/images/cons_line1.png"
+                    alt="Vertical Line"
+                    width={12}
+                    height={192}
                   />
                 </div>
               </motion.div>
 
-              <motion.div className="ml-6" variants={fadeInUp}> {/* Increased ml from 4 to 6 */}
+              <motion.div className="ml-6" variants={fadeInUp}>
+                {" "}
+                {/* Increased ml from 4 to 6 */}
                 <div className="mb-4">
                   <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
+                    className="leading-relaxed"
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Manrope, sans-serif",
+                      color: "#000",
+                    }}
                   >
                     Reliable high-speed communication without EMI interference
                   </p>
                 </div>
                 <div className="flex justify-center mt-6">
                   <Image
-                      src="/images/cons_line2.png"
-                      alt="Vertical Line"
-                      width={12}
-                      height={192}
+                    src="/images/cons_line2.png"
+                    alt="Vertical Line"
+                    width={12}
+                    height={192}
                   />
                 </div>
               </motion.div>
 
-              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInRight}> {/* Increased ml from 4 to 6, increased pr */}
+              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInRight}>
+                {" "}
+                {/* Increased ml from 4 to 6, increased pr */}
                 <div className="mb-4">
                   <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
+                    className="leading-relaxed"
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Manrope, sans-serif",
+                      color: "#000",
+                    }}
                   >
                     Zero-RF environments protecting sensitive medical equipment
                   </p>
                 </div>
                 <div className="flex justify-center mt-6">
                   <Image
-                      src="/images/cons_line3.png"
-                      alt="Vertical Line"
-                      width={12}
-                      height={192}
+                    src="/images/cons_line3.png"
+                    alt="Vertical Line"
+                    width={12}
+                    height={192}
                   />
                 </div>
               </motion.div>
@@ -505,9 +508,7 @@ export default function ConsumerPage() {
                 animate={educationInView ? "visible" : "hidden"}
               >
                 <motion.div className="mb-8" variants={fadeInUp}>
-                  <h3
-                    className="font-anton text-5xl mb-2"
-                  >
+                  <h3 className="font-oswald font-semibold text-5xl mb-2">
                     Educational Innovation
                   </h3>
                   <p
@@ -585,9 +586,7 @@ export default function ConsumerPage() {
               animate={industrialInView ? "visible" : "hidden"}
             >
               <motion.div className="mb-12" variants={fadeInUp}>
-                <h3
-                  className="font-anton text-5xl mb-2"
-                >
+                <h3 className="font-oswald font-semibold text-5xl mb-2">
                   Industrial <span style={{ color: "#95C149" }}>Power</span>
                 </h3>
                 <p
@@ -679,49 +678,47 @@ export default function ConsumerPage() {
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                  className="relative"
-                  variants={scaleIn}
-                  initial="hidden"
-                  animate={smartCitiesInView ? "visible" : "hidden"}
+                className="relative"
+                variants={scaleIn}
+                initial="hidden"
+                animate={smartCitiesInView ? "visible" : "hidden"}
               >
                 <div className="relative w-[600px] h-[600px] mx-auto">
                   <div className="absolute inset-0 rounded-full overflow-hidden">
                     <TiltedCard
-                        imageSrc="/images/cons10.jpg"
-                        altText="Smart City"
-                        captionText="Smart City"
-                        containerHeight="100%"
-                        containerWidth="100%"
-                        imageHeight="100%"
-                        imageWidth="100%"
-                        rotateAmplitude={14}
-                        scaleOnHover={1.3}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
+                      imageSrc="/images/cons10.jpg"
+                      altText="Smart City"
+                      captionText="Smart City"
+                      containerHeight="100%"
+                      containerWidth="100%"
+                      imageHeight="100%"
+                      imageWidth="100%"
+                      rotateAmplitude={14}
+                      scaleOnHover={1.3}
+                      showMobileWarning={false}
+                      showTooltip={false}
+                      displayOverlayContent={true}
                     />
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                  className="-mt-56 -ml-16"
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate={smartCitiesInView ? "visible" : "hidden"}
+                className="-mt-56 -ml-16"
+                variants={staggerContainer}
+                initial="hidden"
+                animate={smartCitiesInView ? "visible" : "hidden"}
               >
                 <motion.div className="mb-6" variants={fadeInUp}>
-                  <h3
-                      className="font-anton text-5xl mb-2 ml-12"
-                  >
+                  <h3 className="font-oswald font-semibold text-5xl mb-2 ml-12">
                     Smart Cities
                   </h3>
                   <p
-                      className="text-gray-600 ml-12"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                      }}
+                    className="text-gray-600 ml-12"
+                    style={{
+                      fontSize: "18px",
+                      fontFamily: "Manrope, sans-serif",
+                    }}
                   >
                     Revolutionary urban infrastructure with optical wireless
                     communication networks
@@ -735,17 +732,17 @@ export default function ConsumerPage() {
 
                   <div className="space-y-6">
                     <motion.div
-                        className="flex items-start relative"
-                        variants={fadeInRight}
+                      className="flex items-start relative"
+                      variants={fadeInRight}
                     >
                       <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
-                          className="leading-relaxed"
-                          style={{
-                            fontSize: "18px",
-                            fontFamily: "Manrope, sans-serif",
-                            color: "#000",
-                          }}
+                        className="leading-relaxed"
+                        style={{
+                          fontSize: "18px",
+                          fontFamily: "Manrope, sans-serif",
+                          color: "#000",
+                        }}
                       >
                         Optical links for traffic systems, surveillance, and IoT
                         sensors
@@ -753,17 +750,17 @@ export default function ConsumerPage() {
                     </motion.div>
 
                     <motion.div
-                        className="flex items-start relative"
-                        variants={fadeInRight}
+                      className="flex items-start relative"
+                      variants={fadeInRight}
                     >
                       <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
-                          className="leading-relaxed"
-                          style={{
-                            fontSize: "18px",
-                            fontFamily: "Manrope, sans-serif",
-                            color: "#000",
-                          }}
+                        className="leading-relaxed"
+                        style={{
+                          fontSize: "18px",
+                          fontFamily: "Manrope, sans-serif",
+                          color: "#000",
+                        }}
                       >
                         LiFi streetlights providing data through lighting
                         infrastructure
@@ -771,17 +768,17 @@ export default function ConsumerPage() {
                     </motion.div>
 
                     <motion.div
-                        className="flex items-start relative"
-                        variants={fadeInRight}
+                      className="flex items-start relative"
+                      variants={fadeInRight}
                     >
                       <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
                       <p
-                          className="leading-relaxed"
-                          style={{
-                            fontSize: "18px",
-                            fontFamily: "Manrope, sans-serif",
-                            color: "#000",
-                          }}
+                        className="leading-relaxed"
+                        style={{
+                          fontSize: "18px",
+                          fontFamily: "Manrope, sans-serif",
+                          color: "#000",
+                        }}
                       >
                         Cable-free FSO networks for last-mile connectivity
                       </p>

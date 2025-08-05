@@ -132,7 +132,7 @@ export default function OpticSpectraPage() {
               delay={150}
               animateBy="words"
               direction="bottom"
-              className="text-[64px] font-anton leading-[77px] text-black mb-6"
+              className="text-[64px] font-oswald font-semibold leading-[77px] text-black mb-6"
             />
           </motion.div>
           <motion.div
@@ -156,11 +156,11 @@ export default function OpticSpectraPage() {
             viewport={{ once: true }}
           >
             <div className="flex flex-col items-center">
-              <h2 className="text-[22px] font-anton leading-[23px] text-center uppercase text-black">
+              <h2 className="text-[22px] font-oswald font-semibold leading-[23px] text-center uppercase text-black">
                 ABOUT
               </h2>
               <div className="relative mt-[5px] flex items-center justify-center w-[400px] h-[46px] bg-[#95C149]">
-                <span className="text-[46px] font-anton text-white uppercase z-10 leading-[56px]">
+                <span className="text-[46px] font-oswald font-semibold text-white uppercase z-10 leading-[56px]">
                   NavOcular
                 </span>
               </div>
@@ -310,7 +310,7 @@ export default function OpticSpectraPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="text-[38px] font-anton leading-[46px] text-center text-black">
+              <div className="text-[38px] font-oswald font-semibold leading-[46px] text-center text-black">
                 4 Meter
               </div>
               <div className="text-[21px] font-sans leading-[26px] text-center text-black">
@@ -325,7 +325,7 @@ export default function OpticSpectraPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="text-[38px] font-anton leading-[46px] text-center text-black">
+              <div className="text-[38px] font-oswald font-semibold leading-[46px] text-center text-black">
                 75-80Mbps
               </div>
               <div className="text-[21px] font-sans leading-[26px] text-center text-black">
@@ -340,7 +340,7 @@ export default function OpticSpectraPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="text-[38px] font-anton leading-[46px] text-center text-black">
+              <div className="text-[38px] font-oswald font-semibold leading-[46px] text-center text-black">
                 60 Degree
               </div>
               <div className="text-[21px] font-sans leading-[26px] text-center text-black">
@@ -354,7 +354,7 @@ export default function OpticSpectraPage() {
           <div className="flex flex-col items-center -gap-0 w-full">
             <div className="flex flex-col justify-center items-center gap-[34px] w-[1199px]">
               <motion.h3
-                className="text-[36px] font-anton leading-[44px] uppercase text-black"
+                className="text-[36px] font-oswald font-semibold leading-[44px] uppercase text-black"
                 variants={fadeInUp(0.3)}
                 initial="hidden"
                 whileInView="visible"
@@ -387,7 +387,7 @@ export default function OpticSpectraPage() {
                       />
                     </motion.div>
                     <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-anton leading-[29px] text-black">
+                      <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
                         {useCase.title}
                       </h4>
                       <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
