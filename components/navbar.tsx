@@ -140,7 +140,7 @@ export default function Navbar() {
                             onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                         >
                           <button
-                              className="flex items-center space-x-1 px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group hover:bg-green-50/80 w-full"
+                              className="flex items-center space-x-1 px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group w-full"
                           >
                             <span className="relative z-10">{item.name}</span>
                             <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
@@ -156,7 +156,7 @@ export default function Navbar() {
                                     <Link
                                         key={dropdownIndex}
                                         href={dropdownItem.href}
-                                        className="block px-4 py-3 text-sm text-white hover:text-yellow-200 transition-all duration-200 font-medium"
+                                        className="block px-4 py-3 text-sm text-[#DEDEDE] hover:text-[#FFFFFF] transition-all duration-200 font-bold"
                                         onClick={() => handleNavigation(dropdownItem.href)}
                                     >
                                       {dropdownItem.name}
@@ -168,7 +168,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             href={item.href}
-                            className="relative px-5 py-3 text-gray-700 hover:text-green-600 transition-all duration-300 text-sm font-medium group rounded-xl hover:bg-green-50/80"
+                            className="relative px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group rounded-xl"
                             onClick={() => handleNavigation(item.href)}
                         >
                           <span className="relative z-10">{item.name}</span>
@@ -198,7 +198,7 @@ export default function Navbar() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="lg:hidden text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 hover:scale-105"
+                    className="lg:hidden text-gray-700 hover:text-[#95C149] rounded-xl transition-all duration-300 hover:scale-105"
                 >
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Toggle menu</span>
@@ -233,7 +233,7 @@ export default function Navbar() {
                             <div>
                               <button
                                   onClick={() => handleDropdownToggle(item.name)}
-                                  className="flex items-center justify-between w-full px-4 py-4 text-white hover:text-yellow-200 transition-all duration-200 font-medium group"
+                                  className="flex items-center justify-between w-full px-4 py-4 text-white hover:text-yellow-200 transition-all duration-200 font-bold group"
                               >
                                 <span>{item.name}</span>
                                 <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
@@ -259,7 +259,7 @@ export default function Navbar() {
                             <Link
                                 href={item.href}
                                 onClick={() => handleNavigation(item.href)}
-                                className="flex items-center justify-between px-4 py-4 text-white hover:text-yellow-200 transition-all duration-200 font-medium group"
+                                className="flex items-center justify-between px-4 py-4 text-white hover:text-yellow-200 transition-all duration-200 font-bold group"
                             >
                               <span>{item.name}</span>
                               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
