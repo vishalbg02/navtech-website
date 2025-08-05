@@ -209,8 +209,7 @@ export default function HorizontalSection() {
         className="fixed top-0 left-0 right-0 text-center py-8 z-20"
       >
         <h1
-          className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 uppercase tracking-wide"
-          style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold text-gray-900 uppercase tracking-wide"
         >
           OUR INNOVATIONS
         </h1>
@@ -247,20 +246,12 @@ export default function HorizontalSection() {
                   <div className="w-full lg:w-1/2 space-y-6">
                     <div className="section-title">
                       <h2
-                        className="text-[2.0rem] lg:text-[2.5rem] xl:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
+                        className="text-[2.0rem] lg:text-[2.5rem] xl:text-[2.5rem] font-oswald font-semibold text-gray-900 leading-tight mb-4"
                       >
                         {section.title}
                       </h2>
                       <h3
-                        className="text-xl lg:text-2xl text-gray-700 font-light leading-relaxed mb-6"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
+                        className="text-xl lg:text-2xl text-gray-700 font-sans leading-relaxed mb-6"
                       >
                         {section.subtitle}
                       </h3>
@@ -268,11 +259,7 @@ export default function HorizontalSection() {
 
                     <div className="section-content space-y-6">
                       <p
-                        className="text-[1.0rem] lg:text-[1.0rem] text-gray-700 font-light leading-relaxed max-w-lg"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
+                        className="text-[1.0rem] lg:text-[1.0rem] text-gray-700 font-sans leading-relaxed max-w-lg"
                       >
                         {section.description}
                       </p>
@@ -314,10 +301,6 @@ export default function HorizontalSection() {
                       <div className="pt-4">
                         <button
                           className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
-                          style={{
-                            fontFamily:
-                              "Helvetica Neue, Helvetica, Arial, sans-serif",
-                          }}
                         >
                           <span>Learn More</span>
                         </button>

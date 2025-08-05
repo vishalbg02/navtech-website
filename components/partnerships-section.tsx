@@ -137,8 +137,7 @@ export default function LogosSection() {
                             {/* Section Header */}
                             <div className="section-header text-center mb-8">
                                 <h2
-                                    className="text-3xl md:text-4xl font-bold text-black"
-                                    style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                                    className="text-3xl md:text-4xl font-oswald font-semibold text-black"
                                 >
                                     {section.title}
                                 </h2>

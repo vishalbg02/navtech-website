@@ -285,8 +285,7 @@ export default function AboutSection() {
                 <div className="mb-8">
                     <h2
                         ref={titleRef}
-                        className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight tracking-tight"
-                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                        className="text-4xl lg:text-5xl font-oswald font-semibold text-gray-800 leading-tight tracking-tight"
                     >
                         ABOUT NAV
                     </h2>
@@ -295,8 +294,7 @@ export default function AboutSection() {
                 <div className="space-y-6">
                     <p
                         ref={paragraph1Ref}
-                        className="text-base lg:text-lg text-gray-700 leading-relaxed font-light"
-                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                        className="text-base lg:text-lg text-gray-700 leading-relaxed font-sans"
                     >
                         NavWireless Technologies Pvt Ltd (NavTech) is a global leading solutions and services provider of wireless and information communications systems with its own R&D facilities, manufacturing base, and sales and service teams.
                     </p>
@@ -312,15 +310,13 @@ export default function AboutSection() {
             >
                 <p
                     ref={paragraph2Ref}
-                    className="text-base lg:text-lg text-gray-700 leading-relaxed font-light"
-                    style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
+                    className="text-base lg:text-lg text-gray-700 leading-relaxed font-sans"
                 >
                     The company offers a comprehensive suite of products and services including Optical Wireless Communication Systems, Wireless Electricity Transmission Systems, Electronic Tattoos for Healthcare Monitoring, Wireless Enhancement Products, and subsystems and customers.
                 </p>
                 <div ref={buttonRef} className="pt-4">
                     <button
                         className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
-                        style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                     >
       <span className="flex items-center">
         Discover Our Journey
