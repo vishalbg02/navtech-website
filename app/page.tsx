@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Navbar from "@/components/navbar"
@@ -10,6 +10,8 @@ import HorizontalSection from "@/components/horizontal-section"
 import AboutSection from "@/components/about-section"
 import PartnershipsSection from "@/components/partnerships-section"
 import VerticalsSection from "@/components/verticals-section"
+import Footer from "@/components/footer";
+import CTASection from "@/components/CTASection";
 
 export default function Home() {
     const mainRef = useRef(null)
@@ -50,6 +52,8 @@ export default function Home() {
                 <AboutSection />
                 <PartnershipsSection />
                 <VerticalsSection />
+                <CTASection />
+                <Footer />
             </main>
         </div>
     )

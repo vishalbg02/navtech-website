@@ -91,6 +91,7 @@ export default function Navbar() {
         { name: "Defence", href: "/verticals/defence" },
         { name: "OEM/ODM", href: "/verticals/oem-odm" },
         { name: "Consumer", href: "/verticals/consumer" },
+        { name: "Telecom", href: "/verticals/telecom" },
       ]
     },
     { name: "Insights", href: "/insights" },
