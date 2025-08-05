@@ -262,7 +262,7 @@ export default function DefencePage() {
               </motion.h3>
               <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
                 <motion.div
-                  className="w-full md:w-2/5 h-[500px] rounded-lg overflow-hidden"
+                  className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInLeft}
                   initial="hidden"
                   animate={armyInView ? "visible" : "hidden"}
@@ -277,7 +277,7 @@ export default function DefencePage() {
                     captionText="Army Operations"
                     containerHeight="100%"
                     containerWidth="100%"
-                    imageHeight="90%"
+                    imageHeight="110%"
                     imageWidth="90%"
                     rotateAmplitude={14}
                     scaleOnHover={1.1}
@@ -348,7 +348,7 @@ export default function DefencePage() {
               </motion.h3>
               <div className="flex flex-col md:flex-row-reverse items-center gap-12 relative z-10">
                 <motion.div
-                  className="w-full md:w-2/5 h-[500px] rounded-lg overflow-hidden"
+                  className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInRight}
                   initial="hidden"
                   animate={navyInView ? "visible" : "hidden"}
@@ -363,7 +363,7 @@ export default function DefencePage() {
                     captionText="Naval Fleet"
                     containerHeight="100%"
                     containerWidth="100%"
-                    imageHeight="90%"
+                    imageHeight="110%"
                     imageWidth="90%"
                     rotateAmplitude={14}
                     scaleOnHover={1.1}
@@ -433,7 +433,7 @@ export default function DefencePage() {
               </motion.h3>
               <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
                 <motion.div
-                  className="w-full md:w-2/5 h-[500px] rounded-lg overflow-hidden"
+                  className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInLeft}
                   initial="hidden"
                   animate={airForceInView ? "visible" : "hidden"}
@@ -448,7 +448,7 @@ export default function DefencePage() {
                     captionText="Air Force Jet"
                     containerHeight="100%"
                     containerWidth="100%"
-                    imageHeight="90%"
+                    imageHeight="110%"
                     imageWidth="90%"
                     rotateAmplitude={14}
                     scaleOnHover={1.1}
@@ -576,7 +576,7 @@ export default function DefencePage() {
               environments.
             </motion.p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 pb-32 px-12">
               <FlipCard
                 frontImage="/images/def_army1.jpg"
                 title="ARMY"

@@ -10,14 +10,14 @@ import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 
 export default function GovernmentPage() {
   // Refs for scroll-triggered animations
-  const heroRef = useRef(null);
-  const introRef = useRef(null);
-  const secureNetworksRef = useRef(null);
-  const smartGovernanceRef = useRef(null);
-  const referenceRef = useRef(null);
-  const disasterResilientRef = useRef(null);
-  const educationHealthRef = useRef(null);
-  const footerRef = useRef(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const introRef = useRef<HTMLElement>(null);
+  const secureNetworksRef = useRef<HTMLElement>(null);
+  const smartGovernanceRef = useRef<HTMLElement>(null);
+  const referenceRef = useRef<HTMLElement>(null);
+  const disasterResilientRef = useRef<HTMLElement>(null);
+  const educationHealthRef = useRef<HTMLElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   // InView hooks
   const heroInView = useInView(heroRef, { once: true, margin: "-50px" });
@@ -208,9 +208,10 @@ export default function GovernmentPage() {
 
         {/* Secure Communication Networks */}
         <section ref={secureNetworksRef} className="py-20">
-          <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
+          <div className="max-w-[1440px] mx-auto pl-4 lg:pl-[120px]">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
+                className="pr-4 lg:pr-0"
                 variants={fadeInLeft}
                 initial="hidden"
                 animate={secureNetworksInView ? "visible" : "hidden"}
@@ -269,20 +270,22 @@ export default function GovernmentPage() {
                 initial="hidden"
                 animate={secureNetworksInView ? "visible" : "hidden"}
               >
-                <TiltedCard
-                  imageSrc="/images/gov2.png"
-                  altText="Secure Communication Networks"
-                  captionText="Secure Communication Networks"
-                  containerHeight="100%"
-                  containerWidth="100%"
-                  imageHeight="110%"
-                  imageWidth="110%"
-                  rotateAmplitude={14}
-                  scaleOnHover={1.1}
-                  showMobileWarning={false}
-                  showTooltip={false}
-                  displayOverlayContent={true}
-                />
+                <div className="w-full h-full">
+                  <TiltedCard
+                    imageSrc="/images/gov2.png"
+                    altText="Secure Communication Networks"
+                    captionText="Secure Communication Networks"
+                    containerHeight="100%"
+                    containerWidth="100%"
+                    imageHeight="110%"
+                    imageWidth="110%"
+                    rotateAmplitude={14}
+                    scaleOnHover={1.1}
+                    showMobileWarning={false}
+                    showTooltip={false}
+                    displayOverlayContent={true}
+                  />
+                </div>
               </motion.div>
             </div>
           </div>
@@ -300,7 +303,7 @@ export default function GovernmentPage() {
                 animate={smartGovernanceInView ? "visible" : "hidden"}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
-                <h3 className="text-3xl lg:text-4xl font-oswald font-semibold text-right">
+                <h3 className="text-3xl lg:text-4xl font-oswald font-semibold ml-14">
                   Smart Governance & Digital Infrastructure
                 </h3>
               </motion.div>

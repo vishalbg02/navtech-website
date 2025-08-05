@@ -102,7 +102,7 @@ export default function OEMODMPage() {
           className="h-screen relative flex items-center pt-0"
           style={{
             backgroundImage:
-              "url('/images/oem1.jpg?height=1080&width=1920&text=Industrial+Equipment')",
+              "url('/images/oem1.png?height=1080&width=1920&text=Industrial+Equipment')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -346,20 +346,20 @@ export default function OEMODMPage() {
                 animate={medicalInView ? "visible" : "hidden"}
               >
                 <div className="flex gap-4">
-                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden">
+                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden group">
                     <Image
                       src="/images/oem5.jpg?height=240&width=300&text=Medical+Equipment"
                       alt="Medical Equipment"
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden mt-12">
+                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden mt-12 group">
                     <Image
                       src="/images/oem6.jpg?height=240&width=260&text=Operating+Room"
                       alt="Operating Room"
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -504,11 +504,19 @@ export default function OEMODMPage() {
                 initial="hidden"
                 animate={consumerInView ? "visible" : "hidden"}
               >
-                <Image
-                  src="/images/oem8.jpg?height=482&width=720&text=Smart+Home+Devices"
-                  alt="Smart Home Devices"
-                  fill
-                  className="object-cover"
+                <TiltedCard
+                  imageSrc="/images/oem8.jpg"
+                  altText="Smart Home Devices"
+                  captionText="Smart Home Devices"
+                  containerHeight="100%"
+                  containerWidth="100%"
+                  imageHeight="100%"
+                  imageWidth="100%"
+                  rotateAmplitude={14}
+                  scaleOnHover={1.1}
+                  showMobileWarning={false}
+                  showTooltip={false}
+                  displayOverlayContent={true}
                 />
               </motion.div>
             </div>

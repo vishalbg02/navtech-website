@@ -4,7 +4,7 @@ import Image from "next/image";
 
 type ReferenceCarouselProps = {
   images: string[];
-  referenceRef: RefObject<HTMLElement>;
+  referenceRef: RefObject<HTMLElement | null>;
   referenceInView: boolean;
 };
 
