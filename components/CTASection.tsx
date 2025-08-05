@@ -18,28 +18,32 @@ export default function CTASection() {
   const footerInView = useInView(footerRef, { once: true });
 
   return (
-    <motion.section
-      ref={footerRef}
-      className="bg-[#95C149] py-16"
-      variants={fadeInUp}
-      initial="hidden"
-      animate={footerInView ? "visible" : "hidden"}
-    >
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] text-center">
-        <motion.h2
-          className="text-3xl lg:text-5xl w-[1150px] mx-auto font-oswald font-semibold text-white mb-8 leading-relaxed"
+      <motion.section
+          ref={footerRef}
+          className="bg-[#95C149] py-16"
           variants={fadeInUp}
-        >
-          Experience Ultra-Fast, Secure, And Wireless LiFi Built For The Future.
-        </motion.h2>
-        <motion.a
-          href="#contact"
-          className="px-8 py-4 font-medium text-lg inline-block bg-white text-black rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-          variants={scaleIn}
-        >
-          Contact Us
-        </motion.a>
-      </div>
-    </motion.section>
+          initial="hidden"
+          animate={footerInView ? "visible" : "hidden"}
+      >
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] text-center">
+          <motion.h2
+              className="text-[42px] w-full max-w-[1150px] mx-auto font-anton font-bold text-white mb-8 leading-[60px]"
+              variants={fadeInUp}
+          >
+            Experience Ultra-Fast, Secure, And Wireless LiFi Built For The Future.
+          </motion.h2>
+
+          <motion.a
+              href="/contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="px-8 py-4 font-anton font-bold text-lg inline-block bg-white text-black rounded-full transition-all duration-300"
+              variants={scaleIn}
+          >
+            Contact Us
+          </motion.a>
+        </div>
+      </motion.section>
   );
 }
