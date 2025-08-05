@@ -208,88 +208,82 @@ export default function GovernmentPage() {
 
         {/* Secure Communication Networks */}
         <section ref={secureNetworksRef} className="py-20">
-          <div className="max-w-[1440px] mx-auto pl-4 lg:pl-[120px]">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                className="pr-4 lg:pr-0"
+          <div className="grid lg:grid-cols-2 items-center">
+            {/* Left: Text Content with Left Padding */}
+            <motion.div
+                className="px-4 lg:pl-[120px]"
                 variants={fadeInLeft}
                 initial="hidden"
                 animate={secureNetworksInView ? "visible" : "hidden"}
                 transition={{ duration: 1, ease: "easeOut" }}
-              >
-                <div className="mb-6 pl-2">
-                  <h3 className="font-oswald font-semibold text-3xl relative z-10">
-                    <span
-                      style={{
-                        backgroundColor: "#95C149",
-                        color: "#fff",
-                        padding: "4px 10px",
-                        borderRadius: "4px",
-                        display: "inline-block",
-                      }}
-                    >
-                      Secure
-                    </span>{" "}
-                    Communication Networks
-                  </h3>
-                </div>
-                <p
+            >
+              <div className="mb-6">
+                <h3 className="font-oswald font-semibold text-3xl relative z-10">
+          <span
+              style={{
+                backgroundColor: "#95C149",
+                color: "#fff",
+                padding: "4px 10px",
+                borderRadius: "4px",
+                display: "inline-block",
+              }}
+          >
+            Secure
+          </span>{" "}
+                  Communication Networks
+                </h3>
+              </div>
+              <p
                   className="leading-relaxed mt-2"
                   style={{
                     fontSize: "16px",
                     fontFamily: "Manrope, sans-serif",
                     color: "#000",
                   }}
-                >
-                  <strong className="text-black">
-                    Home Affairs, and Intelligence Services:
-                  </strong>
-                  <br />
-                  Enable tamper-proof, RF-free communication that is immune to
-                  jamming and interception.
-                </p>
-                <p
+              >
+                <strong>Home Affairs, and Intelligence Services:</strong>
+                <br />
+                Enable tamper-proof, RF-free communication that is immune to <br/>jamming and interception.
+              </p>
+              <p
                   className="mt-4 leading-relaxed"
                   style={{
                     fontSize: "16px",
                     fontFamily: "Manrope, sans-serif",
                     color: "#000",
                   }}
-                >
-                  <strong className="text-black">
-                    Police & Paramilitary Installations:
-                  </strong>
-                  <br />
-                  Ensure secure intra-unit communications in urban and border
-                  deployments using LiFi and FSO.
-                </p>
-              </motion.div>
-              <motion.div
-                className="relative h-[400px] lg:h-[441px] overflow-hidden flex justify-center items-center"
+              >
+                <strong>Police & Paramilitary Installations:</strong>
+                <br />
+                Ensure secure intra-unit communications in urban and border<br/> deployments using LiFi and FSO.
+              </p>
+            </motion.div>
+
+            {/* Right: Full-Width Image (No Right Padding) */}
+            <motion.div
+                className="relative h-[400px] lg:h-[441px] w-full overflow-hidden flex justify-center items-center"
                 variants={fadeInRight}
                 initial="hidden"
                 animate={secureNetworksInView ? "visible" : "hidden"}
-              >
-                <div className="w-full h-full">
-                  <TiltedCard
-                    imageSrc="/images/gov2.png"
-                    altText="Secure Communication Networks"
-                    captionText="Secure Communication Networks"
-                    containerHeight="100%"
-                    containerWidth="100%"
-                    imageHeight="110%"
-                    imageWidth="110%"
-                    rotateAmplitude={14}
-                    scaleOnHover={1.1}
-                    showMobileWarning={false}
-                    showTooltip={false}
-                    displayOverlayContent={true}
-                  />
-                </div>
-              </motion.div>
-            </div>
+            >
+              <TiltedCard
+                  imageSrc="/images/gov2.png"
+                  altText="Secure Communication Networks"
+                  captionText="Secure Communication Networks"
+                  containerHeight="100%"
+                  containerWidth="100%"
+                  imageHeight="110%"
+                  imageWidth="100%"
+                  rotateAmplitude={14}
+                  scaleOnHover={1.1}
+                  showMobileWarning={false}
+                  showTooltip={false}
+                  displayOverlayContent={true}
+              />
+            </motion.div>
           </div>
         </section>
+
 
         {/* Smart Governance & Digital Infrastructure */}
         <section ref={smartGovernanceRef} className="py-20 bg-white">
@@ -500,10 +494,12 @@ export default function GovernmentPage() {
                 Education & Health Institutions
               </h2>
               <p className="text-gray-600">
-                Our government is committed to building robust educational
-                institutions and improving healthcare infrastructure across
-                rural and urban areas.
+                <strong>Digital Classrooms in Government Schools:</strong><br />
+                Use LiFi to provide fast, radiation-free internet in rural classrooms.<br />
+                <strong>Telemedicine & e-Hospitals:</strong><br />
+                Secure, interference-free wireless data for medical diagnostics, patient records, and real-time specialist consultations.
               </p>
+
             </motion.div>
           </div>
         </section>

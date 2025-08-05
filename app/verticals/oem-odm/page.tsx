@@ -422,52 +422,48 @@ export default function OEMODMPage() {
 
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <motion.div
-              className="text-center pt-[40px]"
-              variants={staggerContainer}
-              initial="hidden"
-              animate={automotiveInView ? "visible" : "hidden"}
+                className="text-center pt-[40px]"
+                variants={staggerContainer}
+                initial="hidden"
+                animate={automotiveInView ? "visible" : "hidden"}
             >
               <motion.h3
-                className="font-oswald font-semibold text-5xl text-white mb-4 inline-block"
-                variants={fadeInUp}
+                  className="font-oswald font-semibold text-5xl text-white mb-4 inline-block"
+                  variants={fadeInUp}
               >
-                Automotive &{" "}
-                <span
-                  style={{
-                    position: "relative",
-                    display: "inline-block",
-                  }}
-                >
-                  Mobility
-                  <span
-                    style={{
-                      content: "''",
-                      position: "absolute",
-                      bottom: -2,
-                      left: 0,
-                      width: "100%",
-                      height: "4px",
-                      backgroundColor: "#fff",
-                      borderRadius: "2px",
-                    }}
-                  ></span>
-                </span>{" "}
-                Innovators
+    <span className="inline-block relative">
+      Automotive
+      <span className="block mt-2">
+        <svg
+            width="195"
+            height="7"
+            viewBox="0 0 195 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+              d="M195 3.40409C178.482 -2.76105 58.1176 0.835284 0 3.40409V7C89.1953 1.24587 167.165 4.60245 195 7V3.40409Z"
+              fill="#95C149"
+          />
+        </svg>
+      </span>
+    </span>{" "}
+                & Mobility Innovators
               </motion.h3>
 
               <motion.p
-                className="font-light text-white max-w-[691px] mx-auto leading-relaxed"
-                style={{
-                  fontSize: "18px",
-                  fontFamily: "Manrope, sans-serif",
-                }}
-                variants={fadeInUp}
+                  className="font-light text-white max-w-[691px] mx-auto leading-relaxed"
+                  style={{
+                    fontSize: "18px",
+                    fontFamily: "Manrope, sans-serif",
+                  }}
+                  variants={fadeInUp}
               >
-                Enable vehicle-to-vehicle (V2V) or in-cabin optical
-                communication for safer, interference-free data sharing in smart
-                and autonomous vehicles.
+                Enable vehicle-to-vehicle (V2V) or in-cabin optical communication for
+                safer, interference-free data sharing in smart and autonomous vehicles.
               </motion.p>
             </motion.div>
+
           </div>
         </section>
 
