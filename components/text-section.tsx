@@ -15,52 +15,49 @@ export default function TextSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Animate text entrance with stagger
       gsap.fromTo(
-        ".text-element",
-        {
-          y: 80,
-          opacity: 0,
-          scale: 0.95,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
+          ".text-element",
+          {
+            y: 80,
+            opacity: 0,
+            scale: 0.95,
           },
-        }
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
       );
 
-      // Animate background elements
       gsap.fromTo(
-        backgroundRef.current,
-        {
-          scale: 1.1,
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 90%",
-            end: "top 10%",
-            toggleActions: "play none none reverse",
+          backgroundRef.current,
+          {
+            scale: 1.1,
+            opacity: 0,
           },
-        }
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 90%",
+              end: "top 10%",
+              toggleActions: "play none none reverse",
+            },
+          }
       );
 
-      // Fade out section when scrolling to next
       gsap.to(sectionRef.current, {
         opacity: 0,
         scrollTrigger: {
@@ -71,7 +68,6 @@ export default function TextSection() {
         },
       });
 
-      // Subtle parallax effect
       gsap.to(textRef.current, {
         y: -50,
         scrollTrigger: {
@@ -87,67 +83,63 @@ export default function TextSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-    >
-      {/* Background */}
-      <div ref={backgroundRef} className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/20 to-white/10 backdrop-blur-sm"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20 opacity-20"></div>
-      </div>
-
-      <div
-        ref={textRef}
-        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+      <section
+          ref={sectionRef}
+          className="relative h-screen w-full flex items-center justify-center overflow-hidden"
       >
+        {/* Background - solid white */}
+        <div ref={backgroundRef} className="absolute inset-0 bg-white"></div>
+
         <div
-          ref={textRef}
-          className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+            ref={textRef}
+            className="relative z-10 text-center px-6 max-w-4xl mx-auto"
         >
           {/* Main heading */}
           <div className="text-element">
-            <h1 className="text-[7.5rem] font-oswald font-semibold text-gray-900 leading-tight tracking-tight">
-              NAVTECH
+            <h1 className="text-[55px] font-manrope font-bold leading-tight tracking-tight" style={{ color: '#000000' }}>
+            NAVTECH
             </h1>
           </div>
 
           {/* Subtitle */}
           <div className="text-element mb-11">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-sans text-gray-900 leading-relaxed">
+            <h2 className="text-[24px] font-manrope font-normal leading-relaxed" style={{ color: '#565656' }}>
               Innovating with LiFi Wireless Technology
             </h2>
           </div>
-        </div>
 
-        <div className="text-element mb-12">
-          <p className="text-[1.5rem] md:text-[1.5rem] lg:text-[1.5rem] font-sans text-gray-900 max-w-3xl mx-auto leading-relaxed mb-12">
-            Transforming the future of connectivity with cutting-edge optical
-            wireless solutions that revolutionize how the world communicates
+          {/* Paragraph */}
+          <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
+  <span className="block">
+    Transforming the future of connectivity with cutting-edge optical wireless
+  </span>
+            <span className="block">
+    solutions that revolutionize how the world communicates
+  </span>
           </p>
-        </div>
 
-        {/* Key features */}
-        <div className="text-element mb-12">
-          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span className="font-medium text-sm md:text-base">
+
+          {/* Key features */}
+          <div className="text-element mb-12">
+            <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+              <span className="font-normal text-sm md:text-base font-manrope">
                 RF-Free Communication
               </span>
-            </div>
-            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span className="font-medium text-sm md:text-base">
+              </div>
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+              <span className="font-normal text-sm md:text-base font-manrope">
                 High-Speed Data Transfer
               </span>
-            </div>
-            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
-              <span className="font-medium text-sm md:text-base">
+              </div>
+              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+              <span className="font-normal text-sm md:text-base font-manrope">
                 Secure & Reliable
               </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }
