@@ -4,8 +4,6 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import BlurText from "@/components/utils/BlurTextProps";
 import { motion, useInView } from "framer-motion";
-import Reference from "@/components/ui/ReferenceCarousel";
-import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 
 const fadeInLeft = (delay: number) => ({
   hidden: { opacity: 0, x: -80 },
@@ -74,13 +72,6 @@ const drawLine = (delay: number) => ({
 
 export default function OpticSpectraPage() {
   const [neoCurrentIndex, setNeoCurrentIndex] = useState(0);
-
-  const referenceRef = useRef(null);
-
-  const referenceInView = useInView(referenceRef, {
-    once: true,
-    margin: "-100px",
-  });
 
   const navocularUseCases = [
     {
@@ -188,26 +179,6 @@ export default function OpticSpectraPage() {
             infrastructure.
           </motion.p>
         </section>
-
-        {/* Reference Image */}
-        <motion.div
-          className="w-full h-[436px] relative"
-          variants={scaleIn(0.3)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <ReferenceCarousel
-            images={[
-              "/images/NavOcular Defence Light.png",
-              "/images/NavOcular Defence.png",
-              "/images/NavOcular Defence Light.png",
-              "/images/NavOcular Defence.png",
-            ]}
-            referenceRef={referenceRef}
-            referenceInView={referenceInView}
-          />
-        </motion.div>
 
         <section className="py-[120px] relative bg-white">
           <div className="max-w-[1440px] mx-auto relative h-[700px]">

@@ -260,7 +260,7 @@ export default function DefencePage() {
               >
                 ARMY
               </motion.h3>
-              <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
+              <div className="flex flex-col md:flex-row items-center relative z-10">
                 <motion.div
                   className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInLeft}
@@ -293,7 +293,7 @@ export default function DefencePage() {
                   animate={armyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -302,7 +302,7 @@ export default function DefencePage() {
                     Army
                   </motion.h4>
 
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600 mr-52">
                     <motion.li variants={staggerItem}>
                       <span className="font-sans font-bold text-black">
                         Forward Base Communication:
@@ -346,7 +346,7 @@ export default function DefencePage() {
               >
                 NAVY
               </motion.h3>
-              <div className="flex flex-col md:flex-row-reverse items-center gap-12 relative z-10">
+              <div className="flex flex-col md:flex-row-reverse items-center relative z-10">
                 <motion.div
                   className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInRight}
@@ -379,7 +379,7 @@ export default function DefencePage() {
                   animate={navyInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white ml-32"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -387,7 +387,7 @@ export default function DefencePage() {
                   >
                     Navy
                   </motion.h4>
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600 ml-32 mr-12">
                     <motion.li variants={staggerItem}>
                       <span className="font-sans font-bold text-black">
                         Shipboard Communication:
@@ -431,7 +431,7 @@ export default function DefencePage() {
               >
                 Air Force
               </motion.h3>
-              <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
+              <div className="flex flex-col md:flex-row items-center relative z-10">
                 <motion.div
                   className="w-full md:w-2/5 h-[500px] overflow-hidden"
                   variants={fadeInLeft}
@@ -464,7 +464,7 @@ export default function DefencePage() {
                   animate={airForceInView ? "visible" : "hidden"}
                 >
                   <motion.h4
-                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white rounded"
+                    className="text-4xl font-oswald font-semibold mb-8 px-6 py-2 inline-block text-white"
                     style={{
                       backgroundColor: "#95C149",
                     }}
@@ -473,7 +473,7 @@ export default function DefencePage() {
                     Air Force
                   </motion.h4>
 
-                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600">
+                  <motion.ul className="space-y-6 text-lg font-light text-justify text-gray-600 mr-52">
                     <motion.li variants={staggerItem}>
                       <span className="font-sans font-bold text-black">
                         Airbase Communication Grid:

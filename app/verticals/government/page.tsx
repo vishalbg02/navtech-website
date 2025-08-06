@@ -6,7 +6,6 @@ import Image from "next/image";
 import TiltedCard from "@/components/utils/TiltedCardProps";
 import BlurText from "@/components/utils/BlurTextProps";
 import SplitText from "@/components/utils/SplitTextProps";
-import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 
 export default function GovernmentPage() {
   // Refs for scroll-triggered animations
@@ -14,7 +13,6 @@ export default function GovernmentPage() {
   const introRef = useRef<HTMLElement>(null);
   const secureNetworksRef = useRef<HTMLElement>(null);
   const smartGovernanceRef = useRef<HTMLElement>(null);
-  const referenceRef = useRef<HTMLElement>(null);
   const disasterResilientRef = useRef<HTMLElement>(null);
   const educationHealthRef = useRef<HTMLElement>(null);
   const footerRef = useRef<HTMLElement>(null);
@@ -27,10 +25,6 @@ export default function GovernmentPage() {
     margin: "-100px",
   });
   const smartGovernanceInView = useInView(smartGovernanceRef, {
-    once: true,
-    margin: "-100px",
-  });
-  const referenceInView = useInView(referenceRef, {
     once: true,
     margin: "-100px",
   });
@@ -211,79 +205,81 @@ export default function GovernmentPage() {
           <div className="grid lg:grid-cols-2 items-center">
             {/* Left: Text Content with Left Padding */}
             <motion.div
-                className="px-4 lg:pl-[120px]"
-                variants={fadeInLeft}
-                initial="hidden"
-                animate={secureNetworksInView ? "visible" : "hidden"}
-                transition={{ duration: 1, ease: "easeOut" }}
+              className="px-4 lg:pl-[120px]"
+              variants={fadeInLeft}
+              initial="hidden"
+              animate={secureNetworksInView ? "visible" : "hidden"}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
               <div className="mb-6">
                 <h3 className="font-oswald font-semibold text-3xl relative z-10">
-          <span
-              style={{
-                backgroundColor: "#95C149",
-                color: "#fff",
-                padding: "4px 10px",
-                borderRadius: "4px",
-                display: "inline-block",
-              }}
-          >
-            Secure
-          </span>{" "}
+                  <span
+                    style={{
+                      backgroundColor: "#95C149",
+                      color: "#fff",
+                      padding: "4px 10px",
+                      borderRadius: "4px",
+                      display: "inline-block",
+                    }}
+                  >
+                    Secure
+                  </span>{" "}
                   Communication Networks
                 </h3>
               </div>
               <p
-                  className="leading-relaxed mt-2"
-                  style={{
-                    fontSize: "16px",
-                    fontFamily: "Manrope, sans-serif",
-                    color: "#000",
-                  }}
+                className="leading-relaxed mt-2"
+                style={{
+                  fontSize: "16px",
+                  fontFamily: "Manrope, sans-serif",
+                  color: "#000",
+                }}
               >
                 <strong>Home Affairs, and Intelligence Services:</strong>
                 <br />
-                Enable tamper-proof, RF-free communication that is immune to <br/>jamming and interception.
+                Enable tamper-proof, RF-free communication that is immune to{" "}
+                <br />
+                jamming and interception.
               </p>
               <p
-                  className="mt-4 leading-relaxed"
-                  style={{
-                    fontSize: "16px",
-                    fontFamily: "Manrope, sans-serif",
-                    color: "#000",
-                  }}
+                className="mt-4 leading-relaxed"
+                style={{
+                  fontSize: "16px",
+                  fontFamily: "Manrope, sans-serif",
+                  color: "#000",
+                }}
               >
                 <strong>Police & Paramilitary Installations:</strong>
                 <br />
-                Ensure secure intra-unit communications in urban and border<br/> deployments using LiFi and FSO.
+                Ensure secure intra-unit communications in urban and border
+                <br /> deployments using LiFi and FSO.
               </p>
             </motion.div>
 
             {/* Right: Full-Width Image (No Right Padding) */}
             <motion.div
-                className="relative h-[400px] lg:h-[441px] w-full overflow-hidden flex justify-center items-center"
-                variants={fadeInRight}
-                initial="hidden"
-                animate={secureNetworksInView ? "visible" : "hidden"}
+              className="relative h-[400px] lg:h-[441px] w-full overflow-hidden flex justify-center items-center"
+              variants={fadeInRight}
+              initial="hidden"
+              animate={secureNetworksInView ? "visible" : "hidden"}
             >
               <TiltedCard
-                  imageSrc="/images/gov2.png"
-                  altText="Secure Communication Networks"
-                  captionText="Secure Communication Networks"
-                  containerHeight="100%"
-                  containerWidth="100%"
-                  imageHeight="110%"
-                  imageWidth="100%"
-                  rotateAmplitude={14}
-                  scaleOnHover={1.1}
-                  showMobileWarning={false}
-                  showTooltip={false}
-                  displayOverlayContent={true}
+                imageSrc="/images/gov2.png"
+                altText="Secure Communication Networks"
+                captionText="Secure Communication Networks"
+                containerHeight="100%"
+                containerWidth="100%"
+                imageHeight="110%"
+                imageWidth="100%"
+                rotateAmplitude={14}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={true}
               />
             </motion.div>
           </div>
         </section>
-
 
         {/* Smart Governance & Digital Infrastructure */}
         <section ref={smartGovernanceRef} className="py-20 bg-white">
@@ -357,18 +353,6 @@ export default function GovernmentPage() {
             </div>
           </div>
         </section>
-
-        {/* Reference Image Section */}
-        <ReferenceCarousel
-          images={[
-            "/images/gov4.png",
-            "/images/gov4.png",
-            "/images/gov4.png",
-            "/images/gov4.png",
-          ]}
-          referenceRef={referenceRef}
-          referenceInView={referenceInView}
-        />
 
         {/* Disaster-Resilient Communication */}
         <section ref={disasterResilientRef} className="py-20">
@@ -494,12 +478,16 @@ export default function GovernmentPage() {
                 Education & Health Institutions
               </h2>
               <p className="text-gray-600">
-                <strong>Digital Classrooms in Government Schools:</strong><br />
-                Use LiFi to provide fast, radiation-free internet in rural classrooms.<br />
-                <strong>Telemedicine & e-Hospitals:</strong><br />
-                Secure, interference-free wireless data for medical diagnostics, patient records, and real-time specialist consultations.
+                <strong>Digital Classrooms in Government Schools:</strong>
+                <br />
+                Use LiFi to provide fast, radiation-free internet in rural
+                classrooms.
+                <br />
+                <strong>Telemedicine & e-Hospitals:</strong>
+                <br />
+                Secure, interference-free wireless data for medical diagnostics,
+                patient records, and real-time specialist consultations.
               </p>
-
             </motion.div>
           </div>
         </section>

@@ -6,7 +6,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useInView } from "framer-motion";
 import BlurText from "@/components/utils/BlurTextProps";
-import ReferenceCarousel from "@/components/ui/ReferenceCarousel";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -29,18 +28,6 @@ export default function OpticSpectraPage() {
   const supremeCenterImageRef = useRef(null);
   const supremeLeftSpecsRef = useRef(null);
   const supremeRightSpecsRef = useRef(null);
-  const referenceRef = useRef(null);
-  const referenceDefenceRef = useRef(null);
-
-  const referenceInView = useInView(referenceRef, {
-    once: true,
-    margin: "-100px",
-  });
-
-  const referenceDefenceInView = useInView(referenceDefenceRef, {
-    once: true,
-    margin: "-100px",
-  });
 
   // Animation variants
   const fadeInUp = {
@@ -107,13 +94,13 @@ export default function OpticSpectraPage() {
       title: "Rail Network",
       description:
         "Enables high-speed, interference-free links between stations and onboard systems—perfect for tunnels, trackside monitoring, and secure data relay without physical cables.",
-      image: "/images/op2.jpg",
+      image: "/images/op2.png",
     },
     {
       title: "Event Connectivity",
       description:
         "Delivers instant gigabit wireless access for temporary setups like concerts or exhibitions, bypassing trenching delays and eliminating reliance on congested RF bands.",
-      image: "/images/op3.jpg",
+      image: "/images/op3.png",
     },
     {
       title: "Urban Connectivity",
@@ -641,26 +628,6 @@ export default function OpticSpectraPage() {
               </motion.div>
             </motion.div>
           </div>
-
-          {/* Reference Image */}
-          <motion.div
-            className="w-full h-[545px] relative overflow-hidden"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <ReferenceCarousel
-              images={[
-                "/images/op5.png",
-                "/images/op5.png",
-                "/images/op5.png",
-                "/images/op5.png",
-              ]}
-              referenceRef={referenceRef}
-              referenceInView={referenceInView}
-            />
-          </motion.div>
         </section>
 
         {/* Supreme Section */}
@@ -922,26 +889,6 @@ export default function OpticSpectraPage() {
           </div>
         </section>
       </div>
-
-      {/* Reference Image for Defense - No spacing */}
-      <motion.div
-        className="w-full h-[540px] relative overflow-hidden"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <ReferenceCarousel
-          images={[
-            "/images/op10.jpg",
-            "/images/op10.jpg",
-            "/images/op10.jpg",
-            "/images/op10.jpg",
-          ]}
-          referenceRef={referenceDefenceRef}
-          referenceInView={referenceDefenceInView}
-        />
-      </motion.div>
     </div>
   );
 }

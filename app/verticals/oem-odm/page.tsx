@@ -176,21 +176,6 @@ export default function OEMODMPage() {
           </div>
         </section>
 
-        {/* Background Image Section */}
-        <motion.section
-          className="h-[400px] lg:h-[432px] relative"
-          variants={scaleIn}
-          initial="hidden"
-          animate={introInView ? "visible" : "hidden"}
-        >
-          <Image
-            src="/images/OpticSpectra Tower.png"
-            alt="Industrial Facility"
-            fill
-            className="object-cover"
-          />
-        </motion.section>
-
         {/* We Collaborate With Section */}
         <section ref={collaborateRef} className="py-20 bg-white">
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
@@ -337,50 +322,47 @@ export default function OEMODMPage() {
         {/* Medical Equipment Section */}
         <section ref={medicalRef} className="py-20 bg-white">
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
-            <div className="grid lg:grid-cols-3 gap-8 items-start">
-              {/* Left Side: Two side-by-side images */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Half: Two images */}
               <motion.div
-                className="flex flex-col"
+                className="flex gap-4"
                 variants={fadeInLeft}
                 initial="hidden"
                 animate={medicalInView ? "visible" : "hidden"}
               >
-                <div className="flex gap-4">
-                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden group">
-                    <Image
-                      src="/images/oem5.jpg?height=240&width=300&text=Medical+Equipment"
-                      alt="Medical Equipment"
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="relative h-[400px] w-[450px] rounded-lg overflow-hidden mt-12 group">
-                    <Image
-                      src="/images/oem6.jpg?height=240&width=260&text=Operating+Room"
-                      alt="Operating Room"
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
+                <div className="relative h-[450px] flex-1 mr-5 rounded-lg overflow-hidden group">
+                  <Image
+                    src="/images/oem5.jpg?height=240&width=300&text=Medical+Equipment"
+                    alt="Medical Equipment"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="relative h-[450px] flex-1 rounded-lg overflow-hidden mt-12 group">
+                  <Image
+                    src="/images/oem6.jpg?height=240&width=260&text=Operating+Room"
+                    alt="Operating Room"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
               </motion.div>
 
-              {/* Center Content: Now left-aligned */}
+              {/* Right Half: Content */}
               <motion.div
-                className="text-left col-span-2 mt-14 ml-10"
-                variants={fadeInUp}
+                className="flex flex-col justify-center"
+                variants={fadeInRight}
                 initial="hidden"
                 animate={medicalInView ? "visible" : "hidden"}
               >
                 <div className="mb-6">
-                  <h3 className="font-oswald font-semibold text-5xl relative z-10">
+                  <h3 className="font-oswald font-semibold text-5xl relative z-10 leading-normal">
                     Medical Equipment &{" "}
                     <span
                       style={{
                         backgroundColor: "#95C149",
                         color: "#fff",
-                        padding: "4px 10px",
-                        borderRadius: "4px",
+                        padding: "1px 10px",
                         display: "inline-block",
                       }}
                     >
@@ -422,48 +404,48 @@ export default function OEMODMPage() {
 
           <div className="relative z-10 max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <motion.div
-                className="text-center pt-[40px]"
-                variants={staggerContainer}
-                initial="hidden"
-                animate={automotiveInView ? "visible" : "hidden"}
+              className="text-center pt-[40px]"
+              variants={staggerContainer}
+              initial="hidden"
+              animate={automotiveInView ? "visible" : "hidden"}
             >
               <motion.h3
-                  className="font-oswald font-semibold text-5xl text-white mb-4 inline-block"
-                  variants={fadeInUp}
+                className="font-oswald font-semibold text-5xl text-white mb-4 inline-block"
+                variants={fadeInUp}
               >
-    <span className="inline-block relative">
-      Automotive
-      <span className="block mt-2">
-        <svg
-            width="195"
-            height="7"
-            viewBox="0 0 195 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-              d="M195 3.40409C178.482 -2.76105 58.1176 0.835284 0 3.40409V7C89.1953 1.24587 167.165 4.60245 195 7V3.40409Z"
-              fill="#95C149"
-          />
-        </svg>
-      </span>
-    </span>{" "}
+                <span className="inline-block relative">
+                  Automotive
+                  <span className="block mt-2">
+                    <svg
+                      width="195"
+                      height="7"
+                      viewBox="0 0 195 7"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M195 3.40409C178.482 -2.76105 58.1176 0.835284 0 3.40409V7C89.1953 1.24587 167.165 4.60245 195 7V3.40409Z"
+                        fill="#95C149"
+                      />
+                    </svg>
+                  </span>
+                </span>{" "}
                 & Mobility Innovators
               </motion.h3>
 
               <motion.p
-                  className="font-light text-white max-w-[691px] mx-auto leading-relaxed"
-                  style={{
-                    fontSize: "18px",
-                    fontFamily: "Manrope, sans-serif",
-                  }}
-                  variants={fadeInUp}
+                className="font-light text-white max-w-[691px] mx-auto leading-relaxed"
+                style={{
+                  fontSize: "18px",
+                  fontFamily: "Manrope, sans-serif",
+                }}
+                variants={fadeInUp}
               >
-                Enable vehicle-to-vehicle (V2V) or in-cabin optical communication for
-                safer, interference-free data sharing in smart and autonomous vehicles.
+                Enable vehicle-to-vehicle (V2V) or in-cabin optical
+                communication for safer, interference-free data sharing in smart
+                and autonomous vehicles.
               </motion.p>
             </motion.div>
-
           </div>
         </section>
 
