@@ -507,24 +507,6 @@ export default function DefencePage() {
           </div>
         </section>
 
-        {/* Full-width Image Section */}
-        <section
-          ref={fullImageRef}
-          className="h-[600px] w-full mt-16 flex items-end relative overflow-hidden"
-        >
-          <motion.div
-            initial={{ scale: 1.1 }}
-            animate={fullImageInView ? { scale: 1 } : {}}
-          >
-            <Image
-              src="/images/def2.jpg?height=600&width=1440"
-              alt="Defense Reference"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-        </section>
-
         {/* Cards Section */}
         <motion.section
           ref={cardsRef}

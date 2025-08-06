@@ -16,46 +16,46 @@ export default function TextSection() {
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-          ".text-element",
-          {
-            y: 80,
-            opacity: 0,
-            scale: 0.95,
+        ".text-element",
+        {
+          y: 80,
+          opacity: 0,
+          scale: 0.95,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse",
           },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 1.2,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-              end: "top 20%",
-              toggleActions: "play none none reverse",
-            },
-          }
+        }
       );
 
       gsap.fromTo(
-          backgroundRef.current,
-          {
-            scale: 1.1,
-            opacity: 0,
+        backgroundRef.current,
+        {
+          scale: 1.1,
+          opacity: 0,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 90%",
+            end: "top 10%",
+            toggleActions: "play none none reverse",
           },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 90%",
-              end: "top 10%",
-              toggleActions: "play none none reverse",
-            },
-          }
+        }
       );
 
       gsap.to(sectionRef.current, {
@@ -83,63 +83,69 @@ export default function TextSection() {
   }, []);
 
   return (
-      <section
-          ref={sectionRef}
-          className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+    >
+      {/* Background - solid white */}
+      <div ref={backgroundRef} className="absolute inset-0 bg-white"></div>
+
+      <div
+        ref={textRef}
+        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
       >
-        {/* Background - solid white */}
-        <div ref={backgroundRef} className="absolute inset-0 bg-white"></div>
-
-        <div
-            ref={textRef}
-            className="relative z-10 text-center px-6 max-w-4xl mx-auto"
-        >
-          {/* Main heading */}
-          <div className="text-element">
-            <h1 className="text-[55px] font-manrope font-bold leading-tight tracking-tight" style={{ color: '#000000' }}>
+        {/* Main heading */}
+        <div className="text-element">
+          <h1
+            className="text-[55px] font-manrope font-bold leading-tight tracking-tight"
+            style={{ color: "#000000" }}
+          >
             NAVTECH
-            </h1>
-          </div>
+          </h1>
+        </div>
 
-          {/* Subtitle */}
-          <div className="text-element mb-11">
-            <h2 className="text-[24px] font-manrope font-normal leading-relaxed" style={{ color: '#565656' }}>
-              Innovating with LiFi Wireless Technology
-            </h2>
-          </div>
+        {/* Subtitle */}
+        <div className="text-element mb-11">
+          <h2
+            className="text-[24px] font-manrope font-normal leading-relaxed"
+            style={{ color: "#565656" }}
+          >
+            Innovating with Optical Wireless Technology
+          </h2>
+        </div>
 
-          {/* Paragraph */}
-          <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
-  <span className="block">
-    Transforming the future of connectivity with cutting-edge optical wireless
-  </span>
-            <span className="block">
-    solutions that revolutionize how the world communicates
-  </span>
-          </p>
+        {/* Paragraph */}
+        <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
+          <span className="block">
+            Transforming the future of connectivity with cutting-edge optical
+            wireless
+          </span>
+          <span className="block">
+            solutions that revolutionize how the world communicates
+          </span>
+        </p>
 
-
-          {/* Key features */}
-          <div className="text-element mb-12">
-            <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+        {/* Key features */}
+        <div className="text-element mb-12">
+          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
               <span className="font-normal text-sm md:text-base font-manrope">
                 RF-Free Communication
               </span>
-              </div>
-              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+            </div>
+            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
               <span className="font-normal text-sm md:text-base font-manrope">
                 High-Speed Data Transfer
               </span>
-              </div>
-              <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
+            </div>
+            <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
               <span className="font-normal text-sm md:text-base font-manrope">
                 Secure & Reliable
               </span>
-              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
   );
 }
