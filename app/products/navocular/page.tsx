@@ -183,14 +183,14 @@ export default function OpticSpectraPage() {
         <section className="py-[120px] relative bg-white">
           <div className="max-w-[1440px] mx-auto relative h-[700px]">
             <motion.div
-              className="absolute w-[400px] h-[200px] -left-[220px] transform -translate-x-1/2 top-[20px]"
+              className="absolute w-[800px] h-[700px] -left-[450px] transform -translate-x-1/2 -top-[80px]"
               variants={fadeInDown(0.3)}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
               <img
-                src="/images/nav1.png"
+                src="/images/Nav Ocular Light with Beam.png"
                 alt="NavOcular Light Device"
                 className="w-full h-full object-contain"
               />

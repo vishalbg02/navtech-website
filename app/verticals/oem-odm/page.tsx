@@ -102,7 +102,7 @@ export default function OEMODMPage() {
           className="h-screen relative flex items-center pt-0"
           style={{
             backgroundImage:
-              "url('/images/oem1.png?height=1080&width=1920&text=Industrial+Equipment')",
+              "url('/images/Oem_ODM.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

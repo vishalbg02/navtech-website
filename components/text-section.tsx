@@ -97,7 +97,7 @@ export default function TextSection() {
         {/* Main heading */}
         <div className="text-element">
           <h1
-            className="text-[55px] font-manrope font-bold leading-tight tracking-tight"
+            className="text-[55px] font-oswald font-semibold leading-tight tracking-tight"
             style={{ color: "#000000" }}
           >
             NAVTECH
@@ -115,18 +115,20 @@ export default function TextSection() {
         </div>
 
         {/* Paragraph */}
-        <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
-          <span className="block">
-            Transforming the future of connectivity with cutting-edge optical
-            wireless
-          </span>
-          <span className="block">
-            solutions that revolutionize how the world communicates
-          </span>
-        </p>
+        <div className="text-element">
+          <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
+            <span className="block">
+              Transforming the future of connectivity with cutting-edge optical
+              wireless
+            </span>
+            <span className="block">
+              solutions that revolutionize how the world communicates
+            </span>
+          </p>
+        </div>
 
         {/* Key features */}
-        <div className="text-element mb-12">
+        <div className="text-element">
           <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             <div className="border-2 border-[#95c149] hover:bg-[#95c149] hover:text-white text-gray-700 rounded-full px-6 py-3 transition-all duration-300 ease-in-out">
               <span className="font-normal text-sm md:text-base font-manrope">

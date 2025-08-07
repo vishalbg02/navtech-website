@@ -264,7 +264,7 @@ export default function GovernmentPage() {
               animate={secureNetworksInView ? "visible" : "hidden"}
             >
               <TiltedCard
-                imageSrc="/images/gov2.png"
+                imageSrc="/images/Secure Communication Networks.jpeg"
                 altText="Secure Communication Networks"
                 captionText="Secure Communication Networks"
                 containerHeight="100%"
@@ -307,7 +307,7 @@ export default function GovernmentPage() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <TiltedCard
-                  imageSrc="/images/gov3.jpg"
+                  imageSrc="/images/Smart Government.jpeg"
                   altText="Smart Governance"
                   captionText="Smart Governance"
                   containerHeight="110%"

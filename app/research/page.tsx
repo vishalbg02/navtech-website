@@ -77,7 +77,7 @@ export default function ResearchPage() {
         "Optical Wireless Power enables the wireless delivery of energy using focused beams of light, such as lasers or LEDs, to power electronic devices at a distance. This technology eliminates the need for physical cables and enables power transmission in challenging environments.",
       secondaryDescription:
         "Applications include powering IoT sensors, extending drone flight times, charging medical implants safely, and providing electricity to remote locations where traditional power infrastructure is impractical or impossible.",
-      image: "/images/res4.jpg",
+      image: "/images/Wireless Electricity.jpeg",
     },
     {
       id: "pof",
@@ -107,7 +107,7 @@ export default function ResearchPage() {
         "Programmable Photonic Integrated Circuits (PPICs) leverage semiconductor materials to enable ultra-fast, low-power data transmission at the chip level. These circuits represent the future of high-speed computing and communications.",
       secondaryDescription:
         "Applications span data centers, IoT devices, 6G networks, and edge computing platforms. PPICs offer unprecedented speed and efficiency for next-generation digital infrastructure and distributed computing systems.",
-      image: "/images/res7.jpg",
+      image: "/images/Next Gen Chip.jpeg",
     },
     {
       id: "pat",
