@@ -119,10 +119,7 @@ export default function TextSection() {
           <p className="text-[24px] font-manrope font-normal max-w-3xl mx-auto leading-relaxed mb-12 text-[#000000]">
             <span className="block">
               Transforming the future of connectivity with cutting-edge optical
-              wireless
-            </span>
-            <span className="block">
-              solutions that revolutionize how the world communicates
+              wireless solutions that revolutionize how the world communicates
             </span>
           </p>
         </div>

@@ -69,7 +69,7 @@ export default function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Left Text */}
-          <motion.div className="space-y-6" variants={fadeInLeft}>
+          <motion.div className="space-y-6 mb-44" variants={fadeInLeft}>
             <div className="mb-8">
               <h2 className="text-4xl lg:text-5xl font-oswald font-semibold text-black leading-tight tracking-tight mb-6">
                 ABOUT NAV
@@ -88,22 +88,24 @@ export default function AboutSection() {
             className="flex justify-center items-center perpective-1000"
             variants={fadeInUp}
           >
-            <motion.div className="relative w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] flex justify-center items-center"
-            style={{ transformStyle: "preserve-3d" }}
-            animate={{ rotateY: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
+            <motion.div
+              className="relative w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] flex justify-center items-center"
+              style={{ transformStyle: "preserve-3d" }}
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            >
               <Image
                 src="/images/Navtech Logo 2.png"
                 alt="NavTech Logo"
                 width={400}
                 height={400}
                 className="object-contain"
-                />
+              />
             </motion.div>
           </motion.div>
 
           {/* Right Text and Button */}
-          <motion.div className="space-y-6" variants={fadeInRight}>
+          <motion.div className="space-y-6 mt-44" variants={fadeInRight}>
             <p className="text-base lg:text-lg text-gray-700 leading-relaxed font-sans">
               The company offers a comprehensive suite of products and services
               including Optical Wireless Communication Systems, Wireless
@@ -111,17 +113,6 @@ export default function AboutSection() {
               Healthcare Monitoring, Wireless Enhancement Products, and
               subsystems and customers.
             </p>
-
-            <div className="pt-4">
-              <button className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105">
-                <span className="flex items-center">
-                  Discover Our Journey
-                  <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </span>
-              </button>
-            </div>
           </motion.div>
         </motion.div>
       </div>

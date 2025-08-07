@@ -3,10 +3,12 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function HorizontalSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const router = useRouter();
 
   const sections = [
     {
@@ -16,6 +18,7 @@ export default function HorizontalSection() {
         "Nav Wireless Technologies delivers adaptive Free Space Optics (FSO) solutions that dynamically adjust bandwidth based on environmental conditions like fog, rain, or interference. Ideal for mission-critical applications, these intelligent links ensure high availability and performance for smart cities, defense, disaster recovery, and enterprise backhaul.",
       images: ["/images/opticspectra.png"],
       hasMultipleImages: false,
+      navigationPath: "/products/opticspectra",
     },
     {
       title: "NavOcular",
@@ -24,6 +27,7 @@ export default function HorizontalSection() {
         "Nav Ocular uses invisible infrared (IR) light via Visible Light Communication (VLC) to provide secure, high-speed wireless communication without relying on RF spectrum. Its mesh network enables seamless data routing, self-healing, and scalability. Ideal for smart buildings, factories, hospitals, and EMI-sensitive areas, Nav Ocular ensures low-latency, interference-free, and secure connectivity for next-gen wireless infrastructure.",
       images: ["/images/navocular.png", "/images/nav2.png"],
       hasMultipleImages: true,
+      navigationPath: "/products/navocular",
     },
   ];
 
@@ -92,7 +96,10 @@ export default function HorizontalSection() {
                   </p>
 
                   <div>
-                    <button className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105">
+                    <button 
+                      onClick={() => router.push(section.navigationPath)}
+                      className="group border-2 border-[#95c149] hover:bg-[#95c149] text-gray-700 hover:text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-200 ease-out transform hover:scale-105"
+                    >
                       <span>Learn More</span>
                     </button>
                   </div>

@@ -33,7 +33,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
     >
       <video
         ref={videoRef}
@@ -52,7 +52,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />
 
       {/* Hero Text Content */}
-      <div className="relative z-10 text-center text-black px-4 max-w-4xl">
+      <div className="relative z-10 text-center px-4 max-w-4xl">
         <BlurText
           text="Main Video"
           delay={150}
