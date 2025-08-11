@@ -227,13 +227,13 @@ export default function TelecomPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="w-full h-[650px] bg-gray-300">
+              <div className="w-full h-[650px] bg-gray-300 group">
                 <Image
-                  src="/images/tele2.jpg?height=680&width=519"
+                  src="/images/tele2.jpg"
                   alt="Telecom towers"
                   width={519}
                   height={680}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </motion.div>
@@ -253,13 +253,13 @@ export default function TelecomPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="w-full h-[600px] bg-gray-300">
+              <div className="w-full h-[600px] bg-gray-300 group">
                 <Image
-                  src="/images/tele3.jpg?height=680&width=519"
+                  src="/images/NavOcular_telecom.jpg"
                   alt="Satellite dishes"
                   width={519}
                   height={650}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </motion.div>

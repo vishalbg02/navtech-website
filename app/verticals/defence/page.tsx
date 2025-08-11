@@ -176,20 +176,31 @@ export default function DefencePage() {
                 direction="bottom"
                 className="text-7xl md:text-8xl font-oswald font-semibold uppercase leading-tight text-white"
               />
-              <SplitText
-                text="Next-Gen Optical Wireless Communication for Indian Armed
-                  Forces"
-                className="text-2xl font-sans mt-4 text-white"
-                delay={180}
-                duration={0.8}
-                ease="power3.out"
-                splitType="lines"
-                from={{ opacity: 0, y: 30 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="-100px"
-                textAlign="left"
-              />
+              <div className="text-2xl font-sans mt-4 text-white">
+                <SplitText
+                  text="Next-Gen Optical Wireless Communication"
+                  delay={180}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                />
+                <br />
+                <SplitText
+                  text="for Defence"
+                  delay={200}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                />
+              </div>
             </div>
           </div>
         </section>
