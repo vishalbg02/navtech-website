@@ -132,7 +132,7 @@ export default function GovernmentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black font-['Manrope',sans-serif] overflow-x-hidden">
+    <div className="min-h-screen bg-white text-black font-['Manrope',sans-serif] overflow-hidden">
       <main>
         {/* Hero Section */}
         <section
