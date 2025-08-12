@@ -59,7 +59,7 @@ const scaleIn = (delay: number) => ({
 export default function ApplicationsPage() {
   return (
       <div
-          className="relative min-h-screen"
+          className="relative min-h-screen overflow-hidden"
           style={{
             backgroundColor: "white",
           }}
