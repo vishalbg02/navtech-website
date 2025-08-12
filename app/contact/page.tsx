@@ -77,8 +77,14 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -87,249 +93,313 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Replace with your Google Apps Script web app URL
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7RR0Si8IDm7avFy3s5uQc9G0ynDjOJKrykGvxLp3vQ_Pby9LxgsLLJ5IXqRnalCRybQ/exec';
+
+      console.log('Submitting to:', GOOGLE_SCRIPT_URL);
+      console.log('Form data:', formData);
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // This helps with CORS issues
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // With no-cors mode, we can't read the response
+      // So we assume success if no error is thrown
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully.',
+      });
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        designation: "",
+        phone: "",
+        message: "",
+      });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div
-      className="relative min-h-screen"
-      style={{
-        backgroundColor: "white",
-      }}
-    >
-      <div className="relative z-10">
-        <Navbar />
-        <section className="relative h-screen flex items-center justify-center">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/con1.jpg"
-              alt="Hands typing on laptop"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/30"></div>
-          </div>
-
-          <div className="container mx-auto px-8 relative z-10">
-            <div className="max-w-4xl">
-              <BlurText
-                text="CONTACT US"
-                delay={150}
-                animateBy="words"
-                direction="bottom"
-                className="text-5xl lg:text-6xl xl:text-7xl font-oswald font-semibold leading-tight text-white"
+      <div
+          className="relative min-h-screen"
+          style={{
+            backgroundColor: "white",
+          }}
+      >
+        <div className="relative z-10">
+          <Navbar />
+          <section className="relative h-screen flex items-center justify-center">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                  src="/images/con1.jpg"
+                  alt="Hands typing on laptop"
+                  fill
+                  className="object-cover"
+                  priority
               />
+              <div className="absolute inset-0 bg-black/30"></div>
             </div>
-          </div>
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-            <ChevronDown className="w-8 h-8 text-white animate-bounce mx-auto" />
-          </div>
-        </section>
+            <div className="container mx-auto px-8 relative z-10">
+              <div className="max-w-4xl">
+                <BlurText
+                    text="CONTACT US"
+                    delay={150}
+                    animateBy="words"
+                    direction="bottom"
+                    className="text-5xl lg:text-6xl xl:text-7xl font-oswald font-semibold leading-tight text-white"
+                />
+              </div>
+            </div>
 
-        {/* Contact Form Section */}
-        <section className="py-16 px-8">
-          <div className="container mx-auto max-w-6xl">
-            {/* Contact Form Card */}
-            <motion.div
-              variants={scaleIn(0.3)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <Card className="rounded-lg shadow-lg overflow-hidden w-full border-[10px] border-white">
-                <div className="flex flex-col md:flex-row">
-                  {/* Contact Information Sidebar */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+              <ChevronDown className="w-8 h-8 text-white animate-bounce mx-auto" />
+            </div>
+          </section>
+
+          {/* Contact Form Section */}
+          <section className="py-16 px-8">
+            <div className="container mx-auto max-w-6xl">
+              {/* Status Message */}
+              {submitStatus.type && (
                   <motion.div
-                    className="bg-[#95C149] text-white p-8 md:w-1/3"
-                    variants={fadeInLeft(0.5)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`mb-6 p-4 rounded-lg ${
+                          submitStatus.type === 'success'
+                              ? 'bg-green-100 text-green-800 border border-green-200'
+                              : 'bg-red-100 text-red-800 border border-red-200'
+                      }`}
                   >
-                    <h2 className="text-xl font-semibold mb-8">
-                      Contact Information
-                    </h2>
+                    {submitStatus.message}
+                  </motion.div>
+              )}
+
+              {/* Contact Form Card */}
+              <motion.div
+                  variants={scaleIn(0.3)}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+              >
+                <Card className="rounded-lg shadow-lg overflow-hidden w-full border-[10px] border-white">
+                  <div className="flex flex-col md:flex-row">
+                    {/* Contact Information Sidebar */}
                     <motion.div
-                      className="space-y-6"
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
+                        className="bg-[#95C149] text-white p-8 md:w-1/3"
+                        variants={fadeInLeft(0.5)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
                     >
+                      <h2 className="text-xl font-semibold mb-8">
+                        Contact Information
+                      </h2>
                       <motion.div
-                        className="flex items-start space-x-3"
-                        variants={fadeInUp(0.2)}
+                          className="space-y-6"
+                          variants={staggerContainer}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
                       >
-                        <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
-                        <span className="text-sm">+91 70484 21010</span>
-                      </motion.div>
-                      <motion.div
-                        className="flex items-start space-x-3"
-                        variants={fadeInUp(0.4)}
-                      >
-                        <Mail className="w-5 h-5 mt-1 flex-shrink-0" />
-                        <span className="text-sm">info@navtechno.in</span>
-                      </motion.div>
-                      <motion.div
-                        className="flex items-start space-x-3"
-                        variants={fadeInUp(0.6)}
-                      >
-                        <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                        <span className="text-sm">
+                        <motion.div
+                            className="flex items-start space-x-3"
+                            variants={fadeInUp(0.2)}
+                        >
+                          <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
+                          <span className="text-sm">+91 70484 21010</span>
+                        </motion.div>
+                        <motion.div
+                            className="flex items-start space-x-3"
+                            variants={fadeInUp(0.4)}
+                        >
+                          <Mail className="w-5 h-5 mt-1 flex-shrink-0" />
+                          <span className="text-sm">info@navtechno.in</span>
+                        </motion.div>
+                        <motion.div
+                            className="flex items-start space-x-3"
+                            variants={fadeInUp(0.6)}
+                        >
+                          <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                          <span className="text-sm">
                           C6 The First Residue ITC Narmada,
                           <br />
                           Near Keshav Baug, Ahmedabad,
                           <br />
                           Gujarat 380015
                         </span>
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
-                    {/* Social Media Icons */}
-                    <motion.div
-                      className="flex space-x-4 mt-12"
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
+                      {/* Social Media Icons */}
                       <motion.div
-                        className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
-                        variants={scaleIn(0.2)}
+                          className="flex space-x-4 mt-12"
+                          variants={staggerContainer}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
                       >
-                        <Facebook className="w-4 h-4" />
-                      </motion.div>
-                      <motion.div
-                        className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
-                        variants={scaleIn(0.4)}
-                      >
-                        <Instagram className="w-4 h-4" />
-                      </motion.div>
-                      <motion.div
-                        className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
-                        variants={scaleIn(0.6)}
-                      >
-                        <Youtube className="w-4 h-4" />
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-                  {/* Contact Form */}
-                  <motion.div
-                    className="p-8 md:w-2/3"
-                    variants={fadeInRight(0.5)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    <h2 className="text-2xl font-oswald font-semibold text-gray-800 mb-8">
-                      Send Us A Message
-                    </h2>
-                    <motion.form
-                      onSubmit={handleSubmit}
-                      className="space-y-10"
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
-                      <motion.div
-                        className="grid md:grid-cols-2 gap-10"
-                        variants={fadeInUp(0.3)}
-                      >
-                        <div>
-                          <label className="text-base font-semibold text-gray-800 mb-2 block">
-                            Name
-                          </label>
-                          <Input
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
-                            placeholder="Enter your full name"
-                            required
-                          />
-                        </div>
-                        <div>
-                          <label className="text-base font-semibold text-gray-800 mb-2 block">
-                            Email
-                          </label>
-                          <Input
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
-                            placeholder="Enter your email address"
-                            required
-                          />
-                        </div>
-                      </motion.div>
-                      <motion.div
-                        className="grid md:grid-cols-2 gap-10"
-                        variants={fadeInUp(0.5)}
-                      >
-                        <div>
-                          <label className="text-base font-semibold text-gray-800 mb-2 block">
-                            Phone
-                          </label>
-                          <Input
-                            name="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                            className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
-                            placeholder="Enter your phone number"
-                            required
-                          />
-                        </div>
-                        <div>
-                          <label className="text-base font-semibold text-gray-800 mb-2 block">
-                            Designation
-                          </label>
-                          <Input
-                            name="designation"
-                            value={formData.designation}
-                            onChange={handleInputChange}
-                            className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
-                            placeholder="Enter your job title"
-                            required
-                          />
-                        </div>
-                      </motion.div>
-                      <motion.div variants={fadeInUp(0.7)}>
-                        <label className="text-base font-semibold text-gray-800 mb-2 block">
-                          Message
-                        </label>
-                        <Textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0 min-h-[100px]"
-                          placeholder="Enter your message"
-                          required
-                        />
-                      </motion.div>
-                      <motion.div className="pt-2" variants={fadeInUp(0.9)}>
-                        <Button
-                          type="submit"
-                          className="border border-[#95C149] text-gray-800 px-8 py-2 rounded-full font-medium bg-white hover:bg-green-50"
+                        <motion.div
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                            variants={scaleIn(0.2)}
                         >
-                          Send Message
-                        </Button>
+                          <Facebook className="w-4 h-4" />
+                        </motion.div>
+                        <motion.div
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                            variants={scaleIn(0.4)}
+                        >
+                          <Instagram className="w-4 h-4" />
+                        </motion.div>
+                        <motion.div
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                            variants={scaleIn(0.6)}
+                        >
+                          <Youtube className="w-4 h-4" />
+                        </motion.div>
                       </motion.div>
-                    </motion.form>
-                  </motion.div>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </section>
-        <Footer />
+                    </motion.div>
+                    {/* Contact Form */}
+                    <motion.div
+                        className="p-8 md:w-2/3"
+                        variants={fadeInRight(0.5)}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                      <h2 className="text-2xl font-oswald font-semibold text-gray-800 mb-8">
+                        Send Us A Message
+                      </h2>
+                      <motion.form
+                          onSubmit={handleSubmit}
+                          className="space-y-10"
+                          variants={staggerContainer}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
+                      >
+                        <motion.div
+                            className="grid md:grid-cols-2 gap-10"
+                            variants={fadeInUp(0.3)}
+                        >
+                          <div>
+                            <label className="text-base font-semibold text-gray-800 mb-2 block">
+                              Name
+                            </label>
+                            <Input
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={handleInputChange}
+                                className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
+                                placeholder="Enter your full name"
+                                required
+                                disabled={isSubmitting}
+                            />
+                          </div>
+                          <div>
+                            <label className="text-base font-semibold text-gray-800 mb-2 block">
+                              Email
+                            </label>
+                            <Input
+                                name="email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
+                                placeholder="Enter your email address"
+                                required
+                                disabled={isSubmitting}
+                            />
+                          </div>
+                        </motion.div>
+                        <motion.div
+                            className="grid md:grid-cols-2 gap-10"
+                            variants={fadeInUp(0.5)}
+                        >
+                          <div>
+                            <label className="text-base font-semibold text-gray-800 mb-2 block">
+                              Phone
+                            </label>
+                            <Input
+                                name="phone"
+                                type="tel"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                                className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
+                                placeholder="Enter your phone number"
+                                required
+                                disabled={isSubmitting}
+                            />
+                          </div>
+                          <div>
+                            <label className="text-base font-semibold text-gray-800 mb-2 block">
+                              Designation
+                            </label>
+                            <Input
+                                name="designation"
+                                value={formData.designation}
+                                onChange={handleInputChange}
+                                className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
+                                placeholder="Enter your job title"
+                                required
+                                disabled={isSubmitting}
+                            />
+                          </div>
+                        </motion.div>
+                        <motion.div variants={fadeInUp(0.7)}>
+                          <label className="text-base font-semibold text-gray-800 mb-2 block">
+                            Message
+                          </label>
+                          <Textarea
+                              name="message"
+                              value={formData.message}
+                              onChange={handleInputChange}
+                              className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0 min-h-[100px]"
+                              placeholder="Enter your message"
+                              required
+                              disabled={isSubmitting}
+                          />
+                        </motion.div>
+                        <motion.div className="pt-2" variants={fadeInUp(0.9)}>
+                          <Button
+                              type="submit"
+                              className="border border-[#95C149] text-gray-800 px-8 py-2 rounded-full font-medium bg-white hover:bg-green-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                              disabled={isSubmitting}
+                          >
+                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                          </Button>
+                        </motion.div>
+                      </motion.form>
+                    </motion.div>
+                  </div>
+                </Card>
+              </motion.div>
+            </div>
+          </section>
+          <Footer />
+        </div>
       </div>
-    </div>
   );
 }

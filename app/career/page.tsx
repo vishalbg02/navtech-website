@@ -62,10 +62,36 @@ export default function CareersPage() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      // Check file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setSubmitStatus({
+          type: 'error',
+          message: 'File size must be less than 5MB'
+        });
+        return;
+      }
+
+      // Check file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(file.type)) {
+        setSubmitStatus({
+          type: 'error',
+          message: 'Please upload a PDF or Word document'
+        });
+        return;
+      }
+
       setSelectedFile(file);
+      setSubmitStatus({ type: null, message: '' });
     }
   };
 
@@ -73,7 +99,14 @@ export default function CareersPage() {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     if (file) {
-      setSelectedFile(file);
+      // Simulate file input change
+      const input = fileInputRef.current;
+      if (input) {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        handleFileSelect({ target: input } as React.ChangeEvent<HTMLInputElement>);
+      }
     }
   };
 
@@ -91,9 +124,94 @@ export default function CareersPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Helper function to convert file to base64
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        // Remove the data URL prefix (e.g., "data:application/pdf;base64,")
+        const base64Data = base64.split(',')[1];
+        resolve(base64Data);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { ...formData, resume: selectedFile });
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Replace with your Google Apps Script web app URL
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz-eOM55mYpqlEhOAO1NY3zKV6SX6joB9YxfyxS31KTtC9kq0trMk7wdsgGCPxhEL6/exec';
+
+      let submitData = { ...formData };
+
+      // Handle file upload if present
+      if (selectedFile) {
+        try {
+          const base64Data = await fileToBase64(selectedFile);
+          submitData = {
+            ...submitData,
+            resumeFile: base64Data,
+            fileName: selectedFile.name
+          };
+        } catch (fileError) {
+          console.error('File processing error:', fileError);
+          setSubmitStatus({
+            type: 'error',
+            message: 'Error processing file. Please try again.'
+          });
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      console.log('Submitting to:', GOOGLE_SCRIPT_URL);
+      console.log('Form data:', { ...submitData, resumeFile: selectedFile ? '[FILE_DATA]' : 'No file' });
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
+      });
+
+      // With no-cors mode, we assume success if no error is thrown
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your application has been submitted successfully. We will get back to you soon.',
+      });
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        designation: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setSelectedFile(null);
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, there was an error submitting your application. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -209,6 +327,21 @@ export default function CareersPage() {
         {/* Form Section */}
         <section className="px-4 sm:px-6 lg:px-8 xl:px-[120px] pb-12 sm:pb-16 md:pb-20 lg:pb-[100px]">
           <div className="max-w-[1200px] mx-auto">
+            {/* Status Message */}
+            {submitStatus.type && (
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`mb-6 p-4 rounded-lg ${
+                        submitStatus.type === 'success'
+                            ? 'bg-green-100 text-green-800 border border-green-200'
+                            : 'bg-red-100 text-red-800 border border-red-200'
+                    }`}
+                >
+                  {submitStatus.message}
+                </motion.div>
+            )}
+
             <Card className="shadow-[0px_0px_60px_rgba(0,0,0,0.1)] border-0">
               <CardContent className="p-6 sm:p-8 lg:p-[50px]">
                 <motion.div
@@ -248,6 +381,7 @@ export default function CareersPage() {
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your full name"
                           required
+                          disabled={isSubmitting}
                       />
                     </div>
                     <div className="flex-1">
@@ -262,6 +396,7 @@ export default function CareersPage() {
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your email address"
                           required
+                          disabled={isSubmitting}
                       />
                     </div>
                   </motion.div>
@@ -283,6 +418,7 @@ export default function CareersPage() {
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your phone number"
                           required
+                          disabled={isSubmitting}
                       />
                     </div>
                     <div className="flex-1">
@@ -296,6 +432,7 @@ export default function CareersPage() {
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your job title"
                           required
+                          disabled={isSubmitting}
                       />
                     </div>
                   </motion.div>
@@ -312,24 +449,28 @@ export default function CareersPage() {
                         className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                         placeholder="Enter your message"
                         required
+                        disabled={isSubmitting}
                     />
                   </motion.div>
 
                   {/* File Upload */}
                   <motion.div className="space-y-2 lg:space-y-[10px]" variants={fadeInUp(1.5)}>
                     <label className="block text-sm sm:text-base lg:text-[16px] font-normal leading-5 text-black">
-                      Drop your resume here
+                      Drop your resume here (PDF or Word, max 5MB)
                     </label>
                     <div
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}
-                        className="border border-dashed border-[#95C149] p-4 lg:p-[18px] cursor-pointer"
-                        onClick={() => fileInputRef.current?.click()}
+                        className={`border border-dashed border-[#95C149] p-4 lg:p-[18px] cursor-pointer transition-colors ${
+                            isSubmitting ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-50'
+                        }`}
+                        onClick={() => !isSubmitting && fileInputRef.current?.click()}
                     >
                       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 lg:gap-[17px]">
                         <button
                             type="button"
-                            className="w-full sm:w-[98px] h-8 bg-[#EAEAEA] border border-black text-xs sm:text-[14px] text-center flex items-center justify-center"
+                            className="w-full sm:w-[98px] h-8 bg-[#EAEAEA] border border-black text-xs sm:text-[14px] text-center flex items-center justify-center disabled:opacity-50"
+                            disabled={isSubmitting}
                         >
                           Choose File
                         </button>
@@ -343,6 +484,7 @@ export default function CareersPage() {
                           accept=".pdf,.doc,.docx"
                           onChange={handleFileSelect}
                           className="hidden"
+                          disabled={isSubmitting}
                       />
                     </div>
                   </motion.div>
@@ -354,9 +496,10 @@ export default function CareersPage() {
                   >
                     <Button
                         type="submit"
-                        className="w-[93px] h-[47px] border-[1.5px] border-[#95C149] bg-transparent text-black hover:bg-[#95C149] hover:text-white rounded-[30px] text-sm lg:text-[14px] font-sans transition-colors duration-300"
+                        className="w-[93px] h-[47px] border-[1.5px] border-[#95C149] bg-transparent text-black hover:bg-[#95C149] hover:text-white rounded-[30px] text-sm lg:text-[14px] font-sans transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={isSubmitting}
                     >
-                      Submit
+                      {isSubmitting ? 'Sending...' : 'Submit'}
                     </Button>
                   </motion.div>
                 </motion.form>
