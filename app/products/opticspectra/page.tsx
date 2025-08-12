@@ -93,19 +93,19 @@ export default function OpticSpectraPage() {
     {
       title: "Rail Network",
       description:
-        "Enables high-speed, interference-free links between stations and onboard systems—perfect for tunnels, trackside monitoring, and secure data relay without physical cables.",
+          "Enables high-speed, interference-free links between stations and onboard systems—perfect for tunnels, trackside monitoring, and secure data relay without physical cables.",
       image: "/images/op2.png",
     },
     {
       title: "Event Connectivity",
       description:
-        "Delivers instant gigabit wireless access for temporary setups like concerts or exhibitions, bypassing trenching delays and eliminating reliance on congested RF bands.",
+          "Delivers instant gigabit wireless access for temporary setups like concerts or exhibitions, bypassing trenching delays and eliminating reliance on congested RF bands.",
       image: "/images/op3.png",
     },
     {
       title: "Urban Connectivity",
       description:
-        "Serves as a scalable alternative to fiber in cities—linking rooftops and buildings without civil work, spectrum constraints, or interference issues.",
+          "Serves as a scalable alternative to fiber in cities—linking rooftops and buildings without civil work, spectrum constraints, or interference issues.",
       image: "/images/Urban Connectivity.jpg",
     },
   ];
@@ -114,19 +114,19 @@ export default function OpticSpectraPage() {
     {
       title: "Army",
       description:
-        "Enables high-bandwidth, secure communication between mobile ground units, command posts, and surveillance assets. PAT-enabled optical links remain aligned in motion and undetectable by Electronic Warfare Systems (EWS).",
+          "Enables high-bandwidth, secure communication between mobile ground units, command posts, and surveillance assets. PAT-enabled optical links remain aligned in motion and undetectable by Electronic Warfare Systems (EWS).",
       image: "/images/op7.jpg",
     },
     {
       title: "Navy",
       description:
-        "Provides ship-to-ship and ship-to-shore communication with zero RF signature. Integrated PAT ensures stable laser connectivity on moving vessels, delivering stealthy, interference-free operation beyond the reach of EWS.",
+          "Provides ship-to-ship and ship-to-shore communication with zero RF signature. Integrated PAT ensures stable laser connectivity on moving vessels, delivering stealthy, interference-free operation beyond the reach of EWS.",
       image: "/images/op8.jpg",
     },
     {
       title: "Air Force",
       description:
-        "Supports aircraft-to-aircraft and airborne-to-ground data exchange with real-time throughput. PAT integration compensates for speed and altitude shifts, ensuring continuity without RF traceable signals.",
+          "Supports aircraft-to-aircraft and airborne-to-ground data exchange with real-time throughput. PAT integration compensates for speed and altitude shifts, ensuring continuity without RF traceable signals.",
       image: "/images/op9.jpg",
     },
   ];
@@ -149,106 +149,106 @@ export default function OpticSpectraPage() {
 
   useEffect(() => {
     if (
-      typeof window !== "undefined" &&
-      departmentTextRef.current &&
-      tecCertifiedRef.current &&
-      milGradeRef.current &&
-      jssCertifiedRef.current
+        typeof window !== "undefined" &&
+        departmentTextRef.current &&
+        tecCertifiedRef.current &&
+        milGradeRef.current &&
+        jssCertifiedRef.current
     ) {
       gsap.fromTo(
-        departmentTextRef.current,
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        },
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: departmentTextRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-            toggleActions: "play reverse play reverse",
+          departmentTextRef.current,
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
           },
-        }
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: departmentTextRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              toggleActions: "play reverse play reverse",
+            },
+          }
       );
 
       gsap.fromTo(
-        tecCertifiedRef.current,
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        },
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: tecCertifiedRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-            toggleActions: "play reverse play reverse",
+          tecCertifiedRef.current,
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
           },
-        }
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: tecCertifiedRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              toggleActions: "play reverse play reverse",
+            },
+          }
       );
 
       gsap.fromTo(
-        milGradeRef.current,
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        },
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: milGradeRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-            toggleActions: "play reverse play reverse",
+          milGradeRef.current,
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
           },
-        }
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: milGradeRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              toggleActions: "play reverse play reverse",
+            },
+          }
       );
 
       gsap.fromTo(
-        jssCertifiedRef.current,
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        },
-        {
-          backgroundImage:
-            "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: jssCertifiedRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-            toggleActions: "play reverse play reverse",
+          jssCertifiedRef.current,
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 0%, transparent 0%, transparent 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
           },
-        }
+          {
+            backgroundImage:
+                "linear-gradient(180deg, #95C149 0%, #95C149 100%, transparent 100%, transparent 100%)",
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: jssCertifiedRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              toggleActions: "play reverse play reverse",
+            },
+          }
       );
     }
 
@@ -258,637 +258,993 @@ export default function OpticSpectraPage() {
   }, []);
 
   return (
-    <div
-      className="relative min-h-screen bg-white overflow-x-hidden"
-      style={{ fontFamily: "Manrope, sans-serif" }}
-    >
-      {/* Video Section */}
-      <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center">
-        <div className="text-center">
-          <BlurText
-            text="Video of The product"
-            delay={150}
-            animateBy="words"
-            direction="bottom"
-            className="text-[64px] font-oswald font-semibold leading-[77px] text-black mb-6"
-          />
-          <div className="relative w-[78px] h-[78px] mx-auto">
-            <div className="absolute inset-0 bg-white/40 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+      <div
+          className="relative min-h-screen bg-white overflow-x-hidden"
+          style={{ fontFamily: "Manrope, sans-serif" }}
+      >
+        {/* Video Section */}
+        <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center lg:px-0 px-4">
+          <div className="text-center">
+            <BlurText
+                text="Video of The product"
+                delay={150}
+                animateBy="words"
+                direction="bottom"
+                className="lg:text-[64px] lg:font-oswald lg:font-semibold lg:leading-[77px] text-black mb-6 text-[32px] md:text-[48px] font-oswald font-semibold leading-tight"
+            />
+            <div className="relative lg:w-[78px] lg:h-[78px] w-[52px] h-[52px] md:w-[65px] md:h-[65px] mx-auto">
+              <div className="absolute inset-0 bg-white/40 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 lg:border-l-[20px] lg:border-l-white lg:border-t-[12px] lg:border-t-transparent lg:border-b-[12px] lg:border-b-transparent border-l-[13px] md:border-l-[16px] border-l-white border-t-[8px] md:border-t-[10px] border-t-transparent border-b-[8px] md:border-b-[10px] border-b-transparent ml-1"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Main Content Container */}
-      <div className="flex flex-col items-center gap-[120px] py-[120px]">
-        {/* About OpticSpectra Section */}
-        <section className="flex flex-col items-center gap-6 w-[1125px]">
-          <motion.div
-            className="flex flex-col items-center gap-[14px] w-full"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+        {/* Main Content Container */}
+        <div className="flex flex-col items-center lg:gap-[120px] gap-[60px] lg:py-[120px] py-[60px] lg:px-0 px-4">
+          {/* About OpticSpectra Section */}
+          <section className="flex flex-col items-center gap-6 lg:w-[1125px] w-full max-w-[1125px]">
             <motion.div
-              className="flex flex-col items-center"
-              variants={fadeInUp}
+                className="flex flex-col items-center gap-[14px] w-full"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
             >
-              <h2 className="text-[27px] font-oswald font-semibold leading-[23px] text-center uppercase text-black">
-                ABOUT
-              </h2>
-              <div className="relative mt-[5px] flex items-center justify-center w-[400px] h-[46px] bg-[#95C149]">
-                <span className="text-[46px] font-oswald font-semibold text-white uppercase z-10 leading-[56px]">
+              <motion.div
+                  className="flex flex-col items-center"
+                  variants={fadeInUp}
+              >
+                <h2 className="lg:text-[27px] lg:font-oswald lg:font-semibold lg:leading-[23px] text-center uppercase text-black text-[18px] md:text-[22px] font-oswald font-semibold leading-tight">
+                  ABOUT
+                </h2>
+                <div className="relative mt-[5px] flex items-center justify-center lg:w-[400px] lg:h-[46px] w-[280px] md:w-[320px] h-[32px] md:h-[38px] bg-[#95C149]">
+                <span className="lg:text-[46px] lg:font-oswald lg:font-semibold text-white uppercase z-10 lg:leading-[56px] text-[24px] md:text-[32px] font-oswald font-semibold leading-tight">
                   OPTICSPECTRA
                 </span>
-              </div>
+                </div>
+              </motion.div>
+              <motion.p
+                  className="lg:text-[20px] lg:font-sans lg:leading-6 text-center text-black text-[16px] md:text-[18px] font-sans leading-6"
+                  variants={fadeInUp}
+              >
+                Intelligent Optical Links for Dynamic Network Demands
+              </motion.p>
             </motion.div>
             <motion.p
-              className="text-[20px] font-sans leading-6 text-center text-black"
-              variants={fadeInUp}
+                className="lg:text-[18px] lg:font-sans lg:leading-[22px] text-center text-[#565656] text-[14px] md:text-[16px] font-sans leading-relaxed"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
             >
-              Intelligent Optical Links for Dynamic Network Demands
+              Nav Wireless Technologies offers Free Space Optics (FSO) solutions
+              with adaptive bandwidth capabilities, enabling optical links to
+              automatically adjust data rates in response to changing
+              environmental conditions such as fog, rain, or signal degradation.
+              This ensures continuous, optimized performance without compromising
+              link stability or security.
+              <br />
+              <br /> Ideal for mission-critical, high-availability applications,
+              adaptive FSO systems support real-time bandwidth scaling, making
+              them suitable for smart cities, defense networks, disaster zones,
+              and enterprise backhaul where reliability and flexibility are
+              essential.
             </motion.p>
-          </motion.div>
-          <motion.p
-            className="text-[18px] font-sans leading-[22px] text-center text-[#565656]"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            Nav Wireless Technologies offers Free Space Optics (FSO) solutions
-            with adaptive bandwidth capabilities, enabling optical links to
-            automatically adjust data rates in response to changing
-            environmental conditions such as fog, rain, or signal degradation.
-            This ensures continuous, optimized performance without compromising
-            link stability or security.
-            <br />
-            <br /> Ideal for mission-critical, high-availability applications,
-            adaptive FSO systems support real-time bandwidth scaling, making
-            them suitable for smart cities, defense networks, disaster zones,
-            and enterprise backhaul where reliability and flexibility are
-            essential.
-          </motion.p>
-        </section>
+          </section>
 
-        {/* Neo Section */}
-        <section className="flex flex-col items-center gap-12 w-full">
-          <div className="flex flex-col items-center w-full">
-            {/* Neo Product Diagram with Overlaid Text */}
-            <div className="relative w-[1200px] h-[1200px]">
-              {/* Overlaid Header Text */}
-              <motion.div
-                className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-              >
-                <motion.h2
-                  ref={departmentTextRef}
-                  className="text-[68px] font-oswald font-semibold leading-[70px] text-center uppercase w-full mb-2"
-                  style={{
-                    WebkitTextStroke: "1px #AFAFAF",
-                    backgroundImage:
-                      "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                  variants={fadeInUp}
+          {/* Neo Section */}
+          <section className="flex flex-col items-center gap-12 w-full">
+            <div className="flex flex-col items-center w-full">
+              {/* Neo Product Diagram with Overlaid Text */}
+              <div className="relative lg:w-[1200px] lg:h-[1200px] w-full h-[800px] md:h-[1000px] max-w-[1200px]">
+                {/* Overlaid Header Text */}
+                <motion.div
+                    className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10 lg:px-0 px-4"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
                 >
-                  DEPARTMENT OF
-                  <br />
-                  TELECOMMUNICATIONS
-                </motion.h2>
+                  <motion.h2
+                      ref={departmentTextRef}
+                      className="lg:text-[68px] lg:font-oswald lg:font-semibold lg:leading-[70px] text-center uppercase w-full mb-2 text-[24px] md:text-[40px] font-oswald font-semibold leading-tight"
+                      style={{
+                        WebkitTextStroke: "1px #AFAFAF",
+                        backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                      }}
+                      variants={fadeInUp}
+                  >
+                    DEPARTMENT OF
+                    <br />
+                    TELECOMMUNICATIONS
+                  </motion.h2>
 
+                  <motion.h3
+                      className="lg:text-[52px] lg:font-oswald lg:font-semibold lg:leading-[55px] text-center text-black mb-2 text-[20px] md:text-[32px] font-oswald font-semibold leading-tight"
+                      variants={fadeInUp}
+                  >
+                    Versions - Neo
+                  </motion.h3>
+
+                  <motion.h2
+                      ref={tecCertifiedRef}
+                      className="lg:text-[68px] lg:font-oswald lg:font-semibold lg:leading-[70px] text-center uppercase lg:w-[1199px] w-full mb-4 text-[24px] md:text-[40px] font-oswald font-semibold leading-tight"
+                      style={{
+                        WebkitTextStroke: "1px #AFAFAF",
+                        backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                      }}
+                      variants={fadeInUp}
+                  >
+                    TEC CERTIFIED
+                  </motion.h2>
+                </motion.div>
+
+                {/* Center Image */}
+                {/* Center Image */}
+                <motion.div
+                    ref={neoCenterImageRef}
+                    className="absolute inset-0 flex justify-center items-center lg:left-[385px] lg:top-[400px] lg:w-[436px] lg:h-[688px] w-[200px] h-[320px] md:w-[300px] md:h-[470px] overflow-visible"
+                    variants={scaleIn}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    style={{ maxWidth: "100%" }}
+                >
+                  <Image
+                      src="/images/op1.png?height=688&width=436&text=OpticSpectra+Neo+Device"
+                      alt="OpticSpectra Neo Device"
+                      fill
+                      className="object-contain"
+                      style={{ maxWidth: "100%" }}
+                  />
+                </motion.div>
+
+
+                {/* Desktop Layout - Left Side - Bandwidth Specs */}
+                <motion.div
+                    ref={neoLeftSpecsRef}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="hidden lg:block relative left-0 top-[329px] flex flex-col gap-[80px]"
+                >
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[120px] top-[150px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[120px] top-[294px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[185px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[120px] top-[453px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 10Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[160px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[120px] top-[630px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 10Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[220px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Desktop Layout - Right Side - Distance Specs */}
+                <motion.div
+                    ref={neoRightSpecsRef}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="hidden lg:block relative right-0 top-[268px] flex flex-col gap-[80px]"
+                >
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[160px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[260px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        10km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[300px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[270px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        5km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[437px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[235px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        5km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[595px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[160px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        3km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Mobile/Tablet Layout - Left Side - Bandwidth Specs */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="lg:hidden relative left-0 top-[200px] md:top-[250px] flex flex-col gap-[40px] md:gap-[60px]"
+                >
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[10px] md:left-[20px] top-[100px] md:top-[120px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[80px] md:w-[100px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[40px] md:w-[60px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[10px] md:left-[20px] top-[200px] md:top-[240px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[80px] md:w-[100px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[60px] md:w-[80px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[10px] md:left-[20px] top-[300px] md:top-[360px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[80px] md:w-[100px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 10Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[50px] md:w-[70px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[10px] md:left-[20px] top-[400px] md:top-[480px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[80px] md:w-[100px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 10Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[70px] md:w-[90px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Mobile/Tablet Layout - Right Side - Distance Specs */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="lg:hidden relative right-0 top-[200px] md:top-[250px] flex flex-col gap-[40px] md:gap-[60px]"
+                >
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[100px] md:top-[120px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[80px] md:w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        10km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[200px] md:top-[240px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[90px] md:w-[110px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        5km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[300px] md:top-[360px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[70px] md:w-[90px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        5km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[400px] md:top-[480px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[50px] md:w-[70px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        3km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              {/* Neo Use Cases - Fixed Desktop Layout */}
+              <motion.div
+                  className="flex flex-col justify-center items-center gap-[34px] lg:w-[1199px] w-full max-w-[1199px]"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+              >
                 <motion.h3
-                  className="text-[52px] font-oswald font-semibold leading-[55px] text-center text-black mb-2"
-                  variants={fadeInUp}
+                    className="lg:text-[36px] lg:font-oswald lg:font-semibold lg:leading-[44px] uppercase text-black text-[24px] md:text-[30px] font-oswald font-semibold leading-tight"
+                    variants={fadeInUp}
                 >
-                  Versions - Neo
+                  USE CASES
                 </motion.h3>
-
-                <motion.h2
-                  ref={tecCertifiedRef}
-                  className="text-[68px] font-oswald font-semibold leading-[70px] text-center uppercase w-[1199px] mb-4"
-                  style={{
-                    WebkitTextStroke: "1px #AFAFAF",
-                    backgroundImage:
-                      "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                  variants={fadeInUp}
-                >
-                  TEC CERTIFIED
-                </motion.h2>
-              </motion.div>
-              {/* Center Image */}
-              <motion.div
-                ref={neoCenterImageRef}
-                className="absolute left-[385px] top-[400px] transform -translate-x-1/2 -translate-y-1/2 w-[436px] h-[688px] overflow-visible"
-                variants={scaleIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                style={{ maxWidth: "100%" }}
-              >
-                <Image
-                  src="/images/op1.png?height=688&width=436&text=OpticSpectra+Neo+Device"
-                  alt="OpticSpectra Neo Device"
-                  fill
-                  className="object-contain"
-                  style={{ maxWidth: "100%" }}
-                />
-              </motion.div>
-
-              {/* Left Side - Bandwidth Specs */}
-              <motion.div
-                ref={neoLeftSpecsRef}
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative left-0 top-[329px] flex flex-col gap-[80px]"
-              >
+                {/* Desktop Layout */}
                 <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[120px] top-[150px] flex items-center gap-5"
+                    className="hidden lg:flex lg:items-center lg:gap-[61px] lg:w-full"
+                    variants={staggerContainer}
                 >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 1Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
+                  {neoUseCases.map((useCase, index) => (
+                      <motion.div
+                          key={index}
+                          className="flex flex-col gap-[17px] w-[359px]"
+                          variants={fadeInUp}
+                          custom={index}
+                      >
+                        <div className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden group">
+                          <Image
+                              src={useCase.image || "/placeholder.svg"}
+                              alt={useCase.title}
+                              fill
+                              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-[10px]">
+                          <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
+                            {useCase.title}
+                          </h4>
+                          <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
+                            {useCase.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                  ))}
                 </motion.div>
-
+                {/* Mobile/Tablet Layout */}
                 <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[120px] top-[294px] flex items-center gap-5"
+                    className="lg:hidden flex flex-col items-center gap-[30px] w-full"
+                    variants={staggerContainer}
                 >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 1Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[185px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
+                  {neoUseCases.map((useCase, index) => (
+                      <motion.div
+                          key={index}
+                          className="flex flex-col gap-[17px] w-full max-w-[359px]"
+                          variants={fadeInUp}
+                          custom={index}
+                      >
+                        <div className="w-full h-[200px] md:h-[230px] bg-[#D9D9D9] relative overflow-hidden group">
+                          <Image
+                              src={useCase.image || "/placeholder.svg"}
+                              alt={useCase.title}
+                              fill
+                              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-[10px]">
+                          <h4 className="text-[20px] md:text-[22px] font-oswald font-semibold leading-tight text-black">
+                            {useCase.title}
+                          </h4>
+                          <p className="text-[14px] md:text-[16px] font-sans leading-relaxed text-[#565656]">
+                            {useCase.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                  ))}
                 </motion.div>
-
-                <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[120px] top-[453px] flex items-center gap-5"
-                >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 10Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[160px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[120px] top-[630px] flex items-center gap-5"
-                >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 10Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[220px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* Right Side - Distance Specs */}
-              <motion.div
-                ref={neoRightSpecsRef}
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative right-0 top-[268px] flex flex-col gap-[80px]"
-              >
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[160px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[260px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      10km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[300px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[270px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      5km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[437px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[235px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      5km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[595px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[160px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      3km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
+                <motion.div className="flex gap-[15px]" variants={fadeInUp}>
+                  {[0, 1, 2].map((index) => (
+                      <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full ${
+                              index === neoCurrentIndex
+                                  ? "bg-[#95C149]"
+                                  : "bg-[#D9D9D9]"
+                          }`}
+                      ></div>
+                  ))}
                 </motion.div>
               </motion.div>
             </div>
+          </section>
 
-            {/* Neo Use Cases */}
-            <motion.div
-              className="flex flex-col justify-center items-center gap-[34px] w-[1199px]"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <motion.h3
-                className="text-[36px] font-oswald font-semibold leading-[44px] uppercase text-black"
-                variants={fadeInUp}
-              >
-                USE CASES
-              </motion.h3>
-              <motion.div
-                className="flex items-center gap-[61px] w-full"
-                variants={staggerContainer}
-              >
-                {neoUseCases.map((useCase, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex flex-col gap-[17px] w-[359px]"
-                    variants={fadeInUp}
-                    custom={index}
+          {/* Supreme Section */}
+          <section className="flex flex-col items-center gap-12 w-full">
+            <div className="flex flex-col items-center w-full">
+              {/* Supreme Product Diagram with Overlaid Text */}
+              <div className="relative lg:w-[1200px] lg:h-[910px] w-full h-[700px] md:h-[850px] max-w-[1200px]">
+                {/* Overlaid Header Text */}
+                <motion.div
+                    className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10 lg:px-0 px-4"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                  <motion.h2
+                      ref={milGradeRef}
+                      className="lg:text-[68px] lg:font-oswald lg:font-semibold lg:leading-[70px] text-center uppercase w-full mb-2 text-[24px] md:text-[40px] font-oswald font-semibold leading-tight"
+                      style={{
+                        WebkitTextStroke: "1px #AFAFAF",
+                        backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                      }}
+                      variants={fadeInUp}
                   >
-                    <div className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden group">
-                      <Image
-                        src={useCase.image || "/placeholder.svg"}
-                        alt={useCase.title}
-                        fill
-                        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                      />
+                    MIL GRADE
+                  </motion.h2>
+
+                  <motion.h3
+                      className="lg:text-[52px] lg:font-oswald lg:font-semibold lg:leading-[55px] text-center text-black mb-2 text-[20px] md:text-[32px] font-oswald font-semibold leading-tight"
+                      variants={fadeInUp}
+                  >
+                    Versions - Supreme
+                  </motion.h3>
+                  <motion.h2
+                      ref={jssCertifiedRef}
+                      className="lg:text-[68px] lg:font-oswald lg:font-semibold lg:leading-[70px] text-center uppercase lg:w-[1199px] w-full mb-4 text-[24px] md:text-[40px] font-oswald font-semibold leading-tight"
+                      style={{
+                        WebkitTextStroke: "1px #AFAFAF",
+                        backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                      }}
+                      variants={fadeInUp}
+                  >
+                    JSS 55555 CERTIFIED
+                  </motion.h2>
+                </motion.div>
+
+                {/* Center Device Image */}
+                <motion.div
+                    ref={supremeCenterImageRef}
+                    className="absolute lg:left-[280px] lg:top-[147px] left-1/2 top-[40%] transform -translate-x-1/2 -translate-y-1/2 lg:w-[764px] lg:h-[611px] w-[300px] h-[240px] md:w-[500px] md:h-[400px] overflow-visible"
+                    variants={scaleIn}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    style={{ maxWidth: "100%" }}
+                >
+                  <Image
+                      src="/images/op6.png?height=611&width=764&text=OpticSpectra+Supreme+Device"
+                      alt="OpticSpectra Supreme Device"
+                      fill
+                      className="object-contain"
+                      style={{ maxWidth: "100%" }}
+                  />
+                </motion.div>
+
+                {/* Desktop Layout - Left Side - Bandwidth Specs */}
+                <motion.div
+                    ref={supremeLeftSpecsRef}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="hidden lg:block relative left-0 top-[299px] flex flex-col gap-[80px]"
+                >
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[180px] top-0 flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
-                        {useCase.title}
-                      </h4>
-                      <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
-                        {useCase.description}
-                      </p>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[170px] h-0 border-t border-dashed border-[#95C149]"></div>
                     </div>
                   </motion.div>
-                ))}
-              </motion.div>
-              <motion.div className="flex gap-[15px]" variants={fadeInUp}>
-                {[0, 1, 2].map((index) => (
-                  <div
-                    key={index}
-                    className={`w-2 h-2 rounded-full ${
-                      index === neoCurrentIndex
-                        ? "bg-[#95C149]"
-                        : "bg-[#D9D9D9]"
-                    }`}
-                  ></div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
 
-        {/* Supreme Section */}
-        <section className="flex flex-col items-center gap-12 w-full">
-          <div className="flex flex-col items-center w-full">
-            {/* Supreme Product Diagram with Overlaid Text */}
-            <div className="relative w-[1200px] h-[910px]">
-              {/* Overlaid Header Text */}
-              <motion.div
-                className="absolute top-0 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center w-full z-10"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-              >
-                <motion.h2
-                  ref={milGradeRef}
-                  className="text-[68px] font-oswald font-semibold leading-[70px] text-center uppercase w-full mb-2"
-                  style={{
-                    WebkitTextStroke: "1px #AFAFAF",
-                    backgroundImage:
-                      "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                  variants={fadeInUp}
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[120px] top-[150px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[290px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[232px] top-[309px] flex items-center gap-5"
+                  >
+                    <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
+                      <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
+                        Upto 40Gbps
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Desktop Layout - Right Side - Distance Specs */}
+                <motion.div
+                    ref={supremeRightSpecsRef}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="hidden lg:block relative right-0 top-[377px] flex flex-col gap-[80px]"
                 >
-                  MIL GRADE
-                </motion.h2>
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-0 flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[220px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        10km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
 
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[158px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[190px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        20km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[120px] top-[316px] flex items-center gap-5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-[230px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
+                      <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
+                        1km
+                      </div>
+                      <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Mobile/Tablet Layout - Left Side - Bandwidth Specs */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="lg:hidden relative left-0 top-[180px] md:top-[220px] flex flex-col gap-[40px] md:gap-[60px]"
+                >
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[20px] md:left-[40px] top-[80px] md:top-[100px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[70px] md:w-[90px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[50px] md:w-[70px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[10px] md:left-[20px] top-[160px] md:top-[200px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[70px] md:w-[90px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 1Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[80px] md:w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInLeft}
+                      className="absolute left-[30px] md:left-[60px] top-[250px] md:top-[310px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex flex-col items-center gap-[0.5px] w-[80px] md:w-[100px]">
+                      <div className="text-[10px] md:text-[12px] font-oswald font-semibold leading-tight text-center text-black">
+                        Upto 40Gbps
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Bandwidth
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                      <div className="w-[40px] md:w-[50px] h-0 border-t border-dashed border-[#95C149]"></div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Mobile/Tablet Layout - Right Side - Distance Specs */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="lg:hidden relative right-0 top-[180px] md:top-[220px] flex flex-col gap-[40px] md:gap-[60px]"
+                >
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[80px] md:top-[100px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[70px] md:w-[90px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        10km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[160px] md:top-[200px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[60px] md:w-[80px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        20km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                      variants={fadeInRight}
+                      className="absolute right-[10px] md:right-[20px] top-[250px] md:top-[310px] flex items-center gap-2 md:gap-3"
+                  >
+                    <div className="flex items-center gap-1">
+                      <div className="w-[80px] md:w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
+                      <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full bg-[#95C149]"></div>
+                    </div>
+                    <div className="flex flex-col items-center gap-[0.5px] w-[50px] md:w-[60px]">
+                      <div className="text-[14px] md:text-[18px] font-oswald font-semibold leading-tight text-center text-black">
+                        1km
+                      </div>
+                      <div className="text-[9px] md:text-[11px] font-sans leading-tight text-center text-black">
+                        Distance
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              {/* Supreme Use Cases - Fixed Desktop Layout */}
+              <motion.div
+                  className="flex flex-col justify-center items-center gap-[34px] lg:w-[1199px] w-full max-w-[1199px]"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-100px" }}
+              >
                 <motion.h3
-                  className="text-[52px] font-oswald font-semibold leading-[55px] text-center text-black mb-2"
-                  variants={fadeInUp}
+                    className="lg:text-[36px] lg:font-oswald lg:font-semibold lg:leading-[44px] uppercase text-black text-[24px] md:text-[30px] font-oswald font-semibold leading-tight"
+                    variants={fadeInUp}
                 >
-                  Versions - Supreme
+                  USE CASES
                 </motion.h3>
-                <motion.h2
-                  ref={jssCertifiedRef}
-                  className="text-[68px] font-oswald font-semibold leading-[70px] text-center uppercase w-[1199px] mb-4"
-                  style={{
-                    WebkitTextStroke: "1px #AFAFAF",
-                    backgroundImage:
-                      "linear-gradient(90deg, #000000 0%, #000000 0%, transparent 0%, transparent 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                  variants={fadeInUp}
-                >
-                  JSS 55555 CERTIFIED
-                </motion.h2>
-              </motion.div>
-              {/* Center Device Image */}
-              <motion.div
-                ref={supremeCenterImageRef}
-                className="absolute left-[280px] top-[147px] transform -translate-x-1/2 -translate-y-1/2 w-[764px] h-[611px] overflow-visible"
-                variants={scaleIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                style={{ maxWidth: "100%" }}
-              >
-                <Image
-                  src="/images/op6.png?height=611&width=764&text=OpticSpectra+Supreme+Device"
-                  alt="OpticSpectra Supreme Device"
-                  fill
-                  className="object-contain"
-                  style={{ maxWidth: "100%" }}
-                />
-              </motion.div>
-
-              {/* Left Side - Bandwidth Specs */}
-              <motion.div
-                ref={supremeLeftSpecsRef}
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative left-0 top-[299px] flex flex-col gap-[80px]"
-              >
+                {/* Desktop Layout */}
                 <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[180px] top-0 flex items-center gap-5"
+                    className="hidden lg:flex lg:items-start lg:gap-[61px] lg:w-full"
+                    variants={staggerContainer}
                 >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 1Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[170px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
+                  {supremeUseCases.map((useCase, index) => (
+                      <motion.div
+                          key={index}
+                          className="flex flex-col gap-[17px] w-[359px] bg-white"
+                          variants={fadeInUp}
+                          custom={index}
+                      >
+                        <div className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden group">
+                          <Image
+                              src={useCase.image || "/placeholder.svg"}
+                              alt={useCase.title}
+                              fill
+                              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-[10px]">
+                          <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
+                            {useCase.title}
+                          </h4>
+                          <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
+                            {useCase.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                  ))}
                 </motion.div>
-
+                {/* Mobile/Tablet Layout */}
                 <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[120px] top-[150px] flex items-center gap-5"
+                    className="lg:hidden flex flex-col items-start gap-[30px] w-full"
+                    variants={staggerContainer}
                 >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[140px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 1Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[290px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
+                  {supremeUseCases.map((useCase, index) => (
+                      <motion.div
+                          key={index}
+                          className="flex flex-col gap-[17px] w-full max-w-[359px] bg-white"
+                          variants={fadeInUp}
+                          custom={index}
+                      >
+                        <div className="w-full h-[200px] md:h-[230px] bg-[#D9D9D9] relative overflow-hidden group">
+                          <Image
+                              src={useCase.image || "/placeholder.svg"}
+                              alt={useCase.title}
+                              fill
+                              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-[10px]">
+                          <h4 className="text-[20px] md:text-[22px] font-oswald font-semibold leading-tight text-black">
+                            {useCase.title}
+                          </h4>
+                          <p className="text-[14px] md:text-[16px] font-sans leading-relaxed text-[#565656]">
+                            {useCase.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                  ))}
                 </motion.div>
-
-                <motion.div
-                  variants={fadeInLeft}
-                  className="absolute left-[232px] top-[309px] flex items-center gap-5"
-                >
-                  <div className="flex flex-col items-center gap-[0.88px] w-[158px]">
-                    <div className="text-[20px] font-oswald font-semibold leading-6 text-center text-black">
-                      Upto 40Gbps
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Bandwidth
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                    <div className="w-[100px] h-0 border-t border-dashed border-[#95C149]"></div>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* Right Side - Distance Specs */}
-              <motion.div
-                ref={supremeRightSpecsRef}
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative right-0 top-[377px] flex flex-col gap-[80px]"
-              >
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-0 flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[220px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      10km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[158px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[190px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      20km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeInRight}
-                  className="absolute right-[120px] top-[316px] flex items-center gap-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-[230px] h-0 border-t border-dashed border-[#95C149]"></div>
-                    <div className="w-[10px] h-[10px] rounded-full bg-[#95C149]"></div>
-                  </div>
-                  <div className="flex flex-col items-center gap-[0.88px] w-[95.96px]">
-                    <div className="text-[37.8294px] font-oswald font-semibold leading-[46px] text-center text-black">
-                      1km
-                    </div>
-                    <div className="text-[21.279px] font-sans leading-[26px] text-center text-black">
-                      Distance
-                    </div>
-                  </div>
+                <motion.div className="flex gap-[15px]" variants={fadeInUp}>
+                  {[0, 1, 2].map((index) => (
+                      <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full ${
+                              index === supremeCurrentIndex
+                                  ? "bg-[#95C149]"
+                                  : "bg-[#D9D9D9]"
+                          }`}
+                      ></div>
+                  ))}
                 </motion.div>
               </motion.div>
             </div>
-
-            {/* Supreme Use Cases */}
-            <motion.div
-              className="flex flex-col justify-center items-center gap-[34px] w-[1199px]"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <motion.h3
-                className="text-[36px] font-oswald font-semibold leading-[44px] uppercase text-black"
-                variants={fadeInUp}
-              >
-                USE CASES
-              </motion.h3>
-              <motion.div
-                className="flex items-start gap-[61px] w-full"
-                variants={staggerContainer}
-              >
-                {supremeUseCases.map((useCase, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex flex-col gap-[17px] w-[359px] bg-white"
-                    variants={fadeInUp}
-                    custom={index}
-                  >
-                    <div className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden group">
-                      <Image
-                        src={useCase.image || "/placeholder.svg"}
-                        alt={useCase.title}
-                        fill
-                        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
-                        {useCase.title}
-                      </h4>
-                      <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
-                        {useCase.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-              <motion.div className="flex gap-[15px]" variants={fadeInUp}>
-                {[0, 1, 2].map((index) => (
-                  <div
-                    key={index}
-                    className={`w-2 h-2 rounded-full ${
-                      index === supremeCurrentIndex
-                        ? "bg-[#95C149]"
-                        : "bg-[#D9D9D9]"
-                    }`}
-                  ></div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
   );
 }
