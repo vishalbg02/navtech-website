@@ -284,7 +284,7 @@ export default function GovernmentPage() {
                 }}
               >
                 <TiltedCard
-                  imageSrc="/images/Secure Communication Networks.jpeg"
+                  imageSrc="/images/Secure_Communication_networks.jpeg"
                   altText="Secure Communication Networks"
                   captionText="Secure Communication Networks"
                   containerHeight="100%"
