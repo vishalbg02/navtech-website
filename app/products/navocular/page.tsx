@@ -105,14 +105,11 @@ export default function OpticSpectraPage() {
   }, []);
 
   return (
-    <div
-      className="relative min-h-screen bg-white"
-      style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-    >
+    <div className="relative min-h-screen bg-white">
       {/* Video Section */}
-      <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center">
+      <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center px-4">
         <motion.div
-          className="text-center"
+          className="text-center max-w-4xl mx-auto"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
@@ -123,22 +120,22 @@ export default function OpticSpectraPage() {
               delay={150}
               animateBy="words"
               direction="bottom"
-              className="text-[64px] font-oswald font-semibold leading-[77px] text-black mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-oswald font-semibold leading-tight text-black mb-6"
             />
           </motion.div>
           <motion.div
-            className="relative w-[78px] h-[78px] mx-auto"
+            className="relative w-16 h-16 md:w-20 md:h-20 lg:w-[78px] lg:h-[78px] mx-auto"
             variants={scaleIn(0.8)}
           >
             <div className="absolute inset-0 bg-white/40 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[16px] md:border-l-[20px] border-l-white border-t-[10px] md:border-t-[12px] border-t-transparent border-b-[10px] md:border-b-[12px] border-b-transparent ml-1"></div>
           </motion.div>
         </motion.div>
       </section>
 
-      <div className="flex flex-col items-center gap-[120px] py-[120px]">
+      <div className="flex flex-col items-center gap-16 md:gap-24 lg:gap-[120px] py-16 md:py-24 lg:py-[120px] px-4">
         {/* About NavOcular Section */}
-        <section className="flex flex-col items-center gap-6 w-[1125px]">
+        <section className="flex flex-col items-center gap-6 w-full max-w-5xl">
           <motion.div
             className="flex flex-col items-center gap-[14px] w-full"
             variants={fadeInUp(0.3)}
@@ -147,18 +144,18 @@ export default function OpticSpectraPage() {
             viewport={{ once: true }}
           >
             <div className="flex flex-col items-center">
-              <h2 className="text-[22px] font-oswald font-semibold leading-[23px] text-center uppercase text-black">
+              <h2 className="text-lg md:text-xl lg:text-[22px] font-oswald font-semibold leading-tight text-center uppercase text-black">
                 ABOUT
               </h2>
-              <div className="relative mt-[5px] flex items-center justify-center w-[400px] h-[46px] bg-[#95C149]">
-                <span className="text-[46px] font-oswald font-semibold text-white uppercase z-10 leading-[56px]">
+              <div className="relative mt-[5px] flex items-center justify-center w-72 md:w-80 lg:w-[400px] h-10 md:h-11 lg:h-[46px] bg-[#95C149]">
+                <span className="text-3xl md:text-4xl lg:text-[46px] font-oswald font-semibold text-white uppercase z-10 leading-tight">
                   NavOcular
                 </span>
               </div>
             </div>
           </motion.div>
           <motion.p
-            className="text-[18px] font-sans leading-[22px] text-center text-[#565656]"
+            className="text-base md:text-lg font-sans leading-relaxed text-center text-[#565656] max-w-4xl"
             variants={fadeInUp(0.5)}
             initial="hidden"
             whileInView="visible"
@@ -181,7 +178,7 @@ export default function OpticSpectraPage() {
         </section>
 
         <section className="py-[120px] relative bg-white">
-          <div className="max-w-[1440px] mx-auto relative h-[700px]">
+          <div className="max-w-[1440px] mx-auto relative h-[700px] hidden lg:block">
             <motion.div
               className="absolute w-[800px] h-[700px] -left-[450px] transform -translate-x-1/2 -top-[80px]"
               variants={fadeInDown(0.3)}
@@ -319,14 +316,172 @@ export default function OpticSpectraPage() {
               </div>
             </motion.div>
           </div>
+
+          {/* Mobile/Tablet Layout */}
+          <div className="lg:hidden px-4">
+            <div className="flex flex-col items-center gap-8 md:gap-12 relative max-w-2xl mx-auto">
+              <motion.div
+                className="w-full max-w-md relative"
+                variants={fadeInUp(0.3)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <img
+                  src="/images/Nav Ocular Light with Beam.png"
+                  alt="NavOcular Light Device"
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
+
+              <div className="relative w-full flex justify-center">
+                <motion.div
+                  className="w-[8px] h-[8px] relative"
+                  variants={scaleIn(0.5)}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <motion.div
+                    className="absolute -top-[220px] right-[80px] w-7 md:w-24 h-0 border-t border-dashed border-[#95C149] transform -translate-y-1/2"
+                    variants={fadeInDown(0.7)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  ></motion.div>
+
+                  <motion.div
+                    className="absolute -top-[220px] left-[-100px] md:left-[-96px] w-0 h-[260px] border-l border-dashed border-[#95C149]"
+                    variants={fadeInDown(0.9)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  ></motion.div>
+
+                  <motion.div
+                    className="absolute -top-[220px] left-[90px] w-7 md:w-24 h-0 border-t border-dashed border-[#95C149] transform -translate-y-1/2"
+                    variants={fadeInDown(0.7)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  ></motion.div>
+
+                  <motion.div
+                    className="absolute -top-[220px] right-[-110px] md:right-[-96px] w-0 h-[260px] border-l border-dashed border-[#95C149]"
+                    variants={fadeInDown(0.9)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  ></motion.div>
+                </motion.div>
+              </div>
+
+              <div className="relative w-full">
+                <motion.div
+                  className="flex justify-between items-start w-full relative pl-4 pr-4"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <motion.div
+                    className="flex flex-col items-center gap-1 text-center relative"
+                    variants={fadeInUp(1.1)}
+                  >
+                    <motion.div
+                      className="w-[8px] h-[8px] rounded-full bg-[#95C149] mb-2"
+                      variants={scaleIn(1.3)}
+                    ></motion.div>
+                    <div className="text-xl md:text-2xl font-oswald font-semibold leading-tight text-black">
+                      75-80Mbps
+                    </div>
+                    <div className="text-base md:text-lg font-sans leading-relaxed text-black">
+                      Bandwidth
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex flex-col items-center gap-1 text-center relative"
+                    variants={fadeInDown(1.1)}
+                  >
+                    <motion.div
+                      className="w-[8px] h-[8px] rounded-full bg-[#95C149] mb-2"
+                      variants={scaleIn(1.3)}
+                    ></motion.div>
+                    <div className="text-xl md:text-2xl font-oswald font-semibold leading-tight text-black">
+                      4 Meter
+                    </div>
+                    <div className="text-base md:text-lg font-sans leading-relaxed text-black">
+                      Distance
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="relative flex flex-col items-center"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              ></motion.div>
+
+              <motion.div
+                className="w-48 md:w-60 relative mt-20"
+                variants={fadeInUp(2.1)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <img
+                  src="/images/nav2.png"
+                  alt="NavOcular Dongle"
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
+
+              <motion.div
+                className="relative flex flex-col items-center"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.div
+                  className="w-0 h-24 border-l border-dashed border-[#95C149]"
+                  variants={fadeInDown(2.3)}
+                ></motion.div>
+                <motion.div
+                  className="w-[8px] h-[8px] rounded-full bg-[#95C149]"
+                  variants={scaleIn(2.5)}
+                ></motion.div>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col items-center gap-1 text-center"
+                variants={fadeInUp(2.6)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <div className="text-xl md:text-2xl font-oswald font-semibold leading-tight text-black">
+                  60 Degree
+                </div>
+                <div className="text-base md:text-lg font-sans leading-relaxed text-black">
+                  Transmission Angle
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </section>
 
-        <section className="flex flex-col items-center gap-20 w-full">
-          <div className="flex flex-col items-center -gap-0 w-full">
-            <div className="flex flex-col justify-center items-center gap-[34px] w-[1199px]">
+        {/* Use Cases Section */}
+        <section className="flex flex-col items-center gap-12 md:gap-16 lg:gap-20 w-full">
+          <div className="flex flex-col items-center w-full">
+            <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-[34px] w-full max-w-6xl">
               <motion.h3
-                className="text-[36px] font-oswald font-semibold leading-[44px] uppercase text-black"
-                variants={fadeInUp(0.3)}
+                className="text-2xl md:text-3xl lg:text-[36px] font-oswald font-semibold leading-tight uppercase text-black text-center"
+                variants={fadeInUp(1.3)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -334,7 +489,7 @@ export default function OpticSpectraPage() {
                 USE CASES
               </motion.h3>
               <motion.div
-                className="flex items-start gap-[61px] w-full"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-[61px] w-full"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
@@ -343,12 +498,12 @@ export default function OpticSpectraPage() {
                 {navocularUseCases.map((useCase, index) => (
                   <motion.div
                     key={index}
-                    className="flex flex-col gap-[17px] w-[359px]"
-                    variants={fadeInUp(0.2 * index)}
+                    className="flex flex-col gap-4 lg:gap-[17px] w-full max-w-sm mx-auto lg:max-w-none"
+                    variants={fadeInUp(0.5 * index)}
                   >
                     <motion.div
-                      className="w-full h-[259px] bg-[#D9D9D9] relative overflow-hidden group"
-                      variants={scaleIn(0.3 + 0.2 * index)}
+                      className="w-full h-48 md:h-56 lg:h-[259px] bg-[#D9D9D9] relative overflow-hidden group"
+                      variants={scaleIn(0.5 + 0.5 * index)}
                     >
                       <Image
                         src={useCase.image || "/placeholder.svg"}
@@ -357,33 +512,15 @@ export default function OpticSpectraPage() {
                         className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                       />
                     </motion.div>
-                    <div className="flex flex-col gap-[10px]">
-                      <h4 className="text-[24px] font-oswald font-semibold leading-[29px] text-black">
+                    <div className="flex flex-col gap-2 lg:gap-[10px]">
+                      <h4 className="text-xl md:text-2xl font-oswald font-semibold leading-tight text-black">
                         {useCase.title}
                       </h4>
-                      <p className="text-[18px] font-sans leading-[22px] text-[#565656]">
+                      <p className="text-base md:text-lg font-sans leading-relaxed text-[#565656]">
                         {useCase.description}
                       </p>
                     </div>
                   </motion.div>
-                ))}
-              </motion.div>
-              <motion.div
-                className="flex gap-[15px]"
-                variants={fadeInUp(0.8)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {[0, 1, 2].map((index) => (
-                  <div
-                    key={index}
-                    className={`w-2 h-2 rounded-full ${
-                      index === neoCurrentIndex
-                        ? "bg-[#95C149]"
-                        : "bg-[#D9D9D9]"
-                    }`}
-                  ></div>
                 ))}
               </motion.div>
             </div>
