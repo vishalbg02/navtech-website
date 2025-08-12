@@ -132,7 +132,7 @@ export default function GovernmentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black font-['Manrope',sans-serif] overflow-x-hidden">
+    <div className="min-h-screen bg-white text-black font-['Manrope',sans-serif] overflow-hidden">
       <main>
         {/* Hero Section */}
         <section
@@ -284,7 +284,7 @@ export default function GovernmentPage() {
                 }}
               >
                 <TiltedCard
-                  imageSrc="/images/Secure Communication Networks.jpeg"
+                  imageSrc="/images/Secure_Communication_networks.jpeg"
                   altText="Secure Communication Networks"
                   captionText="Secure Communication Networks"
                   containerHeight="100%"

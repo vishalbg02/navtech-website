@@ -104,7 +104,7 @@ export default function OEMODMPage() {
                 backgroundImage: "url('/images/Oem_ODM.jpeg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundAttachment: "fixed",
+                // backgroundAttachment: "fixed",
               }}
           >
             <div className="absolute inset-0 bg-black bg-opacity-75" />
@@ -264,7 +264,7 @@ export default function OEMODMPage() {
                 backgroundImage: "url('/images/oem4.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundAttachment: "fixed",
+                // backgroundAttachment: "fixed",
               }}
           >
             {/* Gradient Overlays - Responsive */}
@@ -387,12 +387,12 @@ export default function OEMODMPage() {
           {/* Automotive Section */}
           <section
               ref={automotiveRef}
-              className="relative min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-center"
+              className="relative min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] flex items-top"
               style={{
                 backgroundImage: "url('/images/oem7.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundAttachment: "fixed",
+                // backgroundAttachment: "fixed",
               }}
           >
             <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -429,7 +429,7 @@ export default function OEMODMPage() {
                 </motion.h3>
 
                 <motion.p
-                    className="font-light text-white max-w-[691px] mx-auto leading-relaxed text-base sm:text-lg lg:text-xl px-4"
+                    className="font-light text-white max-w-[691px] mx-auto leading-relaxed text-base sm:text-lg lg:text-xl px-4 text-left sm:text-center"
                     style={{
                       fontFamily: "Manrope, sans-serif",
                     }}
