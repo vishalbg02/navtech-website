@@ -270,23 +270,23 @@ export default function ConsumerPage() {
         </section>
 
         {/* Smart Living Spaces Section */}
-        <section ref={smartLivingRef} className="py-20 bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
+        <section ref={smartLivingRef} className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[120px]">
             <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate={smartLivingInView ? "visible" : "hidden"}
+                variants={staggerContainer}
+                initial="hidden"
+                animate={smartLivingInView ? "visible" : "hidden"}
             >
-              <motion.div className="mb-12" variants={fadeInUp}>
-                <h3 className="font-oswald font-semibold text-5xl mb-2">
+              <motion.div className="mb-8 sm:mb-10 lg:mb-12 text-center sm:text-left" variants={fadeInUp}>
+                <h3 className="font-oswald font-semibold text-3xl sm:text-4xl lg:text-5xl mb-2 leading-tight">
                   Smart Living Spaces
                 </h3>
                 <p
-                  className="text-gray-600"
-                  style={{
-                    fontSize: "18px",
-                    fontFamily: "Manrope, sans-serif",
-                  }}
+                    className="text-gray-600 max-w-2xl mx-auto sm:mx-0"
+                    style={{
+                      fontSize: "16px",
+                      fontFamily: "Manrope, sans-serif",
+                    }}
                 >
                   Intelligent lighting systems that deliver internet without
                   electromagnetic interference
@@ -294,53 +294,144 @@ export default function ConsumerPage() {
               </motion.div>
 
               <motion.div
-                className="relative h-[493px] rounded-lg overflow-hidden px-4 lg:px-12"
-                style={{
-                  backgroundImage:
-                    "url('/images/cons4.jpg?height=493&width=1200&text=Smart+Home+Tech')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                variants={scaleIn}
+                  className="relative h-[300px] sm:h-[400px] lg:h-[493px] rounded-lg overflow-hidden"
+                  style={{
+                    backgroundImage:
+                        "url('/images/cons4.jpg?height=493&width=1200&text=Smart+Home+Tech')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                  variants={scaleIn}
               >
-                <div className="absolute top-8 left-8 z-10 space-y-4 max-w-xs">
+                {/* Mobile Layout - Tiny cards on left top */}
+                <div className="absolute top-2 left-2 z-10 space-y-1 max-w-[180px] sm:hidden">
                   <motion.div
-                    className="border border-white rounded-2xl p-3 text-white bg-transparent"
-                    variants={fadeInLeft}
+                      className="border border-white rounded px-1 py-0.5 text-white bg-black bg-opacity-40 backdrop-blur-sm"
+                      variants={fadeInLeft}
                   >
                     <p
-                      style={{
-                        fontSize: "16px",
-                        fontFamily: "Manrope, sans-serif",
-                      }}
+                        className="text-[8px] leading-tight"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      LiFi-enabled lighting for radiation-free internet
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                      className="border border-white rounded px-1 py-0.5 text-white bg-black bg-opacity-40 backdrop-blur-sm"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-[8px] leading-tight"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      Secure communication eliminating Wi-Fi congestion
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                      className="border border-white rounded px-1 py-0.5 text-white bg-black bg-opacity-40 backdrop-blur-sm"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-[8px] leading-tight"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      Seamless IoT integration and home automation
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Tablet Layout - Small cards on left top */}
+                <div className="hidden sm:block lg:hidden absolute top-5 left-5 z-10 space-y-2.5 max-w-[300px]">
+                  <motion.div
+                      className="border border-white rounded-lg px-3 py-2 text-white bg-black bg-opacity-20 backdrop-blur-sm"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
                     >
                       LiFi-enabled lighting for radiation-free internet access
                     </p>
                   </motion.div>
 
                   <motion.div
-                    className="border border-white rounded-2xl p-3 text-white bg-transparent"
-                    variants={fadeInLeft}
+                      className="border border-white rounded-lg px-3 py-2 text-white bg-black bg-opacity-20 backdrop-blur-sm"
+                      variants={fadeInLeft}
                   >
                     <p
-                      style={{
-                        fontSize: "16px",
-                        fontFamily: "Manrope, sans-serif",
-                      }}
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
                     >
                       Secure internal communication eliminating Wi-Fi congestion
                     </p>
                   </motion.div>
 
                   <motion.div
-                    className="border border-white rounded-2xl p-3 text-white bg-transparent"
-                    variants={fadeInLeft}
+                      className="border border-white rounded-lg px-3 py-2 text-white bg-black bg-opacity-20 backdrop-blur-sm"
+                      variants={fadeInLeft}
                   >
                     <p
-                      style={{
-                        fontSize: "16px",
-                        fontFamily: "Manrope, sans-serif",
-                      }}
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      Seamless IoT integration and home automation systems
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Desktop Layout - Smaller boxes on left top */}
+                <div className="hidden lg:block absolute top-6 left-6 z-10 space-y-3 max-w-[320px]">
+                  <motion.div
+                      className="border border-white rounded-xl px-3 py-2.5 text-white bg-transparent"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      LiFi-enabled lighting for radiation-free internet access
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                      className="border border-white rounded-xl px-3 py-2.5 text-white bg-transparent"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
+                    >
+                      Secure internal communication eliminating Wi-Fi congestion
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                      className="border border-white rounded-xl px-3 py-2.5 text-white bg-transparent"
+                      variants={fadeInLeft}
+                  >
+                    <p
+                        className="text-sm leading-relaxed"
+                        style={{
+                          fontFamily: "Manrope, sans-serif",
+                        }}
                     >
                       Seamless IoT integration and home automation systems
                     </p>
@@ -353,127 +444,131 @@ export default function ConsumerPage() {
 
         {/* Healthcare Excellence Section */}
         <section
-          ref={healthcareRef}
-          className="relative pt-20"
-          style={{
-            minHeight: "800px", // Increased height
-            backgroundImage:
-              "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div
-            className="absolute inset-0"
+            ref={healthcareRef}
+            className="relative pt-12 sm:pt-16 lg:pt-20"
             style={{
-              background:
-                "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%)",
+              minHeight: "400px", // Mobile scaled down
+              backgroundImage:
+                  "url('/images/cons5.jpg?height=631&width=1440&text=Medical+Facility')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
+        >
+          {/* Same background overlay */}
+          <div
+              className="absolute inset-0"
+              style={{
+                background:
+                    "linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 30%)",
+              }}
           />
 
-          <div className="relative z-10 max-w-[1440px] mx-auto">
+          <div className="relative z-10 max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-0">
+            {/* Exact same grid layout, just scaled */}
             <motion.div
-              className="grid lg:grid-cols-5 gap-8 items-start" // Increased gap from 6 to 8
-              variants={staggerContainer}
-              initial="hidden"
-              animate={healthcareInView ? "visible" : "hidden"}
+                className="grid grid-cols-5 gap-2 sm:gap-4 lg:gap-8 items-start"
+                variants={staggerContainer}
+                initial="hidden"
+                animate={healthcareInView ? "visible" : "hidden"}
             >
+              {/* Header - Exact same proportions */}
               <motion.div
-                variants={fadeInLeft}
-                className="lg:col-span-2 pl-4 lg:pl-8"
+                  variants={fadeInLeft}
+                  className="col-span-2 pl-2 sm:pl-4 lg:pl-8"
               >
-                <h3 className="font-oswald font-semibold text-5xl mb-4 whitespace-nowrap">
+                <h3 className="font-oswald font-semibold text-sm sm:text-2xl lg:text-5xl mb-2 sm:mb-3 lg:mb-4 leading-tight">
                   Healthcare Excellence
                 </h3>
                 <p
-                  className="text-gray-600"
-                  style={{
-                    fontSize: "18px",
-                    fontFamily: "Manrope, sans-serif",
-                  }}
+                    className="text-gray-600 text-[10px] sm:text-sm lg:text-lg"
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                    }}
                 >
                   Safe, interference-free communication for sensitive medical
                   environments
                 </p>
               </motion.div>
 
-              <motion.div className="ml-6 pr-3 lg:pr-5" variants={fadeInUp}>
-                {" "}
-                {/* Increased ml from 4 to 6, increased pr */}
-                <div className="mb-4">
+              {/* Column 1 - Scaled down version */}
+              <motion.div className="ml-1 sm:ml-3 lg:ml-6 pr-1 sm:pr-2 lg:pr-5" variants={fadeInUp}>
+                <div className="mb-2 sm:mb-3 lg:mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-tight sm:leading-snug text-[8px] sm:text-[10px] md:leading-relaxed md:text-sm lg:text-lg"
+                      style={{ fontFamily: "Manrope, sans-serif", color: "#000" }}
                   >
-                    Dedicated LiFi zones for ICUs, operating theaters, and
-                    patient rooms
+                    Dedicated LiFi zones for ICUs, operating theaters, and patient rooms
                   </p>
+
                 </div>
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center mt-2 sm:mt-4 lg:mt-6">
                   <Image
-                    src="/images/cons_line1.png"
-                    alt="Vertical Line"
-                    width={12}
-                    height={192}
+                      src="/images/cons_line1.png"
+                      alt="Vertical Line"
+                      width={6} // Scaled down for mobile
+                      height={80} // Scaled down for mobile
+                      className="sm:w-[8px] sm:h-[120px] lg:w-[12px] lg:h-[192px]"
                   />
                 </div>
               </motion.div>
 
-              <motion.div className="ml-6" variants={fadeInUp}>
-                {" "}
-                {/* Increased ml from 4 to 6 */}
-                <div className="mb-4">
+              {/* Column 2 - Scaled down version */}
+              <motion.div className="ml-1 sm:ml-3 lg:ml-6" variants={fadeInUp}>
+                <div className="mb-2 sm:mb-3 lg:mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-tight sm:leading-snug text-[8px] sm:text-[10px] md:leading-relaxed md:text-sm lg:text-lg"
+                      style={{ fontFamily: "Manrope, sans-serif", color: "#000" }}
                   >
                     Reliable high-speed communication without EMI interference
                   </p>
                 </div>
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center mt-2 sm:mt-4 lg:mt-6">
                   <Image
-                    src="/images/cons_line2.png"
-                    alt="Vertical Line"
-                    width={12}
-                    height={192}
+                      src="/images/cons_line2.png"
+                      alt="Vertical Line"
+                      width={6}
+                      height={80}
+                      className="sm:w-[8px] sm:h-[120px] lg:w-[12px] lg:h-[192px]"
                   />
                 </div>
               </motion.div>
 
-              <motion.div className="ml-6 pr-3 lg:pr-6" variants={fadeInRight}>
-                {" "}
-                {/* Increased ml from 4 to 6, increased pr */}
-                <div className="mb-4">
+              {/* Column 3 - Scaled down version */}
+              <motion.div className="ml-1 sm:ml-3 lg:ml-6 pr-1 sm:pr-2 lg:pr-6" variants={fadeInRight}>
+                <div className="mb-2 sm:mb-3 lg:mb-4">
                   <p
-                    className="leading-relaxed"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                      color: "#000",
-                    }}
+                      className="leading-tight sm:leading-snug text-[8px] sm:text-[10px] md:leading-relaxed md:text-sm lg:text-lg"
+                      style={{ fontFamily: "Manrope, sans-serif", color: "#000" }}
                   >
                     Zero-RF environments protecting sensitive medical equipment
                   </p>
                 </div>
-                <div className="flex justify-center mt-6">
+                <div className="flex justify-center mt-2 sm:mt-4 lg:mt-6">
                   <Image
-                    src="/images/cons_line3.png"
-                    alt="Vertical Line"
-                    width={12}
-                    height={192}
+                      src="/images/cons_line3.png"
+                      alt="Vertical Line"
+                      width={6}
+                      height={80}
+                      className="sm:w-[8px] sm:h-[120px] lg:w-[12px] lg:h-[192px]"
                   />
                 </div>
               </motion.div>
             </motion.div>
           </div>
+
+          {/* Responsive height scaling */}
+          <style jsx>{`
+    @media (min-width: 640px) {
+      section {
+        min-height: 600px !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      section {
+        min-height: 800px !important;
+      }
+    }
+  `}</style>
         </section>
 
         {/* Educational Innovation Section */}
@@ -481,43 +576,37 @@ export default function ConsumerPage() {
           <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                className="relative h-[344px] rounded-lg overflow-hidden"
-                variants={fadeInLeft}
-                initial="hidden"
-                animate={educationInView ? "visible" : "hidden"}
+                  className="relative h-[344px] rounded-lg overflow-hidden"
+                  variants={fadeInLeft}
+                  initial="hidden"
+                  animate={educationInView ? "visible" : "hidden"}
               >
                 <TiltedCard
-                  imageSrc="/images/cons6.jpg"
-                  altText="Digital Classroom"
-                  captionText="Digital Classroom"
-                  containerHeight="100%"
-                  containerWidth="100%"
-                  imageHeight="110%"
-                  imageWidth="110%"
-                  rotateAmplitude={14}
-                  scaleOnHover={1.1}
-                  showMobileWarning={false}
-                  showTooltip={false}
-                  displayOverlayContent={true}
+                    imageSrc="/images/cons6.jpg"
+                    altText="Digital Classroom"
+                    captionText="Digital Classroom"
+                    containerHeight="100%"
+                    containerWidth="100%"
+                    imageHeight="110%"
+                    imageWidth="110%"
+                    rotateAmplitude={14}
+                    scaleOnHover={1.1}
+                    showMobileWarning={false}
+                    showTooltip={false}
+                    displayOverlayContent={true}
                 />
               </motion.div>
 
               <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate={educationInView ? "visible" : "hidden"}
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate={educationInView ? "visible" : "hidden"}
               >
                 <motion.div className="mb-8" variants={fadeInUp}>
-                  <h3 className="font-oswald font-semibold text-5xl mb-2">
+                  <h3 className="font-oswald font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-2">
                     Educational Innovation
                   </h3>
-                  <p
-                    className="text-gray-600"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                    }}
-                  >
+                  <p className="text-gray-600 text-xs sm:text-sm md:text-base lg:text-lg font-manrope">
                     Next-generation digital classrooms with safe,
                     high-performance connectivity
                   </p>
@@ -525,50 +614,33 @@ export default function ConsumerPage() {
 
                 <div className="space-y-4">
                   <motion.div
-                    className="bg-white pl-4 rounded-lg shadow-md border-b-4 mr-14 border-[#95C149]"
-                    variants={fadeInRight}
+                      className="bg-white pl-0.5 sm:pl-1 md:pl-4 rounded-lg shadow-md border-b-4 mr-14 border-[#95C149]"
+                      variants={fadeInRight}
                   >
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
-                    >
+                    <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
                       Smart classrooms with high-speed, health-safe internet
                     </p>
                   </motion.div>
 
                   <motion.div
-                    className="bg-white pl-8 rounded-lg shadow-md border-b-4 border-[#95C149] mr-1 ml-14"
-                    variants={fadeInRight}
+                      className="bg-white pl-1 sm:pl-2 md:pl-8 rounded-lg shadow-md border-b-4 border-[#95C149] mr-1 ml-14"
+                      variants={fadeInRight}
                   >
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
-                    >
-                      Enhanced e-learning harmful radio wave exposure
+                    <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
+                      Enhanced e-learning without harmful radio wave exposure
                     </p>
                   </motion.div>
 
                   <motion.div
-                    className="bg-white pl-4 rounded-lg shadow-md border-b-4 border-[#95C149] ml-24 -mr-16"
-                    variants={fadeInRight}
+                      className="bg-white pl-0.5 sm:pl-1 md:pl-4 rounded-lg shadow-md border-b-4 border-[#95C149] ml-24 -mr-16"
+                      variants={fadeInRight}
                   >
-                    <p
-                      className="leading-relaxed"
-                      style={{
-                        fontSize: "18px",
-                        fontFamily: "Manrope, sans-serif",
-                        color: "#000",
-                      }}
-                    >
-                      FSO links connecting campus buildings and remote locations
+                    <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
+                      <span className="hidden sm:inline">FSO links connecting campus buildings and remote locations</span>
+                      <span className="sm:hidden">
+    FSO links connecting campus buildings and<br />
+    remote locations
+  </span>
                     </p>
                   </motion.div>
                 </div>
@@ -674,52 +746,49 @@ export default function ConsumerPage() {
         </section>
 
         {/* Smart Cities Section */}
-        <section ref={smartCitiesRef} className="py-20 bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <section ref={smartCitiesRef} className="py-12 sm:py-16 md:py-20 bg-white">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[120px]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Image Section */}
               <motion.div
-                className="relative"
-                variants={scaleIn}
-                initial="hidden"
-                animate={smartCitiesInView ? "visible" : "hidden"}
+                  className="relative order-1 lg:order-none"
+                  variants={scaleIn}
+                  initial="hidden"
+                  animate={smartCitiesInView ? "visible" : "hidden"}
               >
-                <div className="relative w-[600px] h-[600px] mx-auto">
+                <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] mx-auto">
                   <div className="absolute inset-0 rounded-full overflow-hidden">
                     <TiltedCard
-                      imageSrc="/images/cons10.jpg"
-                      altText="Smart City"
-                      captionText="Smart City"
-                      containerHeight="100%"
-                      containerWidth="100%"
-                      imageHeight="100%"
-                      imageWidth="100%"
-                      rotateAmplitude={14}
-                      scaleOnHover={1.3}
-                      showMobileWarning={false}
-                      showTooltip={false}
-                      displayOverlayContent={true}
+                        imageSrc="/images/cons10.jpg"
+                        altText="Smart City"
+                        captionText="Smart City"
+                        containerHeight="100%"
+                        containerWidth="100%"
+                        imageHeight="100%"
+                        imageWidth="100%"
+                        rotateAmplitude={14}
+                        scaleOnHover={1.3}
+                        showMobileWarning={false}
+                        showTooltip={false}
+                        displayOverlayContent={true}
                     />
                   </div>
                 </div>
               </motion.div>
 
+              {/* Content Section */}
               <motion.div
-                className="-mt-56 -ml-16"
-                variants={staggerContainer}
-                initial="hidden"
-                animate={smartCitiesInView ? "visible" : "hidden"}
+                  className="order-2 lg:order-none lg:-mt-56 lg:-ml-16"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate={smartCitiesInView ? "visible" : "hidden"}
               >
-                <motion.div className="mb-6" variants={fadeInUp}>
-                  <h3 className="font-oswald font-semibold text-5xl mb-2 ml-12">
+                {/* Header */}
+                <motion.div className="mb-6 text-center lg:text-left" variants={fadeInUp}>
+                  <h3 className="font-oswald font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 lg:ml-12">
                     Smart Cities
                   </h3>
-                  <p
-                    className="text-gray-600 ml-12"
-                    style={{
-                      fontSize: "18px",
-                      fontFamily: "Manrope, sans-serif",
-                    }}
-                  >
+                  <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl font-manrope lg:ml-12">
                     Revolutionary urban infrastructure with optical wireless
                     communication networks
                   </p>
@@ -727,66 +796,45 @@ export default function ConsumerPage() {
 
                 {/* Connected bullet points with vertical line */}
                 <div className="relative">
-                  {/* Vertical connecting line */}
-                  <div className="absolute left-1 top-2 w-0.5 h-full bg-[#95C149] ml-12"></div>
+                  {/* Vertical connecting line - hidden on mobile, visible on lg+ */}
+                  <div className="hidden lg:block absolute left-1 top-2 w-0.5 h-full bg-[#95C149] ml-12"></div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 md:space-y-6">
                     <motion.div
-                      className="flex items-start relative"
-                      variants={fadeInRight}
+                        className="flex items-start relative"
+                        variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
-                      <p
-                        className="leading-relaxed"
-                        style={{
-                          fontSize: "18px",
-                          fontFamily: "Manrope, sans-serif",
-                          color: "#000",
-                        }}
-                      >
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-3 sm:mr-4 flex-shrink-0 relative z-10 lg:ml-12"></div>
+                      <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
                         Optical links for traffic systems, surveillance, and IoT
                         sensors
                       </p>
                     </motion.div>
 
                     <motion.div
-                      className="flex items-start relative"
-                      variants={fadeInRight}
+                        className="flex items-start relative"
+                        variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
-                      <p
-                        className="leading-relaxed"
-                        style={{
-                          fontSize: "18px",
-                          fontFamily: "Manrope, sans-serif",
-                          color: "#000",
-                        }}
-                      >
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-3 sm:mr-4 flex-shrink-0 relative z-10 lg:ml-12"></div>
+                      <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
                         LiFi streetlights providing data through lighting
                         infrastructure
                       </p>
                     </motion.div>
 
                     <motion.div
-                      className="flex items-start relative"
-                      variants={fadeInRight}
+                        className="flex items-start relative"
+                        variants={fadeInRight}
                     >
-                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-4 flex-shrink-0 relative z-10 ml-12"></div>
-                      <p
-                        className="leading-relaxed"
-                        style={{
-                          fontSize: "18px",
-                          fontFamily: "Manrope, sans-serif",
-                          color: "#000",
-                        }}
-                      >
+                      <div className="w-2 h-2 bg-[#95C149] rounded-full mt-2 mr-3 sm:mr-4 flex-shrink-0 relative z-10 lg:ml-12"></div>
+                      <p className="leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg font-manrope text-black">
                         Cable-free FSO networks for last-mile connectivity
                       </p>
                     </motion.div>
                   </div>
 
-                  {/* Extended bottom line */}
-                  <div className="absolute left-1 bottom-0 w-0.5 h-8 bg-[#95C149] transform translate-y-full ml-12"></div>
+                  {/* Extended bottom line - hidden on mobile, visible on lg+ */}
+                  <div className="hidden lg:block absolute left-1 bottom-0 w-0.5 h-8 bg-[#95C149] transform translate-y-full ml-12"></div>
                 </div>
               </motion.div>
             </div>

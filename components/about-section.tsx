@@ -68,9 +68,9 @@ export default function AboutSection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
           >
-            {/* Left Text - Desktop: original position, Mobile: order-2 */}
+            {/* 1. Left Text - Mobile: order-1, Desktop: order-1 */}
             <motion.div
-                className="space-y-4 sm:space-y-6 mb-0 lg:mb-44 text-center lg:text-left order-2 lg:order-1"
+                className="space-y-4 sm:space-y-6 mb-0 lg:mb-44 text-center lg:text-left order-1 lg:order-1"
                 variants={fadeInLeft}
             >
               <div className="mb-6 sm:mb-8">
@@ -86,9 +86,9 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            {/* Center - Static Image - Same position on all screens */}
+            {/* 2. Logo - Mobile: order-2, Desktop: order-2 */}
             <motion.div
-                className="flex justify-center items-center perspective-1000 order-1 lg:order-2"
+                className="flex justify-center items-center perspective-1000 order-2 lg:order-2"
                 variants={fadeInUp}
             >
               <motion.div
@@ -107,7 +107,7 @@ export default function AboutSection() {
               </motion.div>
             </motion.div>
 
-            {/* Right Text - Desktop: original position with mt-44, Mobile: order-3 */}
+            {/* 3. Right Text - Mobile: order-3, Desktop: order-3 */}
             <motion.div
                 className="space-y-4 sm:space-y-6 mt-0 lg:mt-44 text-center lg:text-left order-3 lg:order-3"
                 variants={fadeInRight}
