@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -131,28 +131,28 @@ export default function InsightsPage() {
     document.body.style.overflow = 'hidden';
   };
 
-  const closeImageModal = () => {
+  const closeImageModal = useCallback(() => {
     setSelectedImage(null);
     // Restore body scroll
     document.body.style.overflow = 'unset';
-  };
+  }, []);
 
   // Handle keyboard navigation
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!selectedImage) return;
 
     if (e.key === 'Escape') {
       closeImageModal();
     }
-  };
+  }, [selectedImage, closeImageModal]);
 
   // Add keyboard event listener
-  useState(() => {
+  useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  });
+  }, [handleKeyDown]);
 
   return (
       <div
@@ -353,34 +353,7 @@ export default function InsightsPage() {
               </div>
             </div>
         )}
-
-        <style jsx global>{`
-          .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .animate-in {
-            animation: fadeInUp 0.6s ease-out forwards;
-          }
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}</style>
       </div>
   );
 }
+
