@@ -11,6 +11,7 @@ import BlurText from "@/components/utils/BlurTextProps";
 
 export default function InsightsPage() {
   const [activeTab, setActiveTab] = useState<"media" | "blogs">("media");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const mediaArticles = [
     {
@@ -124,6 +125,35 @@ export default function InsightsPage() {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
+  const openImageModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
+    // Restore body scroll
+    document.body.style.overflow = 'unset';
+  };
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!selectedImage) return;
+
+    if (e.key === 'Escape') {
+      closeImageModal();
+    }
+  };
+
+  // Add keyboard event listener
+  useState(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
   return (
       <div
           className="relative min-h-screen"
@@ -233,14 +263,19 @@ export default function InsightsPage() {
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                               {article.images.map((image, imgIndex) => (
-                                  <Image
+                                  <div
                                       key={imgIndex}
-                                      src={image || "/placeholder.svg"}
-                                      alt={`Media ${index + 1}-${imgIndex + 1}`}
-                                      width={400}
-                                      height={300}
-                                      className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300 rounded-lg shadow-md"
-                                  />
+                                      className="cursor-pointer hover:scale-105 transition-transform duration-300"
+                                      onClick={() => openImageModal(image)}
+                                  >
+                                    <Image
+                                        src={image || "/placeholder.svg"}
+                                        alt={`Media ${index + 1}-${imgIndex + 1}`}
+                                        width={400}
+                                        height={300}
+                                        className="w-full h-auto object-contain rounded-lg shadow-md"
+                                    />
+                                  </div>
                               ))}
                             </div>
                           </div>
@@ -258,7 +293,10 @@ export default function InsightsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                       {blogPosts.map((post, index) => (
                           <div key={index} className="overflow-hidden">
-                            <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
+                            <div
+                                className="relative h-48 bg-gray-200 rounded-lg overflow-hidden cursor-pointer"
+                                onClick={() => openImageModal(post.image)}
+                            >
                               <Image
                                   src={post.image || "/placeholder.svg"}
                                   alt={post.title}
@@ -296,6 +334,25 @@ export default function InsightsPage() {
           <CTASection />
           <Footer />
         </div>
+
+        {/* Simplified Image Modal - Click anywhere to close */}
+        {selectedImage && (
+            <div
+                className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4 cursor-pointer"
+                onClick={closeImageModal}
+            >
+              {/* Image Container */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                    src={selectedImage}
+                    alt="Full size image"
+                    fill
+                    className="object-contain cursor-pointer"
+                    quality={100}
+                />
+              </div>
+            </div>
+        )}
 
         <style jsx global>{`
           .line-clamp-2 {
