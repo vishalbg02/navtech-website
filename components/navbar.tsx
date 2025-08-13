@@ -136,17 +136,17 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-green-500/5 rounded-lg scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Navigation - Now only shows on xl screens and up */}
+            <nav className="hidden xl:flex items-center space-x-1">
               {navItems.map((item, index) => (
-                  <div key={index} className="nav-item relative">
+                  <div key={index} className="nav-item relative flex items-center">
                     {item.hasDropdown ? (
                         <div
-                            className="relative"
+                            className="relative flex items-center"
                             onClick={() => handleDropdownToggle(item.name)}
                         >
                           <button
-                              className="flex items-center space-x-1 px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group w-full"
+                              className="flex items-center justify-center space-x-1 px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group w-full h-full"
                           >
                             <span className="relative z-10">{item.name}</span>
                             <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
@@ -173,7 +173,7 @@ export default function Navbar() {
                     ) : (
                         <Link
                             href={item.href}
-                            className="relative px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group rounded-xl"
+                            className="relative flex items-center justify-center px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group rounded-xl h-full"
                             onClick={() => handleNavigation(item.href)}
                         >
                           <span className="relative z-10">{item.name}</span>
@@ -184,7 +184,7 @@ export default function Navbar() {
               ))}
 
               {/* CTA Button */}
-              <div className="nav-item ml-4">
+              <div className="nav-item ml-4 flex items-center">
                 <Link href="/contact" onClick={() => handleNavigation("/contact")}>
                   <button
                       className="group bg-[#95c149] hover:bg-[#7da73a] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center space-x-2 shadow-md"
@@ -197,8 +197,8 @@ export default function Navbar() {
               </div>
             </nav>
 
-            {/* Mobile Navigation Trigger */}
-            <div className="lg:hidden flex items-center">
+            {/* Mobile/Tablet Navigation Trigger - Now shows on xl screens and below */}
+            <div className="xl:hidden flex items-center">
               <button
                   aria-label="Open menu"
                   className="text-gray-700 hover:text-[#95C149] p-2 rounded-md focus:outline-none"
@@ -210,7 +210,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Sheet */}
+        {/* Mobile/Tablet Navigation Sheet */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetContent side="right" className="p-0 max-w-xs w-full bg-white shadow-lg border-l border-gray-200 overflow-auto">
             <div className="flex flex-col h-full">
