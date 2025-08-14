@@ -50,7 +50,7 @@ export default function HeroSection() {
       </video>
 
       {/* Light overlay to blend with global background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />
+      {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
 
       {/* Hero Text Content */}
       {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}

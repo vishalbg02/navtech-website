@@ -17,6 +17,8 @@ export default function DefencePage() {
   const airForceRef = useRef(null);
   const fullImageRef = useRef(null);
   const cardsRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef(null);
 
   // InView hooks
   const introInView = useInView(introRef, { once: true, margin: "-100px" });
@@ -154,73 +156,36 @@ export default function DefencePage() {
         <main>
           {/* Hero Section */}
           <section
-              className="h-screen min-h-[600px] w-full relative"
-              style={{
-                background: "url('/images/def1.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundAttachment: "fixed",
-              }}
+              ref={heroRef}
+              className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
           >
-            {/* Solid dark overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-70 z-0" />
+            <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+            >
+              {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
+              Your browser does not support the video tag.
+              <source src="/videos/04 Defence.mp4" type="video/mp4" />
+            </video>
 
-            {/* Content: responsive positioning */}
-            <div className="absolute inset-0 flex items-center z-10">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-10 w-full">
-                <div className="max-w-4xl">
-                  <BlurText
-                      text="Defence"
-                      delay={150}
-                      animateBy="words"
-                      direction="bottom"
-                      className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-oswald font-semibold uppercase leading-tight text-white"
-                  />
+            {/* Light overlay to blend with global background */}
+            {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
 
-                  {/* Mobile Version - Single Line */}
-                  <div className="block md:hidden text-lg sm:text-xl font-sans mt-4 text-white">
-                    <SplitText
-                        text="Next-Gen Optical Wireless Communication for Defence"
-                        delay={180}
-                        duration={0.8}
-                        ease="power3.out"
-                        splitType="lines"
-                        from={{ opacity: 0, y: 30 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                    />
-                  </div>
-
-                  {/* Desktop Version - Two Lines */}
-                  <div className="hidden md:block text-2xl lg:text-3xl font-sans mt-4 text-white">
-                    <SplitText
-                        text="Next-Gen Optical Wireless Communication"
-                        delay={180}
-                        duration={0.8}
-                        ease="power3.out"
-                        splitType="lines"
-                        from={{ opacity: 0, y: 30 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                    />
-                    <br />
-                    <SplitText
-                        text="for Defence"
-                        delay={200}
-                        duration={0.8}
-                        ease="power3.out"
-                        splitType="lines"
-                        from={{ opacity: 0, y: 30 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Hero Text Content */}
+            {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
+            {/*  <BlurText*/}
+            {/*    text="Main Video"*/}
+            {/*    delay={150}*/}
+            {/*    animateBy="words"*/}
+            {/*    direction="bottom"*/}
+            {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
+            {/*  />*/}
+            {/*</div>*/}
           </section>
 
           {/* Intro Section */}

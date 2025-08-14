@@ -29,6 +29,9 @@ export default function OpticSpectraPage() {
   const supremeLeftSpecsRef = useRef(null);
   const supremeRightSpecsRef = useRef(null);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef(null);
+
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
@@ -263,20 +266,37 @@ export default function OpticSpectraPage() {
       style={{ fontFamily: "Manrope, sans-serif" }}
     >
       {/* Video Section */}
-      <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center lg:px-0 px-4">
-        <div className="text-center">
-          <BlurText
-            text="Video of The product"
-            delay={150}
-            animateBy="words"
-            direction="bottom"
-            className="lg:text-[64px] lg:font-oswald lg:font-semibold lg:leading-[77px] text-black mb-6 text-[32px] md:text-[48px] font-oswald font-semibold leading-tight"
-          />
-          <div className="relative lg:w-[78px] lg:h-[78px] w-[52px] h-[52px] md:w-[65px] md:h-[65px] mx-auto">
-            <div className="absolute inset-0 bg-white/40 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 lg:border-l-[20px] lg:border-l-white lg:border-t-[12px] lg:border-t-transparent lg:border-b-[12px] lg:border-b-transparent border-l-[13px] md:border-l-[16px] border-l-white border-t-[8px] md:border-t-[10px] border-t-transparent border-b-[8px] md:border-b-[10px] border-b-transparent ml-1"></div>
-          </div>
-        </div>
+      <section
+          ref={heroRef}
+          className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
+      >
+        <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+        >
+          {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
+          Your browser does not support the video tag.
+          <source src="/videos/02 OpticSpectra.mp4" type="video/mp4" />
+        </video>
+
+        {/* Light overlay to blend with global background */}
+        {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
+
+        {/* Hero Text Content */}
+        {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
+        {/*  <BlurText*/}
+        {/*    text="Main Video"*/}
+        {/*    delay={150}*/}
+        {/*    animateBy="words"*/}
+        {/*    direction="bottom"*/}
+        {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
+        {/*  />*/}
+        {/*</div>*/}
       </section>
 
       {/* Main Content Container */}
