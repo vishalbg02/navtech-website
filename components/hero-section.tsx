@@ -46,21 +46,22 @@ export default function HeroSection() {
       >
         {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
         Your browser does not support the video tag.
+        <source src="/videos/01 Home_website.mp4" type="video/mp4" />
       </video>
 
       {/* Light overlay to blend with global background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />
 
       {/* Hero Text Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl">
-        <BlurText
-          text="Main Video"
-          delay={150}
-          animateBy="words"
-          direction="bottom"
-          className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"
-        />
-      </div>
+      {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
+      {/*  <BlurText*/}
+      {/*    text="Main Video"*/}
+      {/*    delay={150}*/}
+      {/*    animateBy="words"*/}
+      {/*    direction="bottom"*/}
+      {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
+      {/*  />*/}
+      {/*</div>*/}
     </section>
   );
 }
