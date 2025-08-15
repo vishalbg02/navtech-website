@@ -225,7 +225,7 @@ export default function DefencePage() {
               (Free Space Optics). These advanced technologies provide RF-free,
               high-speed, and secure communications, built specifically for
               deployment in high-threat, electronic warfare (EW) environments
-              across all three wings of the Indian Armed Forces.
+              across all three wings of the Armed Forces.
             </motion.p>
           </motion.section>
 
@@ -546,7 +546,7 @@ export default function DefencePage() {
                         : {}
                   }
               >
-                Tailored LiFi and FSO solutions enabling the Indian Armed Forces
+                Tailored LiFi and FSO solutions enabling the Armed Forces
                 to operate confidently in the most challenging electronic warfare
                 environments.
               </motion.p>
@@ -565,7 +565,7 @@ export default function DefencePage() {
                 <FlipCard
                     frontImage="/images/def_air_force1.jpg"
                     title="AIRFORCE"
-                    backContent="Tailored LiFi and FSO solutions enabling the Indian Armed Forces to operate confidently in the most challenging electronic warfare environments."
+                    backContent="Tailored LiFi and FSO solutions enabling the Armed Forces to operate confidently in the most challenging electronic warfare environments."
                 />
               </div>
             </div>
