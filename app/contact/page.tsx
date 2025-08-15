@@ -98,36 +98,40 @@ export default function ContactPage() {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbw7RR0Si8IDm7avFy3s5uQc9G0ynDjOJKrykGvxLp3vQ_Pby9LxgsLLJ5IXqRnalCRybQ/exec";
-
-      await fetch(GOOGLE_SCRIPT_URL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      setSubmitStatus({
-        type: "success",
-        message: "Thank you! Your message has been sent successfully.",
-      });
+      const result = await response.json();
 
-      setFormData({
-        fullName: "",
-        email: "",
-        designation: "",
-        phone: "",
-        message: "",
-      });
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: result.message || "Thank you! Your message has been sent successfully.",
+        });
+
+        setFormData({
+          fullName: "",
+          email: "",
+          designation: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.message || "Sorry, there was an error sending your message. Please try again.",
+        });
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus({
         type: "error",
-        message:
-            "Sorry, there was an error sending your message. Please try again.",
+        message: "Sorry, there was an error sending your message. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
