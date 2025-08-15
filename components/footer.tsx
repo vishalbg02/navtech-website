@@ -52,7 +52,8 @@ export default function Footer() {
                             <span className="text-white text-[16px] leading-[1.4]">
                 C5 The First Besides ITC Narmada,<br/>
                 near Keshav Baug, Ahmedabad,<br/>
-                Gujarat 380015
+                Gujarat 380015,<br/>
+                India
               </span>
                         </div>
                     </div>

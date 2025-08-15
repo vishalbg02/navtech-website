@@ -7,9 +7,8 @@ import {
   Mail,
   MapPin,
   Phone,
-  Facebook,
   Instagram,
-  Youtube,
+  Linkedin
 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -79,9 +78,9 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null;
+    type: "success" | "error" | null;
     message: string;
-  }>({ type: null, message: '' });
+  }>({ type: null, message: "" });
 
   const handleInputChange = (
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -96,32 +95,26 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
+    setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Replace with your Google Apps Script web app URL
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7RR0Si8IDm7avFy3s5uQc9G0ynDjOJKrykGvxLp3vQ_Pby9LxgsLLJ5IXqRnalCRybQ/exec';
+      const GOOGLE_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbw7RR0Si8IDm7avFy3s5uQc9G0ynDjOJKrykGvxLp3vQ_Pby9LxgsLLJ5IXqRnalCRybQ/exec";
 
-      console.log('Submitting to:', GOOGLE_SCRIPT_URL);
-      console.log('Form data:', formData);
-
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // This helps with CORS issues
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      // With no-cors mode, we can't read the response
-      // So we assume success if no error is thrown
       setSubmitStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully.',
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
       });
 
-      // Reset form
       setFormData({
         fullName: "",
         email: "",
@@ -129,12 +122,12 @@ export default function ContactPage() {
         phone: "",
         message: "",
       });
-
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
       setSubmitStatus({
-        type: 'error',
-        message: 'Sorry, there was an error sending your message. Please try again.',
+        type: "error",
+        message:
+            "Sorry, there was an error sending your message. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -189,9 +182,9 @@ export default function ContactPage() {
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       className={`mb-6 p-4 rounded-lg ${
-                          submitStatus.type === 'success'
-                              ? 'bg-green-100 text-green-800 border border-green-200'
-                              : 'bg-red-100 text-red-800 border border-red-200'
+                          submitStatus.type === "success"
+                              ? "bg-green-100 text-green-800 border border-green-200"
+                              : "bg-red-100 text-red-800 border border-red-200"
                       }`}
                   >
                     {submitStatus.message}
@@ -249,10 +242,13 @@ export default function ContactPage() {
                           <br />
                           Near Keshav Baug, Ahmedabad,
                           <br />
-                          Gujarat 380015
+                          Gujarat 380015,
+                          <br />
+                          India
                         </span>
                         </motion.div>
                       </motion.div>
+
                       {/* Social Media Icons */}
                       <motion.div
                           className="flex space-x-4 mt-12"
@@ -261,26 +257,57 @@ export default function ContactPage() {
                           whileInView="visible"
                           viewport={{ once: true }}
                       >
-                        <motion.div
-                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                        {/* X (Twitter) */}
+                        <motion.a
+                            href="https://x.com/navwireless?s=21&t=GaxhmeT9odhWNwL_KLMe7A"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition"
                             variants={scaleIn(0.2)}
                         >
-                          <Facebook className="w-4 h-4" />
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                          <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              shapeRendering="geometricPrecision"
+                              textRendering="geometricPrecision"
+                              imageRendering="optimizeQuality"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              viewBox="0 0 512 462.799"
+                              className="w-4 h-4"
+                              fill="currentColor"
+                          >
+                            <path
+                                fillRule="nonzero"
+                                d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
+                            />
+                          </svg>
+                        </motion.a>
+
+
+                        {/* Instagram */}
+                        <motion.a
+                            href="https://www.instagram.com/nav_wireless_techno?igsh=NTc4MTIwNjQ2YQ=="
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition"
                             variants={scaleIn(0.4)}
                         >
                           <Instagram className="w-4 h-4" />
-                        </motion.div>
-                        <motion.div
-                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                        </motion.a>
+
+                        {/* LinkedIn */}
+                        <motion.a
+                            href="https://www.linkedin.com/company/nav-wireless-technologies-pvt-ltd/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition"
                             variants={scaleIn(0.6)}
                         >
-                          <Youtube className="w-4 h-4" />
-                        </motion.div>
+                          <Linkedin className="w-4 h-4" />
+                        </motion.a>
                       </motion.div>
                     </motion.div>
+
                     {/* Contact Form */}
                     <motion.div
                         className="p-8 md:w-2/3"
@@ -388,7 +415,7 @@ export default function ContactPage() {
                               className="border border-[#95C149] text-gray-800 px-8 py-2 rounded-full font-medium bg-white hover:bg-green-50 disabled:opacity-50 disabled:cursor-not-allowed"
                               disabled={isSubmitting}
                           >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                            {isSubmitting ? "Sending..." : "Send Message"}
                           </Button>
                         </motion.div>
                       </motion.form>

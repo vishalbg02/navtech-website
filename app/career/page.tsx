@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useRef, useState } from "react";
-import { Facebook, Twitter, Instagram, ChevronDown } from "lucide-react";
+import { Instagram, Linkedin, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,6 +50,15 @@ const staggerContainer = {
     },
   },
 };
+
+const scaleIn = (delay: number) => ({
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut", delay: delay },
+  },
+});
 
 export default function CareersPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -273,17 +282,61 @@ export default function CareersPage() {
                       Let's stay connected! Follow our social media channels and
                       have a conversation with us.
                     </h3>
-                    <div className="flex gap-4 lg:gap-5 justify-center lg:justify-start">
-                      <div className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center">
-                        <Facebook className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center">
+                    <motion.div
+                        className="flex gap-4 lg:gap-5 justify-center lg:justify-start"
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                      {/* X (Twitter) */}
+                      <motion.a
+                          href="https://x.com/navwireless?s=21&t=GaxhmeT9odhWNwL_KLMe7A"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center hover:bg-[#95C149]/80 transition"
+                          variants={scaleIn(0.2)}
+                      >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            shapeRendering="geometricPrecision"
+                            textRendering="geometricPrecision"
+                            imageRendering="optimizeQuality"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            viewBox="0 0 512 462.799"
+                            className="w-4 h-4"
+                            fill="currentColor"
+                        >
+                          <path
+                              fillRule="nonzero"
+                              d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
+                          />
+                        </svg>
+                      </motion.a>
+
+                      {/* Instagram */}
+                      <motion.a
+                          href="https://www.instagram.com/nav_wireless_techno?igsh=NTc4MTIwNjQ2YQ=="
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center hover:bg-[#95C149]/80 transition"
+                          variants={scaleIn(0.4)}
+                      >
                         <Instagram className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center">
-                        <Twitter className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
+                      </motion.a>
+
+                      {/* LinkedIn */}
+                      <motion.a
+                          href="https://www.linkedin.com/company/nav-wireless-technologies-pvt-ltd/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-7 h-7 bg-[#95C149] rounded-full flex items-center justify-center hover:bg-[#95C149]/80 transition"
+                          variants={scaleIn(0.6)}
+                      >
+                        <Linkedin className="w-4 h-4 text-white" />
+                      </motion.a>
+                    </motion.div>
                   </motion.div>
 
                   {/* Right Side - Life at Navtech */}
