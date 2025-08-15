@@ -51,7 +51,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative top-24 bottom-24 h-[50vh] lg:top-0 lg:bottom-0 lg:h-screen w-full overflow-hidden"
     >
       <video
         ref={videoRef}
@@ -59,13 +59,12 @@ export default function HeroSection() {
         muted
         playsInline
         preload="auto"
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+        className="absolute top-0 left-0
                    brightness-110 opacity-80
                    w-full h-full 
                    object-contain lg:object-cover"
         style={{
-          minWidth: "100vw",
-          minHeight: "100vh",
+          objectPosition: "center center",
         }}
       >
         <source src="/videos/01 Home_website.mp4" type="video/mp4" />
