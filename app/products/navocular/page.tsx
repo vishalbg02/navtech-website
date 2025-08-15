@@ -72,7 +72,12 @@ const drawLine = (delay: number) => ({
 
 export default function OpticSpectraPage() {
   const [neoCurrentIndex, setNeoCurrentIndex] = useState(0);
+<<<<<<< HEAD
   // const videoRef = useRef<HTMLVideoElement>(null);
+=======
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const heroRef = useRef(null);
+>>>>>>> 88827b3907fefbb7fd230bc7bd658bc199368cfe
 
   const navocularUseCases = [
     {
@@ -108,13 +113,20 @@ export default function OpticSpectraPage() {
   return (
     <div className="relative min-h-screen bg-white">
       {/* Video Section */}
-      <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center px-4">
-        <motion.div
-          className="text-center max-w-4xl mx-auto"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
+      <section
+          ref={heroRef}
+          className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
+      >
+        <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
         >
+<<<<<<< HEAD
           <motion.div variants={fadeInUp(0.2)}>
             {/* <video
               ref={videoRef}
@@ -144,6 +156,26 @@ export default function OpticSpectraPage() {
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-0 h-0 border-l-[16px] md:border-l-[20px] border-l-white border-t-[10px] md:border-t-[12px] border-t-transparent border-b-[10px] md:border-b-[12px] border-b-transparent ml-1"></div>
           </motion.div>
         </motion.div>
+=======
+          {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
+          Your browser does not support the video tag.
+          <source src="/videos/03 Ocular.mp4" type="video/mp4" />
+        </video>
+
+        {/* Light overlay to blend with global background */}
+        {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
+
+        {/* Hero Text Content */}
+        {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
+        {/*  <BlurText*/}
+        {/*    text="Main Video"*/}
+        {/*    delay={150}*/}
+        {/*    animateBy="words"*/}
+        {/*    direction="bottom"*/}
+        {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
+        {/*  />*/}
+        {/*</div>*/}
+>>>>>>> 88827b3907fefbb7fd230bc7bd658bc199368cfe
       </section>
 
       <div className="flex flex-col items-center gap-16 md:gap-24 lg:gap-[120px] py-16 md:py-24 lg:py-[120px] px-4">
