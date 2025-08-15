@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BlurText from "./utils/BlurTextProps";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,7 +14,6 @@ export default function HeroSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Fade out video on scroll
       gsap.to(heroRef.current, {
         opacity: 0.5,
         scrollTrigger: {
@@ -30,38 +28,49 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVideoEnd = () => {
+      setTimeout(() => {
+        if (video) {
+          video.currentTime = 0;
+          video.play();
+        }
+      }, 6000);
+    };
+
+    video.addEventListener("ended", handleVideoEnd);
+
+    return () => {
+      video.removeEventListener("ended", handleVideoEnd);
+    };
+  }, []);
+
   return (
     <section
       ref={heroRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
     >
       <video
         ref={videoRef}
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                   brightness-110 opacity-80
+                   w-full h-full 
+                   object-contain lg:object-cover"
+        style={{
+          minWidth: "100vw",
+          minHeight: "100vh",
+        }}
       >
-        {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
-        Your browser does not support the video tag.
         <source src="/videos/01 Home_website.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
-
-      {/* Light overlay to blend with global background */}
-      {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
-
-      {/* Hero Text Content */}
-      {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
-      {/*  <BlurText*/}
-      {/*    text="Main Video"*/}
-      {/*    delay={150}*/}
-      {/*    animateBy="words"*/}
-      {/*    direction="bottom"*/}
-      {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
-      {/*  />*/}
-      {/*</div>*/}
     </section>
   );
 }
