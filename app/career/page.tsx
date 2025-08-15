@@ -154,9 +154,6 @@ export default function CareersPage() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Replace with your Google Apps Script web app URL
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz-eOM55mYpqlEhOAO1NY3zKV6SX6joB9YxfyxS31KTtC9kq0trMk7wdsgGCPxhEL6/exec';
-
       let submitData = { ...formData };
 
       // Handle file upload if present
@@ -179,19 +176,18 @@ export default function CareersPage() {
         }
       }
 
-      console.log('Submitting to:', GOOGLE_SCRIPT_URL);
-      console.log('Form data:', { ...submitData, resumeFile: selectedFile ? '[FILE_DATA]' : 'No file' });
-
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+      const response = await fetch("/api/send-careers-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(submitData),
       });
 
-      // With no-cors mode, we assume success if no error is thrown
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
       setSubmitStatus({
         type: 'success',
         message: 'Thank you! Your application has been submitted successfully. We will get back to you soon.',
@@ -366,7 +362,7 @@ export default function CareersPage() {
                     </div>
                     <p className="text-sm sm:text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[21px] text-white text-center sm:text-left">
                       Here at Navtech, we aim to deliver efficiency in the given
-                      frame with an easy mind. Here we have routines that allow us
+                      given frame with an easy mind. Here we have routines that allow us
                       to achieve work-life balance apart from peace of mind. Here
                       we strive to achieve a balanced life.
                     </p>
