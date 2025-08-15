@@ -72,6 +72,7 @@ const drawLine = (delay: number) => ({
 
 export default function OpticSpectraPage() {
   const [neoCurrentIndex, setNeoCurrentIndex] = useState(0);
+  // const videoRef = useRef<HTMLVideoElement>(null);
 
   const navocularUseCases = [
     {
@@ -115,6 +116,18 @@ export default function OpticSpectraPage() {
           animate="visible"
         >
           <motion.div variants={fadeInUp(0.2)}>
+            {/* <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+            >
+              <source src="/placeholder-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video> */}
             <BlurText
               text="Video of The product"
               delay={150}

@@ -47,7 +47,7 @@ export default function Footer() {
                         {/* Address */}
                         <div className="flex items-start gap-3 mb-[15px]">
                             <svg className="w-5 h-5 fill-[#FFFFFF]" viewBox="0 0 24 24">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7‑7.75 7‑13c0‑3.87‑3.13‑7‑7‑7zm0 9.5c‑1.38 0‑2.5‑1.12‑2.5‑2.5s1.12‑2.5 2.5‑2.5 2.5 1.12 2.5 2.5‑1.12 2.5‑2.5 2.5z"/>
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                             </svg>
                             <span className="text-white text-[16px] leading-[1.4]">
                 C5 The First Besides ITC Narmada,<br/>

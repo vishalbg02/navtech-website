@@ -20,6 +20,7 @@ export default function OpticSpectraPage() {
   const jssCertifiedRef = useRef<HTMLHeadingElement>(null);
   const [neoCurrentIndex, setNeoCurrentIndex] = useState(0);
   const [supremeCurrentIndex, setSupremeCurrentIndex] = useState(0);
+  // const videoRef = useRef<HTMLVideoElement>(null);
 
   // Refs for motion animations
   const neoCenterImageRef = useRef(null);
@@ -265,6 +266,18 @@ export default function OpticSpectraPage() {
       {/* Video Section */}
       <section className="relative w-full h-screen bg-[#E5E5E5] flex items-center justify-center lg:px-0 px-4">
         <div className="text-center">
+          {/* <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+          >
+            <source src="/placeholder-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> */}
           <BlurText
             text="Video of The product"
             delay={150}
