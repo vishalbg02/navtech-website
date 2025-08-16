@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { Instagram, Linkedin } from "lucide-react"
 
 export default function Footer() {
     const companyLinks = [
@@ -128,26 +129,93 @@ export default function Footer() {
 
             {/* Footer Bottom */}
             <div className="w-[90%] mx-auto border-t border-white">
-                <div className="w-full max-w-[1440px] mx-auto flex justify-between items-center py-6">
-                    <div className="flex items-center bg-white px-4 py-2 rounded-md">
-                        <Image
-                            src="/images/navtech-logo.png"
-                            alt="NavTech Logo"
-                            width={200}
-                            height={50}
-                            className="object-contain"
-                        />
+                <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-4 py-6">
+                    {/* Logos Section */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4 order-2 lg:order-1">
+                        <div className="bg-white px-3 sm:px-4 py-2 rounded-md">
+                            <Image
+                                src="/images/navtech-logo.png"
+                                alt="NavTech Logo"
+                                width={160}
+                                height={40}
+                                className="object-contain sm:w-[200px] sm:h-[50px]"
+                            />
+                        </div>
+                        <div className="bg-white px-3 sm:px-4 py-2 rounded-md">
+                            <Image
+                                src="/images/LiFi.PNG"
+                                alt="LiFi Logo"
+                                width={80}
+                                height={40}
+                                className="object-contain h-[40px] sm:w-[100px] sm:h-[50px]"
+                            />
+                        </div>
                     </div>
-                    <div className="text-[#ccc] text-sm">
+
+                    {/* Copyright Section */}
+                    <div className="text-[#ccc] text-xs sm:text-sm text-center order-1 lg:order-2">
                         © {new Date().getFullYear()} navtechno.in | All Rights Reserved
                     </div>
-                    <div className="flex gap-[30px] text-sm">
-                        <Link href="/privacy-policy" className="text-[#ccc] hover:text-[#9acd32] transition-colors duration-300">
-                            Privacy Policy
-                        </Link>
-                        <Link href="/terms-of-use" className="text-[#ccc] hover:text-[#9acd32] transition-colors duration-300">
-                            Terms of Use
-                        </Link>
+
+                    {/* Right section with social media icons above privacy/terms links */}
+                    <div className="flex flex-col items-center lg:items-end gap-2 sm:gap-3 order-3">
+                        {/* Social Media Icons */}
+                        <div className="flex gap-3 sm:gap-4 items-center">
+                            {/* X (Twitter) */}
+                            <a
+                                href="https://x.com/navwireless?s=21&t=GaxhmeT9odhWNwL_KLMe7A"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    shapeRendering="geometricPrecision"
+                                    textRendering="geometricPrecision"
+                                    imageRendering="optimizeQuality"
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    viewBox="0 0 512 462.799"
+                                    className="w-3 h-3 sm:w-4 sm:h-4 text-white"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        fillRule="nonzero"
+                                        d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
+                                    />
+                                </svg>
+                            </a>
+
+                            {/* Instagram */}
+                            <a
+                                href="https://www.instagram.com/nav_wireless_techno?igsh=NTc4MTIwNjQ2YQ=="
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                            >
+                                <Instagram className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                            </a>
+
+                            {/* LinkedIn */}
+                            <a
+                                href="https://www.linkedin.com/company/nav-wireless-technologies-pvt-ltd/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                            >
+                                <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                            </a>
+                        </div>
+
+                        {/* Privacy Policy and Terms links */}
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-[30px] text-xs sm:text-sm text-center">
+                            <Link href="/privacy-policy" className="text-[#ccc] hover:text-[#9acd32] transition-colors duration-300">
+                                Privacy Policy
+                            </Link>
+                            <Link href="/terms-of-use" className="text-[#ccc] hover:text-[#9acd32] transition-colors duration-300">
+                                Terms of Use
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
