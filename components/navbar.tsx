@@ -136,8 +136,8 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-green-500/5 rounded-lg scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
             </Link>
 
-            {/* Desktop Navigation - Now only shows on xl screens and up */}
-            <nav className="hidden xl:flex items-center space-x-1">
+            {/* Desktop Navigation - Now shows on md screens and up (768px+) */}
+            <nav className="hidden md:flex items-center space-x-0.5 lg:space-x-1 xl:space-x-2">
               {navItems.map((item, index) => (
                   <div key={index} className="nav-item relative flex items-center">
                     {item.hasDropdown ? (
@@ -146,22 +146,22 @@ export default function Navbar() {
                             onClick={() => handleDropdownToggle(item.name)}
                         >
                           <button
-                              className="flex items-center justify-center space-x-1 px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group w-full h-full"
+                              className="flex items-center justify-center space-x-0.5 md:space-x-1 px-1.5 md:px-2 lg:px-3 xl:px-5 py-1.5 md:py-2 lg:py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-xs lg:text-sm font-bold group w-full h-full"
                           >
                             <span className="relative z-10">{item.name}</span>
-                            <ChevronDown className={`w-4 h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                            <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></span>
+                            <ChevronDown className={`w-3 h-3 lg:w-4 lg:h-4 transition-all duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                            <span className="absolute bottom-0.5 md:bottom-1 lg:bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-3 md:group-hover:w-4 lg:group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></span>
                           </button>
                           {/* Dropdown Menu */}
                           {activeDropdown === item.name && (
                               <div
-                                  className="absolute top-full left-0 mt-2 w-48 bg-[#95C149] shadow-xl shadow-black/10 border border-[#95C149] py-2 z-50"
+                                  className="absolute top-full left-0 mt-2 w-36 md:w-40 lg:w-48 bg-[#95C149] shadow-xl shadow-black/10 border border-[#95C149] py-2 z-50"
                               >
                                 {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                                     <Link
                                         key={dropdownIndex}
                                         href={dropdownItem.href}
-                                        className="block px-4 py-3 text-sm text-[#DEDEDE] hover:text-[#FFFFFF] transition-all duration-200 font-bold"
+                                        className="block px-2 md:px-3 lg:px-4 py-1.5 md:py-2 lg:py-3 text-xs lg:text-sm text-[#DEDEDE] hover:text-[#FFFFFF] transition-all duration-200 font-bold"
                                         onClick={() => handleNavigation(dropdownItem.href)}
                                     >
                                       {dropdownItem.name}
@@ -173,32 +173,32 @@ export default function Navbar() {
                     ) : (
                         <Link
                             href={item.href}
-                            className="relative flex items-center justify-center px-5 py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-sm font-bold group rounded-xl h-full"
+                            className="relative flex items-center justify-center px-1.5 md:px-2 lg:px-3 xl:px-5 py-1.5 md:py-2 lg:py-3 text-gray-700 hover:text-[#95C149] transition-all duration-300 text-xs lg:text-sm font-bold group rounded-xl h-full"
                             onClick={() => handleNavigation(item.href)}
                         >
                           <span className="relative z-10">{item.name}</span>
-                          <span className="absolute bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
+                          <span className="absolute bottom-0.5 md:bottom-1 lg:bottom-1.5 left-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 group-hover:w-3 md:group-hover:w-4 lg:group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300 rounded-full"></span>
                         </Link>
                     )}
                   </div>
               ))}
 
               {/* CTA Button */}
-              <div className="nav-item ml-4 flex items-center">
+              <div className="nav-item ml-1 md:ml-2 lg:ml-4 flex items-center">
                 <Link href="/contact" onClick={() => handleNavigation("/contact")}>
                   <button
-                      className="group bg-[#95c149] hover:bg-[#7da73a] text-white px-8 py-3 rounded-full text-base font-medium transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center space-x-2 shadow-md"
+                      className="group bg-[#95c149] hover:bg-[#7da73a] text-white px-3 md:px-4 lg:px-6 xl:px-8 py-1.5 md:py-2 lg:py-3 rounded-full text-xs md:text-sm lg:text-base font-medium transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center space-x-1 lg:space-x-2 shadow-md"
                       style={{ fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif' }}
                   >
                     <span>Contact Us</span>
-                    <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ChevronRight className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </button>
                 </Link>
               </div>
             </nav>
 
-            {/* Mobile/Tablet Navigation Trigger - Now shows on xl screens and below */}
-            <div className="xl:hidden flex items-center">
+            {/* Mobile Navigation Trigger - Now shows only on mobile (below md/768px) */}
+            <div className="md:hidden flex items-center">
               <button
                   aria-label="Open menu"
                   className="text-gray-700 hover:text-[#95C149] p-2 rounded-md focus:outline-none"
@@ -289,3 +289,4 @@ export default function Navbar() {
       </header>
   )
 }
+
