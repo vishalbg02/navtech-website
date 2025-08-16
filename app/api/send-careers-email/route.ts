@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer, { Transporter } from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
 
 // Configuration for SMTP with timeout and pooling
 const getTransporter = (): Transporter => {
@@ -26,16 +28,34 @@ export async function POST(req: NextRequest) {
         // Initialize transporter
         transporter = getTransporter();
 
-        // Hosted logo URL (replace with your actual URL)
-        const logoUrl = 'https://navtechno.in/images/navtech-logo.png'; // Update this URL
+        // Read and encode logo as base64
+        const logoPath = path.join(process.cwd(), 'public', 'images', 'navtech-logo_email.png');
+        let logoAttachment = null;
+        let logoSrc = 'https://navtechno.in/images/navtech-logo.png'; // Fallback URL
+
+        try {
+            const logoBuffer = fs.readFileSync(logoPath);
+            logoAttachment = {
+                filename: 'navtech-logo.png',
+                content: logoBuffer,
+                cid: 'navtech-logo' // Content ID for inline use
+            };
+            logoSrc = 'cid:navtech-logo'; // Use embedded image
+        } catch (error) {
+            console.warn('Could not load local logo, using fallback URL:', error);
+        }
 
         // Attachments if resume is provided
-        const attachments = resumeFile ? [
-            {
+        const attachments = [];
+        if (resumeFile) {
+            attachments.push({
                 filename: fileName || 'resume.pdf',
                 content: Buffer.from(resumeFile, 'base64'),
-            }
-        ] : [];
+            });
+        }
+        if (logoAttachment) {
+            attachments.push(logoAttachment);
+        }
 
         // Main email to recipient (e.g., careers@navtechno.in)
         const mainMailOptions = {
@@ -54,7 +74,7 @@ export async function POST(req: NextRequest) {
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 20px;">
-            <img src="${logoUrl}" alt="NavTechno Logo" style="max-width: 100px; height: auto;" />
+            <img src="${logoSrc}" alt="NavTechno Logo" style="max-width: 150px; height: auto; display: block; margin: 0 auto;" />
           </div>
           <h2 style="color: #333333; font-size: 20px; margin-bottom: 15px;">New Career Application</h2>
           <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
@@ -91,7 +111,7 @@ export async function POST(req: NextRequest) {
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 20px;">
-            <img src="${logoUrl}" alt="NavTechno Logo" style="max-width: 100px; height: auto;" />
+            <img src="${logoSrc}" alt="NavTechno Logo" style="max-width: 150px; height: auto; display: block; margin: 0 auto;" />
           </div>
           <h2 style="color: #333333; font-size: 20px; margin-bottom: 15px;">Thank You for Your Application</h2>
           <p style="color: #555555; line-height: 1.6;">Dear ${fullName},</p>
@@ -103,6 +123,7 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
       `,
+            attachments: logoAttachment ? [logoAttachment] : []
         };
 
         // Send both emails with retry logic for transient failures
