@@ -16,6 +16,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        {/* Privacy Consent by TermsFeed */}
+        <script
+          type="text/javascript"
+          src="https://cdn.termsfeedtag.com/plugins/pc/v1/55298c1ae6ab46629d01b0da3ee1164e/plugin.js"
+          async
+        />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
