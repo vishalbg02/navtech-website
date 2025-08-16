@@ -166,7 +166,7 @@ export default function Footer() {
                                 href="https://x.com/navwireless?s=21&t=GaxhmeT9odhWNwL_KLMe7A"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                                className="w-8 h-8 sm:w-9 sm:h-9 bg-[#4a4a4a] border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-[#5a5a5a] transition p-1.5 sm:p-2"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@ export default function Footer() {
                                 href="https://www.instagram.com/nav_wireless_techno?igsh=NTc4MTIwNjQ2YQ=="
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                                className="w-8 h-8 sm:w-9 sm:h-9 bg-[#4a4a4a] border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-[#5a5a5a] transition p-1.5 sm:p-2"
                             >
                                 <Instagram className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                             </a>
@@ -201,7 +201,7 @@ export default function Footer() {
                                 href="https://www.linkedin.com/company/nav-wireless-technologies-pvt-ltd/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-6 h-6 sm:w-7 sm:h-7 bg-[#9acd32] rounded-full flex items-center justify-center hover:bg-[#9acd32]/80 transition"
+                                className="w-8 h-8 sm:w-9 sm:h-9 bg-[#4a4a4a] border-2 border-gray-400 rounded-full flex items-center justify-center hover:bg-[#5a5a5a] transition p-1.5 sm:p-2"
                             >
                                 <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                             </a>
