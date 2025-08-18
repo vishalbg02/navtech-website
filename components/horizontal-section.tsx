@@ -52,7 +52,7 @@ export default function HorizontalSection() {
   };
 
   return (
-      <section ref={sectionRef} className="bg-white">
+      <section ref={sectionRef} className="bg-white -translate-y-28">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-[60px] xl:px-[120px]">
           {/* Main Heading */}
           <motion.div

@@ -101,7 +101,7 @@ export default function LogosSection() {
   return (
     <div
       ref={containerRef}
-      className="logos-container py-16 relative overflow-hidden"
+      className="logos-container -translate-y-28 pb-16 relative overflow-hidden"
     >
       {/* Background with enhanced gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50/20 via-white/25 to-slate-100/20 backdrop-blur-lg"></div>

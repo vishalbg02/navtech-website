@@ -49,7 +49,7 @@ export default function AboutSection() {
   return (
       <section
           ref={sectionRef}
-          className="relative h-screen w-full overflow-hidden bg-white flex items-center"
+          className="relative h-screen w-full -translate-y-28 overflow-hidden bg-white flex items-center"
       >
         {/* Background with enhanced gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50/20 via-white/25 to-slate-100/20"></div>

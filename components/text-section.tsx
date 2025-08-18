@@ -85,7 +85,7 @@ export default function TextSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative -translate-y-28 h-screen w-full flex items-center justify-center overflow-hidden"
     >
       {/* Background - solid white */}
       <div ref={backgroundRef} className="absolute inset-0 bg-white"></div>

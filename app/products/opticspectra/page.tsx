@@ -268,7 +268,7 @@ export default function OpticSpectraPage() {
         {/* Video Section */}
         <section
             ref={heroRef}
-            className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#E5E5E5]"
+            className="relative top-5 bottom-0 h-[40vh] xl:top-0 xl:bottom-0 xl:h-screen w-full overflow-hidden flex items-center justify-center"
         >
           <video
               ref={videoRef}
@@ -277,26 +277,11 @@ export default function OpticSpectraPage() {
               loop
               playsInline
               preload="auto"
-              className="absolute top-0 left-0 w-full h-full object-cover brightness-110 opacity-80"
+              className="absolute top-0 left-0 w-full h-full object-contain xl:object-cover brightness-110 opacity-80"
           >
-            {/* <source src="/placeholder-video.mp4" type="video/mp4" /> */}
             Your browser does not support the video tag.
             <source src="/videos/02 OpticSpectra.mp4" type="video/mp4" />
           </video>
-
-          {/* Light overlay to blend with global background */}
-          {/*<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent" />*/}
-
-          {/* Hero Text Content */}
-          {/*<div className="relative z-10 text-center px-4 max-w-4xl">*/}
-          {/*  <BlurText*/}
-          {/*    text="Main Video"*/}
-          {/*    delay={150}*/}
-          {/*    animateBy="words"*/}
-          {/*    direction="bottom"*/}
-          {/*    className="text-4xl lg:text-5xl xl:text-6xl font-oswald font-semibold leading-tight text-black"*/}
-          {/*  />*/}
-          {/*</div>*/}
         </section>
 
         {/* Main Content Container */}

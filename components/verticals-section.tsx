@@ -51,7 +51,7 @@ export default function VerticalsSection() {
   return (
       <section
           ref={containerRef}
-          className="relative py-24 min-h-screen flex flex-col bg-white"
+          className="relative min-h-screen flex flex-col bg-white"
       >
         <div className="relative z-10 container mx-auto px-5 mb-16 flex justify-start">
           <div className="text-left max-w-3xl">
