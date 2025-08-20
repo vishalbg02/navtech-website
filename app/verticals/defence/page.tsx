@@ -166,7 +166,7 @@ export default function DefencePage() {
             loop
             playsInline
             preload="auto"
-            className="absolute top-0 left-0 w-full h-full object-contain lg:object-cover brightness-110 opacity-80"
+            className="absolute top-0 lg:-top-[350px] xl:top-0 left-0 w-full h-full object-contain xl:object-cover brightness-110 opacity-80"
           >
             Your browser does not support the video tag.
             <source src="/videos/04 Defence.mp4" type="video/mp4" />
@@ -176,7 +176,7 @@ export default function DefencePage() {
         {/* Intro Section */}
         <motion.section
           ref={introRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center"
+          className="py-12 sm:pb-16 md:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center"
           variants={fadeInUp}
           initial="hidden"
           animate={introInView ? "visible" : "hidden"}

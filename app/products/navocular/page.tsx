@@ -120,14 +120,14 @@ export default function OpticSpectraPage() {
           loop
           playsInline
           preload="auto"
-          className="absolute top-0 left-0 w-full h-full object-contain lg:object-cover brightness-110 opacity-80"
+          className="absolute top-0 lg:-top-[350px] xl:top-0 left-0 w-full h-full object-contain xl:object-cover brightness-110 opacity-80"
         >
           Your browser does not support the video tag.
           <source src="/videos/03 Ocular.mp4" type="video/mp4" />
         </video>
       </section>
 
-      <div className="flex flex-col items-center gap-16 md:gap-24 lg:gap-[120px] py-16 md:py-24 lg:py-[120px] px-4">
+      <div className="flex flex-col items-center gap-16 translate-y-0 lg:-translate-y-[550px] xl:translate-y-20 md:gap-24 lg:gap-[120px] pb-16 md:pb-24 lg:pb-[120px] px-4">
         {/* About NavOcular Section */}
         <section className="flex flex-col items-center gap-6 w-full max-w-5xl">
           <motion.div

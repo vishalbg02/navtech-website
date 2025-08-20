@@ -277,7 +277,7 @@ export default function OpticSpectraPage() {
               loop
               playsInline
               preload="auto"
-              className="absolute top-0 left-0 w-full h-full object-contain lg:object-cover brightness-110 opacity-80"
+              className="absolute top-0 left-0 w-full h-full object-contain xl:object-cover brightness-110 opacity-80"
           >
             Your browser does not support the video tag.
             <source src="/videos/02 OpticSpectra.mp4" type="video/mp4" />
@@ -285,7 +285,7 @@ export default function OpticSpectraPage() {
         </section>
 
         {/* Main Content Container */}
-        <div className="flex flex-col items-center lg:gap-[120px] gap-[60px] lg:py-[120px] py-[60px] lg:px-0 px-4">
+        <div className="flex flex-col items-center translate-y-0 lg:-translate-y-[550px] xl:translate-y-0 lg:gap-[120px] gap-[60px] lg:pb-[120px] xl:pt-20 pb-[60px] lg:px-0 px-4">
           {/* About OpticSpectra Section */}
           <section className="flex flex-col items-center gap-6 lg:w-[1125px] w-full max-w-[1125px]">
             <motion.div
