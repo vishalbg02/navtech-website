@@ -67,7 +67,7 @@ export default function CareersPage() {
     fullName: "",
     designation: "",
     email: "",
-    phone: "",
+    phone: "+91",
     message: "",
   });
 
@@ -77,11 +77,116 @@ export default function CareersPage() {
     message: string;
   }>({ type: null, message: '' });
 
+  // Add validation state
+  const [formErrors, setFormErrors] = useState<{
+    fullName?: string;
+    designation?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+    file?: string;
+  }>({});
+
+  const [touched, setTouched] = useState<{
+    fullName?: boolean;
+    designation?: boolean;
+    email?: boolean;
+    phone?: boolean;
+    message?: boolean;
+    file?: boolean;
+  }>({});
+
+  // Validation functions
+  const validateEmail = (email: string): string | undefined => {
+    if (!email.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return "Please enter a valid email address";
+    return undefined;
+  };
+
+  const validatePhone = (phone: string): string | undefined => {
+    if (!phone.trim()) return "Phone number is required";
+
+    // Check if it starts with +91
+    if (!phone.startsWith('+91')) {
+      return "Phone number must start with +91";
+    }
+
+    // Extract the number part after +91
+    const numberPart = phone.substring(3).trim();
+
+    // Check if it's exactly 10 digits
+    const digitRegex = /^\d{10}$/;
+    if (!digitRegex.test(numberPart)) {
+      return "Please enter exactly 10 digits after +91";
+    }
+
+    // Check if first digit is valid (Indian mobile numbers start with 6-9)
+    const firstDigit = numberPart[0];
+    if (!['6', '7', '8', '9'].includes(firstDigit)) {
+      return "Indian mobile numbers must start with 6, 7, 8, or 9";
+    }
+
+    return undefined;
+  };
+
+  const validateFullName = (name: string): string | undefined => {
+    if (!name.trim()) return "Full name is required";
+    if (name.trim().length < 2) return "Name must be at least 2 characters long";
+    if (name.trim().length > 50) return "Name must be less than 50 characters";
+    return undefined;
+  };
+
+  const validateDesignation = (designation: string): string | undefined => {
+    if (!designation.trim()) return "Designation is required";
+    if (designation.trim().length < 2) return "Designation must be at least 2 characters long";
+    return undefined;
+  };
+
+  const validateMessage = (message: string): string | undefined => {
+    if (!message.trim()) return "Message is required";
+    if (message.trim().length < 10) return "Message must be at least 10 characters long";
+    if (message.trim().length > 500) return "Message must be less than 500 characters";
+    return undefined;
+  };
+
+  const validateForm = () => {
+    const errors: typeof formErrors = {};
+
+    errors.fullName = validateFullName(formData.fullName);
+    errors.email = validateEmail(formData.email);
+    errors.phone = validatePhone(formData.phone);
+    errors.designation = validateDesignation(formData.designation);
+    errors.message = validateMessage(formData.message);
+
+    // File validation is now REQUIRED
+    if (!selectedFile) {
+      errors.file = "Resume file is required";
+    } else {
+      if (selectedFile.size > 5 * 1024 * 1024) {
+        errors.file = "File size must be less than 5MB";
+      }
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(selectedFile.type)) {
+        errors.file = "Please upload a PDF or Word document";
+      }
+    }
+
+    setFormErrors(errors);
+
+    // Return true if no errors
+    return !Object.values(errors).some(error => error !== undefined);
+  };
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      // Clear any previous file errors
+      setFormErrors(prev => ({ ...prev, file: undefined }));
+
       // Check file size (5MB limit)
       if (file.size > 5 * 1024 * 1024) {
+        setFormErrors(prev => ({ ...prev, file: 'File size must be less than 5MB' }));
         setSubmitStatus({
           type: 'error',
           message: 'File size must be less than 5MB'
@@ -92,6 +197,7 @@ export default function CareersPage() {
       // Check file type
       const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       if (!allowedTypes.includes(file.type)) {
+        setFormErrors(prev => ({ ...prev, file: 'Please upload a PDF or Word document' }));
         setSubmitStatus({
           type: 'error',
           message: 'Please upload a PDF or Word document'
@@ -131,21 +237,43 @@ export default function CareersPage() {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
-  // Helper function to convert file to base64
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const base64 = reader.result as string;
-        // Remove the data URL prefix (e.g., "data:application/pdf;base64,")
-        const base64Data = base64.split(',')[1];
-        resolve(base64Data);
-      };
-      reader.onerror = error => reject(error);
-    });
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
+
+    // Validate individual field on blur
+    const fieldValue = formData[name as keyof typeof formData];
+    let error: string | undefined;
+
+    switch (name) {
+      case 'fullName':
+        error = validateFullName(fieldValue);
+        break;
+      case 'email':
+        error = validateEmail(fieldValue);
+        break;
+      case 'phone':
+        error = validatePhone(fieldValue);
+        break;
+      case 'designation':
+        error = validateDesignation(fieldValue);
+        break;
+      case 'message':
+        error = validateMessage(fieldValue);
+        break;
+    }
+
+    setFormErrors(prev => ({ ...prev, [name]: error }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -153,8 +281,28 @@ export default function CareersPage() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
+    // Mark all fields as touched
+    setTouched({
+      fullName: true,
+      designation: true,
+      email: true,
+      phone: true,
+      message: true,
+      file: true,
+    });
+
+    // Validate form before submission
+    if (!validateForm()) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Please fix the errors below and try again.',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      let submitData = { ...formData };
+      let submitData: any = { ...formData };
 
       // Handle file upload if present
       if (selectedFile) {
@@ -185,7 +333,8 @@ export default function CareersPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send email");
+        const errorData = await response.text();
+        throw new Error(`Failed to send email: ${errorData}`);
       }
 
       setSubmitStatus({
@@ -198,10 +347,12 @@ export default function CareersPage() {
         fullName: "",
         designation: "",
         email: "",
-        phone: "",
+        phone: "+91",
         message: "",
       });
       setSelectedFile(null);
+      setFormErrors({});
+      setTouched({});
 
       // Reset file input
       if (fileInputRef.current) {
@@ -217,6 +368,21 @@ export default function CareersPage() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Helper function to convert file to base64
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        // Remove the data URL prefix (e.g., "data:application/pdf;base64,")
+        const base64Data = base64.split(',')[1];
+        resolve(base64Data);
+      };
+      reader.onerror = error => reject(error);
+    });
   };
 
   return (
@@ -427,11 +593,18 @@ export default function CareersPage() {
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleInputChange}
+                          onBlur={handleInputBlur}
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your full name"
                           required
                           disabled={isSubmitting}
                       />
+                      {/* Error message */}
+                      {touched.fullName && formErrors.fullName && (
+                          <p className="mt-1 text-xs text-red-600">
+                            {formErrors.fullName}
+                          </p>
+                      )}
                     </div>
                     <div className="flex-1">
                       <label className="block text-sm sm:text-base lg:text-[16px] font-normal leading-5 text-black mb-2 lg:mb-[11px]">
@@ -442,11 +615,18 @@ export default function CareersPage() {
                           type="email"
                           value={formData.email}
                           onChange={handleInputChange}
+                          onBlur={handleInputBlur}
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your email address"
                           required
                           disabled={isSubmitting}
                       />
+                      {/* Error message */}
+                      {touched.email && formErrors.email && (
+                          <p className="mt-1 text-xs text-red-600">
+                            {formErrors.email}
+                          </p>
+                      )}
                     </div>
                   </motion.div>
 
@@ -464,11 +644,18 @@ export default function CareersPage() {
                           type="tel"
                           value={formData.phone}
                           onChange={handleInputChange}
+                          onBlur={handleInputBlur}
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your phone number"
                           required
                           disabled={isSubmitting}
                       />
+                      {/* Error message */}
+                      {touched.phone && formErrors.phone && (
+                          <p className="mt-1 text-xs text-red-600">
+                            {formErrors.phone}
+                          </p>
+                      )}
                     </div>
                     <div className="flex-1">
                       <label className="block text-sm sm:text-base lg:text-[16px] font-normal leading-5 text-black mb-2 lg:mb-[11px]">
@@ -478,11 +665,18 @@ export default function CareersPage() {
                           name="designation"
                           value={formData.designation}
                           onChange={handleInputChange}
+                          onBlur={handleInputBlur}
                           className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                           placeholder="Enter your job title"
                           required
                           disabled={isSubmitting}
                       />
+                      {/* Error message */}
+                      {touched.designation && formErrors.designation && (
+                          <p className="mt-1 text-xs text-red-600">
+                            {formErrors.designation}
+                          </p>
+                      )}
                     </div>
                   </motion.div>
 
@@ -495,11 +689,18 @@ export default function CareersPage() {
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
+                        onBlur={handleInputBlur}
                         className="border-0 border-b border-[#8D8D8D] rounded-none bg-transparent px-0 pb-1 text-sm sm:text-base lg:text-[16px] font-sans leading-5 text-[#8D8D8D] focus-visible:ring-0 focus-visible:border-[#8D8D8D] h-auto"
                         placeholder="Enter your message"
                         required
                         disabled={isSubmitting}
                     />
+                    {/* Error message */}
+                    {touched.message && formErrors.message && (
+                        <p className="mt-1 text-xs text-red-600">
+                          {formErrors.message}
+                        </p>
+                    )}
                   </motion.div>
 
                   {/* File Upload */}
@@ -536,6 +737,12 @@ export default function CareersPage() {
                           disabled={isSubmitting}
                       />
                     </div>
+                    {/* Error message */}
+                    {touched.file && formErrors.file && (
+                        <p className="mt-1 text-xs text-red-600">
+                          {formErrors.file}
+                        </p>
+                    )}
                   </motion.div>
 
                   {/* Submit Button */}
