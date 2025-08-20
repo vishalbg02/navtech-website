@@ -72,7 +72,7 @@ export default function ContactPage() {
         fullName: "",
         email: "",
         designation: "",
-        phone: "",
+        phone: "+91",
         message: "",
     });
 
@@ -82,6 +82,92 @@ export default function ContactPage() {
         message: string;
     }>({ type: null, message: "" });
 
+    // Add validation state
+    const [formErrors, setFormErrors] = useState<{
+        fullName?: string;
+        email?: string;
+        designation?: string;
+        phone?: string;
+        message?: string;
+    }>({});
+
+    const [touched, setTouched] = useState<{
+        fullName?: boolean;
+        email?: boolean;
+        designation?: boolean;
+        phone?: boolean;
+        message?: boolean;
+    }>({});
+
+    // Validation functions
+    const validateEmail = (email: string): string | undefined => {
+        if (!email.trim()) return "Email is required";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) return "Please enter a valid email address";
+        return undefined;
+    };
+
+    const validatePhone = (phone: string): string | undefined => {
+        if (!phone.trim()) return "Phone number is required";
+
+        // Check if it starts with +91
+        if (!phone.startsWith('+91')) {
+            return "Phone number must start with +91";
+        }
+
+        // Extract the number part after +91
+        const numberPart = phone.substring(3).trim();
+
+        // Check if it's exactly 10 digits
+        const digitRegex = /^\d{10}$/;
+        if (!digitRegex.test(numberPart)) {
+            return "Please enter exactly 10 digits after +91";
+        }
+
+        // Check if first digit is valid (Indian mobile numbers start with 6-9)
+        const firstDigit = numberPart[0];
+        if (!['6', '7', '8', '9'].includes(firstDigit)) {
+            return "Indian mobile numbers must start with 6, 7, 8, or 9";
+        }
+
+        return undefined;
+    };
+
+    const validateFullName = (name: string): string | undefined => {
+        if (!name.trim()) return "Full name is required";
+        if (name.trim().length < 2) return "Name must be at least 2 characters long";
+        if (name.trim().length > 50) return "Name must be less than 50 characters";
+        return undefined;
+    };
+
+    const validateDesignation = (designation: string): string | undefined => {
+        if (!designation.trim()) return "Designation is required";
+        if (designation.trim().length < 2) return "Designation must be at least 2 characters long";
+        return undefined;
+    };
+
+    const validateMessage = (message: string): string | undefined => {
+        if (!message.trim()) return "Message is required";
+        if (message.trim().length < 10) return "Message must be at least 10 characters long";
+        if (message.trim().length > 1000) return "Message must be less than 1000 characters";
+        return undefined;
+    };
+
+    const validateForm = () => {
+        const errors: typeof formErrors = {};
+
+        errors.fullName = validateFullName(formData.fullName);
+        errors.email = validateEmail(formData.email);
+        errors.phone = validatePhone(formData.phone);
+        errors.designation = validateDesignation(formData.designation);
+        errors.message = validateMessage(formData.message);
+
+        setFormErrors(errors);
+
+        // Return true if no errors
+        return !Object.values(errors).some(error => error !== undefined);
+    };
+
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -90,12 +176,68 @@ export default function ContactPage() {
             ...prev,
             [name]: value,
         }));
+
+        // Clear error when user starts typing
+        if (formErrors[name as keyof typeof formErrors]) {
+            setFormErrors(prev => ({
+                ...prev,
+                [name]: undefined
+            }));
+        }
+    };
+
+    const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name } = e.target;
+        setTouched(prev => ({ ...prev, [name]: true }));
+
+        // Validate individual field on blur
+        const fieldValue = formData[name as keyof typeof formData];
+        let error: string | undefined;
+
+        switch (name) {
+            case 'fullName':
+                error = validateFullName(fieldValue);
+                break;
+            case 'email':
+                error = validateEmail(fieldValue);
+                break;
+            case 'phone':
+                error = validatePhone(fieldValue);
+                break;
+            case 'designation':
+                error = validateDesignation(fieldValue);
+                break;
+            case 'message':
+                error = validateMessage(fieldValue);
+                break;
+        }
+
+        setFormErrors(prev => ({ ...prev, [name]: error }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus({ type: null, message: "" });
+
+        // Mark all fields as touched
+        setTouched({
+            fullName: true,
+            email: true,
+            designation: true,
+            phone: true,
+            message: true,
+        });
+
+        // Validate form before submission
+        if (!validateForm()) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Please fix the errors below and try again.',
+            });
+            setIsSubmitting(false);
+            return;
+        }
 
         try {
             const response = await fetch("/api/Contact", {
@@ -107,7 +249,8 @@ export default function ContactPage() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to send email");
+                const errorData = await response.text();
+                throw new Error(`Failed to send email: ${errorData}`);
             }
 
             setSubmitStatus({
@@ -115,13 +258,16 @@ export default function ContactPage() {
                 message: "Thank you! Your message has been sent successfully.",
             });
 
+            // Reset form
             setFormData({
                 fullName: "",
                 email: "",
                 designation: "",
-                phone: "",
+                phone: "+91",
                 message: "",
             });
+            setFormErrors({});
+            setTouched({});
         } catch (error) {
             console.error("Error submitting form:", error);
             setSubmitStatus({
@@ -339,11 +485,17 @@ export default function ContactPage() {
                                                         name="fullName"
                                                         value={formData.fullName}
                                                         onChange={handleInputChange}
+                                                        onBlur={handleInputBlur}
                                                         className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
                                                         placeholder="Enter your full name"
                                                         required
                                                         disabled={isSubmitting}
                                                     />
+                                                    {touched.fullName && formErrors.fullName && (
+                                                        <p className="mt-2 text-sm text-red-600">
+                                                            {formErrors.fullName}
+                                                        </p>
+                                                    )}
                                                 </div>
                                                 <div>
                                                     <label className="text-base font-semibold text-gray-800 mb-2 block">
@@ -354,11 +506,17 @@ export default function ContactPage() {
                                                         type="email"
                                                         value={formData.email}
                                                         onChange={handleInputChange}
+                                                        onBlur={handleInputBlur}
                                                         className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
                                                         placeholder="Enter your email address"
                                                         required
                                                         disabled={isSubmitting}
                                                     />
+                                                    {touched.email && formErrors.email && (
+                                                        <p className="mt-2 text-sm text-red-600">
+                                                            {formErrors.email}
+                                                        </p>
+                                                    )}
                                                 </div>
                                             </motion.div>
                                             <motion.div
@@ -374,11 +532,17 @@ export default function ContactPage() {
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={handleInputChange}
+                                                        onBlur={handleInputBlur}
                                                         className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
                                                         placeholder="Enter your phone number"
                                                         required
                                                         disabled={isSubmitting}
                                                     />
+                                                    {touched.phone && formErrors.phone && (
+                                                        <p className="mt-2 text-sm text-red-600">
+                                                            {formErrors.phone}
+                                                        </p>
+                                                    )}
                                                 </div>
                                                 <div>
                                                     <label className="text-base font-semibold text-gray-800 mb-2 block">
@@ -388,11 +552,17 @@ export default function ContactPage() {
                                                         name="designation"
                                                         value={formData.designation}
                                                         onChange={handleInputChange}
+                                                        onBlur={handleInputBlur}
                                                         className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0"
                                                         placeholder="Enter your job title"
                                                         required
                                                         disabled={isSubmitting}
                                                     />
+                                                    {touched.designation && formErrors.designation && (
+                                                        <p className="mt-2 text-sm text-red-600">
+                                                            {formErrors.designation}
+                                                        </p>
+                                                    )}
                                                 </div>
                                             </motion.div>
                                             <motion.div variants={fadeInUp(0.7)}>
@@ -403,11 +573,17 @@ export default function ContactPage() {
                                                     name="message"
                                                     value={formData.message}
                                                     onChange={handleInputChange}
+                                                    onBlur={handleInputBlur}
                                                     className="w-full bg-transparent border-0 border-b border-gray-400 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-green-500 focus:ring-0 min-h-[100px]"
                                                     placeholder="Enter your message"
                                                     required
                                                     disabled={isSubmitting}
                                                 />
+                                                {touched.message && formErrors.message && (
+                                                    <p className="mt-2 text-sm text-red-600">
+                                                        {formErrors.message}
+                                                    </p>
+                                                )}
                                             </motion.div>
                                             <motion.div className="pt-2" variants={fadeInUp(0.9)}>
                                                 <Button
