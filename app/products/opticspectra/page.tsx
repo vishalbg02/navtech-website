@@ -268,7 +268,7 @@ export default function OpticSpectraPage() {
         {/* Video Section */}
         <section
             ref={heroRef}
-            className="relative top-5 bottom-0 h-[40vh] xl:top-0 xl:bottom-0 xl:h-screen w-full overflow-hidden flex items-center justify-center"
+            className="relative top-5 bottom-0 h-[40vh] lg:top-0 lg:bottom-0 lg:h-screen w-full overflow-hidden flex items-center justify-center"
         >
           <video
               ref={videoRef}
@@ -277,7 +277,7 @@ export default function OpticSpectraPage() {
               loop
               playsInline
               preload="auto"
-              className="absolute top-0 left-0 w-full h-full object-contain xl:object-cover brightness-110 opacity-80"
+              className="absolute top-0 left-0 w-full h-full object-contain lg:object-cover brightness-110 opacity-80"
           >
             Your browser does not support the video tag.
             <source src="/videos/02 OpticSpectra.mp4" type="video/mp4" />
