@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
             attachments.push(logoAttachment);
         }
 
-        // Main email to recipient (e.g., careers@navtechno.in)
+        // Main email to recipient (e.g., info@navwireless.com)
         const mainMailOptions = {
             from: process.env.CAREERS_GMAIL_USER,
             to: process.env.CAREERS_EMAIL_RECIPIENT,

@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
             console.warn('Could not load local logo, using fallback URL:', error);
         }
 
-        // Main email to recipient (info@navtechno.in)
+        // Main email to recipient (info@navwireless.com)
         const mainMailOptions = {
             from: process.env.GMAIL_USER,
             to: process.env.EMAIL_RECIPIENT,
