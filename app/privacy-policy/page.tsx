@@ -551,10 +551,10 @@ export default function PrivacyPolicyPage() {
                 <li>
                   By email:{" "}
                   <a
-                    href="mailto:info@navtechno.in"
+                    href="mailto:info@navwireless.com"
                     className="text-blue-600 hover:text-blue-800 underline"
                   >
-                    info@navtechno.in
+                    info@navwireless.com
                   </a>
                 </li>
                 <li className="mt-2">
